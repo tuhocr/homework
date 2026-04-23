@@ -1,0 +1,13 @@
+# **Các lệnh về vector** 
+
+## Câu 1
+
+Tạo chuỗi số từ 5 đến 50 cách nhau 5 số
+
+```{r}
+a <- seq(from = 5,
+         to = 50,
+         by = 5)
+a
+```
+

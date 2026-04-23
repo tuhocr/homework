@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Bài tập thực hành R",
+    "section": "",
+    "text": "Giới thiệu\nDanh sách bài tập thực hành R phục vụ đào tạo R căn bản cho sinh viên và nhà nghiên cứu.\nWebsite: https://class.tuhocr.com/",
+    "crumbs": [
+      "Giới thiệu"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-ve-vector.html",
+    "href": "cac-lenh-ve-vector.html",
+    "title": "Các lệnh về vector",
+    "section": "",
+    "text": "Câu 1\nTạo chuỗi số từ 5 đến 50 cách nhau 5 số\na &lt;- seq(from = 5,\n         to = 50,\n         by = 5)\na\n\n [1]  5 10 15 20 25 30 35 40 45 50",
+    "crumbs": [
+      "Các lệnh R căn bản",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>**Các lệnh về vector**</span>"
+    ]
+  }
+]

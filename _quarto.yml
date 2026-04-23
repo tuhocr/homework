@@ -1,0 +1,43 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Bài tập thực hành R"
+  author: Duc Nguyen
+  site-url: https://www.tuhocr.com/
+  date: last-modified
+  date-format: "[Cập nhật:] YYYY MMMM DD"
+  # cover-image: cover.png
+  favicon: favicon.png
+  # comments:
+  #   hypothesis:
+  #     theme: clean
+  chapters:
+    - index.qmd
+    - part: "Các lệnh R căn bản"  
+      chapters:
+        - cac-lenh-ve-vector.qmd
+    
+  sidebar:
+    style: "docked"
+    search: true
+    title: "<a href='tuhocr.github.com/homework'>Bài tập thực hành R</a>"
+          
+# bibliography: F:/VAULT12/GRAND/grand.bib
+number-sections: true
+format:
+  html:
+    toc: false
+    theme: default
+    number-sections: false
+    page-layout: full
+  # pdf:
+  #   documentclass: scrreprt
+engine: knitr
+knitr:
+  opts_chunk:
+    R.options:
+      width: 200
+
+
