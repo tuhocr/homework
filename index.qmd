@@ -1,5 +1,5 @@
 # Giới thiệu {.unnumbered}
 
-Danh sách bài tập thực hành R phục vụ đào tạo R căn bản cho sinh viên và nhà nghiên cứu. 
+Danh sách bài tập thực hành R phục vụ đào tạo R căn bản cho sinh viên và học viên cao học. 
 
 Website: [https://class.tuhocr.com/](https://class.tuhocr.com/)

@@ -22,16 +22,20 @@ book:
   sidebar:
     style: "docked"
     search: true
-    title: "<a href='tuhocr.github.com/homework'>Bài tập thực hành R</a>"
+    title: "Bài tập thực hành R"
           
 # bibliography: F:/VAULT12/GRAND/grand.bib
 number-sections: true
 format:
   html:
-    toc: false
+    toc: true
+    toc-title: "Mục lục"
+    toc-location: right
     theme: default
     number-sections: false
     page-layout: full
+    grid:
+      sidebar-width: 280px
   # pdf:
   #   documentclass: scrreprt
 engine: knitr

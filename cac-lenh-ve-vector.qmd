@@ -1,13 +1,29 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
 # **Các lệnh về vector** 
 
 ## Câu 1
 
-Tạo chuỗi số từ 5 đến 50 cách nhau 5 số
+Tạo 1 chuỗi số từ 5 đến 50 cách nhau 5 số
+
+```{r, echo = F}
+a <- seq(from = 5,
+         to = 50,
+         by = 5)
+cat(a)
+```
+
+::: {.callout-tip collapse="true" title="Đáp án"}
 
 ```{r}
 a <- seq(from = 5,
          to = 50,
          by = 5)
-a
+cat(a)
 ```
 
+:::
