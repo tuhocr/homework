@@ -6,15 +6,17 @@ Mình nhận thấy cách học nhanh nhất, chắc nhất là thông qua việ
 
 Vì vậy, mình biên soạn các bài tập này từ dễ đến khó, kèm theo lời giải giúp các bạn luyện tập các tình huống thường gặp, nếu có gì thắc mắc bạn lên Page [Cộng Đồng Tự Học R](https://www.facebook.com/groups/tuhocr) để tạo post thảo luận cùng mọi người nha.
 
-Đặc biệt, nhằm phổ biến rộng rãi kỹ năng R đến các bạn sinh viên và học viên cao học, mình đã upload full các chuyên đề HDSD R hiện đã có hơn 120 video bài gảing được mình biên soạn kỹ lưỡng về các lệnh R căn bản bao gồm source code và dataset thực hành.
+Đặc biệt, nhằm phổ biến rộng rãi kỹ năng R đến các bạn sinh viên và học viên cao học, mình đã upload full các chuyên đề HDSD R hiện đã có hơn 120 video bài giảng được mình biên soạn kỹ lưỡng về các lệnh R căn bản bao gồm source code và dataset thực hành.
 
 Youtube: <https://www.youtube.com/@tuhocr/courses>
 
-Website: [https://class.tuhocr.com/](https://class.tuhocr.com/)
+Github: <https://github.com/tuhocr/homework> 
+
+Website: <https://class.tuhocr.com/>
 
 [Nếu bạn thấy trang này hữu ích, bạn có thể ủng hộ mình bằng cách gửi mình cốc cafe theo thông tin chuyển khoản sau nhé. Mỗi cốc cafe của bạn tiếp thêm cho mình động lực để phổ biến R rộng rãi hơn với mọi người.]{style="color:blue"}
 
-[*Cảm ơn bạn rất nhiều. Together we learn and grow!*]{style="color:red"}
+[*Cảm ơn bạn rất nhiều. Together we learn and grow!*]{style="color:darkgreen"}
 
 [**Ngân hàng Thương mại Cổ phần Á Châu ACB**]{style="color:darkgreen"}
 
