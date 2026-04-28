@@ -27,3 +27,10 @@ Website: [https://class.tuhocr.com/](https://class.tuhocr.com/)
 
 
 
+
+<table>
+<tr>
+<td><script type='text/javascript' id='mapmyvisitors' src='https://mapmyvisitors.com/map.js?cl=ffffff&w=600&t=m&d=_bAFWtM8w6r1iqz1rFnSp0G0YR9BhAghEugmc4AP_kE&co=2d78ad&cmo=3acc3a&cmn=ff5353&ct=ffffff'></script>
+</td>
+</tr>
+</table>
