@@ -1,0 +1,96 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# **Đồ thị cột** 
+
+Từ khóa: barchart, bar chart, barplot, đồ thị cột, đồ thị thanh
+
+## **Câu 1**
+
+**Tạo 1 chuỗi số từ 5 đến 50 cách nhau 5 số**
+
+
+<!-- <style> -->
+<!-- div.blue pre { background-color:#fff2cc; font-size: 22px; } -->
+<!-- </style> -->
+
+<!-- <div class = "blue"> -->
+
+```{r}
+
+```
+
+
+```{r, echo = T}
+df_kq <- readRDS("dataset/bar1.rds")
+
+library(ggplot2)
+ggplot(data = df_kq,
+       mapping = aes(x = semester,
+                     y = mean_score,
+                     fill = gender)) +
+  
+  geom_col(position = "dodge",
+           width = 0.8,
+           color = "black") +
+  
+  # geom_boxplot() +
+  
+  geom_point(data = df_kq,
+             mapping = aes(x = semester,
+                           y = max_score,
+                           color = gender,
+                           fill = gender,
+                           group = gender),
+             position = position_dodge(width = 0.8)) +
+  
+  # scale_y_continuous(limits = c(50,100)) +
+  
+  geom_errorbar(mapping = aes(ymin = mean_score,
+                              ymax = mean_score + sd_score),
+                width=0.8,
+                colour="black",
+                position = "dodge",
+                alpha=1,
+                size=0.5) +
+  
+  theme_bw(base_size = 16) +
+  
+  coord_cartesian(ylim=c(40,100))
+
+```
+
+<!-- </div> -->
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+```{r}
+a <- seq(from = 5,
+         to = 50,
+         by = 5)
+cat(a)
+```
+</div>
+
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+

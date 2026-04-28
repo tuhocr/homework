@@ -18,6 +18,9 @@ book:
     - part: "Các lệnh R căn bản"  
       chapters:
         - cac-lenh-ve-vector.qmd
+    - part: "Các lệnh vẽ đồ thị" 
+      chapters:
+        - cac-lenh-ve-do-thi-cot.qmd   
     
   sidebar:
     style: "docked"
@@ -43,5 +46,22 @@ knitr:
   opts_chunk:
     R.options:
       width: 200
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
 
 
