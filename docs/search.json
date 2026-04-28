@@ -4,9 +4,9 @@
     "href": "index.html",
     "title": "Bài tập thực hành R",
     "section": "",
-    "text": "Giới thiệu\nDanh sách bài tập thực hành R phục vụ đào tạo R căn bản cho sinh viên và học viên cao học.\nWebsite: https://class.tuhocr.com/",
+    "text": "Giới thiệu\nMến chào bạn, trang blog là danh sách bài tập thực hành R được mình tổng hợp dựa trên các tình huống trong thực tế khi support xử lý dữ liệu cho các bạn làm nghiên cứu thời gian qua.\nMình nhận thấy cách học nhanh nhất, chắc nhất là thông qua việc làm bài tập. Learning by doing.\nVì vậy, mình biên soạn các bài tập này từ dễ đến khó, kèm theo lời giải giúp các bạn luyện tập các tình huống thường gặp, nếu có gì thắc mắc các bạn lên Page Cộng Đồng Tự Học R để tạo post thảo luận cùng mọi người nha.\nĐặc biệt, nhằm phổ biến rộng rãi kỹ năng R đến các bạn sinh viên và học viên cao học, mình đã upload full các chuyên đề HDSD R hiện đã có hơn 120 video bài gảing được mình biên soạn kỹ lưỡng về các lệnh R căn bản bao gồm source code và dataset thực hành.\nYoutube: https://www.youtube.com/@tuhocr/courses\nWebsite: https://class.tuhocr.com/\nNếu các bạn thấy trang này hữu ích, các bạn có thể ủng hộ mình bằng cách gửi mình cốc cafe theo thông tin chuyển khoản sau nhé. Mỗi cốc cafe của bạn tiếp thêm cho mình động lực để phổ biến R rộng rãi hơn với mọi người.\nCảm ơn các bạn rất nhiều. Together we learn and grow!\nNgân hàng Thương mại Cổ phần Á Châu ACB\n193208059\nNGUYEN TAN DUC",
     "crumbs": [
-      "Giới thiệu"
+      "**Giới thiệu**"
     ]
   },
   {
@@ -16,7 +16,7 @@
     "section": "",
     "text": "Câu 1\nTạo 1 chuỗi số từ 5 đến 50 cách nhau 5 số",
     "crumbs": [
-      "Các lệnh R căn bản",
+      "[**Các lệnh R căn bản**]{style='color:red'}",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>**Các lệnh về vector**</span>"
     ]
   },
@@ -25,9 +25,9 @@
     "href": "cac-lenh-ve-vector.html#câu-1",
     "title": "Các lệnh về vector",
     "section": "",
-    "text": "5 10 15 20 25 30 35 40 45 50\n\n\n\n\n\n\n\n\n\nĐáp án\n\n\n\n\n\n\n\n\na &lt;- seq(from = 5,\n         to = 50,\n         by = 5)\ncat(a)\n\n5 10 15 20 25 30 35 40 45 50",
+    "text": "Đáp án\n\n\n\n\n\n\n\n\na &lt;- seq(from = 5,\n         to = 50,\n         by = 5)\na\n\n [1]  5 10 15 20 25 30 35 40 45 50",
     "crumbs": [
-      "Các lệnh R căn bản",
+      "[**Các lệnh R căn bản**]{style='color:red'}",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>**Các lệnh về vector**</span>"
     ]
   },
@@ -36,9 +36,9 @@
     "href": "cac-lenh-ve-do-thi-cot.html",
     "title": "Đồ thị cột",
     "section": "",
-    "text": "Câu 1\nSử dụng dataset bar1.rds\nhttps://github.com/tuhocr/homework/blob/main/dataset/bar1.rds\ndf_kq &lt;- readRDS(\"dataset/bar1.rds\")\n\nlibrary(ggplot2)\nggplot(data = df_kq,\n       mapping = aes(x = semester,\n                     y = mean_score,\n                     fill = gender)) +\n  \n  geom_col(position = \"dodge\",\n           width = 0.8,\n           color = \"black\") +\n  \n  # geom_boxplot() +\n  \n  geom_point(data = df_kq,\n             mapping = aes(x = semester,\n                           y = max_score,\n                           color = gender,\n                           fill = gender,\n                           group = gender),\n             position = position_dodge(width = 0.8)) +\n  \n  # scale_y_continuous(limits = c(50,100)) +\n  \n  geom_errorbar(mapping = aes(ymin = mean_score,\n                              ymax = mean_score + sd_score),\n                width=0.8,\n                colour=\"black\",\n                position = \"dodge\",\n                alpha=1,\n                size=0.5) +\n  \n  theme_bw(base_size = 16) +\n  \n  coord_cartesian(ylim=c(40,100))\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.",
+    "text": "Câu 1\nSử dụng dataset bar1.rds\nhttps://github.com/tuhocr/homework/blob/main/dataset/bar1.rds\ndf_kq &lt;- readRDS(\"dataset/bar1.rds\")\ndf_kq\n\n   semester gender mean_score sd_score max_score min_score\n1       3rd Female   64.77486 13.66542        92        34\n2       3rd   Male   71.41736 13.68334        95        32\n3       4th Female   65.02993 13.81512        94        30\n4       4th   Male   70.55134 13.23573        95        32\n5       5th Female   64.60223 14.30171        92        30\n6       5th   Male   71.22735 13.73720        97        31\n7       6th Female   64.32432 14.26521        94        31\n8       6th   Male   71.48963 13.25760        95        36\n9      &gt;6th Female   62.83200 13.95831        96        39\n10     &gt;6th   Male   71.25843 13.79063        96        34\nBạn hãy vẽ đồ thị cột để được hình bên dưới, với các điểm point đại diện cho giá trị maximum của từng nhóm.\nBạn có thể cần lấy factor của cột semester để sắp xếp thứ tự cột cho phù hợp.",
     "crumbs": [
-      "Các lệnh vẽ đồ thị",
+      "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>**Đồ thị cột**</span>"
     ]
   },
@@ -47,10 +47,32 @@
     "href": "cac-lenh-ve-do-thi-cot.html#câu-1",
     "title": "Đồ thị cột",
     "section": "",
-    "text": "Đáp án\n\n\n\n\n\n\n\n\na &lt;- seq(from = 5,\n         to = 50,\n         by = 5)\ncat(a)\n\n5 10 15 20 25 30 35 40 45 50",
+    "text": "Đáp án\n\n\n\n\n\n\n\n\ndf_kq &lt;- readRDS(\"dataset/bar1.rds\")\n\ndf_kq$semester &lt;- factor(df_kq$semester,\n                         levels = c(\"3rd\",\n                                    \"4th\",\n                                    \"5th\",\n                                    \"6th\",\n                                    \"&gt;6th\"))\n\nlibrary(ggplot2)\nggplot(data = df_kq,\n       mapping = aes(x = semester,\n                     y = mean_score,\n                     fill = gender)) +\n  \n  geom_col(position = \"dodge\",\n           width = 0.8,\n           color = \"black\") +\n  \n  # geom_boxplot() +\n  \n  geom_point(data = df_kq,\n             mapping = aes(x = semester,\n                           y = max_score,\n                           color = gender,\n                           fill = gender,\n                           group = gender),\n             position = position_dodge(width = 0.8)) +\n  \n  # nếu dùng scale_y để set limit thì sẽ không được\n  # scale_y_continuous(limits = c(50,100)) +\n  \n  geom_errorbar(mapping = aes(ymin = mean_score,\n                              ymax = mean_score + sd_score),\n                width = 0.8,\n                colour = \"black\",\n                position = \"dodge\",\n                alpha = 1,\n                linewidth = 0.5) +\n  \n  theme_bw(base_size = 16) +\n  \n  coord_cartesian(ylim = c(40,100))",
     "crumbs": [
-      "Các lệnh vẽ đồ thị",
+      "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>**Đồ thị cột**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-ve-vector.html#câu-2",
+    "href": "cac-lenh-ve-vector.html#câu-2",
+    "title": "Các lệnh về vector",
+    "section": "Câu 2",
+    "text": "Câu 2\nTa có vector sau:\n\n\n\ng &lt;- c(2, 3, 12, 11, 12, 7, 11, 9, 12, 1, 22, 29, 33)\n\nTrích xuất 6 thành phần đầu tiên của vector g và gán vào g1\nTrích xuất 6 thành phần cuối của vector g và gán vào g2\n\n\n\n\n\n\n\nĐáp án\n\n\n\n\n\n\n\n\ng1 &lt;- g[1:6]\ng1\n\n[1]  2  3 12 11 12  7\n\ng2 &lt;- g[ (length(g)-6+1) : length(g)]\ng2\n\n[1]  9 12  1 22 29 33",
+    "crumbs": [
+      "[**Các lệnh R căn bản**]{style='color:red'}",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>**Các lệnh về vector**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-ve-vector.html#câu-3",
+    "href": "cac-lenh-ve-vector.html#câu-3",
+    "title": "Các lệnh về vector",
+    "section": "Câu 3",
+    "text": "Câu 3\nTrên cơ sở của vector g1 và g2 thu được từ câu 2, bạn hãy tạo vector mới gộp g1 và g2 bằng câu lệnh sau.\n\n\n\nh &lt;- c(g1, g2)\nh\n\n [1]  2  3 12 11 12  7  9 12  1 22 29 33\n\n\nThay các con số 12 trong vector h thành 26, bạn sẽ được kết quả như sau:\n\n\n [1]  2  3 26 11 26  7  9 26  1 22 29 33\n\n\nBỏ 2 con số đầu tiên trong vector h và tính tổng các con số còn lại, kết quả cần đạt được là:\n\n\n[1] 190\n\n\n\n\n\n\n\n\n\nĐáp án\n\n\n\n\n\n\n\n\nh &lt;- c(g1, g2)\nh\n\n [1]  2  3 12 11 12  7  9 12  1 22 29 33\n\nh[which(h == 12)] &lt;- 26\nh\n\n [1]  2  3 26 11 26  7  9 26  1 22 29 33\n\nh1 &lt;- h[-c(1:2)]\nh1\n\n [1] 26 11 26  7  9 26  1 22 29 33\n\nsum(h1)\n\n[1] 190",
+    "crumbs": [
+      "[**Các lệnh R căn bản**]{style='color:red'}",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>**Các lệnh về vector**</span>"
     ]
   }
 ]

@@ -8,7 +8,7 @@ editor_options:
 
 ## **Câu 1**
 
-**Tạo 1 chuỗi số từ 5 đến 50 cách nhau 5 số**
+Tạo 1 chuỗi số từ 5 đến 50 cách nhau 5 số
 
 
 <style>
@@ -21,7 +21,7 @@ div.blue pre { background-color:#fff2cc; font-size: 22px; }
 a <- seq(from = 5,
          to = 50,
          by = 5)
-cat(a)
+# cat(a)
 ```
 
 </div>
@@ -37,11 +37,132 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 a <- seq(from = 5,
          to = 50,
          by = 5)
-cat(a)
+a
 ```
 </div>
 
 :::
+
+
+## **Câu 2**
+
+Ta có vector sau:
+
+<style>
+div.bluea pre { background-color:#fff2cc; font-size: 16px; }
+div.bluea pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+
+<div class = "bluea">
+
+```{r, echo = T}
+g <- c(2, 3, 12, 11, 12, 7, 11, 9, 12, 1, 22, 29, 33)
+```
+
+Trích xuất 6 thành phần đầu tiên của vector `g` và gán vào `g1`
+
+```{r, echo = F}
+g1 <- g[1:6]
+# cat(g1)
+```
+
+
+Trích xuất 6 thành phần cuối của vector `g` và gán vào `g2`
+
+```{r, echo = F}
+g2 <- g[ (length(g)-6+1) : length(g)]
+# cat(g2)
+```
+</div>
+
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+```{r}
+g1 <- g[1:6]
+g1
+
+g2 <- g[ (length(g)-6+1) : length(g)]
+g2
+```
+</div>
+
+:::
+
+## **Câu 3**
+
+Trên cơ sở của vector `g1` và `g2` thu được từ câu 2, bạn hãy tạo vector mới gộp `g1` và `g2` bằng câu lệnh sau.
+
+<style>
+div.bluea pre { background-color:#fff2cc; font-size: 16px; }
+div.bluea pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+
+<div class = "bluea">
+
+```{r, echo = T}
+h <- c(g1, g2)
+h
+```
+
+Thay các con số `12` trong vector `h` thành `26`, bạn sẽ được kết quả như sau:
+
+```{r, echo = F}
+h[which(h == 12)] <- 26
+h
+```
+
+Bỏ 2 con số đầu tiên trong vector `h` và tính tổng các con số còn lại, kết quả cần đạt được là:
+
+```{r, echo = F}
+h1 <- h[-c(1:2)]
+sum(h1)
+```
+
+</div>
+
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+```{r}
+h <- c(g1, g2)
+h
+
+h[which(h == 12)] <- 26
+h
+
+h1 <- h[-c(1:2)]
+h1
+sum(h1)
+```
+</div>
+
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

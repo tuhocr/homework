@@ -10,7 +10,7 @@ Từ khóa: barchart, bar chart, barplot, đồ thị cột, đồ thị thanh
 
 ## **Câu 1**
 
-**Sử dụng dataset `bar1.rds`**
+Sử dụng dataset `bar1.rds`
 
 <https://github.com/tuhocr/homework/blob/main/dataset/bar1.rds>
 
@@ -22,12 +22,23 @@ Từ khóa: barchart, bar chart, barplot, đồ thị cột, đồ thị thanh
 <!-- <div class = "blue"> -->
 
 ```{r}
-
+df_kq <- readRDS("dataset/bar1.rds")
+df_kq
 ```
 
+Bạn hãy vẽ đồ thị cột để được hình bên dưới, với các điểm point đại diện cho giá trị maximum của từng nhóm.
 
-```{r, echo = T}
+Bạn có thể cần lấy factor của cột `semester` để sắp xếp thứ tự cột cho phù hợp.
+
+```{r, echo = F}
 df_kq <- readRDS("dataset/bar1.rds")
+
+df_kq$semester <- factor(df_kq$semester,
+                         levels = c("3rd",
+                                    "4th",
+                                    "5th",
+                                    "6th",
+                                    ">6th"))
 
 library(ggplot2)
 ggplot(data = df_kq,
@@ -49,20 +60,20 @@ ggplot(data = df_kq,
                            group = gender),
              position = position_dodge(width = 0.8)) +
   
+  # nếu dùng scale_y để set limit thì sẽ không được
   # scale_y_continuous(limits = c(50,100)) +
   
   geom_errorbar(mapping = aes(ymin = mean_score,
                               ymax = mean_score + sd_score),
-                width=0.8,
-                colour="black",
+                width = 0.8,
+                colour = "black",
                 position = "dodge",
-                alpha=1,
-                size=0.5) +
+                alpha = 1,
+                linewidth = 0.5) +
   
   theme_bw(base_size = 16) +
   
-  coord_cartesian(ylim=c(40,100))
-
+  coord_cartesian(ylim = c(40,100))
 ```
 
 <!-- </div> -->
@@ -75,10 +86,49 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 </style>
 <div class = "yes123">
 ```{r}
-a <- seq(from = 5,
-         to = 50,
-         by = 5)
-cat(a)
+df_kq <- readRDS("dataset/bar1.rds")
+
+df_kq$semester <- factor(df_kq$semester,
+                         levels = c("3rd",
+                                    "4th",
+                                    "5th",
+                                    "6th",
+                                    ">6th"))
+
+library(ggplot2)
+ggplot(data = df_kq,
+       mapping = aes(x = semester,
+                     y = mean_score,
+                     fill = gender)) +
+  
+  geom_col(position = "dodge",
+           width = 0.8,
+           color = "black") +
+  
+  # geom_boxplot() +
+  
+  geom_point(data = df_kq,
+             mapping = aes(x = semester,
+                           y = max_score,
+                           color = gender,
+                           fill = gender,
+                           group = gender),
+             position = position_dodge(width = 0.8)) +
+  
+  # nếu dùng scale_y để set limit thì sẽ không được
+  # scale_y_continuous(limits = c(50,100)) +
+  
+  geom_errorbar(mapping = aes(ymin = mean_score,
+                              ymax = mean_score + sd_score),
+                width = 0.8,
+                colour = "black",
+                position = "dodge",
+                alpha = 1,
+                linewidth = 0.5) +
+  
+  theme_bw(base_size = 16) +
+  
+  coord_cartesian(ylim = c(40,100))
 ```
 </div>
 

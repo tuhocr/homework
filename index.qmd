@@ -1,5 +1,29 @@
-# Giới thiệu {.unnumbered}
+# **Giới thiệu** {.unnumbered}
 
-Danh sách bài tập thực hành R phục vụ đào tạo R căn bản cho sinh viên và học viên cao học. 
+Mến chào bạn, trang blog là danh sách bài tập thực hành R được mình tổng hợp dựa trên các tình huống trong thực tế khi support xử lý dữ liệu cho các bạn làm nghiên cứu thời gian qua. 
+
+Mình nhận thấy cách học nhanh nhất, chắc nhất là thông qua việc làm bài tập. **Learning by doing**. 
+
+Vì vậy, mình biên soạn các bài tập này từ dễ đến khó, kèm theo lời giải giúp các bạn luyện tập các tình huống thường gặp, nếu có gì thắc mắc các bạn lên Page [Cộng Đồng Tự Học R](https://www.facebook.com/groups/tuhocr) để tạo post thảo luận cùng mọi người nha.
+
+Đặc biệt, nhằm phổ biến rộng rãi kỹ năng R đến các bạn sinh viên và học viên cao học, mình đã upload full các chuyên đề HDSD R hiện đã có hơn 120 video bài gảing được mình biên soạn kỹ lưỡng về các lệnh R căn bản bao gồm source code và dataset thực hành.
+
+Youtube: <https://www.youtube.com/@tuhocr/courses>
 
 Website: [https://class.tuhocr.com/](https://class.tuhocr.com/)
+
+[Nếu các bạn thấy trang này hữu ích, các bạn có thể ủng hộ mình bằng cách gửi mình cốc cafe theo thông tin chuyển khoản sau nhé. Mỗi cốc cafe của bạn tiếp thêm cho mình động lực để phổ biến R rộng rãi hơn với mọi người.]{style="color:blue"}
+
+[*Cảm ơn các bạn rất nhiều. Together we learn and grow!*]{style="color:red"}
+
+[**Ngân hàng Thương mại Cổ phần Á Châu ACB**]{style="color:darkgreen"}
+
+[**193208059**]{style="color:darkgreen"}
+
+[**NGUYEN TAN DUC**]{style="color:darkgreen"}
+
+
+![](logo.png){width=30%}
+
+
+
