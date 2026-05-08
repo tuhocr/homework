@@ -14,9 +14,7 @@ Github: <https://github.com/tuhocr/homework>
 
 Website: <https://class.tuhocr.com/>
 
-[Nếu bạn thấy trang này hữu ích, bạn có thể ủng hộ mình bằng cách gửi mình cốc cafe theo thông tin chuyển khoản sau nhé. Mỗi cốc cafe của bạn tiếp thêm cho mình động lực để phổ biến R rộng rãi hơn với mọi người.]{style="color:blue"}
-
-[*Cảm ơn bạn rất nhiều. Together we learn and grow!*]{style="color:darkgreen"}
+[Nếu bạn thấy trang này hữu ích, bạn có thể ủng hộ mình bằng cách gửi mình cốc cafe theo thông tin chuyển khoản sau nhé. Cảm ơn các bạn rất nhiều. Together we learn and grow!]{style="color:blue"}
 
 [**Ngân hàng Thương mại Cổ phần Á Châu ACB**]{style="color:darkgreen"}
 

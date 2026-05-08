@@ -1,0 +1,95 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, echo=FALSE, results='hide'}
+knitr::opts_chunk$set(message = FALSE,  
+                      warning = FALSE)   
+```
+
+# **Các lệnh thống kê mô tả** 
+
+## **Câu 1**
+
+Ta có vector `p`, hãy kiểm tra đặc điểm phân bố chuẩn của dữ liệu.
+
+Từ khóa: normality test
+
+```{r}
+p <- c(5, 12, 33, 9, 11, 12, 12, 15, 16, 22, 20)
+p
+```
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+### Kiểm định phân bố chuẩn
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+```{r}
+shapiro.test(p)
+```
+</div>
+Nếu p-value > 0.05 thì dữ liệu phân bố chuẩn.
+
+### Tính skewness (độ lệch) và kurtosis (độ nhọn) của phân bố
+
+#### Cách 1: Giá trị quy về 0
+
+* Skewness
+
+```
+Skewness từ -1 đến 1: mức lý tưởng để kết luận có phân phối chuẩn
+
+Skewness từ -2 đến 2: mức chấp nhận để kết luận có phân phối chuẩn
+
+Skewness vượt quá -2 và 2: dữ liệu không có phân phối chuẩn
+```
+
+* Kurtosis
+
+```
+Kurtosis gần bằng 0: mức lý tưởng để kết luận có phân phối chuẩn
+
+Kurtosis từ -2 đến 2: mức chấp nhận để kết luận có phân phối chuẩn
+
+Kurtosis vượt quá -2 và 2: dữ liệu không có phân phối chuẩn
+```
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+```{r}
+library(psych)
+psych:::skew(p)
+psych:::kurtosi(p)
+```
+</div>
+
+#### Cách 2: Giá trị quy về 3
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+```{r}
+library(moments)
+moments:::skewness(p)
+moments:::kurtosis(p)
+```
+</div>
+
+
+### Tham khảo
+
+<https://www.phamlocblog.com/2025/03/chi-so-skewness-kurtosis-phan-phoi-chuan-spss.html>
+
+:::
