@@ -102,6 +102,27 @@ Bạn có dữ liệu sau là kết quả đo khối lượng cây ở 3 nghiệ
 PlantGrowth
 ```
 
+Kết quả cần đạt là hình này.
+
+```{r, fig.width=8, fig.height=4, echo=F}
+library(ggplot2)
+library(qqplotr)
+ggplot(data = PlantGrowth,
+       mapping = aes(sample = weight, 
+                     color = group, 
+                     fill = group)) +
+  
+    stat_qq_band(alpha = 0.5) +
+  
+    stat_qq_line() +
+  
+    stat_qq_point() +
+  
+    facet_wrap(~ group,
+               scale = "free",
+               nrow = 1,
+               ncol = 3) 
+```
 
 ::: {.callout-tip collapse="true" title="Đáp án"}
 
