@@ -1,0 +1,128 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, echo=FALSE, results='hide'}
+knitr::opts_chunk$set(message = FALSE,  
+                      warning = FALSE)   
+```
+
+# **Các lệnh sắp xếp dữ liệu** 
+
+## **Câu 1**
+
+Sử dụng dataset `df1.rds`
+
+<https://github.com/tuhocr/homework/blob/main/dataset/df1.rds>
+
+Bạn có bộ dữ liệu sau, đây là kết quả đo chỉ số `CD3+_T_CELL_FREQ` ở hai thời điểm trước và sau. Ta sẽ thấy trong nhóm `CONTROL_OLD` và `CONTROL_YOUNG` ở cột `BEGIN_CD3+_T_CELL_FREQ` có đủ dữ liệu, trong khi ở cột `FU_CD3+_T_CELL_FREQ` tương ứng thì bị thiếu dữ liệu.
+
+```{r}
+df <- readRDS("dataset/df1.rds")
+
+df
+```
+
+Bạn hãy chuyển dữ liệu từ cột `BEGIN` qua cột `FU` chỉ dành cho hai nhóm `CONTROL_OLD` và `CONTROL_YOUNG`, để thu được kết quả như sau, cột mới tạo đặt tên là `FU_CD3+_T_CELL_FREQ_new`.
+
+```{r, echo=F}
+library(dplyr)
+library(rlang)
+
+df %>% dplyr:::mutate( `FU_CD3+_T_CELL_FREQ_new` = case_when(
+  
+  STUDY_ARM == "CONTROL_OLD" ~ `BEGIN_CD3+_T_CELL_FREQ`,
+  
+  STUDY_ARM == "CONTROL_YOUNG" ~ `BEGIN_CD3+_T_CELL_FREQ`,
+  
+  STUDY_ARM == "YEGD" ~ `FU_CD3+_T_CELL_FREQ`,
+  
+  .default = NA
+  
+)) -> df_clean
+
+df_clean
+```
+
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+**Cách 1: Khai báo trực tiếp tên biến**
+
+Chú ý nếu tên biến có ký tự đặc biệt thì cần đặt trong hai dấu backticks ` `` `
+
+```{r}
+df <- readRDS("dataset/df1.rds")
+
+library(dplyr)
+library(rlang)
+
+df %>% dplyr:::mutate( `FU_CD3+_T_CELL_FREQ_new` = case_when(
+  
+  STUDY_ARM == "CONTROL_OLD" ~ `BEGIN_CD3+_T_CELL_FREQ`,
+  
+  STUDY_ARM == "CONTROL_YOUNG" ~ `BEGIN_CD3+_T_CELL_FREQ`,
+  
+  STUDY_ARM == "YEGD" ~ `FU_CD3+_T_CELL_FREQ`,
+  
+  .default = NA
+  
+)) -> df_clean1
+
+df_clean1
+```
+
+**Cách 2: Khai báo tên biến theo kiểu truyền tham số**
+
+Từ khóa: pass variable in `dplyr`; dynamic variable/column in `dplyr` 
+
+```{r}
+df <- readRDS("dataset/df1.rds")
+
+v1 <- "BEGIN_CD3+_T_CELL_FREQ"
+
+v2 <- "FU_CD3+_T_CELL_FREQ"
+
+v3 <- "FU_CD3+_T_CELL_FREQ_new"
+
+library(dplyr)
+library(rlang)
+
+df %>% dplyr:::mutate( {{ v3 }} := case_when(
+  
+  STUDY_ARM == "CONTROL_OLD" ~ get(v1),
+  
+  STUDY_ARM == "CONTROL_YOUNG" ~ get(v1),
+  
+  STUDY_ARM == "YEGD" ~ get(v2),
+  
+  .default = NA
+  
+)) -> df_clean2
+
+df_clean2
+```
+
+**Xác nhận kết quả tính bằng hai cách là như nhau**
+
+```{r}
+identical(df_clean1, df_clean2)
+```
+
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,7 +6,7 @@ editor_options:
 
 # **Đồ thị cột** 
 
-Từ khóa: barchart, bar chart, barplot, đồ thị cột, đồ thị thanh
+Từ khóa: barchart; bar chart; barplot; đồ thị cột; đồ thị thanh
 
 ## **Câu 1**
 

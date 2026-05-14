@@ -1,8 +1,8 @@
 # **Giới thiệu** {.unnumbered}
 
-Mến chào bạn, trang blog là danh sách bài tập thực hành R được mình tổng hợp dựa trên các tình huống trong thực tế khi support xử lý dữ liệu cho các bạn làm nghiên cứu thời gian qua. 
+Mến chào bạn, trang blog này là danh sách bài tập thực hành R được mình tổng hợp dựa trên các tình huống trong thực tế khi support xử lý dữ liệu cho các bạn làm nghiên cứu thời gian qua. 
 
-Mình nhận thấy cách học nhanh nhất, chắc nhất là thông qua việc làm bài tập. **Learning by doing**. 
+Mình nhận thấy cách học nhanh nhất, chắc nhất là thông qua việc làm bài tập. Learning by doing. 
 
 Vì vậy, mình biên soạn các bài tập này từ dễ đến khó, kèm theo lời giải giúp các bạn luyện tập các tình huống thường gặp, nếu có gì thắc mắc bạn lên Page [Cộng Đồng Tự Học R](https://www.facebook.com/groups/tuhocr) để tạo post thảo luận cùng mọi người nha.
 
@@ -14,7 +14,7 @@ Github: <https://github.com/tuhocr/homework>
 
 Website: <https://class.tuhocr.com/>
 
-[Nếu bạn thấy trang này hữu ích, bạn có thể ủng hộ mình bằng cách gửi mình cốc cafe theo thông tin chuyển khoản sau nhé. Cảm ơn các bạn rất nhiều. Together we learn and grow!]{style="color:blue"}
+[Nếu bạn thấy trang này hữu ích, bạn có thể ủng hộ bằng cách tặng mình cốc cafe theo thông tin chuyển khoản sau nhé. Cảm ơn các bạn rất nhiều. Together we learn and grow!]{style="color:blue"}
 
 [**Ngân hàng Thương mại Cổ phần Á Châu ACB**]{style="color:darkgreen"}
 
