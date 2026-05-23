@@ -11,7 +11,7 @@ knitr::opts_chunk$set(message = FALSE,
 
 # **Các lệnh sắp xếp dữ liệu** 
 
-## **Câu 1**
+## **Câu 1** {#cau-1}
 
 Sử dụng dataset `df1.rds`
 

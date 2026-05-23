@@ -11,7 +11,7 @@ knitr::opts_chunk$set(message = FALSE,
 
 # **Các lệnh thống kê mô tả** 
 
-## **Câu 1**
+## **Câu 1** {#cau-1}
 
 Ta có vector `p`, hãy kiểm tra đặc điểm phân bố chuẩn của dữ liệu.
 
@@ -94,7 +94,7 @@ moments:::kurtosis(p)
 
 :::
 
-## **Câu 2**
+## **Câu 2** {#cau-2}
 
 Bạn có dữ liệu sau là kết quả đo khối lượng cây ở 3 nghiệm thức, hãy vẽ đồ thị QQ plot để kiểm tra đặc điểm phân bố chuẩn của dữ liệu.
 
