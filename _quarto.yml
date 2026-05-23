@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 book:
-  title: "Bài tập thực hành R"
+  title: "Bài tập R"
   author: Duc Nguyen
   site-url: https://www.tuhocr.com/
   date: last-modified
@@ -29,20 +29,22 @@ book:
   sidebar:
     style: "docked"
     search: true
-    title: "Bài tập thực hành R"
+    title: "Bài tập R"
           
 # bibliography: F:/VAULT12/GRAND/grand.bib
 number-sections: true
 format:
   html:
+    theme:
+      light: [default, style/custom.scss]
+      dark: superhero
     toc: true
     toc-title: "Mục lục"
     toc-location: right
-    theme: default
     number-sections: false
     page-layout: full
     grid:
-      sidebar-width: 280px
+      sidebar-width: 260px
   # pdf:
   #   documentclass: scrreprt
 engine: knitr
