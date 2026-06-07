@@ -4,11 +4,11 @@ editor_options:
   chunk_output_type: console
 ---
 
-# **Đồ thị cột** 
+# **Đồ thị barchart** 
 
 Từ khóa: barchart; bar chart; barplot; đồ thị cột; đồ thị thanh
 
-## **Câu 1**
+## **Câu 1** {#cau-1}
 
 Sử dụng dataset `bar1.rds`
 

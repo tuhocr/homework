@@ -21,7 +21,8 @@ book:
         - cac-lenh-sap-xep-du-lieu.qmd
     - part: "[**Các lệnh vẽ đồ thị**]{style='color:blue'}" 
       chapters:
-        - cac-lenh-ve-do-thi-cot.qmd   
+        - cac-lenh-ve-do-thi-scatterplot.qmd 
+        - cac-lenh-ve-do-thi-barchart.qmd  
     - part: "[**Các lệnh thống kê**]{style='color:blue'}" 
       chapters:
         - cac-lenh-thong-ke-mo-ta.qmd     
@@ -36,7 +37,8 @@ number-sections: true
 format:
   html:
     theme:
-      light: [default, style/custom.scss]
+      #light: [default, style/custom.scss]
+      light: default
       dark: superhero
     toc: true
     toc-title: "Mục lục"

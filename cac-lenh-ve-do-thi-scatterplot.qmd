@@ -1,0 +1,315 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, echo=FALSE, results='hide'}
+knitr::opts_chunk$set(message = FALSE,  
+                      warning = FALSE)   
+```
+
+# **Đồ thị scatterplot** 
+
+Từ khóa: đồ thị phân tán; plot xy; đồ thị điểm
+
+## **Câu 1**
+
+<!-- <style> -->
+<!-- div.blue pre { background-color:#fff2cc; font-size: 22px; } -->
+<!-- </style> -->
+
+<!-- <div class = "blue"> -->
+
+Bạn có dữ liệu sau về chỉ số cân nặng và chiều cao
+
+```{r}
+airquality -> df
+
+head(df)
+```
+
+Bạn hãy vẽ đồ thị như hình bên dưới.
+
+```{r, echo = F}
+library(ggplot2)
+
+ggplot(data = df,
+       mapping = aes(x = Temp,
+                     y = Wind)) +
+  
+  geom_point() +
+  
+  theme_bw(base_size = 16)
+```
+
+<!-- </div> -->
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+```{r}
+library(ggplot2)
+
+ggplot(data = df,
+       mapping = aes(x = Temp,
+                     y = Wind)) +
+  
+  geom_point() +
+  
+  theme_bw(base_size = 16)
+```
+</div>
+
+:::
+
+## **Câu 2**
+
+<!-- <style> -->
+<!-- div.blue pre { background-color:#fff2cc; font-size: 22px; } -->
+<!-- </style> -->
+
+<!-- <div class = "blue"> -->
+
+Tiếp theo câu 1, bạn hãy thêm đường trend line/regression vào đồ thị
+
+```{r, echo = F}
+library(ggplot2)
+
+ggplot(data = df,
+       mapping = aes(x = Temp,
+                     y = Wind)) +
+  
+  geom_point() +
+  
+  geom_smooth(method = "lm",
+              color = "darkgreen",
+              fill = "royalblue",
+              alpha = 0.25) +
+  
+  theme_bw(base_size = 16)
+```
+
+<!-- </div> -->
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+```{r}
+library(ggplot2)
+
+ggplot(data = df,
+       mapping = aes(x = Temp,
+                     y = Wind)) +
+  
+  geom_point() +
+  
+  geom_smooth(method = "lm",
+              color = "darkgreen",
+              fill = "royalblue",
+              alpha = 0.25) +
+  
+  theme_bw(base_size = 16)
+```
+</div>
+
+:::
+
+## **Câu 3**
+
+<!-- <style> -->
+<!-- div.blue pre { background-color:#fff2cc; font-size: 22px; } -->
+<!-- </style> -->
+
+<!-- <div class = "blue"> -->
+
+Tiếp theo câu 2, bạn hãy thêm giá trị R-squared và p-value vào đồ thị.
+
+```{r, echo = F, results="hide"}
+fit <- lm(Wind ~ Temp,
+          data = df)
+
+summary(fit) -> kq
+
+###
+r_squared <- round(kq$r.squared, digits = 4)
+
+r_squared_text <- bquote(R^2 == .(r_squared))
+###
+
+###
+options(scipen = 4)
+options(digits = 3)
+p_value <- kq$coefficients[2,4]
+
+p_value_ok <- capture.output(cat(p_value)) 
+# p_value_ok
+p_value <- p_value_ok
+
+p_value_text <- bquote('p-value' == .(p_value))
+# p_value_text 
+###
+```
+
+```{r, echo = F, results="hide"}
+library(ggplot2)
+library(grid)
+
+grob_r_squared_text <- grobTree(... = textGrob(label = r_squared_text, 
+                          x = 0.95, 
+                          y = 0.95, 
+                          hjust = 1,
+                          vjust = 1,
+                          gp = gpar(col = "blue",
+                                    fontsize = 13,
+                                    fontface = "italic")))
+
+grob_p_value_text <- grobTree(... = textGrob(label = p_value_text, 
+                          x = 0.95, 
+                          y = 0.85, 
+                          hjust = 1,
+                          vjust = 1,
+                          gp = gpar(col = "blue",
+                                    fontsize = 13,
+                                    fontface = "italic")))
+
+```
+
+
+```{r, echo = F}
+ggplot(data = df,
+       mapping = aes(x = Temp,
+                     y = Wind)) +
+  
+  geom_point() +
+  
+  annotation_custom(grob_r_squared_text) +
+  
+  annotation_custom(grob_p_value_text) +
+  
+  geom_smooth(method = "lm",
+              color = "darkgreen",
+              fill = "royalblue",
+              alpha = 0.25) + 
+  
+  theme_bw(base_size = 16) +
+  
+  labs(x = "Temp",
+       y = "Wind",
+       title = "Wind ~ Temp")
+```
+
+<!-- </div> -->
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+
+Đầu tiên ta cần thực hiện model hồi quy đơn biến của `Wind` theo `Temp` sau đó trích ra giá trị R-squared và p-value tương ứng.
+
+```{r}
+fit <- lm(Wind ~ Temp,
+          data = df)
+summary(fit)
+summary(fit) -> kq
+
+###
+r_squared <- round(kq$r.squared, digits = 4)
+
+r_squared_text <- bquote(R^2 == .(r_squared))
+###
+
+###
+# tùy chỉnh tham số để thay đổi số lượng số 
+# sau dấu thập phân trong p-value
+options(scipen = 4)
+options(digits = 3)
+p_value <- kq$coefficients[2,4]
+
+# p-value thường rất nhỏ, ggplot2 sẽ hiển thị nhiều số 0,
+# ta cần chủ động chụp lại kết quả p-value trên console
+p_value_ok <- capture.output(cat(p_value)) 
+# p_value_ok
+p_value <- p_value_ok
+
+p_value_text <- bquote('p-value' == .(p_value))
+# p_value_text 
+###
+```
+
+Tạo đối tượng lưu text sử dụng package `grid`
+
+```{r}
+library(ggplot2)
+library(grid)
+
+grob_r_squared_text <- grobTree(... = textGrob(label = r_squared_text, 
+                          x = 0.95, 
+                          y = 0.95, 
+                          hjust = 1,
+                          vjust = 1,
+                          gp = gpar(col = "blue",
+                                    fontsize = 13,
+                                    fontface = "italic")))
+
+grob_p_value_text <- grobTree(... = textGrob(label = p_value_text, 
+                          x = 0.95, 
+                          y = 0.85, 
+                          hjust = 1,
+                          vjust = 1,
+                          gp = gpar(col = "blue",
+                                    fontsize = 13,
+                                    fontface = "italic")))
+
+```
+
+Chèn văn bản vào đồ thị sử dụng lệnh `annotation_custom()`
+
+```{r}
+ggplot(data = df,
+       mapping = aes(x = Temp,
+                     y = Wind)) +
+  
+  geom_point() +
+  
+  annotation_custom(grob_r_squared_text) +
+  
+  annotation_custom(grob_p_value_text) +
+  
+  geom_smooth(method = "lm",
+              color = "darkgreen",
+              fill = "royalblue",
+              alpha = 0.25) + 
+  
+  theme_bw(base_size = 16) +
+  
+  labs(x = "Temp",
+       y = "Wind",
+       title = "Wind ~ Temp")
+```
+</div>
+:::
+
+[**Credit: Cảm ơn Dr. Trương Kim đã gợi ý cho mình về dạng đồ thị này.**]{style="color:#FF4081"}
+
+
+
+
+
+
+
+
+
+
