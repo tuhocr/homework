@@ -21,7 +21,7 @@ div.blue pre { background-color:#fff2cc; font-size: 22px; }
 a <- seq(from = 5,
          to = 50,
          by = 5)
-# cat(a)
+cat(a)
 ```
 
 </div>

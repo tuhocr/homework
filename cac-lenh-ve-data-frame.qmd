@@ -15,19 +15,14 @@ knitr::opts_chunk$set(message = FALSE,
 
 Bạn có dataset về thông tin sinh viên của 1 trường Đại học như sau: [`students.csv`](`https://filedn.com/lesyJpQOCafj7katNqunAxu/TUHOCR/RPC/20260619_trees_K1/dataset/`). Hãy kiểm tra xem mã `ID` (cột `stud.id`) của sinh viên có bạn nào bị trùng nhau không? Nếu có hãy liệt kê các mã `ID` bị trùng.
 
-<style>
-div.blue pre { background-color:#fff2cc; font-size: 16px; }
-</style>
 
-<div class = "blue">
-
-```{r, echo = T}
+```{r}
 df <- read.csv("dataset/students.csv")
 dim(df)
 head(df)
 ```
 
-</div>
+
 
 ::: {.callout-tip collapse="true" title="Đáp án"}
 
