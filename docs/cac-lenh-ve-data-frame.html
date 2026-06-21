@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Duc Nguyen">
 
-<title>Bài tập R</title>
+<title>Các lệnh về data frame – Bài tập R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -24,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -34,7 +68,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./cac-lenh-ve-vector.html" rel="next">
+<link href="./cac-lenh-sap-xep-du-lieu.html" rel="next">
+<link href="./cac-lenh-ve-vector.html" rel="prev">
 <link href="./favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -252,7 +287,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><strong>Giới thiệu</strong></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cac-lenh-ve-vector.html"><span style="color:blue"><strong>Các lệnh R căn bản</strong></span></a></li><li class="breadcrumb-item"><a href="./cac-lenh-ve-data-frame.html"><span class="chapter-title"><strong>Các lệnh về data frame</strong></span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -282,7 +317,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><strong>Giới thiệu</strong></span></a>
   </div>
 </li>
@@ -302,7 +337,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cac-lenh-ve-data-frame.html" class="sidebar-item-text sidebar-link"><span class="chapter-title"><strong>Các lệnh về data frame</strong></span></a>
+  <a href="./cac-lenh-ve-data-frame.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title"><strong>Các lệnh về data frame</strong></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -359,7 +394,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Mục lục</h2>
    
   <ul>
-  <li><a href="#giới-thiệu" id="toc-giới-thiệu" class="nav-link active" data-scroll-target="#giới-thiệu"><strong>Giới thiệu</strong></a></li>
+  <li><a href="#cau-1" id="toc-cau-1" class="nav-link active" data-scroll-target="#cau-1"><strong>Câu 1</strong></a></li>
+  <li><a href="#cau-2" id="toc-cau-2" class="nav-link" data-scroll-target="#cau-2"><strong>Câu 2</strong></a></li>
+  <li><a href="#cau-3" id="toc-cau-3" class="nav-link" data-scroll-target="#cau-3"><strong>Câu 3</strong></a></li>
   </ul>
 </nav>
     </div>
@@ -367,28 +404,16 @@ ul.task-list li input[type="checkbox"] {
 <main class="content column-body" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cac-lenh-ve-vector.html"><span style="color:blue"><strong>Các lệnh R căn bản</strong></span></a></li><li class="breadcrumb-item"><a href="./cac-lenh-ve-data-frame.html"><span class="chapter-title"><strong>Các lệnh về data frame</strong></span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Bài tập R</h1>
+<h1 class="title"><span class="chapter-title"><strong>Các lệnh về data frame</strong></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta column-body">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Duc Nguyen </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">Cập nhật: 2026 June 21</p>
-    </div>
-  </div>
   
     
   </div>
@@ -398,27 +423,228 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="giới-thiệu" class="level1 unnumbered">
-<h1 class="unnumbered"><strong>Giới thiệu</strong></h1>
-<p>Mến chào bạn, trang blog này là danh sách bài tập thực hành R được mình tổng hợp dựa trên các tình huống trong thực tế khi support xử lý dữ liệu cho các bạn làm nghiên cứu thời gian qua, phục vụ chủ yếu cho các buổi đào tạo R định kỳ trong khóa học <a href="https://www.tuhocr.com/training">R Programming Course for Data Science</a>.</p>
-<p>Mình nhận thấy cách học nhanh nhất, chắc nhất là thông qua việc làm bài tập. Learning by doing.</p>
-<p>Vì vậy, mình biên soạn các bài tập này từ dễ đến khó, kèm theo lời giải giúp các bạn luyện tập các tình huống thường gặp, nếu có gì thắc mắc bạn lên Page <a href="https://www.facebook.com/groups/tuhocr">Cộng Đồng Tự Học R</a> để tạo post thảo luận cùng mọi người nha.</p>
-<p>Đặc biệt, nhằm phổ biến rộng rãi kỹ năng R đến các bạn sinh viên và học viên cao học, mình đã upload full các chuyên đề HDSD R hiện đã có hơn 120 video bài giảng được mình biên soạn kỹ lưỡng về các lệnh R căn bản bao gồm source code và dataset thực hành.</p>
-<p>Website: <a href="https://tuhocr.com/" class="uri">https://tuhocr.com/</a></p>
-<p>Youtube: <a href="https://www.youtube.com/@tuhocr/courses" class="uri">https://www.youtube.com/@tuhocr/courses</a></p>
-<p>Github: <a href="https://github.com/tuhocr/homework" class="uri">https://github.com/tuhocr/homework</a></p>
-<p><span style="color:blue">Nếu bạn thấy trang này hữu ích, bạn có thể ủng hộ mình cốc cafe theo thông tin chuyển khoản sau nhé. Cảm ơn các bạn rất nhiều. Together we learn and grow!</span></p>
-<p><span style="color:darkgreen"><strong>Ngân hàng Thương mại Cổ phần Á Châu ACB</strong></span></p>
-<p><span style="color:darkgreen"><strong>193208059</strong></span></p>
-<p><span style="color:darkgreen"><strong>NGUYEN TAN DUC</strong></span></p>
-<p><img src="logo.png" class="img-fluid" style="width:30.0%"></p>
-<table>
-<tbody><tr>
-<td>
-<script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=ffffff&amp;w=600&amp;t=m&amp;d=_bAFWtM8w6r1iqz1rFnSp0G0YR9BhAghEugmc4AP_kE&amp;co=2d78ad&amp;cmo=3acc3a&amp;cmn=ff5353&amp;ct=ffffff"></script>
-</td>
-</tr>
-</tbody></table>
+<section id="cau-1" class="level2">
+<h2 class="anchored" data-anchor-id="cau-1"><strong>Câu 1</strong></h2>
+<p>Bạn có dataset về thông tin sinh viên của 1 trường Đại học như sau: <a href="`https://filedn.com/lesyJpQOCafj7katNqunAxu/TUHOCR/RPC/20260619_trees_K1/dataset/`"><code>students.csv</code></a>. Hãy kiểm tra xem mã <code>ID</code> (cột <code>stud.id</code>) của sinh viên có bạn nào bị trùng nhau không? Nếu có hãy liệt kê các mã <code>ID</code> bị trùng.</p>
+<style>
+div.blue pre { background-color:#fff2cc; font-size: 16px; }
+</style>
+<div class="blue">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"dataset/students.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8239   17</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  no stud.id                name gender age height weight   religion nc.score semester                  major                      minor score1 score2 online.tutorial graduated salary
+1  1  833917 Gonzales, Christina Female  19    160   64.8     Muslim     1.91      1st      Political Science            Social Sciences     NA     NA               0         0     NA
+2  2  898539      Lozano, T'Hani Female  19    172   73.0      Other     1.56      2nd        Social Sciences Mathematics and Statistics     NA     NA               0         0     NA
+3  3  379678      Williams, Hanh Female  22    168   70.6 Protestant     1.24      3rd        Social Sciences Mathematics and Statistics     45     46               0         0     NA
+4  4  807564         Nem, Denzel   Male  19    183   79.7      Other     1.37      2nd Environmental Sciences Mathematics and Statistics     NA     NA               0         0     NA
+5  5  383291     Powell, Heather Female  21    175   71.4   Catholic     1.46      1st Environmental Sciences Mathematics and Statistics     NA     NA               0         0     NA
+6  6  256074      Perez, Jadrian   Male  19    189   85.8   Catholic     1.34      2nd      Political Science Mathematics and Statistics     NA     NA               0         0     NA</code></pre>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Đáp án">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Đáp án
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class="yes123">
+<p>Sử dụng lệnh <code>unique()</code> để trả về số lượng mã ID xuất hiện ít nhất một lần. Sau đó dùng lệnh <code>length()</code> để đếm xem có bao nhiêu mã ID unique, nếu tổng số mã ID unique bằng với số hàng của data frame có nghĩa là không có mã ID nào bị trùng, 100% là unique. Ngược lại, nếu tổng số mã ID unique nhỏ hơn số hàng của data frame có nghĩa là có vài mã ID bị trùng. Ta sẽ cần lọc ra.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"dataset/students.csv"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>stud.id))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8237</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8239   17</code></pre>
+</div>
+</div>
+<p>Ta thấy tổng số hàng của data frame này là 8239 lớn hơn tổng số mã ID unique là 8237, như vậy có 2 mã ID bị trùng.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>stud.id) <span class="ot">-&gt;</span> check_id</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(check_id, <span class="at">decreasing =</span> T) <span class="ot">-&gt;</span> check_id</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(check_id)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+188703 962284 110250 110348 110415 110615 
+     2      2      1      1      1      1 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>check_id[check_id <span class="sc">&gt;</span> <span class="dv">1</span>] <span class="ot">-&gt;</span> id_dup</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_dup <span class="ot">&lt;-</span> df[ <span class="fu">which</span>(df<span class="sc">$</span>stud.id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="fu">names</span>(id_dup))) , ]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>df_dup</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     no stud.id            name gender age height weight religion nc.score semester                  major                      minor score1 score2 online.tutorial graduated   salary
+34   34  188703  Torres, Andrew   Male  18    173   75.7    Other     1.19      4th Environmental Sciences Mathematics and Statistics     74     74               0         0       NA
+63   63  188703   Cebrun, Linda Female  21    157   62.9 Catholic     2.59     &gt;6th Environmental Sciences            Social Sciences     64     75               0         1 32519.22
+73   73  962284 Iverson, Sierra Female  20    154   63.0    Other     2.30      1st                Biology     Environmental Sciences     NA     NA               0         0       NA
+109 109  962284  John III, Ryan   Male  18    183   81.4 Catholic     1.84      2nd Environmental Sciences          Political Science     NA     NA               0         0       NA</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-2" class="level2">
+<h2 class="anchored" data-anchor-id="cau-2"><strong>Câu 2</strong></h2>
+<p>Tiếp theo câu 1, bạn hãy tính trung bình độ tuổi <code>age</code> của sinh viên theo ngành học <code>major</code> và theo giới tính <code>gender</code>, thể hiện rõ tổng số lượng sinh viên trong mỗi nhóm. Kết quả sẽ tương tự như bảng sau:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                        major gender age_mean number_student
+1                     Biology Female 22.56621            959
+2                     Biology   Male 22.51411            638
+3       Economics and Finance Female 22.44252            461
+4       Economics and Finance   Male 22.52260            863
+5      Environmental Sciences Female 22.84564            745
+6      Environmental Sciences   Male 22.59478            881
+7  Mathematics and Statistics Female 22.60870            276
+8  Mathematics and Statistics   Male 22.30875            949
+9           Political Science Female 22.51840            978
+10          Political Science   Male 22.74843            477
+11            Social Sciences Female 22.63965            691
+12            Social Sciences   Male 22.04673            321</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Đáp án">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Đáp án
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class="yes123">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> dplyr<span class="sc">:::</span><span class="fu">group_by</span>(major, gender) <span class="sc">|&gt;</span> </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">:::</span><span class="fu">summarise</span>(<span class="at">age_mean =</span> <span class="fu">mean</span>(age),</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">number_student =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span> <span class="fu">as.data.frame</span>() <span class="ot">-&gt;</span> kq</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>kq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                        major gender age_mean number_student
+1                     Biology Female 22.56621            959
+2                     Biology   Male 22.51411            638
+3       Economics and Finance Female 22.44252            461
+4       Economics and Finance   Male 22.52260            863
+5      Environmental Sciences Female 22.84564            745
+6      Environmental Sciences   Male 22.59478            881
+7  Mathematics and Statistics Female 22.60870            276
+8  Mathematics and Statistics   Male 22.30875            949
+9           Political Science Female 22.51840            978
+10          Political Science   Male 22.74843            477
+11            Social Sciences Female 22.63965            691
+12            Social Sciences   Male 22.04673            321</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(kq<span class="sc">$</span>number_student)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8239</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-3" class="level2">
+<h2 class="anchored" data-anchor-id="cau-3"><strong>Câu 3</strong></h2>
+<p>Tương tự câu 2, bạn hãy tính trung bình mức lương <code>salary</code> của sinh viên theo ngành học <code>major</code> và theo giới tính <code>gender</code>, bởi vì cột <code>salary</code> có giá trị <code>NA</code> vì có một số sinh viên không có thông tin về lương, do đó cần thể hiện rõ tổng số lượng sinh viên <em>đã dùng để tính toán trung bình</em> trong mỗi nhóm (hay nói cách khác số lượng sinh viên có thông tin về mức lương trong mỗi nhóm). Kết quả sẽ tương tự như bảng sau:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                        major gender salary_mean number_student_salary number_student_NA number_student
+1                     Biology Female    42266.67                   152               807            959
+2                     Biology   Male    52789.89                   178               460            638
+3       Economics and Finance Female    42452.84                    73               388            461
+4       Economics and Finance   Male    52077.99                   222               641            863
+5      Environmental Sciences Female    32487.97                   114               631            745
+6      Environmental Sciences   Male    40201.49                   231               650            881
+7  Mathematics and Statistics Female    40135.93                    48               228            276
+8  Mathematics and Statistics   Male    50105.02                   240               709            949
+9           Political Science Female    33417.02                   164               814            978
+10          Political Science   Male    40291.19                   125               352            477
+11            Social Sciences Female    29612.26                   123               568            691
+12            Social Sciences   Male    35647.68                    83               238            321</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Đáp án">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Đáp án
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class="yes123">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> dplyr<span class="sc">:::</span><span class="fu">group_by</span>(major, gender) <span class="sc">|&gt;</span> </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">:::</span><span class="fu">summarise</span>(<span class="at">salary_mean =</span> <span class="fu">mean</span>(salary, <span class="at">na.rm =</span> T),</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">number_student_salary =</span> <span class="fu">length</span>(<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(salary))),</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">number_student_NA =</span> <span class="fu">length</span>(<span class="fu">which</span>(<span class="fu">is.na</span>(salary))),</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">number_student =</span> <span class="fu">n</span>()</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>                    ) <span class="sc">|&gt;</span> <span class="fu">as.data.frame</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                        major gender salary_mean number_student_salary number_student_NA number_student
+1                     Biology Female    42266.67                   152               807            959
+2                     Biology   Male    52789.89                   178               460            638
+3       Economics and Finance Female    42452.84                    73               388            461
+4       Economics and Finance   Male    52077.99                   222               641            863
+5      Environmental Sciences Female    32487.97                   114               631            745
+6      Environmental Sciences   Male    40201.49                   231               650            881
+7  Mathematics and Statistics Female    40135.93                    48               228            276
+8  Mathematics and Statistics   Male    50105.02                   240               709            949
+9           Political Science Female    33417.02                   164               814            978
+10          Political Science   Male    40291.19                   125               352            477
+11            Social Sciences Female    29612.26                   123               568            691
+12            Social Sciences   Male    35647.68                    83               238            321</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -839,10 +1065,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
+      <a href="./cac-lenh-ve-vector.html" class="pagination-link" aria-label="**Các lệnh về vector**">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title"><strong>Các lệnh về vector</strong></span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./cac-lenh-ve-vector.html" class="pagination-link" aria-label="**Các lệnh về vector**">
-        <span class="nav-page-text"><span class="chapter-title"><strong>Các lệnh về vector</strong></span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./cac-lenh-sap-xep-du-lieu.html" class="pagination-link" aria-label="**Các lệnh sắp xếp dữ liệu**">
+        <span class="nav-page-text"><span class="chapter-title"><strong>Các lệnh sắp xếp dữ liệu</strong></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -239,5 +239,82 @@
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
     ]
+  },
+  {
+    "objectID": "cac-lenh-ve-vector.html#cau-1",
+    "href": "cac-lenh-ve-vector.html#cau-1",
+    "title": "Các lệnh về vector",
+    "section": "",
+    "text": "TipĐáp án\n\n\n\n\n\n\n\n\na &lt;- seq(from = 5,\n         to = 50,\n         by = 5)\na\n\n [1]  5 10 15 20 25 30 35 40 45 50",
+    "crumbs": [
+      "[**Các lệnh R căn bản**]{style='color:blue'}",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>**Các lệnh về vector**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-ve-vector.html#cau-2",
+    "href": "cac-lenh-ve-vector.html#cau-2",
+    "title": "Các lệnh về vector",
+    "section": "Câu 2",
+    "text": "Câu 2\nTa có vector sau:\n\n\n\ng &lt;- c(2, 3, 12, 11, 12, 7, 11, 9, 12, 1, 22, 29, 33)\n\nTrích xuất 6 thành phần đầu tiên của vector g và gán vào g1\nTrích xuất 6 thành phần cuối của vector g và gán vào g2\n\n\n\n\n\n\n\nTipĐáp án\n\n\n\n\n\n\n\n\ng1 &lt;- g[1:6]\ng1\n\n[1]  2  3 12 11 12  7\n\ng2 &lt;- g[ (length(g)-6+1) : length(g)]\ng2\n\n[1]  9 12  1 22 29 33",
+    "crumbs": [
+      "[**Các lệnh R căn bản**]{style='color:blue'}",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>**Các lệnh về vector**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-ve-vector.html#cau-3",
+    "href": "cac-lenh-ve-vector.html#cau-3",
+    "title": "Các lệnh về vector",
+    "section": "Câu 3",
+    "text": "Câu 3\nTrên cơ sở của vector g1 và g2 thu được từ câu 2, bạn hãy tạo vector mới gộp g1 và g2 bằng câu lệnh sau.\n\n\n\nh &lt;- c(g1, g2)\nh\n\n [1]  2  3 12 11 12  7  9 12  1 22 29 33\n\n\nThay các con số 12 trong vector h thành 26, bạn sẽ được kết quả như sau:\n\n\n [1]  2  3 26 11 26  7  9 26  1 22 29 33\n\n\nBỏ 2 con số đầu tiên trong vector h và tính tổng các con số còn lại, kết quả cần đạt được là:\n\n\n[1] 190\n\n\n\n\n\n\n\n\n\nTipĐáp án\n\n\n\n\n\n\n\n\nh &lt;- c(g1, g2)\nh\n\n [1]  2  3 12 11 12  7  9 12  1 22 29 33\n\nh[which(h == 12)] &lt;- 26\nh\n\n [1]  2  3 26 11 26  7  9 26  1 22 29 33\n\nh1 &lt;- h[-c(1:2)]\nh1\n\n [1] 26 11 26  7  9 26  1 22 29 33\n\nsum(h1)\n\n[1] 190",
+    "crumbs": [
+      "[**Các lệnh R căn bản**]{style='color:blue'}",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>**Các lệnh về vector**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-ve-data-frame.html",
+    "href": "cac-lenh-ve-data-frame.html",
+    "title": "Các lệnh về data frame",
+    "section": "",
+    "text": "Câu 1\nBạn có dataset về thông tin sinh viên của 1 trường Đại học như sau: students.csv. Hãy kiểm tra xem mã ID (cột stud.id) của sinh viên có bạn nào bị trùng nhau không? Nếu có hãy liệt kê các mã ID bị trùng.",
+    "crumbs": [
+      "[**Các lệnh R căn bản**]{style='color:blue'}",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>**Các lệnh về data frame**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-ve-data-frame.html#cau-1",
+    "href": "cac-lenh-ve-data-frame.html#cau-1",
+    "title": "Các lệnh về data frame",
+    "section": "",
+    "text": "df &lt;- read.csv(\"dataset/students.csv\")\ndim(df)\n\n[1] 8239   17\n\nhead(df)\n\n  no stud.id                name gender age height weight   religion nc.score semester                  major                      minor score1 score2 online.tutorial graduated salary\n1  1  833917 Gonzales, Christina Female  19    160   64.8     Muslim     1.91      1st      Political Science            Social Sciences     NA     NA               0         0     NA\n2  2  898539      Lozano, T'Hani Female  19    172   73.0      Other     1.56      2nd        Social Sciences Mathematics and Statistics     NA     NA               0         0     NA\n3  3  379678      Williams, Hanh Female  22    168   70.6 Protestant     1.24      3rd        Social Sciences Mathematics and Statistics     45     46               0         0     NA\n4  4  807564         Nem, Denzel   Male  19    183   79.7      Other     1.37      2nd Environmental Sciences Mathematics and Statistics     NA     NA               0         0     NA\n5  5  383291     Powell, Heather Female  21    175   71.4   Catholic     1.46      1st Environmental Sciences Mathematics and Statistics     NA     NA               0         0     NA\n6  6  256074      Perez, Jadrian   Male  19    189   85.8   Catholic     1.34      2nd      Political Science Mathematics and Statistics     NA     NA               0         0     NA\n\n\n\n\n\n\n\n\n\nTipĐáp án\n\n\n\n\n\n\n\nSử dụng lệnh unique() để trả về số lượng mã ID xuất hiện ít nhất một lần. Sau đó dùng lệnh length() để đếm xem có bao nhiêu mã ID unique, nếu tổng số mã ID unique bằng với số hàng của data frame có nghĩa là không có mã ID nào bị trùng, 100% là unique. Ngược lại, nếu tổng số mã ID unique nhỏ hơn số hàng của data frame có nghĩa là có vài mã ID bị trùng. Ta sẽ cần lọc ra.\n\ndf &lt;- read.csv(\"dataset/students.csv\")\n\nlength(unique(df$stud.id))\n\n[1] 8237\n\ndim(df)\n\n[1] 8239   17\n\n\nTa thấy tổng số hàng của data frame này là 8239 lớn hơn tổng số mã ID unique là 8237, như vậy có 2 mã ID bị trùng.\n\ntable(df$stud.id) -&gt; check_id\n\nsort(check_id, decreasing = T) -&gt; check_id\n\nhead(check_id)\n\n\n188703 962284 110250 110348 110415 110615 \n     2      2      1      1      1      1 \n\ncheck_id[check_id &gt; 1] -&gt; id_dup\n\n\ndf_dup &lt;- df[ which(df$stud.id %in% c(names(id_dup))) , ]\n\ndf_dup\n\n     no stud.id            name gender age height weight religion nc.score semester                  major                      minor score1 score2 online.tutorial graduated   salary\n34   34  188703  Torres, Andrew   Male  18    173   75.7    Other     1.19      4th Environmental Sciences Mathematics and Statistics     74     74               0         0       NA\n63   63  188703   Cebrun, Linda Female  21    157   62.9 Catholic     2.59     &gt;6th Environmental Sciences            Social Sciences     64     75               0         1 32519.22\n73   73  962284 Iverson, Sierra Female  20    154   63.0    Other     2.30      1st                Biology     Environmental Sciences     NA     NA               0         0       NA\n109 109  962284  John III, Ryan   Male  18    183   81.4 Catholic     1.84      2nd Environmental Sciences          Political Science     NA     NA               0         0       NA",
+    "crumbs": [
+      "[**Các lệnh R căn bản**]{style='color:blue'}",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>**Các lệnh về data frame**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-ve-data-frame.html#cau-2",
+    "href": "cac-lenh-ve-data-frame.html#cau-2",
+    "title": "Các lệnh về data frame",
+    "section": "Câu 2",
+    "text": "Câu 2\nTiếp theo câu 1, bạn hãy tính trung bình độ tuổi age của sinh viên theo ngành học major và theo giới tính gender, thể hiện rõ tổng số lượng sinh viên trong mỗi nhóm. Kết quả sẽ tương tự như bảng sau:\n\n\n                        major gender age_mean number_student\n1                     Biology Female 22.56621            959\n2                     Biology   Male 22.51411            638\n3       Economics and Finance Female 22.44252            461\n4       Economics and Finance   Male 22.52260            863\n5      Environmental Sciences Female 22.84564            745\n6      Environmental Sciences   Male 22.59478            881\n7  Mathematics and Statistics Female 22.60870            276\n8  Mathematics and Statistics   Male 22.30875            949\n9           Political Science Female 22.51840            978\n10          Political Science   Male 22.74843            477\n11            Social Sciences Female 22.63965            691\n12            Social Sciences   Male 22.04673            321\n\n\n\n\n\n\n\n\nTipĐáp án\n\n\n\n\n\n\n\n\nlibrary(dplyr)\n\ndf |&gt; dplyr:::group_by(major, gender) |&gt; \n  dplyr:::summarise(age_mean = mean(age),\n                    number_student = n()) |&gt; as.data.frame() -&gt; kq\n\nkq\n\n                        major gender age_mean number_student\n1                     Biology Female 22.56621            959\n2                     Biology   Male 22.51411            638\n3       Economics and Finance Female 22.44252            461\n4       Economics and Finance   Male 22.52260            863\n5      Environmental Sciences Female 22.84564            745\n6      Environmental Sciences   Male 22.59478            881\n7  Mathematics and Statistics Female 22.60870            276\n8  Mathematics and Statistics   Male 22.30875            949\n9           Political Science Female 22.51840            978\n10          Political Science   Male 22.74843            477\n11            Social Sciences Female 22.63965            691\n12            Social Sciences   Male 22.04673            321\n\nsum(kq$number_student)\n\n[1] 8239",
+    "crumbs": [
+      "[**Các lệnh R căn bản**]{style='color:blue'}",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>**Các lệnh về data frame**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-ve-data-frame.html#cau-3",
+    "href": "cac-lenh-ve-data-frame.html#cau-3",
+    "title": "Các lệnh về data frame",
+    "section": "Câu 3",
+    "text": "Câu 3\nTương tự câu 2, bạn hãy tính trung bình mức lương salary của sinh viên theo ngành học major và theo giới tính gender, bởi vì cột salary có giá trị NA vì có một số sinh viên không có thông tin về lương, do đó cần thể hiện rõ tổng số lượng sinh viên đã dùng để tính toán trung bình trong mỗi nhóm (hay nói cách khác số lượng sinh viên có thông tin về mức lương trong mỗi nhóm). Kết quả sẽ tương tự như bảng sau:\n\n\n                        major gender salary_mean number_student_salary number_student_NA number_student\n1                     Biology Female    42266.67                   152               807            959\n2                     Biology   Male    52789.89                   178               460            638\n3       Economics and Finance Female    42452.84                    73               388            461\n4       Economics and Finance   Male    52077.99                   222               641            863\n5      Environmental Sciences Female    32487.97                   114               631            745\n6      Environmental Sciences   Male    40201.49                   231               650            881\n7  Mathematics and Statistics Female    40135.93                    48               228            276\n8  Mathematics and Statistics   Male    50105.02                   240               709            949\n9           Political Science Female    33417.02                   164               814            978\n10          Political Science   Male    40291.19                   125               352            477\n11            Social Sciences Female    29612.26                   123               568            691\n12            Social Sciences   Male    35647.68                    83               238            321\n\n\n\n\n\n\n\n\nTipĐáp án\n\n\n\n\n\n\n\n\nlibrary(dplyr)\n\ndf |&gt; dplyr:::group_by(major, gender) |&gt; \n  dplyr:::summarise(salary_mean = mean(salary, na.rm = T),\n                    number_student_salary = length(which(!is.na(salary))),\n                    number_student_NA = length(which(is.na(salary))),\n                    number_student = n()\n                    ) |&gt; as.data.frame()\n\n                        major gender salary_mean number_student_salary number_student_NA number_student\n1                     Biology Female    42266.67                   152               807            959\n2                     Biology   Male    52789.89                   178               460            638\n3       Economics and Finance Female    42452.84                    73               388            461\n4       Economics and Finance   Male    52077.99                   222               641            863\n5      Environmental Sciences Female    32487.97                   114               631            745\n6      Environmental Sciences   Male    40201.49                   231               650            881\n7  Mathematics and Statistics Female    40135.93                    48               228            276\n8  Mathematics and Statistics   Male    50105.02                   240               709            949\n9           Political Science Female    33417.02                   164               814            978\n10          Political Science   Male    40291.19                   125               352            477\n11            Social Sciences Female    29612.26                   123               568            691\n12            Social Sciences   Male    35647.68                    83               238            321",
+    "crumbs": [
+      "[**Các lệnh R căn bản**]{style='color:blue'}",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>**Các lệnh về data frame**</span>"
+    ]
   }
 ]

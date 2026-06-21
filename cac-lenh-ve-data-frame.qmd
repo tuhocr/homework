@@ -1,0 +1,158 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, echo=FALSE, results='hide'}
+knitr::opts_chunk$set(message = FALSE,  
+                      warning = FALSE)   
+```
+
+# **Các lệnh về data frame** 
+
+## **Câu 1** {#cau-1}
+
+Bạn có dataset về thông tin sinh viên của 1 trường Đại học như sau: [`students.csv`](`https://filedn.com/lesyJpQOCafj7katNqunAxu/TUHOCR/RPC/20260619_trees_K1/dataset/`). Hãy kiểm tra xem mã `ID` (cột `stud.id`) của sinh viên có bạn nào bị trùng nhau không? Nếu có hãy liệt kê các mã `ID` bị trùng.
+
+<style>
+div.blue pre { background-color:#fff2cc; font-size: 16px; }
+</style>
+
+<div class = "blue">
+
+```{r, echo = T}
+df <- read.csv("dataset/students.csv")
+dim(df)
+head(df)
+```
+
+</div>
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+Sử dụng lệnh `unique()` để trả về số lượng mã ID xuất hiện ít nhất một lần. Sau đó dùng lệnh `length()` để đếm xem có bao nhiêu mã ID unique, nếu tổng số mã ID unique bằng với số hàng của data frame có nghĩa là không có mã ID nào bị trùng, 100% là unique. Ngược lại, nếu tổng số mã ID unique nhỏ hơn số hàng của data frame có nghĩa là có vài mã ID bị trùng. Ta sẽ cần lọc ra.
+
+```{r}
+df <- read.csv("dataset/students.csv")
+
+length(unique(df$stud.id))
+dim(df)
+```
+
+Ta thấy tổng số hàng của data frame này là 8239 lớn hơn tổng số mã ID unique là 8237, như vậy có 2 mã ID bị trùng.
+
+```{r}
+table(df$stud.id) -> check_id
+
+sort(check_id, decreasing = T) -> check_id
+
+head(check_id)
+
+check_id[check_id > 1] -> id_dup
+```
+
+```{r}
+df_dup <- df[ which(df$stud.id %in% c(names(id_dup))) , ]
+
+df_dup
+```
+
+</div>
+
+:::
+
+## **Câu 2** {#cau-2}
+
+Tiếp theo câu 1, bạn hãy tính trung bình độ tuổi `age` của sinh viên theo ngành học `major` và theo giới tính `gender`, thể hiện rõ tổng số lượng sinh viên trong mỗi nhóm. Kết quả sẽ tương tự như bảng sau:
+
+```{r, echo=F}
+library(dplyr)
+
+df |> dplyr:::group_by(major, gender) |> 
+  dplyr:::summarise(age_mean = mean(age),
+                    number_student = n()) |> as.data.frame()
+
+
+```
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+```{r, echo=T}
+library(dplyr)
+
+df |> dplyr:::group_by(major, gender) |> 
+  dplyr:::summarise(age_mean = mean(age),
+                    number_student = n()) |> as.data.frame() -> kq
+
+kq
+
+sum(kq$number_student)
+```
+</div>
+
+:::
+
+## **Câu 3** {#cau-3}
+
+Tương tự câu 2, bạn hãy tính trung bình mức lương `salary` của sinh viên theo ngành học `major` và theo giới tính `gender`, bởi vì cột `salary` có giá trị `NA` vì có một số sinh viên không có thông tin về lương, do đó cần thể hiện rõ tổng số lượng sinh viên *đã dùng để tính toán trung bình* trong mỗi nhóm (hay nói cách khác số lượng sinh viên có thông tin về mức lương trong mỗi nhóm). Kết quả sẽ tương tự như bảng sau:
+
+```{r, echo=F}
+library(dplyr)
+
+df |> dplyr:::group_by(major, gender) |> 
+  dplyr:::summarise(salary_mean = mean(salary, na.rm = T),
+                    number_student_salary = length(which(!is.na(salary))),
+                    number_student_NA = length(which(is.na(salary))),
+                    number_student = n()
+                    ) |> as.data.frame()
+```
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+```{r, echo=T}
+library(dplyr)
+
+df |> dplyr:::group_by(major, gender) |> 
+  dplyr:::summarise(salary_mean = mean(salary, na.rm = T),
+                    number_student_salary = length(which(!is.na(salary))),
+                    number_student_NA = length(which(is.na(salary))),
+                    number_student = n()
+                    ) |> as.data.frame()
+```
+</div>
+
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
