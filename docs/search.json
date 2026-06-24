@@ -83,7 +83,7 @@
     "text": "Câu 1\nTa có vector p, hãy kiểm tra đặc điểm phân bố chuẩn của dữ liệu.\nTừ khóa: normality test\np &lt;- c(5, 12, 33, 9, 11, 12, 12, 15, 16, 22, 20)\np\n\n [1]  5 12 33  9 11 12 12 15 16 22 20",
     "crumbs": [
       "[**Các lệnh thống kê**]{style='color:blue'}",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>**Các lệnh thống kê mô tả**</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>**Các lệnh thống kê mô tả**</span>"
     ]
   },
   {
@@ -160,7 +160,7 @@
     "text": "TipĐáp án\n\n\n\n\n\n\nKiểm định phân bố chuẩn\n\n\n\nshapiro.test(p)\n\n\n    Shapiro-Wilk normality test\n\ndata:  p\nW = 0.90048, p-value = 0.1873\n\n\n\nNếu p-value &gt; 0.05 thì dữ liệu phân bố chuẩn.\n\n\nTính skewness (độ lệch) và kurtosis (độ nhọn) của phân bố\n\nCách 1: Giá trị quy về 0\n\nSkewness\n\nSkewness từ -1 đến 1: mức lý tưởng để kết luận có phân phối chuẩn\n\nSkewness từ -2 đến 2: mức chấp nhận để kết luận có phân phối chuẩn\n\nSkewness vượt quá -2 và 2: dữ liệu không có phân phối chuẩn\n\nKurtosis\n\nKurtosis gần bằng 0: mức lý tưởng để kết luận có phân phối chuẩn\n\nKurtosis từ -2 đến 2: mức chấp nhận để kết luận có phân phối chuẩn\n\nKurtosis vượt quá -2 và 2: dữ liệu không có phân phối chuẩn\n\n\n\nlibrary(psych)\npsych:::skew(p)\n\n[1] 0.9576881\n\npsych:::kurtosi(p)\n\n[1] 0.1692187\n\n\n\n\n\nCách 2: Giá trị quy về 3\n\n\n\nlibrary(moments)\nmoments:::skewness(p)\n\n[1] 1.104875\n\nmoments:::kurtosis(p)\n\n[1] 3.834755\n\n\n\n\n\n\nTham khảo\nhttps://www.phamlocblog.com/2025/03/chi-so-skewness-kurtosis-phan-phoi-chuan-spss.html",
     "crumbs": [
       "[**Các lệnh thống kê**]{style='color:blue'}",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>**Các lệnh thống kê mô tả**</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>**Các lệnh thống kê mô tả**</span>"
     ]
   },
   {
@@ -171,7 +171,7 @@
     "text": "Câu 2\nBạn có dữ liệu sau là kết quả đo khối lượng cây ở 3 nghiệm thức, hãy vẽ đồ thị QQ plot để kiểm tra đặc điểm phân bố chuẩn của dữ liệu.\n\nPlantGrowth\n\n   weight group\n1    4.17  ctrl\n2    5.58  ctrl\n3    5.18  ctrl\n4    6.11  ctrl\n5    4.50  ctrl\n6    4.61  ctrl\n7    5.17  ctrl\n8    4.53  ctrl\n9    5.33  ctrl\n10   5.14  ctrl\n11   4.81  trt1\n12   4.17  trt1\n13   4.41  trt1\n14   3.59  trt1\n15   5.87  trt1\n16   3.83  trt1\n17   6.03  trt1\n18   4.89  trt1\n19   4.32  trt1\n20   4.69  trt1\n21   6.31  trt2\n22   5.12  trt2\n23   5.54  trt2\n24   5.50  trt2\n25   5.37  trt2\n26   5.29  trt2\n27   4.92  trt2\n28   6.15  trt2\n29   5.80  trt2\n30   5.26  trt2\n\n\nKết quả cần đạt là hình này.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipĐáp án\n\n\n\n\n\n\n\n\nlibrary(ggplot2)\nlibrary(qqplotr)\nggplot(data = PlantGrowth,\n       mapping = aes(sample = weight, \n                     color = group, \n                     fill = group)) +\n  \n    stat_qq_band(alpha = 0.5) +\n  \n    stat_qq_line() +\n  \n    stat_qq_point() +\n  \n    facet_wrap(~ group,\n               scale = \"free\",\n               nrow = 1,\n               ncol = 3)",
     "crumbs": [
       "[**Các lệnh thống kê**]{style='color:blue'}",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>**Các lệnh thống kê mô tả**</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>**Các lệnh thống kê mô tả**</span>"
     ]
   },
   {
@@ -182,7 +182,7 @@
     "text": "Câu 1\nTừ khóa: đồ thị phân tán; plot xy; đồ thị điểm\nBạn có dữ liệu sau về chỉ số cân nặng và chiều cao\nairquality -&gt; df\n\nhead(df)\n\n  Ozone Solar.R Wind Temp Month Day\n1    41     190  7.4   67     5   1\n2    36     118  8.0   72     5   2\n3    12     149 12.6   74     5   3\n4    18     313 11.5   62     5   4\n5    NA      NA 14.3   56     5   5\n6    28      NA 14.9   66     5   6\nBạn hãy vẽ đồ thị như hình bên dưới.",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
     ]
   },
   {
@@ -193,7 +193,7 @@
     "text": "TipĐáp án\n\n\n\n\n\n\n\n\nlibrary(ggplot2)\n\nggplot(data = df,\n       mapping = aes(x = Temp,\n                     y = Wind)) +\n  \n  geom_point() +\n  \n  theme_bw(base_size = 16)",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
     ]
   },
   {
@@ -204,7 +204,7 @@
     "text": "Câu 1\nTừ khóa: barchart; bar chart; barplot; đồ thị cột; đồ thị thanh\nSử dụng dataset bar1.rds\nhttps://github.com/tuhocr/homework/blob/main/dataset/bar1.rds\ndf_kq &lt;- readRDS(\"dataset/bar1.rds\")\ndf_kq\n\n   semester gender mean_score sd_score max_score min_score\n1       3rd Female   64.77486 13.66542        92        34\n2       3rd   Male   71.41736 13.68334        95        32\n3       4th Female   65.02993 13.81512        94        30\n4       4th   Male   70.55134 13.23573        95        32\n5       5th Female   64.60223 14.30171        92        30\n6       5th   Male   71.22735 13.73720        97        31\n7       6th Female   64.32432 14.26521        94        31\n8       6th   Male   71.48963 13.25760        95        36\n9      &gt;6th Female   62.83200 13.95831        96        39\n10     &gt;6th   Male   71.25843 13.79063        96        34\nBạn hãy vẽ đồ thị cột để được hình bên dưới, với các điểm point đại diện cho giá trị maximum của từng nhóm.\nBạn có thể cần lấy factor của cột semester để sắp xếp thứ tự cột cho phù hợp.",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Đồ thị barchart**</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>**Đồ thị barchart**</span>"
     ]
   },
   {
@@ -226,7 +226,7 @@
     "text": "Câu 2\n\n\n\n\nTiếp theo câu 1, bạn hãy thêm đường trend line/regression vào đồ thị\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipĐáp án\n\n\n\n\n\n\n\n\nlibrary(ggplot2)\n\nggplot(data = df,\n       mapping = aes(x = Temp,\n                     y = Wind)) +\n  \n  geom_point() +\n  \n  geom_smooth(method = \"lm\",\n              color = \"darkgreen\",\n              fill = \"royalblue\",\n              alpha = 0.25) +\n  \n  theme_bw(base_size = 16)",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
     ]
   },
   {
@@ -237,7 +237,7 @@
     "text": "Câu 3\n\n\n\n\nTiếp theo câu 2, bạn hãy thêm giá trị R-squared và p-value vào đồ thị.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipĐáp án\n\n\n\n\n\n\n\nĐầu tiên ta cần thực hiện model hồi quy đơn biến của Wind theo Temp sau đó trích ra giá trị R-squared và p-value tương ứng.\n\nfit &lt;- lm(Wind ~ Temp,\n          data = df)\nsummary(fit)\n\n\nCall:\nlm(formula = Wind ~ Temp, data = df)\n\nResiduals:\n   Min     1Q Median     3Q    Max \n-8.578 -2.449 -0.226  1.985  9.740 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  23.2337     2.1124   11.00  &lt; 2e-16 ***\nTemp         -0.1705     0.0269   -6.33  2.6e-09 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 3.14 on 151 degrees of freedom\nMultiple R-squared:  0.21,  Adjusted R-squared:  0.205 \nF-statistic: 40.1 on 1 and 151 DF,  p-value: 2.64e-09\n\nsummary(fit) -&gt; kq\n\n###\nr_squared &lt;- round(kq$r.squared, digits = 4)\n\nr_squared_text &lt;- bquote(R^2 == .(r_squared))\n###\n\n###\n# tùy chỉnh tham số để thay đổi số lượng số \n# sau dấu thập phân trong p-value\noptions(scipen = 4)\noptions(digits = 3)\np_value &lt;- kq$coefficients[2,4]\n\n# p-value thường rất nhỏ, ggplot2 sẽ hiển thị nhiều số 0,\n# ta cần chủ động chụp lại kết quả p-value trên console\np_value_ok &lt;- capture.output(cat(p_value)) \n# p_value_ok\np_value &lt;- p_value_ok\n\np_value_text &lt;- bquote('p-value' == .(p_value))\n# p_value_text \n###\n\nTạo đối tượng lưu text sử dụng package grid\n\nlibrary(ggplot2)\nlibrary(grid)\n\ngrob_r_squared_text &lt;- grobTree(... = textGrob(label = r_squared_text, \n                          x = 0.95, \n                          y = 0.95, \n                          hjust = 1,\n                          vjust = 1,\n                          gp = gpar(col = \"blue\",\n                                    fontsize = 13,\n                                    fontface = \"italic\")))\n\ngrob_p_value_text &lt;- grobTree(... = textGrob(label = p_value_text, \n                          x = 0.95, \n                          y = 0.85, \n                          hjust = 1,\n                          vjust = 1,\n                          gp = gpar(col = \"blue\",\n                                    fontsize = 13,\n                                    fontface = \"italic\")))\n\nChèn văn bản vào đồ thị sử dụng lệnh annotation_custom()\n\nggplot(data = df,\n       mapping = aes(x = Temp,\n                     y = Wind)) +\n  \n  geom_point() +\n  \n  annotation_custom(grob_r_squared_text) +\n  \n  annotation_custom(grob_p_value_text) +\n  \n  geom_smooth(method = \"lm\",\n              color = \"darkgreen\",\n              fill = \"royalblue\",\n              alpha = 0.25) + \n  \n  theme_bw(base_size = 16) +\n  \n  labs(x = \"Temp\",\n       y = \"Wind\",\n       title = \"Wind ~ Temp\")\n\n\n\n\n\n\n\n\n\n\n\n\nCredit: Cảm ơn Dr. Trương Kim đã gợi ý cho mình về dạng đồ thị này.",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
     ]
   },
   {
@@ -325,7 +325,51 @@
     "text": "TipĐáp án\n\n\n\n\n\n\n\n\ndf_kq &lt;- readRDS(\"dataset/bar1.rds\")\n\ndf_kq$semester &lt;- factor(df_kq$semester,\n                         levels = c(\"3rd\",\n                                    \"4th\",\n                                    \"5th\",\n                                    \"6th\",\n                                    \"&gt;6th\"))\n\nlibrary(ggplot2)\nggplot(data = df_kq,\n       mapping = aes(x = semester,\n                     y = mean_score,\n                     fill = gender)) +\n  \n  geom_col(position = \"dodge\",\n           width = 0.8,\n           color = \"black\") +\n  \n  # geom_boxplot() +\n  \n  geom_point(data = df_kq,\n             mapping = aes(x = semester,\n                           y = max_score,\n                           color = gender,\n                           fill = gender,\n                           group = gender),\n             position = position_dodge(width = 0.8)) +\n  \n  # nếu dùng scale_y để set limit thì sẽ không được\n  # scale_y_continuous(limits = c(50,100)) +\n  \n  geom_errorbar(mapping = aes(ymin = mean_score,\n                              ymax = mean_score + sd_score),\n                width = 0.8,\n                colour = \"black\",\n                position = \"dodge\",\n                alpha = 1,\n                linewidth = 0.5) +\n  \n  theme_bw(base_size = 16) +\n  \n  coord_cartesian(ylim = c(40,100))",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Đồ thị barchart**</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>**Đồ thị barchart**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-regular-expression.html",
+    "href": "cac-lenh-regular-expression.html",
+    "title": "Các lệnh về biểu thức chính quy",
+    "section": "",
+    "text": "Escape character\nTừ khóa: regular expression; regex\nDấu . sẽ giúp dò ra tất cả các từ. Muốn chọn dấu chấm ký tự trong chữ ID.1 thì ta phải escape dấu . này bằng lệnh \\., tuy nhiên trong R thì dấu \\ này có 1 ý nghĩa khác, nên ta phải escape thêm \\ để trả về được dấu \\, nên sau cùng ta có \\\\. là để định vị dấu . ký tự.\na &lt;- c(\"lap trinh\", \"R\", \"Programming\", \"study\", \"ID.1\")\n\na\n\n[1] \"lap trinh\"   \"R\"           \"Programming\" \"study\"       \"ID.1\"       \n\ngrep(pattern = \".\",\n     x = a,\n     value = T,\n     perl = T)\n\n[1] \"lap trinh\"   \"R\"           \"Programming\" \"study\"       \"ID.1\"       \n\ngrep(pattern = \"\\\\.\",\n     x = a,\n     value = T,\n     perl = T)\n\n[1] \"ID.1\"",
+    "crumbs": [
+      "[**Các lệnh R căn bản**]{style='color:blue'}",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>**Các lệnh về biểu thức chính quy**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-regular-expression.html#dò-con-số-trong-chuỗi",
+    "href": "cac-lenh-regular-expression.html#dò-con-số-trong-chuỗi",
+    "title": "Các lệnh về biểu thức chính quy",
+    "section": "Dò con số trong chuỗi",
+    "text": "Dò con số trong chuỗi\n\nb &lt;- c(\"study\", \"ID.1\", \"1112\", \"a12\", \"0\", \"code663\", \"id\")\n\nb\n\n[1] \"study\"   \"ID.1\"    \"1112\"    \"a12\"     \"0\"       \"code663\" \"id\"     \n\ngrep(pattern = \"d\",\n     x = b,\n     value = T,\n     perl = T)\n\n[1] \"study\"   \"code663\" \"id\"     \n\n# string chứa digit\ngrep(pattern = \"\\\\d\",\n     x = b,\n     value = T,\n     perl = T)\n\n[1] \"ID.1\"    \"1112\"    \"a12\"     \"0\"       \"code663\"\n\n# string không phải là digit\ngrep(pattern = \"\\\\D\",\n     x = b,\n     value = T,\n     perl = T)\n\n[1] \"study\"   \"ID.1\"    \"a12\"     \"code663\" \"id\"",
+    "crumbs": [
+      "[**Các lệnh R căn bản**]{style='color:blue'}",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>**Các lệnh về biểu thức chính quy**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-regular-expression.html#tìm-cụm-từ-trong-chuỗi",
+    "href": "cac-lenh-regular-expression.html#tìm-cụm-từ-trong-chuỗi",
+    "title": "Các lệnh về biểu thức chính quy",
+    "section": "Tìm cụm từ trong chuỗi",
+    "text": "Tìm cụm từ trong chuỗi\nCách học các quy tắc tìm và thay thế chuỗi bằng cú pháp regex là ta sẽ thử nghiệm các tham số khác nhau trong lệnh grep() và đánh giá kết quả thu được để hiểu cơ chế lệnh của R, sau đó áp dụng vào tình huống thử nghiệm trên vài chục ký tự trước khi áp dụng vào dữ liệu thực tế.\nNếu việc tìm kiếm phức tạp, ta tách thành nhiều bước nhỏ để lọc dần dữ liệu cho đến khi làm sạch được data đến mức đạt yêu cầu đề bài.\n\nd &lt;- c(\"happy day\",\n       \"going to school\",\n       \"Working and feel happy everyday\",\n       \"Thanks Happy Birthday\",\n       \"I am hhappy\",\n       \"Today is Monday\")\n\nd\n\n[1] \"happy day\"                       \"going to school\"                 \"Working and feel happy everyday\" \"Thanks Happy Birthday\"           \"I am hhappy\"                    \n[6] \"Today is Monday\"                \n\n# lấy đúng chữ happy `\\\\b`\ngrep(pattern = \"\\\\bhappy\",\n     x = d,\n     perl = T,\n     value = T)\n\n[1] \"happy day\"                       \"Working and feel happy everyday\"\n\ngrep(pattern = \"\\\\b(h|H)appy\",\n     x = d,\n     perl = T,\n     value = T)\n\n[1] \"happy day\"                       \"Working and feel happy everyday\" \"Thanks Happy Birthday\"          \n\n# not-word boundary `\\\\B` lấy chữ happy có những chữ khác\ngrep(pattern = \"\\\\Bhappy\",\n     x = d,\n     perl = T,\n     value = T)\n\n[1] \"I am hhappy\"\n\ngrep(pattern = \"happy\",\n     x = d,\n     ignore.case = T,\n     perl = T,\n     value = T)\n\n[1] \"happy day\"                       \"Working and feel happy everyday\" \"Thanks Happy Birthday\"           \"I am hhappy\"                    \n\ngrep(pattern = \"happy\",\n     x = d,\n     ignore.case = F,\n     perl = T,\n     value = T)\n\n[1] \"happy day\"                       \"Working and feel happy everyday\" \"I am hhappy\"                    \n\ngrep(pattern = \"happy\",\n     x = d,\n     fixed = T,\n     ignore.case = F,\n     perl = F,\n     value = T)\n\n[1] \"happy day\"                       \"Working and feel happy everyday\" \"I am hhappy\"                    \n\ngrep(pattern = \"happy\",\n     x = d,\n     fixed = F,\n     ignore.case = F,\n     perl = T,\n     value = T)\n\n[1] \"happy day\"                       \"Working and feel happy everyday\" \"I am hhappy\"                    \n\ngrep(pattern = \"happy\",\n     x = d,\n     fixed = F,\n     ignore.case = F,\n     perl = T,\n     value = T)\n\n[1] \"happy day\"                       \"Working and feel happy everyday\" \"I am hhappy\"",
+    "crumbs": [
+      "[**Các lệnh R căn bản**]{style='color:blue'}",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>**Các lệnh về biểu thức chính quy**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-regular-expression.html#thay-thế-cụm-từ",
+    "href": "cac-lenh-regular-expression.html#thay-thế-cụm-từ",
+    "title": "Các lệnh về biểu thức chính quy",
+    "section": "Thay thế cụm từ",
+    "text": "Thay thế cụm từ\n\ng &lt;- c(\"ID30\", \"ID12\", \"ID9\", \"id11\", \"id32\", \"ID_19\")\n\ng\n\n[1] \"ID30\"  \"ID12\"  \"ID9\"   \"id11\"  \"id32\"  \"ID_19\"\n\n# Thay toàn bộ chữ ID (dù viết hoa hay viết thường) \n# theo định dạng CODE_number\n\ngsub(pattern = \"ID\",\n     replacement = \"CODE_\",\n     x = g,\n     perl = T)\n\n[1] \"CODE_30\"  \"CODE_12\"  \"CODE_9\"   \"id11\"     \"id32\"     \"CODE__19\"\n\ngsub(pattern = \"(ID|id|ID_)\",\n     replacement = \"CODE_\",\n     x = g,\n     perl = T)\n\n[1] \"CODE_30\"  \"CODE_12\"  \"CODE_9\"   \"CODE_11\"  \"CODE_32\"  \"CODE__19\"\n\n# thứ tự ảnh hưởng đến lệnh gsub\ngsub(pattern = \"(ID_|ID|id)\",\n     replacement = \"CODE_\",\n     x = g,\n     perl = T) -&gt; g_ok\n\ng_ok\n\n[1] \"CODE_30\" \"CODE_12\" \"CODE_9\"  \"CODE_11\" \"CODE_32\" \"CODE_19\"\n\n\nTa có thể tách thành 2 bước\n\ng &lt;- c(\"ID30\", \"ID12\", \"ID9\", \"id11\", \"id32\", \"ID_19\")\n\ng\n\n[1] \"ID30\"  \"ID12\"  \"ID9\"   \"id11\"  \"id32\"  \"ID_19\"\n\ngsub(pattern = \"ID|id\",\n     replacement = \"CODE_\",\n     x = g,\n     perl = T) -&gt; g1\n\ng1\n\n[1] \"CODE_30\"  \"CODE_12\"  \"CODE_9\"   \"CODE_11\"  \"CODE_32\"  \"CODE__19\"\n\ngsub(pattern = \"__\",\n     replacement = \"_\",\n     x = g1,\n     perl = T) -&gt; g2\n\ng2\n\n[1] \"CODE_30\" \"CODE_12\" \"CODE_9\"  \"CODE_11\" \"CODE_32\" \"CODE_19\"\n\nidentical(g_ok, g2)\n\n[1] TRUE",
+    "crumbs": [
+      "[**Các lệnh R căn bản**]{style='color:blue'}",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>**Các lệnh về biểu thức chính quy**</span>"
     ]
   }
 ]

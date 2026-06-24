@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Các lệnh sắp xếp dữ liệu – Bài tập R</title>
+<title>Các lệnh về biểu thức chính quy – Bài tập R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./cac-lenh-regular-expression.html" rel="next">
-<link href="./cac-lenh-ve-data-frame.html" rel="prev">
+<link href="./cac-lenh-ve-do-thi-scatterplot.html" rel="next">
+<link href="./cac-lenh-sap-xep-du-lieu.html" rel="prev">
 <link href="./favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -287,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cac-lenh-ve-vector.html"><span style="color:blue"><strong>Các lệnh R căn bản</strong></span></a></li><li class="breadcrumb-item"><a href="./cac-lenh-sap-xep-du-lieu.html"><span class="chapter-title"><strong>Các lệnh sắp xếp dữ liệu</strong></span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cac-lenh-ve-vector.html"><span style="color:blue"><strong>Các lệnh R căn bản</strong></span></a></li><li class="breadcrumb-item"><a href="./cac-lenh-regular-expression.html"><span class="chapter-title"><strong>Các lệnh về biểu thức chính quy</strong></span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -342,12 +342,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cac-lenh-sap-xep-du-lieu.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title"><strong>Các lệnh sắp xếp dữ liệu</strong></span></a>
+  <a href="./cac-lenh-sap-xep-du-lieu.html" class="sidebar-item-text sidebar-link"><span class="chapter-title"><strong>Các lệnh sắp xếp dữ liệu</strong></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cac-lenh-regular-expression.html" class="sidebar-item-text sidebar-link"><span class="chapter-title"><strong>Các lệnh về biểu thức chính quy</strong></span></a>
+  <a href="./cac-lenh-regular-expression.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title"><strong>Các lệnh về biểu thức chính quy</strong></span></a>
   </div>
 </li>
       </ul>
@@ -399,7 +399,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Mục lục</h2>
    
   <ul>
-  <li><a href="#cau-1" id="toc-cau-1" class="nav-link active" data-scroll-target="#cau-1"><strong>Câu 1</strong></a></li>
+  <li><a href="#escape-character" id="toc-escape-character" class="nav-link active" data-scroll-target="#escape-character">Escape character</a></li>
+  <li><a href="#dò-con-số-trong-chuỗi" id="toc-dò-con-số-trong-chuỗi" class="nav-link" data-scroll-target="#dò-con-số-trong-chuỗi">Dò con số trong chuỗi</a></li>
+  <li><a href="#tìm-cụm-từ-trong-chuỗi" id="toc-tìm-cụm-từ-trong-chuỗi" class="nav-link" data-scroll-target="#tìm-cụm-từ-trong-chuỗi">Tìm cụm từ trong chuỗi</a></li>
+  <li><a href="#thay-thế-cụm-từ" id="toc-thay-thế-cụm-từ" class="nav-link" data-scroll-target="#thay-thế-cụm-từ">Thay thế cụm từ</a></li>
+  <li><a href="#tài-liệu-tham-khảo" id="toc-tài-liệu-tham-khảo" class="nav-link" data-scroll-target="#tài-liệu-tham-khảo">Tài liệu tham khảo</a></li>
   </ul>
 </nav>
     </div>
@@ -407,9 +411,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content column-body" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cac-lenh-ve-vector.html"><span style="color:blue"><strong>Các lệnh R căn bản</strong></span></a></li><li class="breadcrumb-item"><a href="./cac-lenh-sap-xep-du-lieu.html"><span class="chapter-title"><strong>Các lệnh sắp xếp dữ liệu</strong></span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cac-lenh-ve-vector.html"><span style="color:blue"><strong>Các lệnh R căn bản</strong></span></a></li><li class="breadcrumb-item"><a href="./cac-lenh-regular-expression.html"><span class="chapter-title"><strong>Các lệnh về biểu thức chính quy</strong></span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title"><strong>Các lệnh sắp xếp dữ liệu</strong></span></h1>
+<h1 class="title"><span class="chapter-title"><strong>Các lệnh về biểu thức chính quy</strong></span></h1>
 </div>
 
 
@@ -426,223 +430,227 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="cau-1" class="level2">
-<h2 class="anchored" data-anchor-id="cau-1"><strong>Câu 1</strong></h2>
-<p>Sử dụng dataset <code>df1.rds</code></p>
-<p><a href="https://github.com/tuhocr/homework/blob/main/dataset/df1.rds" class="uri">https://github.com/tuhocr/homework/blob/main/dataset/df1.rds</a></p>
-<p>Bạn có bộ dữ liệu sau, đây là kết quả đo chỉ số <code>CD3+_T_CELL_FREQ</code> ở hai thời điểm trước và sau. Ta sẽ thấy trong nhóm <code>CONTROL_OLD</code> và <code>CONTROL_YOUNG</code> ở cột <code>BEGIN_CD3+_T_CELL_FREQ</code> có đủ dữ liệu, trong khi ở cột <code>FU_CD3+_T_CELL_FREQ</code> tương ứng thì bị thiếu dữ liệu.</p>
+<p>Từ khóa: regular expression; regex</p>
+<section id="escape-character" class="level2">
+<h2 class="anchored" data-anchor-id="escape-character">Escape character</h2>
+<p>Dấu <code>.</code> sẽ giúp dò ra tất cả các từ. Muốn chọn dấu chấm ký tự trong chữ <code>ID.1</code> thì ta phải escape dấu <code>.</code> này bằng lệnh <code>\.</code>, tuy nhiên trong R thì dấu <code>\</code> này có 1 ý nghĩa khác, nên ta phải escape thêm <code>\</code> để trả về được dấu <code>\</code>, nên sau cùng ta có <code>\\.</code> là để định vị dấu <code>.</code> ký tự.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"dataset/df1.rds"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"lap trinh"</span>, <span class="st">"R"</span>, <span class="st">"Programming"</span>, <span class="st">"study"</span>, <span class="st">"ID.1"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   STUDY_ID     STUDY_ARM BEGIN_CD3+_T_CELL_FREQ FU_CD3+_T_CELL_FREQ
-1      ID_1   CONTROL_OLD              12.063157                  NA
-2      ID_2   CONTROL_OLD              10.964920                  NA
-3      ID_3          YEGD               6.135557           15.411331
-4      ID_4   CONTROL_OLD              13.720531                  NA
-5      ID_5   CONTROL_OLD              10.207501                  NA
-6      ID_6   CONTROL_OLD              10.781260                  NA
-7      ID_7   CONTROL_OLD               8.561287                  NA
-8      ID_8          YEGD              10.378400           36.150698
-9      ID_9   CONTROL_OLD              12.419222                  NA
-10    ID_10          YEGD               4.698543           53.858413
-11    ID_11   CONTROL_OLD               9.877577                  NA
-12    ID_12   CONTROL_OLD              11.327839                  NA
-13    ID_13          YEGD              10.810302                  NA
-14    ID_14          YEGD              12.559336                  NA
-15    ID_15   CONTROL_OLD              12.618815                  NA
-16    ID_16   CONTROL_OLD               9.354778                  NA
-17    ID_17          YEGD               4.883078           30.915139
-18    ID_18   CONTROL_OLD              10.481444                  NA
-19    ID_19   CONTROL_OLD              10.954867                  NA
-20    ID_20          YEGD              10.257006           12.503797
-21    ID_21 CONTROL_YOUNG              12.011571                  NA
-22    ID_22          YEGD               9.304376           45.202878
-23    ID_23 CONTROL_YOUNG              12.267157                  NA
-24    ID_24          YEGD               9.591158            8.710753
-25    ID_25          YEGD              10.470832           10.584096
-26    ID_26          YEGD              12.824044           42.963687
-27    ID_27 CONTROL_YOUNG               9.660034                  NA
-28    ID_28 CONTROL_YOUNG              12.845677                  NA
-29    ID_29   CONTROL_OLD              10.438020                  NA
-30    ID_30          YEGD               9.466437           62.817237</code></pre>
+<pre><code>[1] "lap trinh"   "R"           "Programming" "study"       "ID.1"       </code></pre>
 </div>
-</div>
-<p>Bạn hãy chuyển dữ liệu từ cột <code>BEGIN</code> qua cột <code>FU</code> chỉ dành cho hai nhóm <code>CONTROL_OLD</code> và <code>CONTROL_YOUNG</code>, để thu được kết quả như sau, cột mới tạo đặt tên là <code>FU_CD3+_T_CELL_FREQ_new</code>.</p>
-<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"."</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> a,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   STUDY_ID     STUDY_ARM BEGIN_CD3+_T_CELL_FREQ FU_CD3+_T_CELL_FREQ FU_CD3+_T_CELL_FREQ_new
-1      ID_1   CONTROL_OLD              12.063157                  NA               12.063157
-2      ID_2   CONTROL_OLD              10.964920                  NA               10.964920
-3      ID_3          YEGD               6.135557           15.411331               15.411331
-4      ID_4   CONTROL_OLD              13.720531                  NA               13.720531
-5      ID_5   CONTROL_OLD              10.207501                  NA               10.207501
-6      ID_6   CONTROL_OLD              10.781260                  NA               10.781260
-7      ID_7   CONTROL_OLD               8.561287                  NA                8.561287
-8      ID_8          YEGD              10.378400           36.150698               36.150698
-9      ID_9   CONTROL_OLD              12.419222                  NA               12.419222
-10    ID_10          YEGD               4.698543           53.858413               53.858413
-11    ID_11   CONTROL_OLD               9.877577                  NA                9.877577
-12    ID_12   CONTROL_OLD              11.327839                  NA               11.327839
-13    ID_13          YEGD              10.810302                  NA                      NA
-14    ID_14          YEGD              12.559336                  NA                      NA
-15    ID_15   CONTROL_OLD              12.618815                  NA               12.618815
-16    ID_16   CONTROL_OLD               9.354778                  NA                9.354778
-17    ID_17          YEGD               4.883078           30.915139               30.915139
-18    ID_18   CONTROL_OLD              10.481444                  NA               10.481444
-19    ID_19   CONTROL_OLD              10.954867                  NA               10.954867
-20    ID_20          YEGD              10.257006           12.503797               12.503797
-21    ID_21 CONTROL_YOUNG              12.011571                  NA               12.011571
-22    ID_22          YEGD               9.304376           45.202878               45.202878
-23    ID_23 CONTROL_YOUNG              12.267157                  NA               12.267157
-24    ID_24          YEGD               9.591158            8.710753                8.710753
-25    ID_25          YEGD              10.470832           10.584096               10.584096
-26    ID_26          YEGD              12.824044           42.963687               42.963687
-27    ID_27 CONTROL_YOUNG               9.660034                  NA                9.660034
-28    ID_28 CONTROL_YOUNG              12.845677                  NA               12.845677
-29    ID_29   CONTROL_OLD              10.438020                  NA               10.438020
-30    ID_30          YEGD               9.466437           62.817237               62.817237</code></pre>
+<pre><code>[1] "lap trinh"   "R"           "Programming" "study"       "ID.1"       </code></pre>
 </div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Đáp án">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Đáp án
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Cách 1: Khai báo trực tiếp tên biến</strong></p>
-<p>Chú ý nếu tên biến có ký tự đặc biệt thì cần đặt trong hai dấu backticks <code>``</code></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"dataset/df1.rds"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rlang)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> dplyr<span class="sc">:::</span><span class="fu">mutate</span>( <span class="st">`</span><span class="at">FU_CD3+_T_CELL_FREQ_new</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">case_when</span>(</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  STUDY_ARM <span class="sc">==</span> <span class="st">"CONTROL_OLD"</span> <span class="sc">~</span> <span class="st">`</span><span class="at">BEGIN_CD3+_T_CELL_FREQ</span><span class="st">`</span>,</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  STUDY_ARM <span class="sc">==</span> <span class="st">"CONTROL_YOUNG"</span> <span class="sc">~</span> <span class="st">`</span><span class="at">BEGIN_CD3+_T_CELL_FREQ</span><span class="st">`</span>,</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  STUDY_ARM <span class="sc">==</span> <span class="st">"YEGD"</span> <span class="sc">~</span> <span class="st">`</span><span class="at">FU_CD3+_T_CELL_FREQ</span><span class="st">`</span>,</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">.default =</span> <span class="cn">NA</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>)) <span class="ot">-&gt;</span> df_clean1</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>df_clean1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">."</span>,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> a,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   STUDY_ID     STUDY_ARM BEGIN_CD3+_T_CELL_FREQ FU_CD3+_T_CELL_FREQ FU_CD3+_T_CELL_FREQ_new
-1      ID_1   CONTROL_OLD              12.063157                  NA               12.063157
-2      ID_2   CONTROL_OLD              10.964920                  NA               10.964920
-3      ID_3          YEGD               6.135557           15.411331               15.411331
-4      ID_4   CONTROL_OLD              13.720531                  NA               13.720531
-5      ID_5   CONTROL_OLD              10.207501                  NA               10.207501
-6      ID_6   CONTROL_OLD              10.781260                  NA               10.781260
-7      ID_7   CONTROL_OLD               8.561287                  NA                8.561287
-8      ID_8          YEGD              10.378400           36.150698               36.150698
-9      ID_9   CONTROL_OLD              12.419222                  NA               12.419222
-10    ID_10          YEGD               4.698543           53.858413               53.858413
-11    ID_11   CONTROL_OLD               9.877577                  NA                9.877577
-12    ID_12   CONTROL_OLD              11.327839                  NA               11.327839
-13    ID_13          YEGD              10.810302                  NA                      NA
-14    ID_14          YEGD              12.559336                  NA                      NA
-15    ID_15   CONTROL_OLD              12.618815                  NA               12.618815
-16    ID_16   CONTROL_OLD               9.354778                  NA                9.354778
-17    ID_17          YEGD               4.883078           30.915139               30.915139
-18    ID_18   CONTROL_OLD              10.481444                  NA               10.481444
-19    ID_19   CONTROL_OLD              10.954867                  NA               10.954867
-20    ID_20          YEGD              10.257006           12.503797               12.503797
-21    ID_21 CONTROL_YOUNG              12.011571                  NA               12.011571
-22    ID_22          YEGD               9.304376           45.202878               45.202878
-23    ID_23 CONTROL_YOUNG              12.267157                  NA               12.267157
-24    ID_24          YEGD               9.591158            8.710753                8.710753
-25    ID_25          YEGD              10.470832           10.584096               10.584096
-26    ID_26          YEGD              12.824044           42.963687               42.963687
-27    ID_27 CONTROL_YOUNG               9.660034                  NA                9.660034
-28    ID_28 CONTROL_YOUNG              12.845677                  NA               12.845677
-29    ID_29   CONTROL_OLD              10.438020                  NA               10.438020
-30    ID_30          YEGD               9.466437           62.817237               62.817237</code></pre>
+<pre><code>[1] "ID.1"</code></pre>
 </div>
 </div>
-<p><strong>Cách 2: Khai báo tên biến theo kiểu truyền tham số</strong></p>
-<p>Từ khóa: pass variable in <code>dplyr</code>; dynamic variable/column in <code>dplyr</code></p>
+</section>
+<section id="dò-con-số-trong-chuỗi" class="level2">
+<h2 class="anchored" data-anchor-id="dò-con-số-trong-chuỗi">Dò con số trong chuỗi</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"dataset/df1.rds"</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="st">"BEGIN_CD3+_T_CELL_FREQ"</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="st">"FU_CD3+_T_CELL_FREQ"</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="st">"FU_CD3+_T_CELL_FREQ_new"</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rlang)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> dplyr<span class="sc">:::</span><span class="fu">mutate</span>( {{ v3 }} <span class="sc">:</span><span class="er">=</span> <span class="fu">case_when</span>(</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  STUDY_ARM <span class="sc">==</span> <span class="st">"CONTROL_OLD"</span> <span class="sc">~</span> <span class="fu">get</span>(v1),</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  STUDY_ARM <span class="sc">==</span> <span class="st">"CONTROL_YOUNG"</span> <span class="sc">~</span> <span class="fu">get</span>(v1),</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  STUDY_ARM <span class="sc">==</span> <span class="st">"YEGD"</span> <span class="sc">~</span> <span class="fu">get</span>(v2),</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">.default =</span> <span class="cn">NA</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>)) <span class="ot">-&gt;</span> df_clean2</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>df_clean2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"study"</span>, <span class="st">"ID.1"</span>, <span class="st">"1112"</span>, <span class="st">"a12"</span>, <span class="st">"0"</span>, <span class="st">"code663"</span>, <span class="st">"id"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   STUDY_ID     STUDY_ARM BEGIN_CD3+_T_CELL_FREQ FU_CD3+_T_CELL_FREQ FU_CD3+_T_CELL_FREQ_new
-1      ID_1   CONTROL_OLD              12.063157                  NA               12.063157
-2      ID_2   CONTROL_OLD              10.964920                  NA               10.964920
-3      ID_3          YEGD               6.135557           15.411331               15.411331
-4      ID_4   CONTROL_OLD              13.720531                  NA               13.720531
-5      ID_5   CONTROL_OLD              10.207501                  NA               10.207501
-6      ID_6   CONTROL_OLD              10.781260                  NA               10.781260
-7      ID_7   CONTROL_OLD               8.561287                  NA                8.561287
-8      ID_8          YEGD              10.378400           36.150698               36.150698
-9      ID_9   CONTROL_OLD              12.419222                  NA               12.419222
-10    ID_10          YEGD               4.698543           53.858413               53.858413
-11    ID_11   CONTROL_OLD               9.877577                  NA                9.877577
-12    ID_12   CONTROL_OLD              11.327839                  NA               11.327839
-13    ID_13          YEGD              10.810302                  NA                      NA
-14    ID_14          YEGD              12.559336                  NA                      NA
-15    ID_15   CONTROL_OLD              12.618815                  NA               12.618815
-16    ID_16   CONTROL_OLD               9.354778                  NA                9.354778
-17    ID_17          YEGD               4.883078           30.915139               30.915139
-18    ID_18   CONTROL_OLD              10.481444                  NA               10.481444
-19    ID_19   CONTROL_OLD              10.954867                  NA               10.954867
-20    ID_20          YEGD              10.257006           12.503797               12.503797
-21    ID_21 CONTROL_YOUNG              12.011571                  NA               12.011571
-22    ID_22          YEGD               9.304376           45.202878               45.202878
-23    ID_23 CONTROL_YOUNG              12.267157                  NA               12.267157
-24    ID_24          YEGD               9.591158            8.710753                8.710753
-25    ID_25          YEGD              10.470832           10.584096               10.584096
-26    ID_26          YEGD              12.824044           42.963687               42.963687
-27    ID_27 CONTROL_YOUNG               9.660034                  NA                9.660034
-28    ID_28 CONTROL_YOUNG              12.845677                  NA               12.845677
-29    ID_29   CONTROL_OLD              10.438020                  NA               10.438020
-30    ID_30          YEGD               9.466437           62.817237               62.817237</code></pre>
+<pre><code>[1] "study"   "ID.1"    "1112"    "a12"     "0"       "code663" "id"     </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"d"</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> b,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "study"   "code663" "id"     </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># string chứa digit</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">d"</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> b,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "ID.1"    "1112"    "a12"     "0"       "code663"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># string không phải là digit</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">D"</span>,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> b,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "study"   "ID.1"    "a12"     "code663" "id"     </code></pre>
 </div>
 </div>
-<p><strong>Xác nhận kết quả tính bằng hai cách là như nhau</strong></p>
+</section>
+<section id="tìm-cụm-từ-trong-chuỗi" class="level2">
+<h2 class="anchored" data-anchor-id="tìm-cụm-từ-trong-chuỗi">Tìm cụm từ trong chuỗi</h2>
+<p>Cách học các quy tắc tìm và thay thế chuỗi bằng cú pháp regex là ta sẽ thử nghiệm các tham số khác nhau trong lệnh <code>grep()</code> và đánh giá kết quả thu được để hiểu cơ chế lệnh của R, sau đó áp dụng vào tình huống thử nghiệm trên vài chục ký tự trước khi áp dụng vào dữ liệu thực tế.</p>
+<p>Nếu việc tìm kiếm phức tạp, ta tách thành nhiều bước nhỏ để lọc dần dữ liệu cho đến khi làm sạch được data đến mức đạt yêu cầu đề bài.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(df_clean1, df_clean2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"happy day"</span>,</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>       <span class="st">"going to school"</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>       <span class="st">"Working and feel happy everyday"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>       <span class="st">"Thanks Happy Birthday"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>       <span class="st">"I am hhappy"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>       <span class="st">"Today is Monday"</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "happy day"                       "going to school"                 "Working and feel happy everyday" "Thanks Happy Birthday"           "I am hhappy"                    
+[6] "Today is Monday"                </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lấy đúng chữ happy `\\b`</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">bhappy"</span>,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> d,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "happy day"                       "Working and feel happy everyday"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">b(h|H)appy"</span>,</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> d,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "happy day"                       "Working and feel happy everyday" "Thanks Happy Birthday"          </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not-word boundary `\\B` lấy chữ happy có những chữ khác</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">Bhappy"</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> d,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "I am hhappy"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"happy"</span>,</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> d,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ignore.case =</span> T,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "happy day"                       "Working and feel happy everyday" "Thanks Happy Birthday"           "I am hhappy"                    </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"happy"</span>,</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> d,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ignore.case =</span> F,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "happy day"                       "Working and feel happy everyday" "I am hhappy"                    </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"happy"</span>,</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> d,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">fixed =</span> T,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ignore.case =</span> F,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> F,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "happy day"                       "Working and feel happy everyday" "I am hhappy"                    </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"happy"</span>,</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> d,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">fixed =</span> F,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ignore.case =</span> F,</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T,</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "happy day"                       "Working and feel happy everyday" "I am hhappy"                    </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"happy"</span>,</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> d,</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">fixed =</span> F,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ignore.case =</span> F,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "happy day"                       "Working and feel happy everyday" "I am hhappy"                    </code></pre>
+</div>
+</div>
+</section>
+<section id="thay-thế-cụm-từ" class="level2">
+<h2 class="anchored" data-anchor-id="thay-thế-cụm-từ">Thay thế cụm từ</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ID30"</span>, <span class="st">"ID12"</span>, <span class="st">"ID9"</span>, <span class="st">"id11"</span>, <span class="st">"id32"</span>, <span class="st">"ID_19"</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "ID30"  "ID12"  "ID9"   "id11"  "id32"  "ID_19"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Thay toàn bộ chữ ID (dù viết hoa hay viết thường) </span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># theo định dạng CODE_number</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">"ID"</span>,</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">replacement =</span> <span class="st">"CODE_"</span>,</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> g,</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "CODE_30"  "CODE_12"  "CODE_9"   "id11"     "id32"     "CODE__19"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">"(ID|id|ID_)"</span>,</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">replacement =</span> <span class="st">"CODE_"</span>,</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> g,</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "CODE_30"  "CODE_12"  "CODE_9"   "CODE_11"  "CODE_32"  "CODE__19"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># thứ tự ảnh hưởng đến lệnh gsub</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">"(ID_|ID|id)"</span>,</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">replacement =</span> <span class="st">"CODE_"</span>,</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> g,</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T) <span class="ot">-&gt;</span> g_ok</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>g_ok</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "CODE_30" "CODE_12" "CODE_9"  "CODE_11" "CODE_32" "CODE_19"</code></pre>
+</div>
+</div>
+<p>Ta có thể tách thành 2 bước</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ID30"</span>, <span class="st">"ID12"</span>, <span class="st">"ID9"</span>, <span class="st">"id11"</span>, <span class="st">"id32"</span>, <span class="st">"ID_19"</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "ID30"  "ID12"  "ID9"   "id11"  "id32"  "ID_19"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">"ID|id"</span>,</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">replacement =</span> <span class="st">"CODE_"</span>,</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> g,</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T) <span class="ot">-&gt;</span> g1</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>g1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "CODE_30"  "CODE_12"  "CODE_9"   "CODE_11"  "CODE_32"  "CODE__19"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">"__"</span>,</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">replacement =</span> <span class="st">"_"</span>,</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> g1,</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T) <span class="ot">-&gt;</span> g2</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>g2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "CODE_30" "CODE_12" "CODE_9"  "CODE_11" "CODE_32" "CODE_19"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(g_ok, g2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+<section id="tài-liệu-tham-khảo" class="level1">
+<h1>Tài liệu tham khảo</h1>
+<p><code>https://regexr.com/</code></p>
+<p><code>https://www.regular-expressions.info/cookbook.html</code></p>
+<p><code>https://www.regular-expressions.info/grep.html</code></p>
+<p><code>https://vietnix.vn/regex-la-gi/</code></p>
 
 
 </section>
@@ -1063,13 +1071,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="./cac-lenh-ve-data-frame.html" class="pagination-link" aria-label="**Các lệnh về data frame**">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title"><strong>Các lệnh về data frame</strong></span></span>
+      <a href="./cac-lenh-sap-xep-du-lieu.html" class="pagination-link" aria-label="**Các lệnh sắp xếp dữ liệu**">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title"><strong>Các lệnh sắp xếp dữ liệu</strong></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./cac-lenh-regular-expression.html" class="pagination-link" aria-label="**Các lệnh về biểu thức chính quy**">
-        <span class="nav-page-text"><span class="chapter-title"><strong>Các lệnh về biểu thức chính quy</strong></span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./cac-lenh-ve-do-thi-scatterplot.html" class="pagination-link" aria-label="**Đồ thị scatterplot**">
+        <span class="nav-page-text"><span class="chapter-title"><strong>Đồ thị scatterplot</strong></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

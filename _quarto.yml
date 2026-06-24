@@ -20,6 +20,7 @@ book:
         - cac-lenh-ve-vector.qmd
         - cac-lenh-ve-data-frame.qmd
         - cac-lenh-sap-xep-du-lieu.qmd
+        - cac-lenh-regular-expression.qmd
     - part: "[**Các lệnh vẽ đồ thị**]{style='color:blue'}" 
       chapters:
         - cac-lenh-ve-do-thi-scatterplot.qmd 

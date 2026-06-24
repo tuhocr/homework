@@ -1,0 +1,191 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, echo=FALSE, results='hide'}
+knitr::opts_chunk$set(message = FALSE,  
+                      warning = FALSE)   
+```
+
+# **Các lệnh về biểu thức chính quy** 
+
+Từ khóa: regular expression; regex
+
+## Escape character
+
+Dấu `.` sẽ giúp dò ra tất cả các từ. Muốn chọn dấu chấm ký tự trong chữ `ID.1` thì ta phải escape dấu `.` này bằng lệnh `\.`, tuy nhiên trong R thì dấu `\` này có 1 ý nghĩa khác, nên ta phải escape thêm `\` để trả về được dấu `\`, nên sau cùng ta có `\\.` là để định vị dấu `.` ký tự.
+
+```{r}
+a <- c("lap trinh", "R", "Programming", "study", "ID.1")
+
+a
+
+grep(pattern = ".",
+     x = a,
+     value = T,
+     perl = T)
+
+grep(pattern = "\\.",
+     x = a,
+     value = T,
+     perl = T)
+```
+
+## Dò con số trong chuỗi
+
+```{r}
+b <- c("study", "ID.1", "1112", "a12", "0", "code663", "id")
+
+b
+
+grep(pattern = "d",
+     x = b,
+     value = T,
+     perl = T)
+
+# string chứa digit
+grep(pattern = "\\d",
+     x = b,
+     value = T,
+     perl = T)
+
+# string không phải là digit
+grep(pattern = "\\D",
+     x = b,
+     value = T,
+     perl = T)
+```
+
+## Tìm cụm từ trong chuỗi
+
+Cách học các quy tắc tìm và thay thế chuỗi bằng cú pháp regex là ta sẽ thử nghiệm các tham số khác nhau trong lệnh `grep()` và đánh giá kết quả thu được để hiểu cơ chế lệnh của R, sau đó áp dụng vào tình huống thử nghiệm trên vài chục ký tự trước khi áp dụng vào dữ liệu thực tế.
+
+Nếu việc tìm kiếm phức tạp, ta tách thành nhiều bước nhỏ để lọc dần dữ liệu cho đến khi làm sạch được data đến mức đạt yêu cầu đề bài.
+
+```{r}
+d <- c("happy day",
+       "going to school",
+       "Working and feel happy everyday",
+       "Thanks Happy Birthday",
+       "I am hhappy",
+       "Today is Monday")
+
+d
+
+# lấy đúng chữ happy `\\b`
+grep(pattern = "\\bhappy",
+     x = d,
+     perl = T,
+     value = T)
+
+grep(pattern = "\\b(h|H)appy",
+     x = d,
+     perl = T,
+     value = T)
+
+
+# not-word boundary `\\B` lấy chữ happy có những chữ khác
+grep(pattern = "\\Bhappy",
+     x = d,
+     perl = T,
+     value = T)
+
+grep(pattern = "happy",
+     x = d,
+     ignore.case = T,
+     perl = T,
+     value = T)
+
+grep(pattern = "happy",
+     x = d,
+     ignore.case = F,
+     perl = T,
+     value = T)
+
+grep(pattern = "happy",
+     x = d,
+     fixed = T,
+     ignore.case = F,
+     perl = F,
+     value = T)
+
+grep(pattern = "happy",
+     x = d,
+     fixed = F,
+     ignore.case = F,
+     perl = T,
+     value = T)
+
+grep(pattern = "happy",
+     x = d,
+     fixed = F,
+     ignore.case = F,
+     perl = T,
+     value = T)
+```
+
+## Thay thế cụm từ
+
+```{r}
+g <- c("ID30", "ID12", "ID9", "id11", "id32", "ID_19")
+
+g
+# Thay toàn bộ chữ ID (dù viết hoa hay viết thường) 
+# theo định dạng CODE_number
+
+gsub(pattern = "ID",
+     replacement = "CODE_",
+     x = g,
+     perl = T)
+
+gsub(pattern = "(ID|id|ID_)",
+     replacement = "CODE_",
+     x = g,
+     perl = T)
+
+# thứ tự ảnh hưởng đến lệnh gsub
+gsub(pattern = "(ID_|ID|id)",
+     replacement = "CODE_",
+     x = g,
+     perl = T) -> g_ok
+
+g_ok
+```
+
+Ta có thể tách thành 2 bước
+
+```{r}
+g <- c("ID30", "ID12", "ID9", "id11", "id32", "ID_19")
+
+g
+
+gsub(pattern = "ID|id",
+     replacement = "CODE_",
+     x = g,
+     perl = T) -> g1
+
+g1
+
+gsub(pattern = "__",
+     replacement = "_",
+     x = g1,
+     perl = T) -> g2
+
+g2
+
+identical(g_ok, g2)
+```
+
+# Tài liệu tham khảo
+
+`https://regexr.com/`
+
+`https://www.regular-expressions.info/cookbook.html`
+
+`https://www.regular-expressions.info/grep.html`
+
+`https://vietnix.vn/regex-la-gi/`
+
+
