@@ -13,7 +13,7 @@ knitr::opts_chunk$set(message = FALSE,
 
 Từ khóa: đồ thị phân tán; plot xy; đồ thị điểm
 
-## **Câu 1**
+## **Câu 1** {#cau-1}
 
 <!-- <style> -->
 <!-- div.blue pre { background-color:#fff2cc; font-size: 22px; } -->
@@ -21,7 +21,7 @@ Từ khóa: đồ thị phân tán; plot xy; đồ thị điểm
 
 <!-- <div class = "blue"> -->
 
-Bạn có dữ liệu sau về chỉ số cân nặng và chiều cao
+Bạn có dữ liệu sau về chỉ số đo lường chất lượng không khí.
 
 ```{r}
 airquality -> df
@@ -67,7 +67,7 @@ ggplot(data = df,
 
 :::
 
-## **Câu 2**
+## **Câu 2** {#cau-2}
 
 <!-- <style> -->
 <!-- div.blue pre { background-color:#fff2cc; font-size: 22px; } -->
@@ -123,7 +123,7 @@ ggplot(data = df,
 
 :::
 
-## **Câu 3**
+## **Câu 3** {#cau-3}
 
 <!-- <style> -->
 <!-- div.blue pre { background-color:#fff2cc; font-size: 22px; } -->

@@ -1,0 +1,128 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, echo=FALSE, results='hide'}
+knitr::opts_chunk$set(message = FALSE,  
+                      warning = FALSE)   
+```
+
+# **Cách vẽ đường 95% CI** 
+
+Từ khóa: confidence interval
+
+## **Câu 1** {#cau-1}
+
+<!-- <style> -->
+<!-- div.blue pre { background-color:#fff2cc; font-size: 22px; } -->
+<!-- </style> -->
+
+<!-- <div class = "blue"> -->
+
+Bạn có dữ liệu sau về thông số đo lường của 31 cây black cherry.
+
+```{r}
+trees -> df
+
+df
+```
+
+Bạn hãy vẽ đồ thị như hình bên dưới.
+
+```{r, echo = F}
+library(dplyr)
+
+df |> dplyr:::arrange(Height) -> df
+
+plot(Volume ~ Height,
+     ylim = c(0, 100),
+     data = df)
+
+fit <- lm(Volume ~ Height,
+              data = df)
+
+abline(fit, col = "red")
+
+pred_CI <- predict(fit,
+                   interval = "confidence")
+
+# add polygon and overlplot the lines
+polygon(x = c(df$Height, rev(df$Height)),
+        y = c(pred_CI[ , 2], rev(pred_CI[ , 3])),
+        col = adjustcolor("lightblue", alpha.f = 0.5),
+        border = NA)
+
+lines(df$Height,
+      pred_CI[ , 2],
+      lty = 2,
+      col = "purple",
+      lwd = 2)
+
+lines(df$Height,
+      pred_CI[ , 3],
+      lty = 2,
+      col = "purple",
+      lwd = 2)
+```
+
+<!-- </div> -->
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+Để vẽ khoảng tin cậy sử dụng lệnh `polygon()` ta cần sắp xếp trục X (`Height`) theo thứ tự từ nhỏ đến lớn (hoặc ngược lại) để R vẽ đúng như yêu cầu.
+
+```{r}
+library(dplyr)
+
+df |> dplyr:::arrange(Height) -> df
+
+plot(Volume ~ Height,
+     ylim = c(0, 100),
+     data = df)
+
+fit <- lm(Volume ~ Height,
+              data = df)
+
+abline(fit, col = "red")
+
+pred_CI <- predict(fit,
+                   interval = "confidence")
+
+# add polygon and overlplot the lines
+polygon(x = c(df$Height, rev(df$Height)),
+        y = c(pred_CI[ , 2], rev(pred_CI[ , 3])),
+        col = adjustcolor("lightblue", alpha.f = 0.5),
+        border = NA)
+
+lines(df$Height,
+      pred_CI[ , 2],
+      lty = 2,
+      col = "purple",
+      lwd = 2)
+
+lines(df$Height,
+      pred_CI[ , 3],
+      lty = 2,
+      col = "purple",
+      lwd = 2)
+```
+</div>
+
+:::
+
+
+
+
+
+
+
+
+
+

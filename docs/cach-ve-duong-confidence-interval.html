@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Đồ thị scatterplot – Bài tập R</title>
+<title>Cách vẽ đường 95% CI – Bài tập R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./cac-lenh-ve-do-thi-barchart.html" rel="next">
-<link href="./cac-lenh-regular-expression.html" rel="prev">
+<link href="./cac-lenh-thong-ke-mo-ta.html" rel="next">
+<link href="./cac-lenh-ve-do-thi-barchart.html" rel="prev">
 <link href="./favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -287,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cac-lenh-ve-do-thi-scatterplot.html"><span style="color:blue"><strong>Các lệnh vẽ đồ thị</strong></span></a></li><li class="breadcrumb-item"><a href="./cac-lenh-ve-do-thi-scatterplot.html"><span class="chapter-title"><strong>Đồ thị scatterplot</strong></span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cac-lenh-ve-do-thi-scatterplot.html"><span style="color:blue"><strong>Các lệnh vẽ đồ thị</strong></span></a></li><li class="breadcrumb-item"><a href="./cach-ve-duong-confidence-interval.html"><span class="chapter-title"><strong>Cách vẽ đường 95% CI</strong></span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -363,7 +363,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cac-lenh-ve-do-thi-scatterplot.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title"><strong>Đồ thị scatterplot</strong></span></a>
+  <a href="./cac-lenh-ve-do-thi-scatterplot.html" class="sidebar-item-text sidebar-link"><span class="chapter-title"><strong>Đồ thị scatterplot</strong></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -373,7 +373,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cach-ve-duong-confidence-interval.html" class="sidebar-item-text sidebar-link"><span class="chapter-title"><strong>Cách vẽ đường 95% CI</strong></span></a>
+  <a href="./cach-ve-duong-confidence-interval.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title"><strong>Cách vẽ đường 95% CI</strong></span></a>
   </div>
 </li>
       </ul>
@@ -405,8 +405,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#cau-1" id="toc-cau-1" class="nav-link active" data-scroll-target="#cau-1"><strong>Câu 1</strong></a></li>
-  <li><a href="#cau-2" id="toc-cau-2" class="nav-link" data-scroll-target="#cau-2"><strong>Câu 2</strong></a></li>
-  <li><a href="#cau-3" id="toc-cau-3" class="nav-link" data-scroll-target="#cau-3"><strong>Câu 3</strong></a></li>
   </ul>
 </nav>
     </div>
@@ -414,9 +412,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content column-body" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cac-lenh-ve-do-thi-scatterplot.html"><span style="color:blue"><strong>Các lệnh vẽ đồ thị</strong></span></a></li><li class="breadcrumb-item"><a href="./cac-lenh-ve-do-thi-scatterplot.html"><span class="chapter-title"><strong>Đồ thị scatterplot</strong></span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cac-lenh-ve-do-thi-scatterplot.html"><span style="color:blue"><strong>Các lệnh vẽ đồ thị</strong></span></a></li><li class="breadcrumb-item"><a href="./cach-ve-duong-confidence-interval.html"><span class="chapter-title"><strong>Cách vẽ đường 95% CI</strong></span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title"><strong>Đồ thị scatterplot</strong></span></h1>
+<h1 class="title"><span class="chapter-title"><strong>Cách vẽ đường 95% CI</strong></span></h1>
 </div>
 
 
@@ -433,26 +431,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Từ khóa: đồ thị phân tán; plot xy; đồ thị điểm</p>
+<p>Từ khóa: confidence interval</p>
 <section id="cau-1" class="level2">
 <h2 class="anchored" data-anchor-id="cau-1"><strong>Câu 1</strong></h2>
 <!-- <style> -->
 <!-- div.blue pre { background-color:#fff2cc; font-size: 22px; } -->
 <!-- </style> -->
 <!-- <div class = "blue"> -->
-<p>Bạn có dữ liệu sau về chỉ số đo lường chất lượng không khí.</p>
+<p>Bạn có dữ liệu sau về thông số đo lường của 31 cây black cherry.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>airquality <span class="ot">-&gt;</span> df</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>trees <span class="ot">-&gt;</span> df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Ozone Solar.R Wind Temp Month Day
-1    41     190  7.4   67     5   1
-2    36     118  8.0   72     5   2
-3    12     149 12.6   74     5   3
-4    18     313 11.5   62     5   4
-5    NA      NA 14.3   56     5   5
-6    28      NA 14.9   66     5   6</code></pre>
+<pre><code>   Girth Height Volume
+1    8.3     70   10.3
+2    8.6     65   10.3
+3    8.8     63   10.2
+4   10.5     72   16.4
+5   10.7     81   18.8
+6   10.8     83   19.7
+7   11.0     66   15.6
+8   11.0     75   18.2
+9   11.1     80   22.6
+10  11.2     75   19.9
+11  11.3     79   24.2
+12  11.4     76   21.0
+13  11.4     76   21.4
+14  11.7     69   21.3
+15  12.0     75   19.1
+16  12.9     74   22.2
+17  12.9     85   33.8
+18  13.3     86   27.4
+19  13.7     71   25.7
+20  13.8     64   24.9
+21  14.0     78   34.5
+22  14.2     80   31.7
+23  14.5     74   36.3
+24  16.0     72   38.3
+25  16.3     77   42.6
+26  17.3     81   55.4
+27  17.5     82   55.7
+28  17.9     80   58.3
+29  18.0     80   51.5
+30  18.0     80   51.0
+31  20.6     87   77.0</code></pre>
 </div>
 </div>
 <p>Bạn hãy vẽ đồ thị như hình bên dưới.</p>
@@ -460,7 +483,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="cac-lenh-ve-do-thi-scatterplot_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="cach-ve-duong-confidence-interval_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -483,20 +506,45 @@ div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
 div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 </style>
 <div class="yes123">
+<p>Để vẽ khoảng tin cậy sử dụng lệnh <code>polygon()</code> ta cần sắp xếp trục X (<code>Height</code>) theo thứ tự từ nhỏ đến lớn (hoặc ngược lại) để R vẽ đúng như yêu cầu.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Temp,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">y =</span> Wind)) <span class="sc">+</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> dplyr<span class="sc">:::</span><span class="fu">arrange</span>(Height) <span class="ot">-&gt;</span> df</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Volume <span class="sc">~</span> Height,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> df)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(Volume <span class="sc">~</span> Height,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> df)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(fit, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>pred_CI <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                   <span class="at">interval =</span> <span class="st">"confidence"</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># add polygon and overlplot the lines</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x =</span> <span class="fu">c</span>(df<span class="sc">$</span>Height, <span class="fu">rev</span>(df<span class="sc">$</span>Height)),</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="fu">c</span>(pred_CI[ , <span class="dv">2</span>], <span class="fu">rev</span>(pred_CI[ , <span class="dv">3</span>])),</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">adjustcolor</span>(<span class="st">"lightblue"</span>, <span class="at">alpha.f =</span> <span class="fl">0.5</span>),</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">border =</span> <span class="cn">NA</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(df<span class="sc">$</span>Height,</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>      pred_CI[ , <span class="dv">2</span>],</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">lty =</span> <span class="dv">2</span>,</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">"purple"</span>,</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(df<span class="sc">$</span>Height,</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>      pred_CI[ , <span class="dv">3</span>],</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">lty =</span> <span class="dv">2</span>,</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">"purple"</span>,</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="cac-lenh-ve-do-thi-scatterplot_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="cach-ve-duong-confidence-interval_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -505,211 +553,6 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 </div>
 </div>
 </div>
-</section>
-<section id="cau-2" class="level2">
-<h2 class="anchored" data-anchor-id="cau-2"><strong>Câu 2</strong></h2>
-<!-- <style> -->
-<!-- div.blue pre { background-color:#fff2cc; font-size: 22px; } -->
-<!-- </style> -->
-<!-- <div class = "blue"> -->
-<p>Tiếp theo câu 1, bạn hãy thêm đường trend line/regression vào đồ thị</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="cac-lenh-ve-do-thi-scatterplot_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<!-- </div> -->
-<div class="callout callout-style-default callout-tip callout-titled" title="Đáp án">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Đáp án
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<style>
-div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
-div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
-</style>
-<div class="yes123">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Temp,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">y =</span> Wind)) <span class="sc">+</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">"darkgreen"</span>,</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">fill =</span> <span class="st">"royalblue"</span>,</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">alpha =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="cac-lenh-ve-do-thi-scatterplot_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="cau-3" class="level2">
-<h2 class="anchored" data-anchor-id="cau-3"><strong>Câu 3</strong></h2>
-<!-- <style> -->
-<!-- div.blue pre { background-color:#fff2cc; font-size: 22px; } -->
-<!-- </style> -->
-<!-- <div class = "blue"> -->
-<p>Tiếp theo câu 2, bạn hãy thêm giá trị R-squared và p-value vào đồ thị.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="cac-lenh-ve-do-thi-scatterplot_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<!-- </div> -->
-<div class="callout callout-style-default callout-tip callout-titled" title="Đáp án">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Đáp án
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<style>
-div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
-div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
-</style>
-<div class="yes123">
-<p>Đầu tiên ta cần thực hiện model hồi quy đơn biến của <code>Wind</code> theo <code>Temp</code> sau đó trích ra giá trị R-squared và p-value tương ứng.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(Wind <span class="sc">~</span> Temp,</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> df)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = Wind ~ Temp, data = df)
-
-Residuals:
-   Min     1Q Median     3Q    Max 
--8.578 -2.449 -0.226  1.985  9.740 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  23.2337     2.1124   11.00  &lt; 2e-16 ***
-Temp         -0.1705     0.0269   -6.33  2.6e-09 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 3.14 on 151 degrees of freedom
-Multiple R-squared:  0.21,  Adjusted R-squared:  0.205 
-F-statistic: 40.1 on 1 and 151 DF,  p-value: 2.64e-09</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit) <span class="ot">-&gt;</span> kq</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>r_squared <span class="ot">&lt;-</span> <span class="fu">round</span>(kq<span class="sc">$</span>r.squared, <span class="at">digits =</span> <span class="dv">4</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>r_squared_text <span class="ot">&lt;-</span> <span class="fu">bquote</span>(R<span class="sc">^</span><span class="dv">2</span> <span class="sc">==</span> .(r_squared))</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># tùy chỉnh tham số để thay đổi số lượng số </span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># sau dấu thập phân trong p-value</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">4</span>)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> kq<span class="sc">$</span>coefficients[<span class="dv">2</span>,<span class="dv">4</span>]</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># p-value thường rất nhỏ, ggplot2 sẽ hiển thị nhiều số 0,</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co"># ta cần chủ động chụp lại kết quả p-value trên console</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>p_value_ok <span class="ot">&lt;-</span> <span class="fu">capture.output</span>(<span class="fu">cat</span>(p_value)) </span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co"># p_value_ok</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> p_value_ok</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>p_value_text <span class="ot">&lt;-</span> <span class="fu">bquote</span>(<span class="st">'p-value'</span> <span class="sc">==</span> .(p_value))</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co"># p_value_text </span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Tạo đối tượng lưu text sử dụng package <code>grid</code></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>grob_r_squared_text <span class="ot">&lt;-</span> <span class="fu">grobTree</span>(<span class="at">... =</span> <span class="fu">textGrob</span>(<span class="at">label =</span> r_squared_text, </span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">x =</span> <span class="fl">0.95</span>, </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> <span class="fl">0.95</span>, </span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                          <span class="at">hjust =</span> <span class="dv">1</span>,</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                          <span class="at">vjust =</span> <span class="dv">1</span>,</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>                          <span class="at">gp =</span> <span class="fu">gpar</span>(<span class="at">col =</span> <span class="st">"blue"</span>,</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">fontsize =</span> <span class="dv">13</span>,</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">fontface =</span> <span class="st">"italic"</span>)))</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>grob_p_value_text <span class="ot">&lt;-</span> <span class="fu">grobTree</span>(<span class="at">... =</span> <span class="fu">textGrob</span>(<span class="at">label =</span> p_value_text, </span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>                          <span class="at">x =</span> <span class="fl">0.95</span>, </span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> <span class="fl">0.85</span>, </span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>                          <span class="at">hjust =</span> <span class="dv">1</span>,</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>                          <span class="at">vjust =</span> <span class="dv">1</span>,</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>                          <span class="at">gp =</span> <span class="fu">gpar</span>(<span class="at">col =</span> <span class="st">"blue"</span>,</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">fontsize =</span> <span class="dv">13</span>,</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">fontface =</span> <span class="st">"italic"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Chèn văn bản vào đồ thị sử dụng lệnh <code>annotation_custom()</code></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df,</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Temp,</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">y =</span> Wind)) <span class="sc">+</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotation_custom</span>(grob_r_squared_text) <span class="sc">+</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotation_custom</span>(grob_p_value_text) <span class="sc">+</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">"darkgreen"</span>,</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>              <span class="at">fill =</span> <span class="st">"royalblue"</span>,</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>              <span class="at">alpha =</span> <span class="fl">0.25</span>) <span class="sc">+</span> </span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>) <span class="sc">+</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Temp"</span>,</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Wind"</span>,</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Wind ~ Temp"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="cac-lenh-ve-do-thi-scatterplot_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p><span style="color:#FF4081"><strong>Credit: Cảm ơn Dr.&nbsp;Trương Kim đã gợi ý cho mình về dạng đồ thị này.</strong></span></p>
 
 
 </section>
@@ -1130,13 +973,13 @@ F-statistic: 40.1 on 1 and 151 DF,  p-value: 2.64e-09</code></pre>
   </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="./cac-lenh-regular-expression.html" class="pagination-link" aria-label="**Các lệnh về biểu thức chính quy**">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title"><strong>Các lệnh về biểu thức chính quy</strong></span></span>
+      <a href="./cac-lenh-ve-do-thi-barchart.html" class="pagination-link" aria-label="**Đồ thị barchart**">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title"><strong>Đồ thị barchart</strong></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./cac-lenh-ve-do-thi-barchart.html" class="pagination-link" aria-label="**Đồ thị barchart**">
-        <span class="nav-page-text"><span class="chapter-title"><strong>Đồ thị barchart</strong></span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./cac-lenh-thong-ke-mo-ta.html" class="pagination-link" aria-label="**Các lệnh thống kê mô tả**">
+        <span class="nav-page-text"><span class="chapter-title"><strong>Các lệnh thống kê mô tả</strong></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
