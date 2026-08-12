@@ -83,7 +83,7 @@
     "text": "Câu 1\nTa có vector p, hãy kiểm tra đặc điểm phân bố chuẩn của dữ liệu.\nTừ khóa: normality test\np &lt;- c(5, 12, 33, 9, 11, 12, 12, 15, 16, 22, 20)\np\n\n [1]  5 12 33  9 11 12 12 15 16 22 20",
     "crumbs": [
       "[**Các lệnh thống kê**]{style='color:blue'}",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>**Các lệnh thống kê mô tả**</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>**Các lệnh thống kê mô tả**</span>"
     ]
   },
   {
@@ -160,7 +160,7 @@
     "text": "TipĐáp án\n\n\n\n\n\n\nKiểm định phân bố chuẩn\n\n\n\nshapiro.test(p)\n\n\n    Shapiro-Wilk normality test\n\ndata:  p\nW = 0.90048, p-value = 0.1873\n\n\n\nNếu p-value &gt; 0.05 thì dữ liệu phân bố chuẩn.\n\n\nTính skewness (độ lệch) và kurtosis (độ nhọn) của phân bố\n\nCách 1: Giá trị quy về 0\n\nSkewness\n\nSkewness từ -1 đến 1: mức lý tưởng để kết luận có phân phối chuẩn\n\nSkewness từ -2 đến 2: mức chấp nhận để kết luận có phân phối chuẩn\n\nSkewness vượt quá -2 và 2: dữ liệu không có phân phối chuẩn\n\nKurtosis\n\nKurtosis gần bằng 0: mức lý tưởng để kết luận có phân phối chuẩn\n\nKurtosis từ -2 đến 2: mức chấp nhận để kết luận có phân phối chuẩn\n\nKurtosis vượt quá -2 và 2: dữ liệu không có phân phối chuẩn\n\n\n\nlibrary(psych)\npsych:::skew(p)\n\n[1] 0.9576881\n\npsych:::kurtosi(p)\n\n[1] 0.1692187\n\n\n\n\n\nCách 2: Giá trị quy về 3\n\n\n\nlibrary(moments)\nmoments:::skewness(p)\n\n[1] 1.104875\n\nmoments:::kurtosis(p)\n\n[1] 3.834755\n\n\n\n\n\n\nTham khảo\nhttps://www.phamlocblog.com/2025/03/chi-so-skewness-kurtosis-phan-phoi-chuan-spss.html",
     "crumbs": [
       "[**Các lệnh thống kê**]{style='color:blue'}",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>**Các lệnh thống kê mô tả**</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>**Các lệnh thống kê mô tả**</span>"
     ]
   },
   {
@@ -171,7 +171,7 @@
     "text": "Câu 2\nBạn có dữ liệu sau là kết quả đo khối lượng cây ở 3 nghiệm thức, hãy vẽ đồ thị QQ plot để kiểm tra đặc điểm phân bố chuẩn của dữ liệu.\n\nPlantGrowth\n\n   weight group\n1    4.17  ctrl\n2    5.58  ctrl\n3    5.18  ctrl\n4    6.11  ctrl\n5    4.50  ctrl\n6    4.61  ctrl\n7    5.17  ctrl\n8    4.53  ctrl\n9    5.33  ctrl\n10   5.14  ctrl\n11   4.81  trt1\n12   4.17  trt1\n13   4.41  trt1\n14   3.59  trt1\n15   5.87  trt1\n16   3.83  trt1\n17   6.03  trt1\n18   4.89  trt1\n19   4.32  trt1\n20   4.69  trt1\n21   6.31  trt2\n22   5.12  trt2\n23   5.54  trt2\n24   5.50  trt2\n25   5.37  trt2\n26   5.29  trt2\n27   4.92  trt2\n28   6.15  trt2\n29   5.80  trt2\n30   5.26  trt2\n\n\nKết quả cần đạt là hình này.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipĐáp án\n\n\n\n\n\n\n\n\nlibrary(ggplot2)\nlibrary(qqplotr)\nggplot(data = PlantGrowth,\n       mapping = aes(sample = weight, \n                     color = group, \n                     fill = group)) +\n  \n    stat_qq_band(alpha = 0.5) +\n  \n    stat_qq_line() +\n  \n    stat_qq_point() +\n  \n    facet_wrap(~ group,\n               scale = \"free\",\n               nrow = 1,\n               ncol = 3)",
     "crumbs": [
       "[**Các lệnh thống kê**]{style='color:blue'}",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>**Các lệnh thống kê mô tả**</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>**Các lệnh thống kê mô tả**</span>"
     ]
   },
   {
@@ -182,7 +182,7 @@
     "text": "Câu 1\nTừ khóa: đồ thị phân tán; plot xy; đồ thị điểm\nBạn có dữ liệu sau về chỉ số đo lường chất lượng không khí.\nairquality -&gt; df\n\nhead(df)\n\n  Ozone Solar.R Wind Temp Month Day\n1    41     190  7.4   67     5   1\n2    36     118  8.0   72     5   2\n3    12     149 12.6   74     5   3\n4    18     313 11.5   62     5   4\n5    NA      NA 14.3   56     5   5\n6    28      NA 14.9   66     5   6\nBạn hãy vẽ đồ thị như hình bên dưới.",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
     ]
   },
   {
@@ -204,7 +204,7 @@
     "text": "Câu 1\nTừ khóa: barchart; bar chart; barplot; đồ thị cột; đồ thị thanh\nSử dụng dataset bar1.rds\nhttps://github.com/tuhocr/homework/blob/main/dataset/bar1.rds\ndf_kq &lt;- readRDS(\"dataset/bar1.rds\")\ndf_kq\n\n   semester gender mean_score sd_score max_score min_score\n1       3rd Female   64.77486 13.66542        92        34\n2       3rd   Male   71.41736 13.68334        95        32\n3       4th Female   65.02993 13.81512        94        30\n4       4th   Male   70.55134 13.23573        95        32\n5       5th Female   64.60223 14.30171        92        30\n6       5th   Male   71.22735 13.73720        97        31\n7       6th Female   64.32432 14.26521        94        31\n8       6th   Male   71.48963 13.25760        95        36\n9      &gt;6th Female   62.83200 13.95831        96        39\n10     &gt;6th   Male   71.25843 13.79063        96        34\nBạn hãy vẽ đồ thị cột để được hình bên dưới, với các điểm point đại diện cho giá trị maximum của từng nhóm.\nBạn có thể cần lấy factor của cột semester để sắp xếp thứ tự cột cho phù hợp.",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>**Đồ thị barchart**</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>**Đồ thị barchart**</span>"
     ]
   },
   {
@@ -325,7 +325,7 @@
     "text": "TipĐáp án\n\n\n\n\n\n\n\n\ndf_kq &lt;- readRDS(\"dataset/bar1.rds\")\n\ndf_kq$semester &lt;- factor(df_kq$semester,\n                         levels = c(\"3rd\",\n                                    \"4th\",\n                                    \"5th\",\n                                    \"6th\",\n                                    \"&gt;6th\"))\n\nlibrary(ggplot2)\nggplot(data = df_kq,\n       mapping = aes(x = semester,\n                     y = mean_score,\n                     fill = gender)) +\n  \n  geom_col(position = \"dodge\",\n           width = 0.8,\n           color = \"black\") +\n  \n  # geom_boxplot() +\n  \n  geom_point(data = df_kq,\n             mapping = aes(x = semester,\n                           y = max_score,\n                           color = gender,\n                           fill = gender,\n                           group = gender),\n             position = position_dodge(width = 0.8)) +\n  \n  # nếu dùng scale_y để set limit thì sẽ không được\n  # scale_y_continuous(limits = c(50,100)) +\n  \n  geom_errorbar(mapping = aes(ymin = mean_score,\n                              ymax = mean_score + sd_score),\n                width = 0.8,\n                colour = \"black\",\n                position = \"dodge\",\n                alpha = 1,\n                linewidth = 0.5) +\n  \n  theme_bw(base_size = 16) +\n  \n  coord_cartesian(ylim = c(40,100))",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>**Đồ thị barchart**</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>**Đồ thị barchart**</span>"
     ]
   },
   {
@@ -380,7 +380,7 @@
     "text": "TipĐáp án\n\n\n\n\n\n\n\n\nlibrary(ggplot2)\n\nggplot(data = df,\n       mapping = aes(x = Temp,\n                     y = Wind)) +\n  \n  geom_point() +\n  \n  theme_bw(base_size = 16)",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
     ]
   },
   {
@@ -391,7 +391,7 @@
     "text": "Câu 2\n\n\n\n\nTiếp theo câu 1, bạn hãy thêm đường trend line/regression vào đồ thị\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipĐáp án\n\n\n\n\n\n\n\n\nlibrary(ggplot2)\n\nggplot(data = df,\n       mapping = aes(x = Temp,\n                     y = Wind)) +\n  \n  geom_point() +\n  \n  geom_smooth(method = \"lm\",\n              color = \"darkgreen\",\n              fill = \"royalblue\",\n              alpha = 0.25) +\n  \n  theme_bw(base_size = 16)",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
     ]
   },
   {
@@ -402,7 +402,7 @@
     "text": "Câu 3\n\n\n\n\nTiếp theo câu 2, bạn hãy thêm giá trị R-squared và p-value vào đồ thị.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipĐáp án\n\n\n\n\n\n\n\nĐầu tiên ta cần thực hiện model hồi quy đơn biến của Wind theo Temp sau đó trích ra giá trị R-squared và p-value tương ứng.\n\nfit &lt;- lm(Wind ~ Temp,\n          data = df)\nsummary(fit)\n\n\nCall:\nlm(formula = Wind ~ Temp, data = df)\n\nResiduals:\n   Min     1Q Median     3Q    Max \n-8.578 -2.449 -0.226  1.985  9.740 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  23.2337     2.1124   11.00  &lt; 2e-16 ***\nTemp         -0.1705     0.0269   -6.33  2.6e-09 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 3.14 on 151 degrees of freedom\nMultiple R-squared:  0.21,  Adjusted R-squared:  0.205 \nF-statistic: 40.1 on 1 and 151 DF,  p-value: 2.64e-09\n\nsummary(fit) -&gt; kq\n\n###\nr_squared &lt;- round(kq$r.squared, digits = 4)\n\nr_squared_text &lt;- bquote(R^2 == .(r_squared))\n###\n\n###\n# tùy chỉnh tham số để thay đổi số lượng số \n# sau dấu thập phân trong p-value\noptions(scipen = 4)\noptions(digits = 3)\np_value &lt;- kq$coefficients[2,4]\n\n# p-value thường rất nhỏ, ggplot2 sẽ hiển thị nhiều số 0,\n# ta cần chủ động chụp lại kết quả p-value trên console\np_value_ok &lt;- capture.output(cat(p_value)) \n# p_value_ok\np_value &lt;- p_value_ok\n\np_value_text &lt;- bquote('p-value' == .(p_value))\n# p_value_text \n###\n\nTạo đối tượng lưu text sử dụng package grid\n\nlibrary(ggplot2)\nlibrary(grid)\n\ngrob_r_squared_text &lt;- grobTree(... = textGrob(label = r_squared_text, \n                          x = 0.95, \n                          y = 0.95, \n                          hjust = 1,\n                          vjust = 1,\n                          gp = gpar(col = \"blue\",\n                                    fontsize = 13,\n                                    fontface = \"italic\")))\n\ngrob_p_value_text &lt;- grobTree(... = textGrob(label = p_value_text, \n                          x = 0.95, \n                          y = 0.85, \n                          hjust = 1,\n                          vjust = 1,\n                          gp = gpar(col = \"blue\",\n                                    fontsize = 13,\n                                    fontface = \"italic\")))\n\nChèn văn bản vào đồ thị sử dụng lệnh annotation_custom()\n\nggplot(data = df,\n       mapping = aes(x = Temp,\n                     y = Wind)) +\n  \n  geom_point() +\n  \n  annotation_custom(grob_r_squared_text) +\n  \n  annotation_custom(grob_p_value_text) +\n  \n  geom_smooth(method = \"lm\",\n              color = \"darkgreen\",\n              fill = \"royalblue\",\n              alpha = 0.25) + \n  \n  theme_bw(base_size = 16) +\n  \n  labs(x = \"Temp\",\n       y = \"Wind\",\n       title = \"Wind ~ Temp\")\n\n\n\n\n\n\n\n\n\n\n\n\nCredit: Cảm ơn Dr. Trương Kim đã gợi ý cho mình về dạng đồ thị này.",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
     ]
   },
   {
@@ -413,7 +413,7 @@
     "text": "Câu 1\nTừ khóa: confidence interval\nBạn có dữ liệu sau về thông số đo lường của 31 cây black cherry.\ntrees -&gt; df\n\ndf\n\n   Girth Height Volume\n1    8.3     70   10.3\n2    8.6     65   10.3\n3    8.8     63   10.2\n4   10.5     72   16.4\n5   10.7     81   18.8\n6   10.8     83   19.7\n7   11.0     66   15.6\n8   11.0     75   18.2\n9   11.1     80   22.6\n10  11.2     75   19.9\n11  11.3     79   24.2\n12  11.4     76   21.0\n13  11.4     76   21.4\n14  11.7     69   21.3\n15  12.0     75   19.1\n16  12.9     74   22.2\n17  12.9     85   33.8\n18  13.3     86   27.4\n19  13.7     71   25.7\n20  13.8     64   24.9\n21  14.0     78   34.5\n22  14.2     80   31.7\n23  14.5     74   36.3\n24  16.0     72   38.3\n25  16.3     77   42.6\n26  17.3     81   55.4\n27  17.5     82   55.7\n28  17.9     80   58.3\n29  18.0     80   51.5\n30  18.0     80   51.0\n31  20.6     87   77.0\nBạn hãy vẽ đồ thị như hình bên dưới.",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>**Cách vẽ đường 95% CI**</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>**Cách vẽ đường 95% CI**</span>"
     ]
   },
   {
@@ -424,7 +424,7 @@
     "text": "TipĐáp án\n\n\n\n\n\n\n\nĐể vẽ khoảng tin cậy sử dụng lệnh polygon() ta cần sắp xếp trục X (Height) theo thứ tự từ nhỏ đến lớn (hoặc ngược lại) để R vẽ đúng như yêu cầu.\n\nlibrary(dplyr)\n\ndf |&gt; dplyr:::arrange(Height) -&gt; df\n\nplot(Volume ~ Height,\n     ylim = c(0, 100),\n     data = df)\n\nfit &lt;- lm(Volume ~ Height,\n              data = df)\n\nabline(fit, col = \"red\")\n\npred_CI &lt;- predict(fit,\n                   interval = \"confidence\")\n\n# add polygon and overlplot the lines\npolygon(x = c(df$Height, rev(df$Height)),\n        y = c(pred_CI[ , 2], rev(pred_CI[ , 3])),\n        col = adjustcolor(\"lightblue\", alpha.f = 0.5),\n        border = NA)\n\nlines(df$Height,\n      pred_CI[ , 2],\n      lty = 2,\n      col = \"purple\",\n      lwd = 2)\n\nlines(df$Height,\n      pred_CI[ , 3],\n      lty = 2,\n      col = \"purple\",\n      lwd = 2)",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>**Cách vẽ đường 95% CI**</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>**Cách vẽ đường 95% CI**</span>"
     ]
   },
   {
@@ -435,7 +435,7 @@
     "text": "Câu 1\nBạn có dữ liệu sau về thông số đo lường của các cây black cherry.\ntrees -&gt; df\n\ndf[1:12, ]\n\n   Girth Height Volume\n1    8.3     70   10.3\n2    8.6     65   10.3\n3    8.8     63   10.2\n4   10.5     72   16.4\n5   10.7     81   18.8\n6   10.8     83   19.7\n7   11.0     66   15.6\n8   11.0     75   18.2\n9   11.1     80   22.6\n10  11.2     75   19.9\n11  11.3     79   24.2\n12  11.4     76   21.0\nBạn hãy xuất ra file Excel và có định dạng format như sau.",
     "crumbs": [
       "[**Các lệnh format văn bản**]{style='color:blue'}",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>**Cách format file Excel**</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>**Cách format file Excel**</span>"
     ]
   },
   {
@@ -446,7 +446,139 @@
     "text": "TipĐáp án\n\n\n\n\n\n\n\nCụm lệnh sau sẽ thực hiện theo logic:\n\nBạn có một dataset df\nSau đó ta tạo đối tượng wb đính kèm dataset này và các đặc điểm cần format\nTa export ra file df_styled.xlsx\n\n\ntrees -&gt; df\n\nlibrary(openxlsx)\n\n# lệnh này save file .xlsx như thông thường (without format)\n# openxlsx:::write.xlsx(df, \"df_trees.xlsx\")\n\nwb &lt;- openxlsx:::createWorkbook()\n\nopenxlsx:::addWorksheet(wb, \"Sheet 1\")\n\nopenxlsx:::writeData(wb, \"Sheet 1\", df)\n\nheader_style &lt;- openxlsx:::createStyle(fontSize = 12, \n                            fontColour = \"black\",\n                            fgFill = \"yellow\", \n                            textDecoration = \"bold\",\n                            halign = \"center\")\n\nopenxlsx:::addStyle(wb,\n         sheet = \"Sheet 1\", \n         header_style, \n         rows = 1, \n         cols = 1:ncol(df), \n         gridExpand = TRUE)\n\nopenxlsx:::saveWorkbook(wb, \"dataset/df_styled.xlsx\", overwrite = TRUE)",
     "crumbs": [
       "[**Các lệnh format văn bản**]{style='color:blue'}",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>**Cách format file Excel**</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>**Cách format file Excel**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-ifelse-forloop.html",
+    "href": "cac-lenh-ifelse-forloop.html",
+    "title": "Các lệnh ifelse, forloop",
+    "section": "",
+    "text": "Câu 1\nBạn có dữ liệu sau về thông số đo lường của các cây black cherry.\ntrees -&gt; df\n\ndf[1:12, ]\n\n   Girth Height Volume\n1    8.3     70   10.3\n2    8.6     65   10.3\n3    8.8     63   10.2\n4   10.5     72   16.4\n5   10.7     81   18.8\n6   10.8     83   19.7\n7   11.0     66   15.6\n8   11.0     75   18.2\n9   11.1     80   22.6\n10  11.2     75   19.9\n11  11.3     79   24.2\n12  11.4     76   21.0\nBạn hãy xuất ra file Excel và có định dạng format như sau.",
+    "crumbs": [
+      "[**Các lệnh ifelse, forloop**]{style='color:blue'}",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Các lệnh ifelse, forloop**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-ifelse-forloop.html#cau-1",
+    "href": "cac-lenh-ifelse-forloop.html#cau-1",
+    "title": "Các lệnh ifelse, forloop",
+    "section": "",
+    "text": "TipĐáp án\n\n\n\n\n\n\n\nCụm lệnh sau sẽ thực hiện theo logic:\n\nBạn có một dataset df\nSau đó ta tạo đối tượng wb đính kèm dataset này và các đặc điểm cần format\nTa export ra file df_styled.xlsx\n\n\ntrees -&gt; df\n\nlibrary(openxlsx)\n\n# lệnh này save file .xlsx như thông thường (without format)\n# openxlsx:::write.xlsx(df, \"df_trees.xlsx\")\n\nwb &lt;- openxlsx:::createWorkbook()\n\nopenxlsx:::addWorksheet(wb, \"Sheet 1\")\n\nopenxlsx:::writeData(wb, \"Sheet 1\", df)\n\nheader_style &lt;- openxlsx:::createStyle(fontSize = 12, \n                            fontColour = \"black\",\n                            fgFill = \"yellow\", \n                            textDecoration = \"bold\",\n                            halign = \"center\")\n\nopenxlsx:::addStyle(wb,\n         sheet = \"Sheet 1\", \n         header_style, \n         rows = 1, \n         cols = 1:ncol(df), \n         gridExpand = TRUE)\n\nopenxlsx:::saveWorkbook(wb, \"dataset/df_styled.xlsx\", overwrite = TRUE)",
+    "crumbs": [
+      "[**Các lệnh ifelse, forloop**]{style='color:blue'}",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Các lệnh ifelse, forloop**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-if-else-for-loop.html",
+    "href": "cac-lenh-if-else-for-loop.html",
+    "title": "Các lệnh if-else, for-loop",
+    "section": "",
+    "text": "Câu 1\nBạn có bộ dữ liệu sau gồm 6 file Excel là số điểm của học sinh ở các lớp 7a1 đến 7a6.\nCụ thể, ta xem trong 1 file, ta sẽ thấy có 2 cột là ĐIỂM SỐ và KẾT QUẢ.\nBạn hãy thực hiện lệnh điều kiện để phân loại điểm số học sinh như sau:\n• 10 - 9 : GIỎI\n• &gt;9 - 7 : KHÁ\n• &gt;7 - 5 : TRUNG BÌNH KHÁ\n• &gt;5 - 3 : YẾU\n• &gt;3 - 0 : KÉM\n• KHÔNG CÓ ĐIỂM: KHÔNG ĐI THI\nSau đó bạn thực hiện lệnh vòng lặp for-loop để tính toán nhanh các file này và xuất ra folder OUTPUT.\nTa sẽ làm 2 cách, sử dụng function dplyr:::case_when() xuất ra folder OUTPUT_1 và function if-else của Base R xuất ra folder OUTPUT_2.",
+    "crumbs": [
+      "[**Các lệnh if-else, for-loop**]{style='color:blue'}",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Các lệnh if-else, for-loop**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-if-else-for-loop.html#cau-1",
+    "href": "cac-lenh-if-else-for-loop.html#cau-1",
+    "title": "Các lệnh if-else, for-loop",
+    "section": "Import file",
+    "text": "TipĐáp án\n\n\n\n\n\n\n\n\nImport file\n\nfile_data &lt;- list.files(path = \"dataset/lop_7a\",\n                        full.names = TRUE, \n                        pattern = \"*.xlsx\")\n\nfile_data\n\n[1] \"dataset/lop_7a/lop_7a1.xlsx\" \"dataset/lop_7a/lop_7a2.xlsx\" \"dataset/lop_7a/lop_7a3.xlsx\" \"dataset/lop_7a/lop_7a4.xlsx\" \"dataset/lop_7a/lop_7a5.xlsx\" \"dataset/lop_7a/lop_7a6.xlsx\"\n\n\n\n\nDùng dplyr:::case_when()\n\nXử lý chuẩn 1 file\n\nlibrary(readxl)\ndf &lt;- read_excel(file_data[1])\ndf &lt;- as.data.frame(df)\nhead(df, n = 10)\n\n   STT             HỌ  TÊN ĐIỂM SỐ KẾT QUẢ\n1    1    Nguyễn Diệp Hạnh       9      NA\n2    2       Trần Nam Tuấn       5      NA\n3    3     Hoàng Ngọc Liên       3      NA\n4    4 Nguyễn Thị Kim  Mai      10      NA\n5    5      Phạm Hồng Thúy       5      NA\n6    6        Vũ Việt  Thư       2      NA\n7    7      Phạm Ngọc  Trí       8      NA\n8    8       Đào Minh Hạnh       4      NA\n9    9        Đỗ Minh Hưng       9      NA\n10  10      Lê Phương Liên       5      NA\n\n\n\nlibrary(dplyr)\n\n# thứ tự điều kiện ưu tiên đi từ trên xuống\n\ndf |&gt; dplyr:::mutate(`KẾT QUẢ` = case_when(\n  \n  is.na(`ĐIỂM SỐ`) == TRUE ~ \"KHÔNG ĐI THI\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 9 & `ĐIỂM SỐ` &lt;= 10 ~ \"GIỎI\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 7 & `ĐIỂM SỐ` &lt; 9 ~ \"KHÁ\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 5 & `ĐIỂM SỐ` &lt; 7 ~ \"TRUNG BÌNH KHÁ\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 3 & `ĐIỂM SỐ` &lt; 5 ~ \"YẾU\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 0 & `ĐIỂM SỐ` &lt; 3 ~ \"KÉM\",\n  \n  .default = NA\n  \n)) -&gt; df_out_1\n\n# Kiểm tra kết quả xem lệnh này đã tính toán ổn trên 1 file chưa\nhead(df_out_1, n = 10)\n\n   STT             HỌ  TÊN ĐIỂM SỐ        KẾT QUẢ\n1    1    Nguyễn Diệp Hạnh       9           GIỎI\n2    2       Trần Nam Tuấn       5 TRUNG BÌNH KHÁ\n3    3     Hoàng Ngọc Liên       3            YẾU\n4    4 Nguyễn Thị Kim  Mai      10           GIỎI\n5    5      Phạm Hồng Thúy       5 TRUNG BÌNH KHÁ\n6    6        Vũ Việt  Thư       2            KÉM\n7    7      Phạm Ngọc  Trí       8            KHÁ\n8    8       Đào Minh Hạnh       4            YẾU\n9    9        Đỗ Minh Hưng       9           GIỎI\n10  10      Lê Phương Liên       5 TRUNG BÌNH KHÁ\n\n\n\n\nXử lý vòng lặp for-loop\n\nlibrary(openxlsx)\n\nfor(i in 1:length(file_data)){\n\nlibrary(readxl)\ndf &lt;- read_excel(file_data[i])\ndf &lt;- as.data.frame(df)\n\nlibrary(dplyr)\n\n# thứ tự điều kiện ưu tiên đi từ trên xuống\n\ndf |&gt; dplyr:::mutate(`KẾT QUẢ` = case_when(\n  \n  is.na(`ĐIỂM SỐ`) == TRUE ~ \"KHÔNG ĐI THI\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 9 & `ĐIỂM SỐ` &lt;= 10 ~ \"GIỎI\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 7 & `ĐIỂM SỐ` &lt; 9 ~ \"KHÁ\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 5 & `ĐIỂM SỐ` &lt; 7 ~ \"TRUNG BÌNH KHÁ\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 3 & `ĐIỂM SỐ` &lt; 5 ~ \"YẾU\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 0 & `ĐIỂM SỐ` &lt; 3 ~ \"KÉM\",\n  \n  .default = NA\n  \n)) -&gt; df_out\n\n\noutput &lt;- basename(file_data[i])\n\noutput_name &lt;- paste0(\"dataset/lop_7a/OUTPUT_1/\", output)\n\nopenxlsx:::write.xlsx(x = df_out,\n                      file = output_name)\n\n}\n\n\n\n\nDùng ifelse()\n\nXử lý chuẩn 1 file\n\nlibrary(readxl)\ndf &lt;- read_excel(file_data[1])\ndf &lt;- as.data.frame(df)\nhead(df, n = 10)\n\n   STT             HỌ  TÊN ĐIỂM SỐ KẾT QUẢ\n1    1    Nguyễn Diệp Hạnh       9      NA\n2    2       Trần Nam Tuấn       5      NA\n3    3     Hoàng Ngọc Liên       3      NA\n4    4 Nguyễn Thị Kim  Mai      10      NA\n5    5      Phạm Hồng Thúy       5      NA\n6    6        Vũ Việt  Thư       2      NA\n7    7      Phạm Ngọc  Trí       8      NA\n8    8       Đào Minh Hạnh       4      NA\n9    9        Đỗ Minh Hưng       9      NA\n10  10      Lê Phương Liên       5      NA\n\n\n\ndiem_thi &lt;- df$`ĐIỂM SỐ`\n\n\nfor(j in 1:length(diem_thi)) {\n        \n        if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 9) {\n            \n          df$`KẾT QUẢ`[j] &lt;- \"GIỎI\"\n          \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 7) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"KHÁ\"\n            \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 5) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"TRUNG BÌNH KHÁ\"\n            \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 3) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"YẾU\"\n            \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 0) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"KÉM\"\n            \n        } else if(is.na(diem_thi[j])) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"KHÔNG ĐI THI\"\n            \n        } else {\n          \n            df$`KẾT QUẢ`[j] &lt;- NA\n            \n        }\n        \n}\n\ndf -&gt; df_out_2\n\nKiểm tra xem kết quả tính bằng case_when() và if-else có giống nhau không.\n\nidentical(df_out_1, df_out_2)\n\n[1] TRUE\n\n\n\n\nXử lý vòng lặp for-loop\n\nlibrary(openxlsx)\n\nfor(i in 1:length(file_data)){\n\nlibrary(readxl)\ndf &lt;- read_excel(file_data[i])\n\ndf &lt;- as.data.frame(df)\n\ndiem_thi &lt;- df$`ĐIỂM SỐ`\n\n\nfor(j in 1:length(diem_thi)) {\n        \n        if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 9) {\n            \n          df$`KẾT QUẢ`[j] &lt;- \"GIỎI\"\n          \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 7) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"KHÁ\"\n            \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 5) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"TRUNG BÌNH KHÁ\"\n            \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 3) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"YẾU\"\n            \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 0) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"KÉM\"\n            \n        } else if(is.na(diem_thi[j])) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"KHÔNG ĐI THI\"\n            \n        } else {\n          \n            df$`KẾT QUẢ`[j] &lt;- NA\n            \n        }\n        \n}\n\ndf -&gt; df_out\n\noutput &lt;- basename(file_data[i])\n\noutput_name &lt;- paste0(\"dataset/lop_7a/OUTPUT_2/\", output)\n\nopenxlsx:::write.xlsx(x = df_out,\n                      file = output_name)\n\n}\n\n\n\n\nCHECK\nTa có thể import lại cùng một file được tính bằng 2 cách khác nhau để xem kết quả có giống nhau không, cho thấy dùng cách case_when() hay if-else đều được.\n\nlibrary(readxl)\nlop_7a5_cach1 &lt;- read_excel(\"dataset/lop_7a/OUTPUT_1/lop_7a5.xlsx\")\n\nlop_7a5_cach2 &lt;- read_excel(\"dataset/lop_7a/OUTPUT_2/lop_7a5.xlsx\")\n\nidentical(lop_7a5_cach1, lop_7a5_cach2)\n\n[1] TRUE",
+    "crumbs": [
+      "[**Các lệnh if-else, for-loop**]{style='color:blue'}",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Các lệnh if-else, for-loop**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-if-else-for-loop.html#xử-lý-chuẩn-1-file",
+    "href": "cac-lenh-if-else-for-loop.html#xử-lý-chuẩn-1-file",
+    "title": "Các lệnh if-else, for-loop",
+    "section": "",
+    "text": "library(readxl)\ndf &lt;- read_excel(file_data[1])\ndf &lt;- as.data.frame(df)\nhead(df, n = 10)\n\n   STT             HỌ  TÊN ĐIỂM SỐ KẾT QUẢ\n1    1    Nguyễn Diệp Hạnh       9      NA\n2    2       Trần Nam Tuấn       5      NA\n3    3     Hoàng Ngọc Liên       3      NA\n4    4 Nguyễn Thị Kim  Mai      10      NA\n5    5      Phạm Hồng Thúy       5      NA\n6    6        Vũ Việt  Thư       2      NA\n7    7      Phạm Ngọc  Trí       8      NA\n8    8       Đào Minh Hạnh       4      NA\n9    9        Đỗ Minh Hưng       9      NA\n10  10      Lê Phương Liên       5      NA\n\n\n\nlibrary(dplyr)\n\n# thứ tự điều kiện ưu tiên đi từ trên xuống\n\ndf |&gt; dplyr:::mutate(`KẾT QUẢ` = case_when(\n  \n  is.na(`ĐIỂM SỐ`) == TRUE ~ \"KHÔNG ĐI THI\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 9 & `ĐIỂM SỐ` &lt;= 10 ~ \"GIỎI\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 7 & `ĐIỂM SỐ` &lt; 9 ~ \"KHÁ\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 5 & `ĐIỂM SỐ` &lt; 7 ~ \"TRUNG BÌNH KHÁ\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 3 & `ĐIỂM SỐ` &lt; 5 ~ \"YẾU\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 0 & `ĐIỂM SỐ` &lt; 3 ~ \"KÉM\",\n  \n  .default = NA\n  \n)) -&gt; df_out_1\n\n# Kiểm tra kết quả xem lệnh này đã tính toán ổn trên 1 file chưa\nhead(df_out_1, n = 10)\n\n   STT             HỌ  TÊN ĐIỂM SỐ        KẾT QUẢ\n1    1    Nguyễn Diệp Hạnh       9           GIỎI\n2    2       Trần Nam Tuấn       5 TRUNG BÌNH KHÁ\n3    3     Hoàng Ngọc Liên       3            YẾU\n4    4 Nguyễn Thị Kim  Mai      10           GIỎI\n5    5      Phạm Hồng Thúy       5 TRUNG BÌNH KHÁ\n6    6        Vũ Việt  Thư       2            KÉM\n7    7      Phạm Ngọc  Trí       8            KHÁ\n8    8       Đào Minh Hạnh       4            YẾU\n9    9        Đỗ Minh Hưng       9           GIỎI\n10  10      Lê Phương Liên       5 TRUNG BÌNH KHÁ",
+    "crumbs": [
+      "[**Các lệnh if-else, for-loop**]{style='color:blue'}",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Các lệnh if-else, for-loop**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-if-else-for-loop.html#xử-lý-vòng-lặp-for-loop",
+    "href": "cac-lenh-if-else-for-loop.html#xử-lý-vòng-lặp-for-loop",
+    "title": "Các lệnh if-else, for-loop",
+    "section": "Xử lý vòng lặp for-loop",
+    "text": "Xử lý vòng lặp for-loop\n\nlibrary(openxlsx)\n\nfor(i in 1:length(file_data)){\n\nlibrary(readxl)\ndf &lt;- read_excel(file_data[i])\ndf &lt;- as.data.frame(df)\n\nlibrary(dplyr)\n\n# thứ tự điều kiện ưu tiên đi từ trên xuống\n\ndf |&gt; dplyr:::mutate(`KẾT QUẢ` = case_when(\n  \n  is.na(`ĐIỂM SỐ`) == TRUE ~ \"KHÔNG ĐI THI\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 9 & `ĐIỂM SỐ` &lt;= 10 ~ \"GIỎI\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 7 & `ĐIỂM SỐ` &lt; 9 ~ \"KHÁ\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 5 & `ĐIỂM SỐ` &lt; 7 ~ \"TRUNG BÌNH KHÁ\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 3 & `ĐIỂM SỐ` &lt; 5 ~ \"YẾU\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 0 & `ĐIỂM SỐ` &lt; 3 ~ \"KÉM\",\n  \n  .default = NA\n  \n)) -&gt; df_out\n\n\noutput &lt;- basename(file_data[i])\n\noutput_name &lt;- paste0(\"dataset/lop_7a/OUTPUT_1/\", output)\n\nopenxlsx:::write.xlsx(x = df_out,\n                      file = output_name)\n\n}",
+    "crumbs": [
+      "[**Các lệnh if-else, for-loop**]{style='color:blue'}",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Các lệnh if-else, for-loop**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-if-else-for-loop.html#xử-lý-chuẩn-1-file-1",
+    "href": "cac-lenh-if-else-for-loop.html#xử-lý-chuẩn-1-file-1",
+    "title": "Các lệnh if-else, for-loop",
+    "section": "Xử lý chuẩn 1 file",
+    "text": "Xử lý chuẩn 1 file\n\nlibrary(readxl)\ndf &lt;- read_excel(file_data[1])\ndf &lt;- as.data.frame(df)\nhead(df, n = 10)\n\n   STT             HỌ  TÊN ĐIỂM SỐ KẾT QUẢ\n1    1    Nguyễn Diệp Hạnh       9      NA\n2    2       Trần Nam Tuấn       5      NA\n3    3     Hoàng Ngọc Liên       3      NA\n4    4 Nguyễn Thị Kim  Mai      10      NA\n5    5      Phạm Hồng Thúy       5      NA\n6    6        Vũ Việt  Thư       2      NA\n7    7      Phạm Ngọc  Trí       8      NA\n8    8       Đào Minh Hạnh       4      NA\n9    9        Đỗ Minh Hưng       9      NA\n10  10      Lê Phương Liên       5      NA\n\n\n\ndiem_thi &lt;- df$`ĐIỂM SỐ`\n\n\nfor(j in 1:length(diem_thi)) {\n        \n        if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 9) {\n            \n          df$`KẾT QUẢ`[j] &lt;- \"GIỎI\"\n          \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 7) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"KHÁ\"\n            \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 5) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"TRUNG BÌNH KHÁ\"\n            \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 3) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"YẾU\"\n            \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 0) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"KÉM\"\n            \n        } else if(is.na(diem_thi[j])) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"KHÔNG ĐI THI\"\n            \n        } else {\n          \n            df$`KẾT QUẢ`[j] &lt;- NA\n            \n        }\n        \n}\n\ndf -&gt; df_out_2\n\nKiểm tra xem kết quả tính bằng case_when() và ifelse có giống nhau không.\n\nidentical(df_out_1, df_out_2)\n\n[1] TRUE",
+    "crumbs": [
+      "[**Các lệnh if-else, for-loop**]{style='color:blue'}",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Các lệnh if-else, for-loop**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-if-else-for-loop.html#xử-lý-vòng-lặp-for-loop-1",
+    "href": "cac-lenh-if-else-for-loop.html#xử-lý-vòng-lặp-for-loop-1",
+    "title": "Các lệnh if-else, for-loop",
+    "section": "Xử lý vòng lặp for-loop",
+    "text": "Xử lý vòng lặp for-loop\n\nlibrary(openxlsx)\n\nfor(i in 1:length(file_data)){\n\nlibrary(readxl)\ndf &lt;- read_excel(file_data[i])\n\ndf &lt;- as.data.frame(df)\n\ndiem_thi &lt;- df$`ĐIỂM SỐ`\n\n\nfor(j in 1:length(diem_thi)) {\n        \n        if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 9) {\n            \n          df$`KẾT QUẢ`[j] &lt;- \"GIỎI\"\n          \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 7) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"KHÁ\"\n            \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 5) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"TRUNG BÌNH KHÁ\"\n            \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 3) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"YẾU\"\n            \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 0) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"KÉM\"\n            \n        } else if(is.na(diem_thi[j])) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"KHÔNG ĐI THI\"\n            \n        } else {\n          \n            df$`KẾT QUẢ`[j] &lt;- NA\n            \n        }\n        \n}\n\ndf -&gt; df_out\n\noutput &lt;- basename(file_data[i])\n\noutput_name &lt;- paste0(\"dataset/lop_7a/OUTPUT_2/\", output)\n\nopenxlsx:::write.xlsx(x = df_out,\n                      file = output_name)\n\n}",
+    "crumbs": [
+      "[**Các lệnh if-else, for-loop**]{style='color:blue'}",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Các lệnh if-else, for-loop**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-if-else-for-loop.html#import-file",
+    "href": "cac-lenh-if-else-for-loop.html#import-file",
+    "title": "Các lệnh if-else, for-loop",
+    "section": "",
+    "text": "file_data &lt;- list.files(path = \"dataset/lop_7a\",\n                        full.names = TRUE, \n                        pattern = \"*.xlsx\")\n\nfile_data\n\n[1] \"dataset/lop_7a/lop_7a1.xlsx\" \"dataset/lop_7a/lop_7a2.xlsx\" \"dataset/lop_7a/lop_7a3.xlsx\" \"dataset/lop_7a/lop_7a4.xlsx\" \"dataset/lop_7a/lop_7a5.xlsx\" \"dataset/lop_7a/lop_7a6.xlsx\"",
+    "crumbs": [
+      "[**Các lệnh if-else, for-loop**]{style='color:blue'}",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Các lệnh if-else, for-loop**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-if-else-for-loop.html#dùng-dplyrcase_when",
+    "href": "cac-lenh-if-else-for-loop.html#dùng-dplyrcase_when",
+    "title": "Các lệnh if-else, for-loop",
+    "section": "Dùng dplyr:::case_when()",
+    "text": "Dùng dplyr:::case_when()\n\nXử lý chuẩn 1 file\n\nlibrary(readxl)\ndf &lt;- read_excel(file_data[1])\ndf &lt;- as.data.frame(df)\nhead(df, n = 10)\n\n   STT             HỌ  TÊN ĐIỂM SỐ KẾT QUẢ\n1    1    Nguyễn Diệp Hạnh       9      NA\n2    2       Trần Nam Tuấn       5      NA\n3    3     Hoàng Ngọc Liên       3      NA\n4    4 Nguyễn Thị Kim  Mai      10      NA\n5    5      Phạm Hồng Thúy       5      NA\n6    6        Vũ Việt  Thư       2      NA\n7    7      Phạm Ngọc  Trí       8      NA\n8    8       Đào Minh Hạnh       4      NA\n9    9        Đỗ Minh Hưng       9      NA\n10  10      Lê Phương Liên       5      NA\n\n\n\nlibrary(dplyr)\n\n# thứ tự điều kiện ưu tiên đi từ trên xuống\n\ndf |&gt; dplyr:::mutate(`KẾT QUẢ` = case_when(\n  \n  is.na(`ĐIỂM SỐ`) == TRUE ~ \"KHÔNG ĐI THI\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 9 & `ĐIỂM SỐ` &lt;= 10 ~ \"GIỎI\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 7 & `ĐIỂM SỐ` &lt; 9 ~ \"KHÁ\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 5 & `ĐIỂM SỐ` &lt; 7 ~ \"TRUNG BÌNH KHÁ\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 3 & `ĐIỂM SỐ` &lt; 5 ~ \"YẾU\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 0 & `ĐIỂM SỐ` &lt; 3 ~ \"KÉM\",\n  \n  .default = NA\n  \n)) -&gt; df_out_1\n\n# Kiểm tra kết quả xem lệnh này đã tính toán ổn trên 1 file chưa\nhead(df_out_1, n = 10)\n\n   STT             HỌ  TÊN ĐIỂM SỐ        KẾT QUẢ\n1    1    Nguyễn Diệp Hạnh       9           GIỎI\n2    2       Trần Nam Tuấn       5 TRUNG BÌNH KHÁ\n3    3     Hoàng Ngọc Liên       3            YẾU\n4    4 Nguyễn Thị Kim  Mai      10           GIỎI\n5    5      Phạm Hồng Thúy       5 TRUNG BÌNH KHÁ\n6    6        Vũ Việt  Thư       2            KÉM\n7    7      Phạm Ngọc  Trí       8            KHÁ\n8    8       Đào Minh Hạnh       4            YẾU\n9    9        Đỗ Minh Hưng       9           GIỎI\n10  10      Lê Phương Liên       5 TRUNG BÌNH KHÁ\n\n\n\n\nXử lý vòng lặp for-loop\n\nlibrary(openxlsx)\n\nfor(i in 1:length(file_data)){\n\nlibrary(readxl)\ndf &lt;- read_excel(file_data[i])\ndf &lt;- as.data.frame(df)\n\nlibrary(dplyr)\n\n# thứ tự điều kiện ưu tiên đi từ trên xuống\n\ndf |&gt; dplyr:::mutate(`KẾT QUẢ` = case_when(\n  \n  is.na(`ĐIỂM SỐ`) == TRUE ~ \"KHÔNG ĐI THI\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 9 & `ĐIỂM SỐ` &lt;= 10 ~ \"GIỎI\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 7 & `ĐIỂM SỐ` &lt; 9 ~ \"KHÁ\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 5 & `ĐIỂM SỐ` &lt; 7 ~ \"TRUNG BÌNH KHÁ\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 3 & `ĐIỂM SỐ` &lt; 5 ~ \"YẾU\",\n  \n  (is.na(`ĐIỂM SỐ`) == FALSE) &  `ĐIỂM SỐ` &gt;= 0 & `ĐIỂM SỐ` &lt; 3 ~ \"KÉM\",\n  \n  .default = NA\n  \n)) -&gt; df_out\n\n\noutput &lt;- basename(file_data[i])\n\noutput_name &lt;- paste0(\"dataset/lop_7a/OUTPUT_1/\", output)\n\nopenxlsx:::write.xlsx(x = df_out,\n                      file = output_name)\n\n}",
+    "crumbs": [
+      "[**Các lệnh if-else, for-loop**]{style='color:blue'}",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Các lệnh if-else, for-loop**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-if-else-for-loop.html#dùng-ifelse",
+    "href": "cac-lenh-if-else-for-loop.html#dùng-ifelse",
+    "title": "Các lệnh if-else, for-loop",
+    "section": "Dùng ifelse()",
+    "text": "Dùng ifelse()\n\nXử lý chuẩn 1 file\n\nlibrary(readxl)\ndf &lt;- read_excel(file_data[1])\ndf &lt;- as.data.frame(df)\nhead(df, n = 10)\n\n   STT             HỌ  TÊN ĐIỂM SỐ KẾT QUẢ\n1    1    Nguyễn Diệp Hạnh       9      NA\n2    2       Trần Nam Tuấn       5      NA\n3    3     Hoàng Ngọc Liên       3      NA\n4    4 Nguyễn Thị Kim  Mai      10      NA\n5    5      Phạm Hồng Thúy       5      NA\n6    6        Vũ Việt  Thư       2      NA\n7    7      Phạm Ngọc  Trí       8      NA\n8    8       Đào Minh Hạnh       4      NA\n9    9        Đỗ Minh Hưng       9      NA\n10  10      Lê Phương Liên       5      NA\n\n\n\ndiem_thi &lt;- df$`ĐIỂM SỐ`\n\n\nfor(j in 1:length(diem_thi)) {\n        \n        if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 9) {\n            \n          df$`KẾT QUẢ`[j] &lt;- \"GIỎI\"\n          \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 7) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"KHÁ\"\n            \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 5) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"TRUNG BÌNH KHÁ\"\n            \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 3) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"YẾU\"\n            \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 0) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"KÉM\"\n            \n        } else if(is.na(diem_thi[j])) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"KHÔNG ĐI THI\"\n            \n        } else {\n          \n            df$`KẾT QUẢ`[j] &lt;- NA\n            \n        }\n        \n}\n\ndf -&gt; df_out_2\n\nKiểm tra xem kết quả tính bằng case_when() và if-else có giống nhau không.\n\nidentical(df_out_1, df_out_2)\n\n[1] TRUE\n\n\n\n\nXử lý vòng lặp for-loop\n\nlibrary(openxlsx)\n\nfor(i in 1:length(file_data)){\n\nlibrary(readxl)\ndf &lt;- read_excel(file_data[i])\n\ndf &lt;- as.data.frame(df)\n\ndiem_thi &lt;- df$`ĐIỂM SỐ`\n\n\nfor(j in 1:length(diem_thi)) {\n        \n        if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 9) {\n            \n          df$`KẾT QUẢ`[j] &lt;- \"GIỎI\"\n          \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 7) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"KHÁ\"\n            \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 5) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"TRUNG BÌNH KHÁ\"\n            \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 3) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"YẾU\"\n            \n        } else if(!(is.na(diem_thi[j])) & diem_thi[j] &gt;= 0) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"KÉM\"\n            \n        } else if(is.na(diem_thi[j])) {\n          \n            df$`KẾT QUẢ`[j] &lt;- \"KHÔNG ĐI THI\"\n            \n        } else {\n          \n            df$`KẾT QUẢ`[j] &lt;- NA\n            \n        }\n        \n}\n\ndf -&gt; df_out\n\noutput &lt;- basename(file_data[i])\n\noutput_name &lt;- paste0(\"dataset/lop_7a/OUTPUT_2/\", output)\n\nopenxlsx:::write.xlsx(x = df_out,\n                      file = output_name)\n\n}",
+    "crumbs": [
+      "[**Các lệnh if-else, for-loop**]{style='color:blue'}",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Các lệnh if-else, for-loop**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-if-else-for-loop.html#check",
+    "href": "cac-lenh-if-else-for-loop.html#check",
+    "title": "Các lệnh if-else, for-loop",
+    "section": "CHECK",
+    "text": "CHECK\nTa có thể import lại cùng một file được tính bằng 2 cách khác nhau để xem kết quả có giống nhau không, cho thấy dùng cách case_when() hay if-else đều được.\n\nlibrary(readxl)\nlop_7a5_cach1 &lt;- read_excel(\"dataset/lop_7a/OUTPUT_1/lop_7a5.xlsx\")\n\nlop_7a5_cach2 &lt;- read_excel(\"dataset/lop_7a/OUTPUT_2/lop_7a5.xlsx\")\n\nidentical(lop_7a5_cach1, lop_7a5_cach2)\n\n[1] TRUE",
+    "crumbs": [
+      "[**Các lệnh if-else, for-loop**]{style='color:blue'}",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Các lệnh if-else, for-loop**</span>"
     ]
   }
 ]

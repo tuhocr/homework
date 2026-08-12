@@ -21,6 +21,9 @@ book:
         - cac-lenh-ve-data-frame.qmd
         - cac-lenh-sap-xep-du-lieu.qmd
         - cac-lenh-regular-expression.qmd
+    - part: "[**Các lệnh if-else, for-loop**]{style='color:blue'}" 
+      chapters:
+        - cac-lenh-if-else-for-loop.qmd      
     - part: "[**Các lệnh vẽ đồ thị**]{style='color:blue'}" 
       chapters:
         - cac-lenh-ve-do-thi-scatterplot.qmd 
