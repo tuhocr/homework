@@ -29,7 +29,10 @@ book:
     - part: "[**Các lệnh thống kê**]{style='color:blue'}" 
       chapters:
         - cac-lenh-thong-ke-mo-ta.qmd     
-    
+    - part: "[**Các lệnh format văn bản**]{style='color:blue'}" 
+      chapters:
+        - cach-format-file-excel.qmd
+        
   sidebar:
     style: "docked"
     search: true
@@ -49,7 +52,7 @@ format:
     number-sections: false
     page-layout: full
     grid:
-      sidebar-width: 260px
+      sidebar-width: 270px
   # pdf:
   #   documentclass: scrreprt
 engine: knitr

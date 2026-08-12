@@ -426,5 +426,27 @@
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>**Cách vẽ đường 95% CI**</span>"
     ]
+  },
+  {
+    "objectID": "cach-format-file-excel.html",
+    "href": "cach-format-file-excel.html",
+    "title": "Cách format file Excel",
+    "section": "",
+    "text": "Câu 1\nBạn có dữ liệu sau về thông số đo lường của các cây black cherry.\ntrees -&gt; df\n\ndf[1:12, ]\n\n   Girth Height Volume\n1    8.3     70   10.3\n2    8.6     65   10.3\n3    8.8     63   10.2\n4   10.5     72   16.4\n5   10.7     81   18.8\n6   10.8     83   19.7\n7   11.0     66   15.6\n8   11.0     75   18.2\n9   11.1     80   22.6\n10  11.2     75   19.9\n11  11.3     79   24.2\n12  11.4     76   21.0\nBạn hãy xuất ra file Excel và có định dạng format như sau.",
+    "crumbs": [
+      "[**Các lệnh format văn bản**]{style='color:blue'}",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>**Cách format file Excel**</span>"
+    ]
+  },
+  {
+    "objectID": "cach-format-file-excel.html#cau-1",
+    "href": "cach-format-file-excel.html#cau-1",
+    "title": "Cách format file Excel",
+    "section": "",
+    "text": "TipĐáp án\n\n\n\n\n\n\n\nCụm lệnh sau sẽ thực hiện theo logic:\n\nBạn có một dataset df\nSau đó ta tạo đối tượng wb đính kèm dataset này và các đặc điểm cần format\nTa export ra file df_styled.xlsx\n\n\ntrees -&gt; df\n\nlibrary(openxlsx)\n\n# lệnh này save file .xlsx như thông thường (without format)\n# openxlsx:::write.xlsx(df, \"df_trees.xlsx\")\n\nwb &lt;- openxlsx:::createWorkbook()\n\nopenxlsx:::addWorksheet(wb, \"Sheet 1\")\n\nopenxlsx:::writeData(wb, \"Sheet 1\", df)\n\nheader_style &lt;- openxlsx:::createStyle(fontSize = 12, \n                            fontColour = \"black\",\n                            fgFill = \"yellow\", \n                            textDecoration = \"bold\",\n                            halign = \"center\")\n\nopenxlsx:::addStyle(wb,\n         sheet = \"Sheet 1\", \n         header_style, \n         rows = 1, \n         cols = 1:ncol(df), \n         gridExpand = TRUE)\n\nopenxlsx:::saveWorkbook(wb, \"dataset/df_styled.xlsx\", overwrite = TRUE)",
+    "crumbs": [
+      "[**Các lệnh format văn bản**]{style='color:blue'}",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>**Cách format file Excel**</span>"
+    ]
   }
 ]
