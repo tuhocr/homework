@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Bài tập R",
     "section": "",
-    "text": "Giới thiệu\nMến chào bạn, trang blog này là danh sách bài tập thực hành R được mình tổng hợp dựa trên các tình huống trong thực tế khi support xử lý dữ liệu cho các bạn làm nghiên cứu thời gian qua, phục vụ chủ yếu cho các buổi đào tạo R định kỳ trong khóa học R Programming Course for Data Science.\nMình nhận thấy cách học nhanh nhất, chắc nhất là thông qua việc làm bài tập. Learning by doing.\nVì vậy, mình biên soạn các bài tập này từ dễ đến khó, kèm theo lời giải giúp các bạn luyện tập các tình huống thường gặp, nếu có gì thắc mắc bạn lên Page Cộng Đồng Tự Học R để tạo post thảo luận cùng mọi người nha.\nĐặc biệt, nhằm phổ biến rộng rãi kỹ năng R đến các bạn sinh viên và học viên cao học, mình đã upload full các chuyên đề HDSD R hiện đã có hơn 120 video bài giảng được mình biên soạn kỹ lưỡng về các lệnh R căn bản bao gồm source code và dataset thực hành.\nWebsite: https://tuhocr.com/\nYoutube: https://www.youtube.com/@tuhocr/courses\nGithub: https://github.com/tuhocr/homework\nNếu bạn thấy trang này hữu ích, bạn có thể ủng hộ mình cốc cafe theo thông tin chuyển khoản sau nhé. Cảm ơn các bạn rất nhiều. Together we learn and grow!\nNgân hàng Thương mại Cổ phần Á Châu ACB\n193208059\nNGUYEN TAN DUC",
+    "text": "Giới thiệu\nMến chào bạn, trang blog này là danh sách bài tập thực hành R được mình tổng hợp dựa trên các tình huống trong thực tế khi support xử lý dữ liệu cho các bạn làm nghiên cứu thời gian qua, phục vụ chủ yếu cho các buổi đào tạo R định kỳ trong khóa học R Programming Course for Data Science.\nMình nhận thấy cách học nhanh nhất, chắc nhất là thông qua việc làm bài tập. Learning by doing.\nVì vậy, mình biên soạn các bài tập này từ dễ đến khó, kèm theo lời giải giúp các bạn luyện tập các tình huống thường gặp, nếu có gì thắc mắc bạn lên Page Cộng Đồng Tự Học R để tạo post thảo luận cùng mọi người nha.\nĐặc biệt, nhằm phổ biến rộng rãi kỹ năng R đến các bạn sinh viên và học viên cao học, mình đã upload full các chuyên đề HDSD R hiện đã có hơn 120 video bài giảng được mình biên soạn kỹ lưỡng về các lệnh R căn bản bao gồm source code và dataset thực hành.\nClass: https://class.tuhocr.com/\nYoutube: https://www.youtube.com/@tuhocr/courses\nGithub: https://github.com/tuhocr/homework\nNếu bạn thấy trang này hữu ích, bạn có thể ủng hộ mình cốc cafe theo thông tin chuyển khoản sau nhé. Cảm ơn các bạn rất nhiều. Together we learn and grow!\nNgân hàng Thương mại Cổ phần Á Châu ACB\n193208059\nNGUYEN TAN DUC",
     "crumbs": [
       "**Giới thiệu**"
     ]
@@ -333,7 +333,7 @@
     "href": "cac-lenh-regular-expression.html",
     "title": "Các lệnh về biểu thức chính quy",
     "section": "",
-    "text": "Escape character\nTừ khóa: regular expression; regex\nDấu . sẽ giúp dò ra tất cả các từ. Muốn chọn dấu chấm ký tự trong chữ ID.1 thì ta phải escape dấu . này bằng lệnh \\., tuy nhiên trong R thì dấu \\ này có 1 ý nghĩa khác, nên ta phải escape thêm \\ để trả về được dấu \\, nên sau cùng ta có \\\\. là để định vị dấu . ký tự.\na &lt;- c(\"lap trinh\", \"R\", \"Programming\", \"study\", \"ID.1\")\n\na\n\n[1] \"lap trinh\"   \"R\"           \"Programming\" \"study\"       \"ID.1\"       \n\ngrep(pattern = \".\",\n     x = a,\n     value = T,\n     perl = T)\n\n[1] \"lap trinh\"   \"R\"           \"Programming\" \"study\"       \"ID.1\"       \n\ngrep(pattern = \"\\\\.\",\n     x = a,\n     value = T,\n     perl = T)\n\n[1] \"ID.1\"",
+    "text": "Câu 1\nTừ khóa: regular expression; regex\nTa có vector sau:\nLàm sạch các ký hiệu -1, -2, -3 ra khỏi các ký tự này, để thu được vector sau:",
     "crumbs": [
       "[**Các lệnh R căn bản**]{style='color:blue'}",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>**Các lệnh về biểu thức chính quy**</span>"
@@ -579,6 +579,28 @@
     "crumbs": [
       "[**Các lệnh if-else, for-loop**]{style='color:blue'}",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>**Các lệnh if-else, for-loop**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-regular-expression.html#cau-1",
+    "href": "cac-lenh-regular-expression.html#cau-1",
+    "title": "Các lệnh về biểu thức chính quy",
+    "section": "",
+    "text": "pH-1\npH-2\npH-3\nsalinity-1\nsalinity-2\nsalinity-3\n\n\n\n\n\n\n\n\npH\npH\npH\nsalinity\nsalinity\nsalinity\n\n\n\n\n\n\n\n\n\nTipĐáp án\n\n\n\n\n\n\n\nTa có nhiều cách để thực hiện, có thể clean từng bước loại các ký tự -1, -2, -3 hoặc dùng trong 1 câu lệnh\nCách 1: Clean từng bước\n\ngsub(pattern = \"\\\\-1\", # có thể escape dấu - bằng 2 dấu \\\\\n     replacement = \"\",\n     a) -&gt; a_clean\n\ncat(a_clean, sep = \"\\n\")\n\npH\npH-2\npH-3\nsalinity\nsalinity-2\nsalinity-3\n\ngsub(pattern = \"\\\\-2\", # đè lại chính vector cũ\n     replacement = \"\",\n     a_clean) -&gt; a_clean\n\ncat(a_clean, sep = \"\\n\")\n\npH\npH\npH-3\nsalinity\nsalinity\nsalinity-3\n\ngsub(pattern = \"\\\\-3\", # đè lại chính vector cũ\n     replacement = \"\",\n     a_clean) -&gt; a_clean\n\ncat(a_clean, sep = \"\\n\")\n\npH\npH\npH\nsalinity\nsalinity\nsalinity\n\n\nCách 2: Dùng regular expression\n\n# lưu ý khoảng trắng cũng là 1 ký tự, ảnh hưởng đến kết quả dò chuỗi\n\n# dùng lệnh OR grouping\ngsub(pattern = \"-(1|2|3)\", \n     replacement = \"\",\n     a) -&gt; a_clean\n\ncat(a_clean, sep = \"\\n\")\n\npH\npH\npH\nsalinity\nsalinity\nsalinity\n\n# dùng lệnh OR từng ký tự\ngsub(pattern = \"-1|-2|-3\",\n     replacement = \"\",\n     a) -&gt; a_clean\n\ncat(a_clean, sep = \"\\n\")\n\npH\npH\npH\nsalinity\nsalinity\nsalinity\n\ngsub(pattern = \"\\\\-1|\\\\-2|\\\\-3\",\n     replacement = \"\",\n     a) -&gt; a_clean\n\ncat(a_clean, sep = \"\\n\")\n\npH\npH\npH\nsalinity\nsalinity\nsalinity\n\n# dùng digits\ngsub(pattern = \"-[1-3]\",\n     replacement = \"\",\n     a) -&gt; a_clean\n\ncat(a_clean, sep = \"\\n\")\n\npH\npH\npH\nsalinity\nsalinity\nsalinity\n\n# loại bỏ mở rộng, chỉ cần có ký hiệu - và theo sau là numeric thì làm sạch\ngsub(pattern = \"-[0-9]+\",\n     replacement = \"\",\n     a) -&gt; a_clean\n\ncat(a_clean, sep = \"\\n\")\n\npH\npH\npH\nsalinity\nsalinity\nsalinity",
+    "crumbs": [
+      "[**Các lệnh R căn bản**]{style='color:blue'}",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>**Các lệnh về biểu thức chính quy**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-regular-expression.html#escape-character",
+    "href": "cac-lenh-regular-expression.html#escape-character",
+    "title": "Các lệnh về biểu thức chính quy",
+    "section": "Escape character",
+    "text": "Escape character\nDấu . sẽ giúp dò ra tất cả các từ. Muốn chọn dấu chấm ký tự trong chữ ID.1 thì ta phải escape dấu . này bằng lệnh \\., tuy nhiên trong R thì dấu \\ này có 1 ý nghĩa khác, nên ta phải escape thêm \\ để trả về được dấu \\, nên sau cùng ta có \\\\. là để định vị dấu . ký tự.\n\na &lt;- c(\"lap trinh\", \"R\", \"Programming\", \"study\", \"ID.1\")\n\na\n\n[1] \"lap trinh\"   \"R\"           \"Programming\" \"study\"       \"ID.1\"       \n\ngrep(pattern = \".\",\n     x = a,\n     value = T,\n     perl = T)\n\n[1] \"lap trinh\"   \"R\"           \"Programming\" \"study\"       \"ID.1\"       \n\ngrep(pattern = \"\\\\.\",\n     x = a,\n     value = T,\n     perl = T)\n\n[1] \"ID.1\"",
+    "crumbs": [
+      "[**Các lệnh R căn bản**]{style='color:blue'}",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>**Các lệnh về biểu thức chính quy**</span>"
     ]
   }
 ]

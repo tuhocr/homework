@@ -13,6 +13,116 @@ knitr::opts_chunk$set(message = FALSE,
 
 Từ khóa: regular expression; regex
 
+## **Câu 1** {#cau-1}
+
+Ta có vector sau:
+
+<style>
+div.blue pre { background-color:#fff2cc; font-size: 22px; }
+</style>
+
+<div class = "blue">
+
+```{r, echo = F}
+a <- c("pH-1", "pH-2", "pH-3", "salinity-1", "salinity-2", "salinity-3")
+cat(a, sep = "\n")
+```
+
+</div>
+
+Làm sạch các ký hiệu `-1`, `-2`, `-3` ra khỏi các ký tự này, để thu được vector sau:
+
+<style>
+div.blue pre { background-color:#fff2cc; font-size: 22px; }
+</style>
+
+<div class = "blue">
+
+```{r, echo = F}
+gsub(pattern = "-1|-2|-3",
+     replacement = "",
+     a) -> a_clean
+
+cat(a_clean, sep = "\n")
+```
+
+</div>
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+Ta có nhiều cách để thực hiện, có thể clean từng bước loại các ký tự `-1`, `-2`, `-3` hoặc dùng trong 1 câu lệnh 
+
+**Cách 1: Clean từng bước**
+
+```{r}
+
+gsub(pattern = "\\-1", # có thể escape dấu - bằng 2 dấu \\
+     replacement = "",
+     a) -> a_clean
+
+cat(a_clean, sep = "\n")
+
+gsub(pattern = "\\-2", # đè lại chính vector cũ
+     replacement = "",
+     a_clean) -> a_clean
+
+cat(a_clean, sep = "\n")
+
+gsub(pattern = "\\-3", # đè lại chính vector cũ
+     replacement = "",
+     a_clean) -> a_clean
+
+cat(a_clean, sep = "\n")
+```
+
+**Cách 2: Dùng regular expression**
+
+```{r}
+# lưu ý khoảng trắng cũng là 1 ký tự, ảnh hưởng đến kết quả dò chuỗi
+
+# dùng lệnh OR grouping
+gsub(pattern = "-(1|2|3)", 
+     replacement = "",
+     a) -> a_clean
+
+cat(a_clean, sep = "\n")
+
+# dùng lệnh OR từng ký tự
+gsub(pattern = "-1|-2|-3",
+     replacement = "",
+     a) -> a_clean
+
+cat(a_clean, sep = "\n")
+
+gsub(pattern = "\\-1|\\-2|\\-3",
+     replacement = "",
+     a) -> a_clean
+
+cat(a_clean, sep = "\n")
+
+# dùng digits
+gsub(pattern = "-[1-3]",
+     replacement = "",
+     a) -> a_clean
+
+cat(a_clean, sep = "\n")
+
+# loại bỏ mở rộng, chỉ cần có ký hiệu - và theo sau là numeric thì làm sạch
+gsub(pattern = "-[0-9]+",
+     replacement = "",
+     a) -> a_clean
+
+cat(a_clean, sep = "\n")
+```
+</div>
+
+:::
+
 ## Escape character
 
 Dấu `.` sẽ giúp dò ra tất cả các từ. Muốn chọn dấu chấm ký tự trong chữ `ID.1` thì ta phải escape dấu `.` này bằng lệnh `\.`, tuy nhiên trong R thì dấu `\` này có 1 ý nghĩa khác, nên ta phải escape thêm `\` để trả về được dấu `\`, nên sau cùng ta có `\\.` là để định vị dấu `.` ký tự.
@@ -177,6 +287,10 @@ g2
 
 identical(g_ok, g2)
 ```
+
+
+
+
 
 # Tài liệu tham khảo
 

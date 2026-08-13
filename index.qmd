@@ -8,7 +8,7 @@ Vì vậy, mình biên soạn các bài tập này từ dễ đến khó, kèm t
 
 Đặc biệt, nhằm phổ biến rộng rãi kỹ năng R đến các bạn sinh viên và học viên cao học, mình đã upload full các chuyên đề HDSD R hiện đã có hơn 120 video bài giảng được mình biên soạn kỹ lưỡng về các lệnh R căn bản bao gồm source code và dataset thực hành.
 
-Website: <https://tuhocr.com/>
+Class: <https://class.tuhocr.com/>
 
 Youtube: <https://www.youtube.com/@tuhocr/courses>
 
