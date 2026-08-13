@@ -9,7 +9,7 @@ book:
   date: last-modified
   date-format: "[Cập nhật:] YYYY MMMM DD"
   # cover-image: cover.png
-  favicon: favicon.png
+  favicon: logo.png
   # comments:
   #   hypothesis:
   #     theme: clean

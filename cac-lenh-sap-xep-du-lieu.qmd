@@ -127,7 +127,7 @@ df <- as.data.frame(df)
 df
 ```
 
-Bạn hãy chuyển dữ liệu thành dạng true long (mỗi dòng là 1 ID không trùng lặp với 1 value) và dạng semi long (có 2 value trên cùng ID).
+Bạn hãy chuyển dữ liệu thành dạng true long (mỗi dòng là đại diện cho 1 quan sát duy nhất (1 value), mã ID có thể bị trùng lặp) và dạng semi long (mỗi dòng là có thể có nhiều quan sát trên cùng mã ID, mã ID có thể bị trùng lặp).
 
 ![](image/p4.png)
 
