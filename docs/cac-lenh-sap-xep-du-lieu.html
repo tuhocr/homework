@@ -437,6 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#cau-1" id="toc-cau-1" class="nav-link active" data-scroll-target="#cau-1"><strong>Câu 1</strong></a></li>
+  <li><a href="#cau-2" id="toc-cau-2" class="nav-link" data-scroll-target="#cau-2"><strong>Câu 2</strong></a></li>
   </ul>
 </nav>
     </div>
@@ -675,6 +676,147 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(df_clean1, df_clean2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-2" class="level2">
+<h2 class="anchored" data-anchor-id="cau-2"><strong>Câu 2</strong></h2>
+<p>Sử dụng dataset <a href="https://filedn.com/lesyJpQOCafj7katNqunAxu/TUHOCR/RPC/202607_thanks_K2/dataset/ket_qua_phan_tich_dat_full.xlsx"><code>ket_qua_phan_tich_dat_full.xlsx</code></a></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"dataset/ket_qua_phan_tich_dat_full.xlsx"</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">range =</span> <span class="st">"B7:I10"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(df)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  TT   location pH-1 pH-2 pH-3 salinity-1 salinity-2 salinity-3
+1  1  BÌNH MINH 5.33 5.92  6.1       3.20       2.80       2.90
+2  2 CHÂU THÀNH 6.50 7.20  6.8       0.25       0.00       0.01
+3  3    ĐỨC HÒA 5.99 5.40  5.7       2.10       1.58       2.00</code></pre>
+</div>
+</div>
+<p>Bạn hãy chuyển dữ liệu thành dạng true long (mỗi dòng là 1 ID không trùng lặp với 1 value) và dạng semi long (có 2 value trên cùng ID).</p>
+<p><img src="image/p4.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Đáp án">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Đáp án
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class="yes123">
+<p><strong>Chuyển về dạng true long</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>df_long <span class="ot">&lt;-</span> tidyr<span class="sc">:::</span><span class="fu">pivot_longer</span>(df, </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                                <span class="co">#vị trí các cột cần rã về dạng long</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                                <span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                                <span class="at">names_to =</span> <span class="st">"chitieu"</span>, </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                                <span class="at">values_to =</span> <span class="st">"ketqua"</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>df_long <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(df_long)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># cần loại bỏ các ký tự -1, -2, -3</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>df_long</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   TT   location    chitieu ketqua
+1   1  BÌNH MINH       pH-1   5.33
+2   1  BÌNH MINH       pH-2   5.92
+3   1  BÌNH MINH       pH-3   6.10
+4   1  BÌNH MINH salinity-1   3.20
+5   1  BÌNH MINH salinity-2   2.80
+6   1  BÌNH MINH salinity-3   2.90
+7   2 CHÂU THÀNH       pH-1   6.50
+8   2 CHÂU THÀNH       pH-2   7.20
+9   2 CHÂU THÀNH       pH-3   6.80
+10  2 CHÂU THÀNH salinity-1   0.25
+11  2 CHÂU THÀNH salinity-2   0.00
+12  2 CHÂU THÀNH salinity-3   0.01
+13  3    ĐỨC HÒA       pH-1   5.99
+14  3    ĐỨC HÒA       pH-2   5.40
+15  3    ĐỨC HÒA       pH-3   5.70
+16  3    ĐỨC HÒA salinity-1   2.10
+17  3    ĐỨC HÒA salinity-2   1.58
+18  3    ĐỨC HÒA salinity-3   2.00</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">"-(1|2|3)"</span>,</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">replacement =</span> <span class="st">""</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>     df_long<span class="sc">$</span>chitieu) <span class="ot">-&gt;</span> df_long<span class="sc">$</span>chitieu</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># sắp xếp lại theo thứ tự</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>df_long <span class="sc">|&gt;</span> dplyr<span class="sc">:::</span><span class="fu">arrange</span>(chitieu, location) <span class="ot">-&gt;</span> df_long</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>df_long</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   TT   location  chitieu ketqua
+1   1  BÌNH MINH       pH   5.33
+2   1  BÌNH MINH       pH   5.92
+3   1  BÌNH MINH       pH   6.10
+4   2 CHÂU THÀNH       pH   6.50
+5   2 CHÂU THÀNH       pH   7.20
+6   2 CHÂU THÀNH       pH   6.80
+7   3    ĐỨC HÒA       pH   5.99
+8   3    ĐỨC HÒA       pH   5.40
+9   3    ĐỨC HÒA       pH   5.70
+10  1  BÌNH MINH salinity   3.20
+11  1  BÌNH MINH salinity   2.80
+12  1  BÌNH MINH salinity   2.90
+13  2 CHÂU THÀNH salinity   0.25
+14  2 CHÂU THÀNH salinity   0.00
+15  2 CHÂU THÀNH salinity   0.01
+16  3    ĐỨC HÒA salinity   2.10
+17  3    ĐỨC HÒA salinity   1.58
+18  3    ĐỨC HÒA salinity   2.00</code></pre>
+</div>
+</div>
+<p><strong>Chuyển về dạng semi-long</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(splitstackshape)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ta muốn giữ lại cột `pH` và `salinity`, theo quy tắc separator -1, -2, -3 thì loại đi</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "TT"         "location"   "pH-1"       "pH-2"       "pH-3"       "salinity-1" "salinity-2" "salinity-3"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df_semi <span class="ot">&lt;-</span> splitstackshape<span class="sc">:::</span><span class="fu">Reshape</span>(df, </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                                     <span class="co"># cột giữ lại</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">id.vars =</span> <span class="fu">c</span>(<span class="st">"TT"</span>, <span class="st">"location"</span>),</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                                     <span class="co"># cột chuyển qua semi-long</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">var.stubs =</span> <span class="fu">c</span>(<span class="st">"pH"</span>, <span class="st">"salinity"</span>),</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>                                     <span class="co"># quy ước gộp cột theo ký tự separator</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">sep =</span> <span class="st">"-"</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>df_semi <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(df_semi)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>df_semi <span class="sc">|&gt;</span> dplyr<span class="sc">:::</span><span class="fu">arrange</span>(location, time) <span class="ot">-&gt;</span> df_semi</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>df_semi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  TT   location time   pH salinity
+1  1  BÌNH MINH    1 5.33     3.20
+2  1  BÌNH MINH    2 5.92     2.80
+3  1  BÌNH MINH    3 6.10     2.90
+4  2 CHÂU THÀNH    1 6.50     0.25
+5  2 CHÂU THÀNH    2 7.20     0.00
+6  2 CHÂU THÀNH    3 6.80     0.01
+7  3    ĐỨC HÒA    1 5.99     2.10
+8  3    ĐỨC HÒA    2 5.40     1.58
+9  3    ĐỨC HÒA    3 5.70     2.00</code></pre>
+</div>
 </div>
 </div>
 </div>

@@ -113,9 +113,80 @@ identical(df_clean1, df_clean2)
 
 :::
 
+## **Câu 2** {#cau-2}
 
+Sử dụng dataset [`ket_qua_phan_tich_dat_full.xlsx`](https://filedn.com/lesyJpQOCafj7katNqunAxu/TUHOCR/RPC/202607_thanks_K2/dataset/ket_qua_phan_tich_dat_full.xlsx)
 
+```{r}
+library(readxl)
+df <- read_excel("dataset/ket_qua_phan_tich_dat_full.xlsx",
+                 range = "B7:I10")
 
+df <- as.data.frame(df)
+
+df
+```
+
+Bạn hãy chuyển dữ liệu thành dạng true long (mỗi dòng là 1 ID không trùng lặp với 1 value) và dạng semi long (có 2 value trên cùng ID).
+
+![](image/p4.png)
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+**Chuyển về dạng true long**
+```{r}
+library(tidyr)
+
+df_long <- tidyr:::pivot_longer(df, 
+                                #vị trí các cột cần rã về dạng long
+                                cols = c(3:8),
+                                names_to = "chitieu", 
+                                values_to = "ketqua")
+
+df_long <- as.data.frame(df_long)
+
+# cần loại bỏ các ký tự -1, -2, -3
+df_long
+
+gsub(pattern = "-(1|2|3)",
+     replacement = "",
+     df_long$chitieu) -> df_long$chitieu
+
+# sắp xếp lại theo thứ tự
+df_long |> dplyr:::arrange(chitieu, location) -> df_long
+df_long
+```
+
+**Chuyển về dạng semi-long**
+
+```{r}
+library(splitstackshape)
+
+# ta muốn giữ lại cột `pH` và `salinity`, theo quy tắc separator -1, -2, -3 thì loại đi
+names(df)
+
+df_semi <- splitstackshape:::Reshape(df, 
+                                     # cột giữ lại
+                                     id.vars = c("TT", "location"),
+                                     # cột chuyển qua semi-long
+                                     var.stubs = c("pH", "salinity"),
+                                     # quy ước gộp cột theo ký tự separator
+                                     sep = "-")
+
+df_semi <- as.data.frame(df_semi)
+
+df_semi |> dplyr:::arrange(location, time) -> df_semi
+
+df_semi
+```
+</div>
+
+:::
 
 
 
