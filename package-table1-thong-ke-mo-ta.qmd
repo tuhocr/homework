@@ -56,6 +56,8 @@ my.render.cat <- function(x) {
   
 }
 
+### render các biến numeric
+
 render.continuous.all <- function(x) {
   
     with(stats.default(x),
