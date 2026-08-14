@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Cách vẽ đường 95% CI – Bài tập R</title>
+<title>Package table1 – Bài tập R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./cac-lenh-thong-ke-mo-ta.html" rel="next">
-<link href="./cac-lenh-ve-do-thi-barchart.html" rel="prev">
+<link href="./cach-format-file-excel.html" rel="next">
+<link href="./cac-lenh-thong-ke-mo-ta.html" rel="prev">
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -112,6 +112,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<link href="site_libs/table1-1.0/table1_defaults.css" rel="stylesheet">
+
 
 
 </head>
@@ -287,7 +289,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cac-lenh-ve-do-thi-scatterplot.html"><span style="color:blue"><strong>Các lệnh vẽ đồ thị</strong></span></a></li><li class="breadcrumb-item"><a href="./cach-ve-duong-confidence-interval.html"><span class="chapter-title"><strong>Cách vẽ đường 95% CI</strong></span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cac-lenh-thong-ke-mo-ta.html"><span style="color:blue"><strong>Các lệnh thống kê</strong></span></a></li><li class="breadcrumb-item"><a href="./package-table1-thong-ke-mo-ta.html"><span class="chapter-title"><strong>Package <code>table1</code></strong></span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -389,7 +391,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cach-ve-duong-confidence-interval.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title"><strong>Cách vẽ đường 95% CI</strong></span></a>
+  <a href="./cach-ve-duong-confidence-interval.html" class="sidebar-item-text sidebar-link"><span class="chapter-title"><strong>Cách vẽ đường 95% CI</strong></span></a>
   </div>
 </li>
       </ul>
@@ -410,7 +412,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./package-table1-thong-ke-mo-ta.html" class="sidebar-item-text sidebar-link"><span class="chapter-title"><strong>Package <code>table1</code></strong></span></a>
+  <a href="./package-table1-thong-ke-mo-ta.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title"><strong>Package <code>table1</code></strong></span></a>
   </div>
 </li>
       </ul>
@@ -441,7 +443,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Mục lục</h2>
    
   <ul>
-  <li><a href="#cau-1" id="toc-cau-1" class="nav-link active" data-scroll-target="#cau-1"><strong>Câu 1</strong></a></li>
+  <li><a href="#cú-pháp-cơ-bản" id="toc-cú-pháp-cơ-bản" class="nav-link active" data-scroll-target="#cú-pháp-cơ-bản"><strong>Cú pháp cơ bản</strong></a></li>
+  <li><a href="#thay-dấu-.-decimal-point-thành-dấu" id="toc-thay-dấu-.-decimal-point-thành-dấu" class="nav-link" data-scroll-target="#thay-dấu-.-decimal-point-thành-dấu"><strong>Thay dấu <code>.</code> decimal point thành dấu <code>,</code></strong></a></li>
+  <li><a href="#xuất-kết-quả-ra-file-word-và-excel" id="toc-xuất-kết-quả-ra-file-word-và-excel" class="nav-link" data-scroll-target="#xuất-kết-quả-ra-file-word-và-excel"><strong>Xuất kết quả ra file Word và Excel</strong></a></li>
+  <li><a href="#tham-khảo" id="toc-tham-khảo" class="nav-link" data-scroll-target="#tham-khảo"><strong>Tham khảo</strong></a></li>
   </ul>
 </nav>
     </div>
@@ -449,9 +454,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content column-body" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cac-lenh-ve-do-thi-scatterplot.html"><span style="color:blue"><strong>Các lệnh vẽ đồ thị</strong></span></a></li><li class="breadcrumb-item"><a href="./cach-ve-duong-confidence-interval.html"><span class="chapter-title"><strong>Cách vẽ đường 95% CI</strong></span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cac-lenh-thong-ke-mo-ta.html"><span style="color:blue"><strong>Các lệnh thống kê</strong></span></a></li><li class="breadcrumb-item"><a href="./package-table1-thong-ke-mo-ta.html"><span class="chapter-title"><strong>Package <code>table1</code></strong></span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title"><strong>Cách vẽ đường 95% CI</strong></span></h1>
+<h1 class="title"><span class="chapter-title"><strong>Package <code>table1</code></strong></span></h1>
 </div>
 
 
@@ -468,128 +473,546 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Từ khóa: confidence interval</p>
-<section id="cau-1" class="level2">
-<h2 class="anchored" data-anchor-id="cau-1"><strong>Câu 1</strong></h2>
-<!-- <style> -->
-<!-- div.blue pre { background-color:#fff2cc; font-size: 22px; } -->
-<!-- </style> -->
-<!-- <div class = "blue"> -->
-<p>Bạn có dữ liệu sau về thông số đo lường của 31 cây black cherry.</p>
+<p>Đây là package chuyên để thực hiện thống kê mô tả rất hữu ích để tổng quát nhanh chóng một bộ dữ liệu, giúp tìm ra đặc điểm dữ liệu bị sai sót để người dùng có thể chỉnh sửa kịp thời. <a href="https://youtu.be/PzdvA7pEczo?si=gvkGhjAflVKyFdic&amp;t=7173">[record]</a></p>
+<section id="cú-pháp-cơ-bản" class="level2">
+<h2 class="anchored" data-anchor-id="cú-pháp-cơ-bản"><strong>Cú pháp cơ bản</strong></h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>trees <span class="ot">-&gt;</span> df</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Girth Height Volume
-1    8.3     70   10.3
-2    8.6     65   10.3
-3    8.8     63   10.2
-4   10.5     72   16.4
-5   10.7     81   18.8
-6   10.8     83   19.7
-7   11.0     66   15.6
-8   11.0     75   18.2
-9   11.1     80   22.6
-10  11.2     75   19.9
-11  11.3     79   24.2
-12  11.4     76   21.0
-13  11.4     76   21.4
-14  11.7     69   21.3
-15  12.0     75   19.1
-16  12.9     74   22.2
-17  12.9     85   33.8
-18  13.3     86   27.4
-19  13.7     71   25.7
-20  13.8     64   24.9
-21  14.0     78   34.5
-22  14.2     80   31.7
-23  14.5     74   36.3
-24  16.0     72   38.3
-25  16.3     77   42.6
-26  17.3     81   55.4
-27  17.5     82   55.7
-28  17.9     80   58.3
-29  18.0     80   51.5
-30  18.0     80   51.0
-31  20.6     87   77.0</code></pre>
-</div>
-</div>
-<p>Bạn hãy vẽ đồ thị như hình bên dưới.</p>
-<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(table1)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>vs <span class="ot">&lt;-</span> <span class="fu">factor</span>(mtcars<span class="sc">$</span>vs)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>cyl <span class="ot">&lt;-</span> <span class="fu">factor</span>(mtcars<span class="sc">$</span>cyl)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>am <span class="ot">&lt;-</span> <span class="fu">factor</span>(mtcars<span class="sc">$</span>am)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>table_freq <span class="ot">&lt;-</span> table1<span class="sc">:::</span><span class="fu">table1.formula</span>( <span class="sc">~</span> . <span class="sc">|</span> vs,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">topclass=</span><span class="st">"Rtable1-grid"</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">data =</span> mtcars,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># digits = 4,</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">render.continuous =</span> <span class="fu">c</span>(<span class="st">"Mean (± SD)"</span> <span class="ot">=</span> <span class="st">"MEAN (± SD)"</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Median [Min, Max]"</span> <span class="ot">=</span> <span class="st">"MEDIAN [MIN, MAX]"</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                          )</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>table_freq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="cach-ve-duong-confidence-interval_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="Rtable1">
+<table class="Rtable1-grid caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th class="rowlabel firstrow lastrow" data-quarto-table-cell-role="th"></th>
+<th class="firstrow lastrow" data-quarto-table-cell-role="th"><span class="stratlabel">0<br>
+<span class="stratn">(N=18)</span></span></th>
+<th class="firstrow lastrow" data-quarto-table-cell-role="th"><span class="stratlabel">1<br>
+<span class="stratn">(N=14)</span></span></th>
+<th class="firstrow lastrow" data-quarto-table-cell-role="th"><span class="stratlabel">Overall<br>
+<span class="stratn">(N=32)</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="rowlabel firstrow"><span class="varlabel">mpg</span></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+</tr>
+<tr class="even">
+<td class="rowlabel">Mean (± SD)</td>
+<td>16.6 (± 3.86)</td>
+<td>24.6 (± 5.38)</td>
+<td>20.1 (± 6.03)</td>
+</tr>
+<tr class="odd">
+<td class="rowlabel lastrow">Median [Min, Max]</td>
+<td class="lastrow">15.7 [10.4, 26.0]</td>
+<td class="lastrow">22.8 [17.8, 33.9]</td>
+<td class="lastrow">19.2 [10.4, 33.9]</td>
+</tr>
+<tr class="even">
+<td class="rowlabel firstrow"><span class="varlabel">cyl</span></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+</tr>
+<tr class="odd">
+<td class="rowlabel">4</td>
+<td>1 (5.6%)</td>
+<td>10 (71.4%)</td>
+<td>11 (34.4%)</td>
+</tr>
+<tr class="even">
+<td class="rowlabel">6</td>
+<td>3 (16.7%)</td>
+<td>4 (28.6%)</td>
+<td>7 (21.9%)</td>
+</tr>
+<tr class="odd">
+<td class="rowlabel lastrow">8</td>
+<td class="lastrow">14 (77.8%)</td>
+<td class="lastrow">0 (0%)</td>
+<td class="lastrow">14 (43.8%)</td>
+</tr>
+<tr class="even">
+<td class="rowlabel firstrow"><span class="varlabel">disp</span></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+</tr>
+<tr class="odd">
+<td class="rowlabel">Mean (± SD)</td>
+<td>307 (± 107)</td>
+<td>132 (± 56.9)</td>
+<td>231 (± 124)</td>
+</tr>
+<tr class="even">
+<td class="rowlabel lastrow">Median [Min, Max]</td>
+<td class="lastrow">311 [120, 472]</td>
+<td class="lastrow">121 [71.1, 258]</td>
+<td class="lastrow">196 [71.1, 472]</td>
+</tr>
+<tr class="odd">
+<td class="rowlabel firstrow"><span class="varlabel">hp</span></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+</tr>
+<tr class="even">
+<td class="rowlabel">Mean (± SD)</td>
+<td>190 (± 60.3)</td>
+<td>91.4 (± 24.4)</td>
+<td>147 (± 68.6)</td>
+</tr>
+<tr class="odd">
+<td class="rowlabel lastrow">Median [Min, Max]</td>
+<td class="lastrow">180 [91.0, 335]</td>
+<td class="lastrow">96.0 [52.0, 123]</td>
+<td class="lastrow">123 [52.0, 335]</td>
+</tr>
+<tr class="even">
+<td class="rowlabel firstrow"><span class="varlabel">drat</span></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+</tr>
+<tr class="odd">
+<td class="rowlabel">Mean (± SD)</td>
+<td>3.39 (± 0.474)</td>
+<td>3.86 (± 0.506)</td>
+<td>3.60 (± 0.535)</td>
+</tr>
+<tr class="even">
+<td class="rowlabel lastrow">Median [Min, Max]</td>
+<td class="lastrow">3.18 [2.76, 4.43]</td>
+<td class="lastrow">3.92 [2.76, 4.93]</td>
+<td class="lastrow">3.70 [2.76, 4.93]</td>
+</tr>
+<tr class="odd">
+<td class="rowlabel firstrow"><span class="varlabel">wt</span></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+</tr>
+<tr class="even">
+<td class="rowlabel">Mean (± SD)</td>
+<td>3.69 (± 0.904)</td>
+<td>2.61 (± 0.715)</td>
+<td>3.22 (± 0.978)</td>
+</tr>
+<tr class="odd">
+<td class="rowlabel lastrow">Median [Min, Max]</td>
+<td class="lastrow">3.57 [2.14, 5.42]</td>
+<td class="lastrow">2.62 [1.51, 3.46]</td>
+<td class="lastrow">3.33 [1.51, 5.42]</td>
+</tr>
+<tr class="even">
+<td class="rowlabel firstrow"><span class="varlabel">qsec</span></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+</tr>
+<tr class="odd">
+<td class="rowlabel">Mean (± SD)</td>
+<td>16.7 (± 1.09)</td>
+<td>19.3 (± 1.35)</td>
+<td>17.8 (± 1.79)</td>
+</tr>
+<tr class="even">
+<td class="rowlabel lastrow">Median [Min, Max]</td>
+<td class="lastrow">17.0 [14.5, 18.0]</td>
+<td class="lastrow">19.2 [16.9, 22.9]</td>
+<td class="lastrow">17.7 [14.5, 22.9]</td>
+</tr>
+<tr class="odd">
+<td class="rowlabel firstrow"><span class="varlabel">am</span></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+</tr>
+<tr class="even">
+<td class="rowlabel">0</td>
+<td>12 (66.7%)</td>
+<td>7 (50.0%)</td>
+<td>19 (59.4%)</td>
+</tr>
+<tr class="odd">
+<td class="rowlabel lastrow">1</td>
+<td class="lastrow">6 (33.3%)</td>
+<td class="lastrow">7 (50.0%)</td>
+<td class="lastrow">13 (40.6%)</td>
+</tr>
+<tr class="even">
+<td class="rowlabel firstrow"><span class="varlabel">gear</span></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+</tr>
+<tr class="odd">
+<td class="rowlabel">Mean (± SD)</td>
+<td>3.56 (± 0.856)</td>
+<td>3.86 (± 0.535)</td>
+<td>3.69 (± 0.738)</td>
+</tr>
+<tr class="even">
+<td class="rowlabel lastrow">Median [Min, Max]</td>
+<td class="lastrow">3.00 [3.00, 5.00]</td>
+<td class="lastrow">4.00 [3.00, 5.00]</td>
+<td class="lastrow">4.00 [3.00, 5.00]</td>
+</tr>
+<tr class="odd">
+<td class="rowlabel firstrow"><span class="varlabel">carb</span></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+</tr>
+<tr class="even">
+<td class="rowlabel">Mean (± SD)</td>
+<td>3.61 (± 1.54)</td>
+<td>1.79 (± 1.05)</td>
+<td>2.81 (± 1.62)</td>
+</tr>
+<tr class="odd">
+<td class="rowlabel lastrow">Median [Min, Max]</td>
+<td class="lastrow">4.00 [2.00, 8.00]</td>
+<td class="lastrow">1.50 [1.00, 4.00]</td>
+<td class="lastrow">2.00 [1.00, 8.00]</td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
 </div>
-<!-- </div> -->
-<div class="callout callout-style-default callout-tip callout-titled" title="Đáp án">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Đáp án
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<style>
-div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
-div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
-</style>
-<div class="yes123">
-<p>Để vẽ khoảng tin cậy sử dụng lệnh <code>polygon()</code> ta cần sắp xếp trục X (<code>Height</code>) theo thứ tự từ nhỏ đến lớn (hoặc ngược lại) để R vẽ đúng như yêu cầu.</p>
+</section>
+<section id="thay-dấu-.-decimal-point-thành-dấu" class="level2">
+<h2 class="anchored" data-anchor-id="thay-dấu-.-decimal-point-thành-dấu"><strong>Thay dấu <code>.</code> decimal point thành dấu <code>,</code></strong></h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> dplyr<span class="sc">:::</span><span class="fu">arrange</span>(Height) <span class="ot">-&gt;</span> df</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">### render các biến category (gsub dấu . thành dấu ,)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>my.render.cat <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">'.'</span>, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">replacement =</span> <span class="st">','</span>, </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="fu">c</span>(<span class="st">""</span>, </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>             <span class="fu">sapply</span>(table1<span class="sc">:::</span><span class="fu">stats.default</span>(x), </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">FUN =</span> <span class="cf">function</span>(y) { <span class="fu">with</span>(y, </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                                             <span class="fu">sprintf</span>(<span class="st">"%0.0f (%0.2f %%)"</span>, </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                                                     FREQ, </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                                                     PCT))}</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                        )),</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">fixed =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>render.continuous.all <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">with</span>(<span class="fu">stats.default</span>(x),</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>         <span class="fu">c</span>(<span class="st">""</span>,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Mean (SD)"</span> <span class="ot">=</span> <span class="fu">sprintf</span>(<span class="st">"%s (± %s)"</span>,</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">signif_pad</span>(MEAN, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">decimal.mark =</span> <span class="st">","</span>),</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">signif_pad</span>(SD, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">decimal.mark =</span> <span class="st">","</span>)),</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>           </span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Median [Min, Max]"</span> <span class="ot">=</span> <span class="fu">sprintf</span>(<span class="st">"%s [%s ; %s]"</span>,</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>                                         <span class="fu">signif_pad</span>(MEDIAN, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">decimal.mark =</span> <span class="st">","</span>),</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>                                         <span class="fu">signif_pad</span>(MIN, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">decimal.mark =</span> <span class="st">","</span>),</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>                                         <span class="fu">signif_pad</span>(MAX, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">decimal.mark =</span> <span class="st">","</span>)))</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>         )</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>table_freq <span class="ot">&lt;-</span> table1<span class="sc">:::</span><span class="fu">table1.formula</span>( <span class="sc">~</span> . <span class="sc">|</span> vs,</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>                       <span class="at">data =</span> mtcars,</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>                       <span class="at">topclass=</span><span class="st">"Rtable1-grid"</span>,</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>                       <span class="at">render.categorical =</span> my.render.cat,</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>                       <span class="at">render.continuous =</span> render.continuous.all</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>                       )</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>table_freq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="Rtable1">
+<table class="Rtable1-grid caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th class="rowlabel firstrow lastrow" data-quarto-table-cell-role="th"></th>
+<th class="firstrow lastrow" data-quarto-table-cell-role="th"><span class="stratlabel">0<br>
+<span class="stratn">(N=18)</span></span></th>
+<th class="firstrow lastrow" data-quarto-table-cell-role="th"><span class="stratlabel">1<br>
+<span class="stratn">(N=14)</span></span></th>
+<th class="firstrow lastrow" data-quarto-table-cell-role="th"><span class="stratlabel">Overall<br>
+<span class="stratn">(N=32)</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="rowlabel firstrow"><span class="varlabel">mpg</span></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+</tr>
+<tr class="even">
+<td class="rowlabel">Mean (SD)</td>
+<td>16,6 (± 3,86)</td>
+<td>24,6 (± 5,38)</td>
+<td>20,1 (± 6,03)</td>
+</tr>
+<tr class="odd">
+<td class="rowlabel lastrow">Median [Min, Max]</td>
+<td class="lastrow">15,7 [10,4 ; 26,0]</td>
+<td class="lastrow">22,8 [17,8 ; 33,9]</td>
+<td class="lastrow">19,2 [10,4 ; 33,9]</td>
+</tr>
+<tr class="even">
+<td class="rowlabel firstrow"><span class="varlabel">cyl</span></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+</tr>
+<tr class="odd">
+<td class="rowlabel">4</td>
+<td>1 (5,56 %)</td>
+<td>10 (71,43 %)</td>
+<td>11 (34,38 %)</td>
+</tr>
+<tr class="even">
+<td class="rowlabel">6</td>
+<td>3 (16,67 %)</td>
+<td>4 (28,57 %)</td>
+<td>7 (21,88 %)</td>
+</tr>
+<tr class="odd">
+<td class="rowlabel lastrow">8</td>
+<td class="lastrow">14 (77,78 %)</td>
+<td class="lastrow">0 (0,00 %)</td>
+<td class="lastrow">14 (43,75 %)</td>
+</tr>
+<tr class="even">
+<td class="rowlabel firstrow"><span class="varlabel">disp</span></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+</tr>
+<tr class="odd">
+<td class="rowlabel">Mean (SD)</td>
+<td>307 (± 107)</td>
+<td>132 (± 56,9)</td>
+<td>231 (± 124)</td>
+</tr>
+<tr class="even">
+<td class="rowlabel lastrow">Median [Min, Max]</td>
+<td class="lastrow">311 [120 ; 472]</td>
+<td class="lastrow">121 [71,1 ; 258]</td>
+<td class="lastrow">196 [71,1 ; 472]</td>
+</tr>
+<tr class="odd">
+<td class="rowlabel firstrow"><span class="varlabel">hp</span></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+</tr>
+<tr class="even">
+<td class="rowlabel">Mean (SD)</td>
+<td>190 (± 60,3)</td>
+<td>91,4 (± 24,4)</td>
+<td>147 (± 68,6)</td>
+</tr>
+<tr class="odd">
+<td class="rowlabel lastrow">Median [Min, Max]</td>
+<td class="lastrow">180 [91,0 ; 335]</td>
+<td class="lastrow">96,0 [52,0 ; 123]</td>
+<td class="lastrow">123 [52,0 ; 335]</td>
+</tr>
+<tr class="even">
+<td class="rowlabel firstrow"><span class="varlabel">drat</span></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+</tr>
+<tr class="odd">
+<td class="rowlabel">Mean (SD)</td>
+<td>3,39 (± 0,474)</td>
+<td>3,86 (± 0,506)</td>
+<td>3,60 (± 0,535)</td>
+</tr>
+<tr class="even">
+<td class="rowlabel lastrow">Median [Min, Max]</td>
+<td class="lastrow">3,18 [2,76 ; 4,43]</td>
+<td class="lastrow">3,92 [2,76 ; 4,93]</td>
+<td class="lastrow">3,70 [2,76 ; 4,93]</td>
+</tr>
+<tr class="odd">
+<td class="rowlabel firstrow"><span class="varlabel">wt</span></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+</tr>
+<tr class="even">
+<td class="rowlabel">Mean (SD)</td>
+<td>3,69 (± 0,904)</td>
+<td>2,61 (± 0,715)</td>
+<td>3,22 (± 0,978)</td>
+</tr>
+<tr class="odd">
+<td class="rowlabel lastrow">Median [Min, Max]</td>
+<td class="lastrow">3,57 [2,14 ; 5,42]</td>
+<td class="lastrow">2,62 [1,51 ; 3,46]</td>
+<td class="lastrow">3,33 [1,51 ; 5,42]</td>
+</tr>
+<tr class="even">
+<td class="rowlabel firstrow"><span class="varlabel">qsec</span></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+</tr>
+<tr class="odd">
+<td class="rowlabel">Mean (SD)</td>
+<td>16,7 (± 1,09)</td>
+<td>19,3 (± 1,35)</td>
+<td>17,8 (± 1,79)</td>
+</tr>
+<tr class="even">
+<td class="rowlabel lastrow">Median [Min, Max]</td>
+<td class="lastrow">17,0 [14,5 ; 18,0]</td>
+<td class="lastrow">19,2 [16,9 ; 22,9]</td>
+<td class="lastrow">17,7 [14,5 ; 22,9]</td>
+</tr>
+<tr class="odd">
+<td class="rowlabel firstrow"><span class="varlabel">am</span></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+</tr>
+<tr class="even">
+<td class="rowlabel">0</td>
+<td>12 (66,67 %)</td>
+<td>7 (50,00 %)</td>
+<td>19 (59,38 %)</td>
+</tr>
+<tr class="odd">
+<td class="rowlabel lastrow">1</td>
+<td class="lastrow">6 (33,33 %)</td>
+<td class="lastrow">7 (50,00 %)</td>
+<td class="lastrow">13 (40,62 %)</td>
+</tr>
+<tr class="even">
+<td class="rowlabel firstrow"><span class="varlabel">gear</span></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+</tr>
+<tr class="odd">
+<td class="rowlabel">Mean (SD)</td>
+<td>3,56 (± 0,856)</td>
+<td>3,86 (± 0,535)</td>
+<td>3,69 (± 0,738)</td>
+</tr>
+<tr class="even">
+<td class="rowlabel lastrow">Median [Min, Max]</td>
+<td class="lastrow">3,00 [3,00 ; 5,00]</td>
+<td class="lastrow">4,00 [3,00 ; 5,00]</td>
+<td class="lastrow">4,00 [3,00 ; 5,00]</td>
+</tr>
+<tr class="odd">
+<td class="rowlabel firstrow"><span class="varlabel">carb</span></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+<td class="firstrow"></td>
+</tr>
+<tr class="even">
+<td class="rowlabel">Mean (SD)</td>
+<td>3,61 (± 1,54)</td>
+<td>1,79 (± 1,05)</td>
+<td>2,81 (± 1,62)</td>
+</tr>
+<tr class="odd">
+<td class="rowlabel lastrow">Median [Min, Max]</td>
+<td class="lastrow">4,00 [2,00 ; 8,00]</td>
+<td class="lastrow">1,50 [1,00 ; 4,00]</td>
+<td class="lastrow">2,00 [1,00 ; 8,00]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="xuất-kết-quả-ra-file-word-và-excel" class="level2">
+<h2 class="anchored" data-anchor-id="xuất-kết-quả-ra-file-word-và-excel"><strong>Xuất kết quả ra file Word và Excel</strong></h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># export ra word</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>table1<span class="sc">:::</span><span class="fu">t1flex</span>(table_freq) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  flextable<span class="sc">:::</span><span class="fu">save_as_docx</span>(<span class="at">path =</span> <span class="st">"dataset/table_freq.docx"</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Volume <span class="sc">~</span> Height,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> df)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(Volume <span class="sc">~</span> Height,</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> df)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(fit, <span class="at">col =</span> <span class="st">"red"</span>)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>pred_CI <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit,</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                   <span class="at">interval =</span> <span class="st">"confidence"</span>)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># add polygon and overlplot the lines</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x =</span> <span class="fu">c</span>(df<span class="sc">$</span>Height, <span class="fu">rev</span>(df<span class="sc">$</span>Height)),</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="fu">c</span>(pred_CI[ , <span class="dv">2</span>], <span class="fu">rev</span>(pred_CI[ , <span class="dv">3</span>])),</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">adjustcolor</span>(<span class="st">"lightblue"</span>, <span class="at">alpha.f =</span> <span class="fl">0.5</span>),</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">border =</span> <span class="cn">NA</span>)</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(df<span class="sc">$</span>Height,</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>      pred_CI[ , <span class="dv">2</span>],</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">lty =</span> <span class="dv">2</span>,</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">"purple"</span>,</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(df<span class="sc">$</span>Height,</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>      pred_CI[ , <span class="dv">3</span>],</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">lty =</span> <span class="dv">2</span>,</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">"purple"</span>,</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="cach-ve-duong-confidence-interval_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># export ra excel</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>openxlsx<span class="sc">:::</span><span class="fu">write.xlsx</span>(table_freq, <span class="at">file =</span> <span class="st">"table_freq.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+<p><span style="color:#FF4081"><strong>Credit: Cảm ơn Dr.&nbsp;Lê Kiều Chinh đã đề xuất câu hỏi để mình tìm cách format thay dấu chấm bằng dấu phẩy ở số thập phân từ kết quả xuất ra của package <code>table1</code>.</strong></span></p>
+</section>
+<section id="tham-khảo" class="level2">
+<h2 class="anchored" data-anchor-id="tham-khảo"><strong>Tham khảo</strong></h2>
+<p><a href="https://cran.r-project.org/web/packages/table1/vignettes/table1-examples.html" class="uri">https://cran.r-project.org/web/packages/table1/vignettes/table1-examples.html</a></p>
+<p><a href="https://github.com/benjaminrich/table1/issues/34" class="uri">https://github.com/benjaminrich/table1/issues/34</a></p>
+<!-- ### render các biến numeric (gsub dấu . thành dấu ,) -->
+<!-- # my.render.mean <- function(x) { -->
+<!-- #  -->
+<!-- #   gsub(pattern = '.', -->
+<!-- #        replacement = ',', -->
+<!-- #  -->
+<!-- #        x = with(stats.default(x), -->
+<!-- #         sprintf("%0.4f (%0.4f)", -->
+<!-- #                 MEAN, -->
+<!-- #                 SD)), -->
+<!-- #  -->
+<!-- #        fixed = TRUE) -->
+<!-- #  -->
+<!-- #  -->
+<!-- # } -->
+<!-- # my.render.median <- function(x) {  -->
+<!-- #    -->
+<!-- #   gsub(pattern = '.',  -->
+<!-- #        replacement = ',',  -->
+<!-- #         -->
+<!-- #        x = with(stats.default(x),  -->
+<!-- #                  -->
+<!-- #         sprintf("%0.2f [%0.2f ; %0.2f]",  -->
+<!-- #                 MEDIAN,  -->
+<!-- #                 MIN, -->
+<!-- #                 MAX)), -->
+<!-- #         -->
+<!-- #        fixed = TRUE)  -->
+<!-- # } -->
 
 
 </section>
@@ -1010,13 +1433,13 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
   </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="./cac-lenh-ve-do-thi-barchart.html" class="pagination-link" aria-label="**Đồ thị barchart**">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title"><strong>Đồ thị barchart</strong></span></span>
+      <a href="./cac-lenh-thong-ke-mo-ta.html" class="pagination-link" aria-label="**Các lệnh thống kê mô tả**">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title"><strong>Các lệnh thống kê mô tả</strong></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./cac-lenh-thong-ke-mo-ta.html" class="pagination-link" aria-label="**Các lệnh thống kê mô tả**">
-        <span class="nav-page-text"><span class="chapter-title"><strong>Các lệnh thống kê mô tả</strong></span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./cach-format-file-excel.html" class="pagination-link" aria-label="**Cách format file Excel**">
+        <span class="nav-page-text"><span class="chapter-title"><strong>Cách format file Excel</strong></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

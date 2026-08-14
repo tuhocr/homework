@@ -31,7 +31,8 @@ book:
         - cach-ve-duong-confidence-interval.qmd
     - part: "[**Các lệnh thống kê**]{style='color:blue'}" 
       chapters:
-        - cac-lenh-thong-ke-mo-ta.qmd     
+        - cac-lenh-thong-ke-mo-ta.qmd 
+        - package-table1-thong-ke-mo-ta.qmd
     - part: "[**Các lệnh format văn bản**]{style='color:blue'}" 
       chapters:
         - cach-format-file-excel.qmd
