@@ -19,7 +19,7 @@ knitr::opts_chunk$set(message = FALSE,
 
 <!-- <div class = "blue"> -->
 
-Bạn có bộ dữ liệu sau gồm 6 file Excel là số điểm của học sinh ở các lớp 7a1 đến 7a6.
+Bạn có bộ dữ liệu sau gồm 6 file Excel là số điểm của học sinh ở các lớp 7a1 đến 7a6. [[download]](https://filedn.com/lesyJpQOCafj7katNqunAxu/TUHOCR/RPC/202607_thanks_K2/dataset/lop_7a.rar)
 
 ![](image/p2.png)
 
