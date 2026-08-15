@@ -513,7 +513,7 @@ Ferrari Dino   19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>function (x, ...) 
 UseMethod("subset")
-&lt;bytecode: 0x0000011fe7066728&gt;
+&lt;bytecode: 0x000001c160a62728&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 </div>
 </div>
@@ -554,7 +554,7 @@ see '?methods' for accessing help and source code</code></pre>
     }
     x[r, vars, drop = drop]
 }
-&lt;bytecode: 0x0000011fe77a4860&gt;
+&lt;bytecode: 0x000001c16116ab68&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 </div>
 </div>
@@ -610,7 +610,7 @@ Ferrari Dino   19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6</code></pre>
 {
     UseMethod("qqPlot")
 }
-&lt;bytecode: 0x0000011fe4f3fb88&gt;
+&lt;bytecode: 0x000001c15f94cbf8&gt;
 &lt;environment: namespace:car&gt;</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">methods</span>(<span class="st">"qqPlot"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -653,7 +653,7 @@ see '?methods' for accessing help and source code</code></pre>
 </section>
 <section id="cau-1" class="level2">
 <h2 class="anchored" data-anchor-id="cau-1"><strong>Câu 1</strong></h2>
-<p>Dựa trên kiến thức về function, bạn hãy tùy chỉnh lại function <code>car:::qqPlot.default</code> để khi vẽ ra các điểm outlier thì sẽ tô màu đỏ. Kết quả giống như hình này.</p>
+<p>Dựa trên kiến thức về function, bạn hãy tùy chỉnh lại function <code>car:::qqPlot.default</code> để khi vẽ ra các điểm outlier thì sẽ tô màu đỏ ở phần label. Kết quả giống như hình này.</p>
 <p>Gợi ý cách làm:</p>
 <ol type="1">
 <li><p>Ta sẽ gọi riêng lệnh <code>car:::qqPlot.default</code> này ra ngoài console để copy source của function, lưu trong 1 file script đặt tên là <code>qqPlot_enhanced.R</code></p></li>
@@ -696,10 +696,13 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>car<span class="sc">:::</span><span class="fu">qqPlot.default</span>(trees<span class="sc">$</span>Height,</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">main =</span> <span class="st">"Lệnh gốc"</span>)</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"dataset/qqPlot_enhanced.R"</span>)</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot_enhanced</span>(trees<span class="sc">$</span>Height,</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">main =</span> <span class="st">"Lệnh được cải tiến"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># các bạn xem file source ở đây và chạy lại trên máy tính nhé</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"dataset/qqPlot_enhanced.R"</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot_enhanced</span>(trees<span class="sc">$</span>Height,</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">main =</span> <span class="st">"Lệnh được cải tiến"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>Để thuận tiện đối chiếu giữa hai file code, các bạn copy source file <a href="https://github.com/tuhocr/homework/blob/main/dataset/qqPlot_ori.R"><code>qqPlot_ori.R</code></a> và <a href="https://github.com/tuhocr/homework/blob/main/dataset/qqPlot_enhanced.R"><code>qqPlot_enhanced.R</code></a>, dùng chương trình compare code để đối chiếu xem đã có những thay đổi nào trong function cải tiến nhé. Mình thường dùng trang web này để đối chiếu file code <a href="https://www.diffchecker.com/">diffchecker</a>.</p>
+<p><img src="image/p8.png" class="img-fluid"></p>
 </div>
 </div>
 </div>

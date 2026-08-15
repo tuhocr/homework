@@ -167,12 +167,13 @@ par(mfrow = c(1,2))
 car:::qqPlot.default(trees$Height,
                      main = "Lệnh gốc")
 
+# các bạn xem file source ở đây và chạy lại trên máy tính nhé
 source("dataset/qqPlot_enhanced.R")
 qqPlot_enhanced(trees$Height,
                 main = "Lệnh được cải tiến")
 ```
 
-Để thuận tiện đối chiếu giữa hai file code, các bạn copy source file [qqPlot_ori.R]()
+Để thuận tiện đối chiếu giữa hai file code, các bạn copy source file [`qqPlot_ori.R`](https://github.com/tuhocr/homework/blob/main/dataset/qqPlot_ori.R) và [`qqPlot_enhanced.R`](https://github.com/tuhocr/homework/blob/main/dataset/qqPlot_enhanced.R), dùng chương trình compare code để đối chiếu xem đã có những thay đổi nào trong function cải tiến nhé. Mình thường dùng trang web này để đối chiếu file code [diffchecker](https://www.diffchecker.com/).
 
 ![](image/p8.png)
 </div>
