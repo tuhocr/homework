@@ -65,9 +65,9 @@ file_data <- list.files(path = "dataset/lop_7a",
 file_data
 ```
 
-## Dùng `dplyr:::case_when()`
+## Cách 1. Dùng `dplyr:::case_when()`
 
-### Xử lý chuẩn 1 file
+### 1.1 Xử lý chuẩn 1 file
 
 ```{r}
 library(readxl)
@@ -103,7 +103,7 @@ df |> dplyr:::mutate(`KẾT QUẢ` = case_when(
 head(df_out_1, n = 10)
 ```
 
-### Xử lý vòng lặp for-loop
+### 1.2 Xử lý vòng lặp for-loop
 
 ```{r}
 library(openxlsx)
@@ -147,9 +147,9 @@ openxlsx:::write.xlsx(x = df_out,
 }
 ```
 
-## Dùng `ifelse()`
+## Cách 2. Dùng `ifelse()`
 
-### Xử lý chuẩn 1 file
+### 2.1 Xử lý chuẩn 1 file
 
 ```{r}
 library(readxl)
@@ -205,7 +205,7 @@ df -> df_out_2
 identical(df_out_1, df_out_2)
 ```
 
-### Xử lý vòng lặp for-loop
+### 2.2 Xử lý vòng lặp for-loop
 
 ```{r}
 library(openxlsx)

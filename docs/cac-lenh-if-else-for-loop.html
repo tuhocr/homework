@@ -418,12 +418,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text"><span style="color:blue"><strong>Các lệnh format văn bản</strong></span></span></a>
+ <span class="menu-text"><span style="color:blue"><strong>Các lệnh về function</strong></span></span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cach-xem-source-va-edit-function.html" class="sidebar-item-text sidebar-link"><span class="chapter-title"><strong>Cách xem source và edit function</strong></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text"><span style="color:blue"><strong>Các lệnh format văn bản</strong></span></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./cach-format-file-excel.html" class="sidebar-item-text sidebar-link"><span class="chapter-title"><strong>Cách format file Excel</strong></span></a>
@@ -518,10 +534,10 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 </div>
 </div>
 </section>
-<section id="dùng-dplyrcase_when" class="level2">
-<h2 class="anchored" data-anchor-id="dùng-dplyrcase_when">Dùng <code>dplyr:::case_when()</code></h2>
+<section id="cách-1.-dùng-dplyrcase_when" class="level2">
+<h2 class="anchored" data-anchor-id="cách-1.-dùng-dplyrcase_when">Cách 1. Dùng <code>dplyr:::case_when()</code></h2>
 <section id="xử-lý-chuẩn-1-file" class="level3">
-<h3 class="anchored" data-anchor-id="xử-lý-chuẩn-1-file">Xử lý chuẩn 1 file</h3>
+<h3 class="anchored" data-anchor-id="xử-lý-chuẩn-1-file">1.1 Xử lý chuẩn 1 file</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(file_data[<span class="dv">1</span>])</span>
@@ -582,7 +598,7 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 </div>
 </section>
 <section id="xử-lý-vòng-lặp-for-loop" class="level3">
-<h3 class="anchored" data-anchor-id="xử-lý-vòng-lặp-for-loop">Xử lý vòng lặp for-loop</h3>
+<h3 class="anchored" data-anchor-id="xử-lý-vòng-lặp-for-loop">1.2 Xử lý vòng lặp for-loop</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -626,10 +642,10 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 </div>
 </section>
 </section>
-<section id="dùng-ifelse" class="level2">
-<h2 class="anchored" data-anchor-id="dùng-ifelse">Dùng <code>ifelse()</code></h2>
+<section id="cách-2.-dùng-ifelse" class="level2">
+<h2 class="anchored" data-anchor-id="cách-2.-dùng-ifelse">Cách 2. Dùng <code>ifelse()</code></h2>
 <section id="xử-lý-chuẩn-1-file-1" class="level3">
-<h3 class="anchored" data-anchor-id="xử-lý-chuẩn-1-file-1">Xử lý chuẩn 1 file</h3>
+<h3 class="anchored" data-anchor-id="xử-lý-chuẩn-1-file-1">2.1 Xử lý chuẩn 1 file</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(file_data[<span class="dv">1</span>])</span>
@@ -698,7 +714,7 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 </div>
 </section>
 <section id="xử-lý-vòng-lặp-for-loop-1" class="level3">
-<h3 class="anchored" data-anchor-id="xử-lý-vòng-lặp-for-loop-1">Xử lý vòng lặp for-loop</h3>
+<h3 class="anchored" data-anchor-id="xử-lý-vòng-lặp-for-loop-1">2.2 Xử lý vòng lặp for-loop</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>

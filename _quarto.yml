@@ -33,6 +33,9 @@ book:
       chapters:
         - cac-lenh-thong-ke-mo-ta.qmd 
         - package-table1-thong-ke-mo-ta.qmd
+    - part: "[**Các lệnh về function**]{style='color:blue'}" 
+      chapters:
+        - cach-xem-source-va-edit-function.qmd
     - part: "[**Các lệnh format văn bản**]{style='color:blue'}" 
       chapters:
         - cach-format-file-excel.qmd
