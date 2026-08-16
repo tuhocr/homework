@@ -74,6 +74,7 @@ render.continuous.all <- function(x) {
   
 }
 
+###
 
 table_freq <- table1:::table1.formula( ~ . | vs,
                        data = mtcars,
