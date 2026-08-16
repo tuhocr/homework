@@ -105,7 +105,7 @@ head(df_out_1, n = 10)
 
 ### 1.2 Xử lý vòng lặp for-loop
 
-```{r}
+```{r, eval=F}
 library(openxlsx)
 
 for(i in 1:length(file_data)){
@@ -207,7 +207,7 @@ identical(df_out_1, df_out_2)
 
 ### 2.2 Xử lý vòng lặp for-loop
 
-```{r}
+```{r, eval=F}
 library(openxlsx)
 
 for(i in 1:length(file_data)){
