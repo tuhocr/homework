@@ -50,7 +50,7 @@ library(readxl)
 sinhvien <- read_excel("dataset/sinhvien.xlsx")
 
 sinhvien$`Tốt nghiệp` <- factor(sinhvien$`Tốt nghiệp`,
-                                levels = )
+                                levels = c(0, 1))
 # summary(sinhvien)
 
 table_freq <- table1:::table1.formula( ~ . | `Giới tính`,

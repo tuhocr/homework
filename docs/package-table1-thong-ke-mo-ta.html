@@ -756,7 +756,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>sinhvien <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"dataset/sinhvien.xlsx"</span>)</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>sinhvien<span class="sc">$</span><span class="st">`</span><span class="at">Tốt nghiệp</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">factor</span>(sinhvien<span class="sc">$</span><span class="st">`</span><span class="at">Tốt nghiệp</span><span class="st">`</span>,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                                <span class="at">levels =</span> )</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                                <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(sinhvien)</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>table_freq <span class="ot">&lt;-</span> table1<span class="sc">:::</span><span class="fu">table1.formula</span>( <span class="sc">~</span> . <span class="sc">|</span> <span class="st">`</span><span class="at">Giới tính</span><span class="st">`</span>,</span>
