@@ -459,6 +459,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#cau-1" id="toc-cau-1" class="nav-link active" data-scroll-target="#cau-1"><strong>Câu 1</strong></a></li>
   <li><a href="#cau-2" id="toc-cau-2" class="nav-link" data-scroll-target="#cau-2"><strong>Câu 2</strong></a></li>
+  <li><a href="#cau-3" id="toc-cau-3" class="nav-link" data-scroll-target="#cau-3"><strong>Câu 3</strong></a></li>
   </ul>
 </nav>
     </div>
@@ -837,6 +838,100 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 7  3    ĐỨC HÒA    1 5.99     2.10
 8  3    ĐỨC HÒA    2 5.40     1.58
 9  3    ĐỨC HÒA    3 5.70     2.00</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-3" class="level2">
+<h2 class="anchored" data-anchor-id="cau-3"><strong>Câu 3</strong></h2>
+<p>Bạn có dataset dạng long như sau, ta có mỗi mã ID được lặp lại 2 lần.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>      id  c63
+1  id301  YES
+2  id301   NO
+3  id302  YES
+4  id302 &lt;NA&gt;
+5  id303   NO
+6  id303  YES
+7  id304 &lt;NA&gt;
+8  id304 &lt;NA&gt;
+9  id305 &lt;NA&gt;
+10 id305  YES</code></pre>
+</div>
+</div>
+<p>Bạn hãy xoay ngang dataset này qua dạng wide để có kết quả như vầy nhé.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>     id c63_1 c63_2
+1 id301   YES    NO
+2 id302   YES  &lt;NA&gt;
+3 id303    NO   YES
+4 id304  &lt;NA&gt;  &lt;NA&gt;
+5 id305  &lt;NA&gt;   YES</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Đáp án">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Đáp án
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class="yes123">
+<p><strong>Để xoay ngang dữ liệu này, ta cần tạo thêm 1 cột nữa giúp R định vị được khi xoay ngang sẽ căn cứ theo cột đó.</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>df_wide <span class="ot">&lt;-</span> df  <span class="sc">%&gt;%</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">c63_no =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>()</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>df_wide</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      id  c63 c63_no
+1  id301  YES      1
+2  id301   NO      2
+3  id302  YES      1
+4  id302 &lt;NA&gt;      2
+5  id303   NO      1
+6  id303  YES      2
+7  id304 &lt;NA&gt;      1
+8  id304 &lt;NA&gt;      2
+9  id305 &lt;NA&gt;      1
+10 id305  YES      2</code></pre>
+</div>
+</div>
+<p><strong>Áp dụng cú pháp reshape để xoay ngang bộ dữ liệu.</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df_wide <span class="sc">|&gt;</span> <span class="fu">pivot_wider</span>(</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">id_cols     =</span> id,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from  =</span> c63_no,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> c63,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">"c63_"</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> <span class="fu">as.data.frame</span>() <span class="ot">-&gt;</span> df_wide</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>df_wide</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     id c63_1 c63_2
+1 id301   YES    NO
+2 id302   YES  &lt;NA&gt;
+3 id303    NO   YES
+4 id304  &lt;NA&gt;  &lt;NA&gt;
+5 id305  &lt;NA&gt;   YES</code></pre>
 </div>
 </div>
 </div>

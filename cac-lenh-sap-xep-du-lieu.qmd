@@ -188,11 +188,83 @@ df_semi
 
 :::
 
+## **Câu 3** {#cau-3}
 
+Bạn có dataset dạng long như sau, ta có mỗi mã ID được lặp lại 2 lần.
 
+```{r, echo=F}
+id <- c("id301", "id301",
+        "id302", "id302",
+        "id303", "id303",
+        "id304", "id304",
+        "id305", "id305")
 
+c63 <- c("YES", "NO",
+         "YES", NA,
+         "NO", "YES",
+         NA, NA,
+         NA, "YES")
 
+df <- data.frame(id, c63)
 
+df
+```
+
+Bạn hãy xoay ngang dataset này qua dạng wide để có kết quả như vầy nhé.
+
+```{r, echo=FALSE}
+library(dplyr)
+library(tidyr)
+
+df_wide <- df  %>%
+  group_by(id) %>%
+  mutate(c63_no = row_number()) %>% as.data.frame()
+
+df_wide |> pivot_wider(
+    id_cols     = id,
+    names_from  = c63_no,
+    values_from = c63,
+    names_prefix = "c63_"
+  ) |> as.data.frame() -> df_wide
+
+df_wide
+```
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+**Để xoay ngang dữ liệu này, ta cần tạo thêm 1 cột nữa giúp R định vị được khi xoay ngang sẽ căn cứ theo cột đó.**
+
+```{r}
+library(dplyr)
+library(tidyr)
+
+df_wide <- df  %>%
+  group_by(id) %>%
+  mutate(c63_no = row_number()) %>% as.data.frame()
+
+df_wide
+```
+
+**Áp dụng cú pháp reshape để xoay ngang bộ dữ liệu.**
+
+```{r}
+df_wide |> pivot_wider(
+    id_cols     = id,
+    names_from  = c63_no,
+    values_from = c63,
+    names_prefix = "c63_"
+  ) |> as.data.frame() -> df_wide
+
+df_wide
+```
+</div>
+
+:::
 
 
 
