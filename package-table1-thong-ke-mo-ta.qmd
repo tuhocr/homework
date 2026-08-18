@@ -40,10 +40,13 @@ table_freq
 
 ## **Thay dấu `.` decimal point thành dấu `,`**
 
+Dataset minh họa [`sinhvien.xlsx`](https://github.com/tuhocr/homework/blob/main/dataset/sinhvien.xlsx)
+
 ```{r}
 options("OutDec" = ",") # thay đổi dấu decimal ở đây
 
 library(readxl)
+
 sinhvien <- read_excel("dataset/sinhvien.xlsx")
 
 sinhvien$`Tốt nghiệp` <- factor(sinhvien$`Tốt nghiệp`,

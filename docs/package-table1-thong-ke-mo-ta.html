@@ -747,28 +747,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="thay-dấu-.-decimal-point-thành-dấu" class="level2">
 <h2 class="anchored" data-anchor-id="thay-dấu-.-decimal-point-thành-dấu"><strong>Thay dấu <code>.</code> decimal point thành dấu <code>,</code></strong></h2>
+<p>Dataset minh họa <a href="https://github.com/tuhocr/homework/blob/main/dataset/sinhvien.xlsx"><code>sinhvien.xlsx</code></a></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="st">"OutDec"</span> <span class="ot">=</span> <span class="st">","</span>) <span class="co"># thay đổi dấu decimal ở đây</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>sinhvien <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"dataset/sinhvien.xlsx"</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>sinhvien<span class="sc">$</span><span class="st">`</span><span class="at">Tốt nghiệp</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">factor</span>(sinhvien<span class="sc">$</span><span class="st">`</span><span class="at">Tốt nghiệp</span><span class="st">`</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                                <span class="at">levels =</span> )</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(sinhvien)</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>table_freq <span class="ot">&lt;-</span> table1<span class="sc">:::</span><span class="fu">table1.formula</span>( <span class="sc">~</span> . <span class="sc">|</span> <span class="st">`</span><span class="at">Giới tính</span><span class="st">`</span>,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">topclass=</span><span class="st">"Rtable1-grid"</span>,</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">data =</span> sinhvien[ , <span class="sc">-</span><span class="dv">1</span>],</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># digits = 4,</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">overall =</span> <span class="st">"Tổng cộng"</span>,</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">render.continuous =</span> <span class="fu">c</span>(<span class="st">"Mean (± SD)"</span> <span class="ot">=</span> <span class="st">"MEAN (± SD)"</span>,</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Median [IQR]"</span> <span class="ot">=</span> <span class="st">"MEDIAN [IQR]"</span>,</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Min"</span> <span class="ot">=</span> <span class="st">"MIN"</span>,</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Max"</span> <span class="ot">=</span> <span class="st">"MAX"</span>)</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                          )</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>table_freq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>sinhvien <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"dataset/sinhvien.xlsx"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>sinhvien<span class="sc">$</span><span class="st">`</span><span class="at">Tốt nghiệp</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">factor</span>(sinhvien<span class="sc">$</span><span class="st">`</span><span class="at">Tốt nghiệp</span><span class="st">`</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                                <span class="at">levels =</span> )</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(sinhvien)</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>table_freq <span class="ot">&lt;-</span> table1<span class="sc">:::</span><span class="fu">table1.formula</span>( <span class="sc">~</span> . <span class="sc">|</span> <span class="st">`</span><span class="at">Giới tính</span><span class="st">`</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">topclass=</span><span class="st">"Rtable1-grid"</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                     <span class="at">data =</span> sinhvien[ , <span class="sc">-</span><span class="dv">1</span>],</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># digits = 4,</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">overall =</span> <span class="st">"Tổng cộng"</span>,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                    <span class="at">render.continuous =</span> <span class="fu">c</span>(<span class="st">"Mean (± SD)"</span> <span class="ot">=</span> <span class="st">"MEAN (± SD)"</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Median [IQR]"</span> <span class="ot">=</span> <span class="st">"MEDIAN [IQR]"</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Min"</span> <span class="ot">=</span> <span class="st">"MIN"</span>,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Max"</span> <span class="ot">=</span> <span class="st">"MAX"</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>                          )</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>table_freq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="Rtable1">
 <table class="Rtable1-grid caption-top table table-sm table-striped small">
