@@ -1,0 +1,101 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# **Cách vẽ đồ thị hai trục tung** 
+
+## **Câu 1** {#cau-1}
+
+Bạn có dữ liệu như sau.
+
+```{r, echo = T}
+df <- airquality[1:30, ]
+df
+```
+
+Bạn vẽ đồ thị hai trục tung (Y1: `Temp`, Y2: `Wind`, X: `Day`).
+
+```{r, echo=F}
+par(mar = c(4,6,4,6))
+
+plot(Temp ~ Day,
+     type = "b",
+     col = "red",
+     ylim = c(0, 100),
+     las = 1,
+     data = df)
+
+par(new = T)
+
+plot(Wind ~ Day,
+     type = "b",
+      axes = FALSE,
+     col = "blue",
+     data = df,
+     ylim = c(0,50),
+     xlab = "",
+     ylab = "")
+
+axis(side = 4,
+     las = 2)
+
+mtext(text = "Wind",
+      side = 4,
+      line = 2.5)
+```
+
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+```{r}
+par(mar = c(4,6,4,6))
+
+plot(Temp ~ Day,
+     type = "b",
+     col = "red",
+     ylim = c(0, 100),
+     las = 1,
+     data = df)
+
+par(new = T)
+
+plot(Wind ~ Day,
+     type = "b",
+     axes = FALSE,
+     col = "blue",
+     data = df,
+     ylim = c(0,50),
+     xlab = "",
+     ylab = "")
+
+axis(side = 4,
+     las = 2)
+
+mtext(text = "Wind",
+      side = 4,
+      line = 2.5)
+```
+</div>
+
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+
+

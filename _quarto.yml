@@ -29,6 +29,7 @@ book:
         - cac-lenh-ve-do-thi-scatterplot.qmd 
         - cac-lenh-ve-do-thi-barchart.qmd 
         - cach-ve-duong-confidence-interval.qmd
+        - cach-ve-do-thi-hai-truc-tung.qmd
     - part: "[**Các lệnh thống kê**]{style='color:blue'}" 
       chapters:
         - cac-lenh-thong-ke-mo-ta.qmd 

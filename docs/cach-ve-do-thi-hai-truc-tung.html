@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Các lệnh về vector – Bài tập R</title>
+<title>Cách vẽ đồ thị hai trục tung – Bài tập R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./cac-lenh-ve-data-frame.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./cac-lenh-thong-ke-mo-ta.html" rel="next">
+<link href="./cach-ve-duong-confidence-interval.html" rel="prev">
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -287,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cac-lenh-ve-vector.html"><span style="color:blue"><strong>Các lệnh R căn bản</strong></span></a></li><li class="breadcrumb-item"><a href="./cac-lenh-ve-vector.html"><span class="chapter-title"><strong>Các lệnh về vector</strong></span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cac-lenh-ve-do-thi-scatterplot.html"><span style="color:blue"><strong>Các lệnh vẽ đồ thị</strong></span></a></li><li class="breadcrumb-item"><a href="./cach-ve-do-thi-hai-truc-tung.html"><span class="chapter-title"><strong>Cách vẽ đồ thị hai trục tung</strong></span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -332,7 +332,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cac-lenh-ve-vector.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title"><strong>Các lệnh về vector</strong></span></a>
+  <a href="./cac-lenh-ve-vector.html" class="sidebar-item-text sidebar-link"><span class="chapter-title"><strong>Các lệnh về vector</strong></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -394,7 +394,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cach-ve-do-thi-hai-truc-tung.html" class="sidebar-item-text sidebar-link"><span class="chapter-title"><strong>Cách vẽ đồ thị hai trục tung</strong></span></a>
+  <a href="./cach-ve-do-thi-hai-truc-tung.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title"><strong>Cách vẽ đồ thị hai trục tung</strong></span></a>
   </div>
 </li>
       </ul>
@@ -463,8 +463,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#cau-1" id="toc-cau-1" class="nav-link active" data-scroll-target="#cau-1"><strong>Câu 1</strong></a></li>
-  <li><a href="#cau-2" id="toc-cau-2" class="nav-link" data-scroll-target="#cau-2"><strong>Câu 2</strong></a></li>
-  <li><a href="#cau-3" id="toc-cau-3" class="nav-link" data-scroll-target="#cau-3"><strong>Câu 3</strong></a></li>
   </ul>
 </nav>
     </div>
@@ -472,9 +470,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content column-body" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cac-lenh-ve-vector.html"><span style="color:blue"><strong>Các lệnh R căn bản</strong></span></a></li><li class="breadcrumb-item"><a href="./cac-lenh-ve-vector.html"><span class="chapter-title"><strong>Các lệnh về vector</strong></span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cac-lenh-ve-do-thi-scatterplot.html"><span style="color:blue"><strong>Các lệnh vẽ đồ thị</strong></span></a></li><li class="breadcrumb-item"><a href="./cach-ve-do-thi-hai-truc-tung.html"><span class="chapter-title"><strong>Cách vẽ đồ thị hai trục tung</strong></span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title"><strong>Các lệnh về vector</strong></span></h1>
+<h1 class="title"><span class="chapter-title"><strong>Cách vẽ đồ thị hai trục tung</strong></span></h1>
 </div>
 
 
@@ -493,14 +491,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="cau-1" class="level2">
 <h2 class="anchored" data-anchor-id="cau-1"><strong>Câu 1</strong></h2>
-<p>Tạo 1 chuỗi số từ 5 đến 50 cách nhau 5 số</p>
-<style>
-div.blue pre { background-color:#fff2cc; font-size: 22px; }
-</style>
-<div class="blue">
+<p>Bạn có dữ liệu như sau.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> airquality[<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>, ]</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>5 10 15 20 25 30 35 40 45 50</code></pre>
+<pre><code>   Ozone Solar.R Wind Temp Month Day
+1     41     190  7.4   67     5   1
+2     36     118  8.0   72     5   2
+3     12     149 12.6   74     5   3
+4     18     313 11.5   62     5   4
+5     NA      NA 14.3   56     5   5
+6     28      NA 14.9   66     5   6
+7     23     299  8.6   65     5   7
+8     19      99 13.8   59     5   8
+9      8      19 20.1   61     5   9
+10    NA     194  8.6   69     5  10
+11     7      NA  6.9   74     5  11
+12    16     256  9.7   69     5  12
+13    11     290  9.2   66     5  13
+14    14     274 10.9   68     5  14
+15    18      65 13.2   58     5  15
+16    14     334 11.5   64     5  16
+17    34     307 12.0   66     5  17
+18     6      78 18.4   57     5  18
+19    30     322 11.5   68     5  19
+20    11      44  9.7   62     5  20
+21     1       8  9.7   59     5  21
+22    11     320 16.6   73     5  22
+23     4      25  9.7   61     5  23
+24    32      92 12.0   61     5  24
+25    NA      66 16.6   57     5  25
+26    NA     266 14.9   58     5  26
+27    NA      NA  8.0   57     5  27
+28    23      13 12.0   67     5  28
+29    45     252 14.9   81     5  29
+30   115     223  5.7   79     5  30</code></pre>
+</div>
+</div>
+<p>Bạn vẽ đồ thị hai trục tung (Y1: <code>Temp</code>, Y2: <code>Wind</code>, X: <code>Day</code>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cach-ve-do-thi-hai-truc-tung_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
 </div>
@@ -522,131 +557,38 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 </style>
 <div class="yes123">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">5</span>,</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">to =</span> <span class="dv">50</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">by =</span> <span class="dv">5</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  5 10 15 20 25 30 35 40 45 50</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">6</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Temp <span class="sc">~</span> Day,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"b"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"red"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">las =</span> <span class="dv">1</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> df)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">new =</span> T)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Wind <span class="sc">~</span> Day,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"b"</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"blue"</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> df,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">50</span>),</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">""</span>,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">""</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">4</span>,</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">las =</span> <span class="dv">2</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="at">text =</span> <span class="st">"Wind"</span>,</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">side =</span> <span class="dv">4</span>,</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">line =</span> <span class="fl">2.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cach-ve-do-thi-hai-truc-tung_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="cau-2" class="level2">
-<h2 class="anchored" data-anchor-id="cau-2"><strong>Câu 2</strong></h2>
-<p>Ta có vector sau:</p>
-<style>
-div.bluea pre { background-color:#fff2cc; font-size: 16px; }
-div.bluea pre.r { background-color:#F1F3F5; font-size: 16px; }
-</style>
-<div class="bluea">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">12</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">11</span>, <span class="dv">9</span>, <span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">22</span>, <span class="dv">29</span>, <span class="dv">33</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Trích xuất 6 thành phần đầu tiên của vector <code>g</code> và gán vào <code>g1</code></p>
-<p>Trích xuất 6 thành phần cuối của vector <code>g</code> và gán vào <code>g2</code></p>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Đáp án">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Đáp án
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<style>
-div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
-div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
-</style>
-<div class="yes123">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> g[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>g1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  2  3 12 11 12  7</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> g[ (<span class="fu">length</span>(g)<span class="sc">-</span><span class="dv">6</span><span class="sc">+</span><span class="dv">1</span>) <span class="sc">:</span> <span class="fu">length</span>(g)]</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>g2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  9 12  1 22 29 33</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="cau-3" class="level2">
-<h2 class="anchored" data-anchor-id="cau-3"><strong>Câu 3</strong></h2>
-<p>Trên cơ sở của vector <code>g1</code> và <code>g2</code> thu được từ câu 2, bạn hãy tạo vector mới gộp <code>g1</code> và <code>g2</code> bằng câu lệnh sau.</p>
-<style>
-div.bluea pre { background-color:#fff2cc; font-size: 16px; }
-div.bluea pre.r { background-color:#F1F3F5; font-size: 16px; }
-</style>
-<div class="bluea">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fu">c</span>(g1, g2)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>h</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  2  3 12 11 12  7  9 12  1 22 29 33</code></pre>
-</div>
-</div>
-<p>Thay các con số <code>12</code> trong vector <code>h</code> thành <code>26</code>, bạn sẽ được kết quả như sau:</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  2  3 26 11 26  7  9 26  1 22 29 33</code></pre>
-</div>
-</div>
-<p>Bỏ 2 con số đầu tiên trong vector <code>h</code> và tính tổng các con số còn lại, kết quả cần đạt được là:</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 190</code></pre>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Đáp án">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Đáp án
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<style>
-div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
-div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
-</style>
-<div class="yes123">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fu">c</span>(g1, g2)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>h</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  2  3 12 11 12  7  9 12  1 22 29 33</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>h[<span class="fu">which</span>(h <span class="sc">==</span> <span class="dv">12</span>)] <span class="ot">&lt;-</span> <span class="dv">26</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>h</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  2  3 26 11 26  7  9 26  1 22 29 33</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>h1 <span class="ot">&lt;-</span> h[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)]</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>h1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 26 11 26  7  9 26  1 22 29 33</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(h1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 190</code></pre>
 </div>
 </div>
 </div>
@@ -1073,13 +1015,13 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
   </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="**Giới thiệu**">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><strong>Giới thiệu</strong></span>
+      <a href="./cach-ve-duong-confidence-interval.html" class="pagination-link" aria-label="**Cách vẽ đường 95% CI**">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title"><strong>Cách vẽ đường 95% CI</strong></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./cac-lenh-ve-data-frame.html" class="pagination-link" aria-label="**Các lệnh về data frame**">
-        <span class="nav-page-text"><span class="chapter-title"><strong>Các lệnh về data frame</strong></span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./cac-lenh-thong-ke-mo-ta.html" class="pagination-link" aria-label="**Các lệnh thống kê mô tả**">
+        <span class="nav-page-text"><span class="chapter-title"><strong>Các lệnh thống kê mô tả</strong></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
