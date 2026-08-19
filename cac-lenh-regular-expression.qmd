@@ -13,6 +13,8 @@ knitr::opts_chunk$set(message = FALSE,
 
 Từ khóa: regular expression; regex
 
+**Các bạn tham khảo chuỗi bài giảng về regular expression nhé.** [[**link**]](https://class.tuhocr.com/khoa-hoc/coding-in-r/bai-hoc/regular-expression-trong-r-phan-1/)
+
 ## **Câu 1** {#cau-1}
 
 Ta có vector sau:

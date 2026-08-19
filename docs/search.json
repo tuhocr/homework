@@ -333,7 +333,7 @@
     "href": "cac-lenh-regular-expression.html",
     "title": "Các lệnh về biểu thức chính quy",
     "section": "",
-    "text": "Câu 1\nTừ khóa: regular expression; regex\nTa có vector sau:\nLàm sạch các ký hiệu -1, -2, -3 ra khỏi các ký tự này, để thu được vector sau:",
+    "text": "Câu 1\nTừ khóa: regular expression; regex\nCác bạn tham khảo chuỗi bài giảng về regular expression nhé. [link]\nTa có vector sau:\nLàm sạch các ký hiệu -1, -2, -3 ra khỏi các ký tự này, để thu được vector sau:",
     "crumbs": [
       "[**Các lệnh R căn bản**]{style='color:blue'}",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>**Các lệnh về biểu thức chính quy**</span>"
