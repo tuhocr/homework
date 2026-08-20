@@ -125,56 +125,94 @@ cat(a_clean, sep = "\n")
 
 :::
 
-## Escape character
+## **Lý thuyết về regular expression**
 
-Dấu `.` sẽ giúp dò ra tất cả các từ. Muốn chọn dấu chấm ký tự trong chữ `ID.1` thì ta phải escape dấu `.` này bằng lệnh `\.`, tuy nhiên trong R thì dấu `\` này có 1 ý nghĩa khác, nên ta phải escape thêm `\` để trả về được dấu `\`, nên sau cùng ta có `\\.` là để định vị dấu `.` ký tự.
+### 1. Escape character
+
+Dấu `.` sẽ giúp dò ra tất cả các từ. Muốn chọn dấu chấm ký tự trong chữ `ID.1` thì ta phải escape dấu `.` này bằng lệnh `\.`, tuy nhiên trong R thì dấu `\` này có 1 ý nghĩa khác, nên ta phải escape thêm `\` để trả về được dấu `\`, nên sau cùng ta có `\\.` là để định vị dấu `.` ký tự. [Bài giảng](https://class.tuhocr.com/khoa-hoc/coding-in-r/bai-hoc/metacharacter-va-escape-character/)
+
+**Ví dụ ta có vector `a` như sau:**
 
 ```{r}
 a <- c("lap trinh", "R", "Programming", "study", "ID.1")
 
-a
+cat(a, sep = "\n")
+```
 
+**Nếu chỉ dùng dấu `.` khi đưa vào tham số `pattern = "."` thì đây là ký hiệu của regular expression, R sẽ dò toàn bộ các thành phần trong vector `a`.**
+
+```{r}
 grep(pattern = ".",
      x = a,
      value = T,
-     perl = T)
+     perl = T) -> out_ok
 
+cat(out_ok, sep = "\n")
+```
+
+**Nếu ta "escape" dấu `.` đó bằng ký hiệu `\\` thì R sẽ hiểu đó là dấu chấm ký tự (period character, not a regex character).**
+
+```{r}
 grep(pattern = "\\.",
      x = a,
      value = T,
-     perl = T)
+     perl = T) -> out_ok
+
+cat(out_ok, sep = "\n")
 ```
 
-## Dò con số trong chuỗi
+### 2. Dò con số trong chuỗi
+
+**Ta có vector `b` gồm các ký tự có chứa các con số (digit) như sau:**
 
 ```{r}
 b <- c("study", "ID.1", "1112", "a12", "0", "code663", "id")
 
-b
+cat(b, sep = "\n")
+```
 
+**Khi dùng ký hiệu `d` thì đây là ký tự bình thường, R sẽ trích ra các thành phẩn chứa ký tự `d` này.**
+
+```{r}
 grep(pattern = "d",
      x = b,
      value = T,
-     perl = T)
+     perl = T) -> out_ok
 
-# string chứa digit
+cat(out_ok, sep = "\n")
+```
+
+**Khi dùng ký hiệu `\\d` như lệnh regex thì R sẽ tự động trích ra những chuỗi (string) chứa digit.**
+
+```{r}
+# trích ra string chứa digit
 grep(pattern = "\\d",
      x = b,
      value = T,
-     perl = T)
+     perl = T) -> out_ok
 
-# string không phải là digit
+cat(out_ok, sep = "\n")
+```
+
+**Khi dùng ký hiệu `\\D` như lệnh regex thì R sẽ tự động trích ra những chuỗi (string) <span style="color:red;"><u>không</u></span> chứa digit.**
+
+```{r}
+# trích ra string không phải là digit
 grep(pattern = "\\D",
      x = b,
      value = T,
-     perl = T)
+     perl = T) -> out_ok
+
+cat(out_ok, sep = "\n")
 ```
 
-## Tìm cụm từ trong chuỗi
+### 3. Tìm cụm từ trong chuỗi
 
 Cách học các quy tắc tìm và thay thế chuỗi bằng cú pháp regex là ta sẽ thử nghiệm các tham số khác nhau trong lệnh `grep()` và đánh giá kết quả thu được để hiểu cơ chế lệnh của R, sau đó áp dụng vào tình huống thử nghiệm trên vài chục ký tự trước khi áp dụng vào dữ liệu thực tế.
 
 Nếu việc tìm kiếm phức tạp, ta tách thành nhiều bước nhỏ để lọc dần dữ liệu cho đến khi làm sạch được data đến mức đạt yêu cầu đề bài.
+
+**Ta có vector `d` như sau:**
 
 ```{r}
 d <- c("happy day",
@@ -184,102 +222,138 @@ d <- c("happy day",
        "I am hhappy",
        "Today is Monday")
 
-d
+cat(d, sep = "\n")
+```
 
+**Để trích ra đúng y chang chữ `happy`.**
+
+```{r}
 # lấy đúng chữ happy `\\b`
 grep(pattern = "\\bhappy",
      x = d,
      perl = T,
-     value = T)
+     value = T) -> out_ok
 
+cat(out_ok, sep = "\n")
+```
+
+**Để trích ra đúng y chang chữ `happy` và `Happy`.**
+
+```{r}
 grep(pattern = "\\b(h|H)appy",
      x = d,
      perl = T,
-     value = T)
+     value = T) -> out_ok
 
+cat(out_ok, sep = "\n")
+```
+
+**Chỉ trích ra chữ `happy` mà có dính những ký tự khác, chứ không phải riêng chữ `happy`**
+
+```{r}
 
 # not-word boundary `\\B` lấy chữ happy có những chữ khác
 grep(pattern = "\\Bhappy",
      x = d,
      perl = T,
-     value = T)
+     value = T) -> out_ok
 
-grep(pattern = "happy",
-     x = d,
-     ignore.case = T,
-     perl = T,
-     value = T)
-
-grep(pattern = "happy",
-     x = d,
-     ignore.case = F,
-     perl = T,
-     value = T)
-
-grep(pattern = "happy",
-     x = d,
-     fixed = T,
-     ignore.case = F,
-     perl = F,
-     value = T)
-
-grep(pattern = "happy",
-     x = d,
-     fixed = F,
-     ignore.case = F,
-     perl = T,
-     value = T)
-
-grep(pattern = "happy",
-     x = d,
-     fixed = F,
-     ignore.case = F,
-     perl = T,
-     value = T)
+cat(out_ok, sep = "\n")
 ```
 
-## Thay thế cụm từ
+**Trích ra toàn bộ các chuỗi có chữ `happy` dù là in hoa hay in thường, có dính các ký tự khác, set tham số `ignore.case = T`.**
 
 ```{r}
+grep(pattern = "happy",
+     x = d,
+     ignore.case = T, # không quan tâm in hoa hay in thường
+     perl = T,
+     value = T) -> out_ok
+
+cat(out_ok, sep = "\n")
+```
+
+**Trích ra toàn bộ các chuỗi theo đúng ký tự `happy`, quan tâm đến việc in hoa và in thường, set tham số `ignore.case = F`.**
+
+```{r}
+grep(pattern = "happy",
+     x = d,
+     ignore.case = F, # quan tâm in hoa hay in thường
+     perl = T,
+     value = T) -> out_ok
+
+cat(out_ok, sep = "\n")
+```
+
+>Ngoài ra trong lệnh `grep` có tham số `fix = TRUE` để cố định việc tìm kiếm chuỗi. Bạn cần test các tham số này trên một vector example để xác nhận xem lệnh regrex hoạt động đúng như yêu cầu hay không, trước khi áp dụng vào real dataset.
+
+### 4. Thay thế cụm từ
+
+**Ta có vector `g` như sau. Ta cần thay toàn bộ chữ `ID` (dù viết hoa hay viết thường) theo định dạng `CODE_number`**
+
+```{r}
+
 g <- c("ID30", "ID12", "ID9", "id11", "id32", "ID_19")
 
-g
-# Thay toàn bộ chữ ID (dù viết hoa hay viết thường) 
-# theo định dạng CODE_number
+cat(g, sep = "\n")
 
+```
+
+**Cách này tìm ký tự `ID` thay bằng `CODE` nhưng chỗ hai ký hiệu `_` thì thay thế bị dư ra.**
+
+```{r}
 gsub(pattern = "ID",
      replacement = "CODE_",
+     ignore.case = T,
      x = g,
-     perl = T)
+     perl = T) -> out_ok
 
+cat(out_ok, sep = "\n")
+```
+
+**Cách này tìm theo lệnh OR, tuy nhiên đi theo thứ tự ưu tiên, trước khi đến `ID_` thì đã bị thay ở chữ `ID` bằng `CODE_` nên vẫn còn ký hiệu `_` bị dư ra.**
+
+```{r}
 gsub(pattern = "(ID|id|ID_)",
      replacement = "CODE_",
      x = g,
-     perl = T)
+     perl = T) -> out_ok
 
+cat(out_ok, sep = "\n")
+```
+
+**Cách này OK, ta dùng lệnh OR với thứ tự ưu tiên.**
+
+```{r}
 # thứ tự ảnh hưởng đến lệnh gsub
 gsub(pattern = "(ID_|ID|id)",
      replacement = "CODE_",
      x = g,
      perl = T) -> g_ok
 
-g_ok
+cat(g_ok, sep = "\n")
 ```
 
-Ta có thể tách thành 2 bước
+<span style="color:blue;">**Để đỡ rắc rối, ta có thể tách thành 2 bước**</span>
+
+**Bước 1: Thay thế ID bằng CODE, chấp nhận còn một số lỗi chưa sửa được**
 
 ```{r}
 g <- c("ID30", "ID12", "ID9", "id11", "id32", "ID_19")
 
-g
+cat(g, sep = "\n")
 
 gsub(pattern = "ID|id",
      replacement = "CODE_",
      x = g,
      perl = T) -> g1
 
-g1
+cat(g1, sep = "\n")
+```
 
+**Bước 2: Tiếp tục thay thế dấu `__` dư ra ở bước 1, chuyển về `_` cho chuẩn.**
+
+```{r}
 gsub(pattern = "__",
      replacement = "_",
      x = g1,
@@ -287,14 +361,20 @@ gsub(pattern = "__",
 
 g2
 
+cat(g2, sep = "\n")
+```
+
+<span style="color:red;">**Ví dụ trên cho thấy việc áp dụng regular expression trong R có thể chia chẻ ra thành nhiều bước đơn giản hơn, thay vì tìm cách làm gộp lại trong 1 lệnh thì phải thiết kế cú pháp phức tạp.**</span>
+
+**Kiểm tra thấy hai cách làm như nhau.**
+
+```{r}
 identical(g_ok, g2)
 ```
 
+# **Tài liệu tham khảo**
 
-
-
-
-# Tài liệu tham khảo
+`https://class.tuhocr.com/khoa-hoc/coding-in-r/bai-hoc/regular-expression-trong-r-phan-1/`
 
 `https://regexr.com/`
 

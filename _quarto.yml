@@ -57,6 +57,10 @@ format:
     toc: true
     toc-title: "Mục lục"
     toc-location: right
+    toc_depth: 5
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
     number-sections: false
     page-layout: full
     grid:

@@ -463,11 +463,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#cau-1" id="toc-cau-1" class="nav-link active" data-scroll-target="#cau-1"><strong>Câu 1</strong></a></li>
-  <li><a href="#escape-character" id="toc-escape-character" class="nav-link" data-scroll-target="#escape-character">Escape character</a></li>
-  <li><a href="#dò-con-số-trong-chuỗi" id="toc-dò-con-số-trong-chuỗi" class="nav-link" data-scroll-target="#dò-con-số-trong-chuỗi">Dò con số trong chuỗi</a></li>
-  <li><a href="#tìm-cụm-từ-trong-chuỗi" id="toc-tìm-cụm-từ-trong-chuỗi" class="nav-link" data-scroll-target="#tìm-cụm-từ-trong-chuỗi">Tìm cụm từ trong chuỗi</a></li>
-  <li><a href="#thay-thế-cụm-từ" id="toc-thay-thế-cụm-từ" class="nav-link" data-scroll-target="#thay-thế-cụm-từ">Thay thế cụm từ</a></li>
-  <li><a href="#tài-liệu-tham-khảo" id="toc-tài-liệu-tham-khảo" class="nav-link" data-scroll-target="#tài-liệu-tham-khảo">Tài liệu tham khảo</a></li>
+  <li><a href="#lý-thuyết-về-regular-expression" id="toc-lý-thuyết-về-regular-expression" class="nav-link" data-scroll-target="#lý-thuyết-về-regular-expression"><strong>Lý thuyết về regular expression</strong></a>
+  <ul class="collapse">
+  <li><a href="#escape-character" id="toc-escape-character" class="nav-link" data-scroll-target="#escape-character">1. Escape character</a></li>
+  <li><a href="#dò-con-số-trong-chuỗi" id="toc-dò-con-số-trong-chuỗi" class="nav-link" data-scroll-target="#dò-con-số-trong-chuỗi">2. Dò con số trong chuỗi</a></li>
+  <li><a href="#tìm-cụm-từ-trong-chuỗi" id="toc-tìm-cụm-từ-trong-chuỗi" class="nav-link" data-scroll-target="#tìm-cụm-từ-trong-chuỗi">3. Tìm cụm từ trong chuỗi</a></li>
+  <li><a href="#thay-thế-cụm-từ" id="toc-thay-thế-cụm-từ" class="nav-link" data-scroll-target="#thay-thế-cụm-từ">4. Thay thế cụm từ</a></li>
+  </ul></li>
+  <li><a href="#tài-liệu-tham-khảo" id="toc-tài-liệu-tham-khảo" class="nav-link" data-scroll-target="#tài-liệu-tham-khảo"><strong>Tài liệu tham khảo</strong></a></li>
   </ul>
 </nav>
     </div>
@@ -669,70 +672,124 @@ salinity</code></pre>
 </div>
 </div>
 </section>
-<section id="escape-character" class="level2">
-<h2 class="anchored" data-anchor-id="escape-character">Escape character</h2>
-<p>Dấu <code>.</code> sẽ giúp dò ra tất cả các từ. Muốn chọn dấu chấm ký tự trong chữ <code>ID.1</code> thì ta phải escape dấu <code>.</code> này bằng lệnh <code>\.</code>, tuy nhiên trong R thì dấu <code>\</code> này có 1 ý nghĩa khác, nên ta phải escape thêm <code>\</code> để trả về được dấu <code>\</code>, nên sau cùng ta có <code>\\.</code> là để định vị dấu <code>.</code> ký tự.</p>
+<section id="lý-thuyết-về-regular-expression" class="level2">
+<h2 class="anchored" data-anchor-id="lý-thuyết-về-regular-expression"><strong>Lý thuyết về regular expression</strong></h2>
+<section id="escape-character" class="level3">
+<h3 class="anchored" data-anchor-id="escape-character">1. Escape character</h3>
+<p>Dấu <code>.</code> sẽ giúp dò ra tất cả các từ. Muốn chọn dấu chấm ký tự trong chữ <code>ID.1</code> thì ta phải escape dấu <code>.</code> này bằng lệnh <code>\.</code>, tuy nhiên trong R thì dấu <code>\</code> này có 1 ý nghĩa khác, nên ta phải escape thêm <code>\</code> để trả về được dấu <code>\</code>, nên sau cùng ta có <code>\\.</code> là để định vị dấu <code>.</code> ký tự. <a href="https://class.tuhocr.com/khoa-hoc/coding-in-r/bai-hoc/metacharacter-va-escape-character/">Bài giảng</a></p>
+<p><strong>Ví dụ ta có vector <code>a</code> như sau:</strong></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"lap trinh"</span>, <span class="st">"R"</span>, <span class="st">"Programming"</span>, <span class="st">"study"</span>, <span class="st">"ID.1"</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(a, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "lap trinh"   "R"           "Programming" "study"       "ID.1"       </code></pre>
+<pre><code>lap trinh
+R
+Programming
+study
+ID.1</code></pre>
 </div>
+</div>
+<p><strong>Nếu chỉ dùng dấu <code>.</code> khi đưa vào tham số <code>pattern = "."</code> thì đây là ký hiệu của regular expression, R sẽ dò toàn bộ các thành phần trong vector <code>a</code>.</strong></p>
+<div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"."</span>,</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> a,</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T,</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T) <span class="ot">-&gt;</span> out_ok</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(out_ok, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "lap trinh"   "R"           "Programming" "study"       "ID.1"       </code></pre>
+<pre><code>lap trinh
+R
+Programming
+study
+ID.1</code></pre>
 </div>
+</div>
+<p><strong>Nếu ta “escape” dấu <code>.</code> đó bằng ký hiệu <code>\\</code> thì R sẽ hiểu đó là dấu chấm ký tự (period character, not a regex character).</strong></p>
+<div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">."</span>,</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> a,</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T,</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T) <span class="ot">-&gt;</span> out_ok</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(out_ok, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "ID.1"</code></pre>
+<pre><code>ID.1</code></pre>
 </div>
 </div>
 </section>
-<section id="dò-con-số-trong-chuỗi" class="level2">
-<h2 class="anchored" data-anchor-id="dò-con-số-trong-chuỗi">Dò con số trong chuỗi</h2>
+<section id="dò-con-số-trong-chuỗi" class="level3">
+<h3 class="anchored" data-anchor-id="dò-con-số-trong-chuỗi">2. Dò con số trong chuỗi</h3>
+<p><strong>Ta có vector <code>b</code> gồm các ký tự có chứa các con số (digit) như sau:</strong></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"study"</span>, <span class="st">"ID.1"</span>, <span class="st">"1112"</span>, <span class="st">"a12"</span>, <span class="st">"0"</span>, <span class="st">"code663"</span>, <span class="st">"id"</span>)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(b, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "study"   "ID.1"    "1112"    "a12"     "0"       "code663" "id"     </code></pre>
+<pre><code>study
+ID.1
+1112
+a12
+0
+code663
+id</code></pre>
 </div>
+</div>
+<p><strong>Khi dùng ký hiệu <code>d</code> thì đây là ký tự bình thường, R sẽ trích ra các thành phẩn chứa ký tự <code>d</code> này.</strong></p>
+<div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"d"</span>,</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> b,</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T,</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T) <span class="ot">-&gt;</span> out_ok</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(out_ok, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "study"   "code663" "id"     </code></pre>
+<pre><code>study
+code663
+id</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># string chứa digit</span></span>
+</div>
+<p><strong>Khi dùng ký hiệu <code>\\d</code> như lệnh regex thì R sẽ tự động trích ra những chuỗi (string) chứa digit.</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># trích ra string chứa digit</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">d"</span>,</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> b,</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T,</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T) <span class="ot">-&gt;</span> out_ok</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(out_ok, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "ID.1"    "1112"    "a12"     "0"       "code663"</code></pre>
+<pre><code>ID.1
+1112
+a12
+0
+code663</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># string không phải là digit</span></span>
+</div>
+<p><strong>Khi dùng ký hiệu <code>\\D</code> như lệnh regex thì R sẽ tự động trích ra những chuỗi (string) <span style="color:red;"><u>không</u></span> chứa digit.</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># trích ra string không phải là digit</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">D"</span>,</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> b,</span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T,</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T) <span class="ot">-&gt;</span> out_ok</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(out_ok, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "study"   "ID.1"    "a12"     "code663" "id"     </code></pre>
+<pre><code>study
+ID.1
+a12
+code663
+id</code></pre>
 </div>
 </div>
 </section>
-<section id="tìm-cụm-từ-trong-chuỗi" class="level2">
-<h2 class="anchored" data-anchor-id="tìm-cụm-từ-trong-chuỗi">Tìm cụm từ trong chuỗi</h2>
+<section id="tìm-cụm-từ-trong-chuỗi" class="level3">
+<h3 class="anchored" data-anchor-id="tìm-cụm-từ-trong-chuỗi">3. Tìm cụm từ trong chuỗi</h3>
 <p>Cách học các quy tắc tìm và thay thế chuỗi bằng cú pháp regex là ta sẽ thử nghiệm các tham số khác nhau trong lệnh <code>grep()</code> và đánh giá kết quả thu được để hiểu cơ chế lệnh của R, sau đó áp dụng vào tình huống thử nghiệm trên vài chục ký tự trước khi áp dụng vào dữ liệu thực tế.</p>
 <p>Nếu việc tìm kiếm phức tạp, ta tách thành nhiều bước nhỏ để lọc dần dữ liệu cho đến khi làm sạch được data đến mức đạt yêu cầu đề bài.</p>
+<p><strong>Ta có vector <code>d</code> như sau:</strong></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"happy day"</span>,</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>       <span class="st">"going to school"</span>,</span>
@@ -741,150 +798,224 @@ salinity</code></pre>
 <span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>       <span class="st">"I am hhappy"</span>,</span>
 <span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>       <span class="st">"Today is Monday"</span>)</span>
 <span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(d, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "happy day"                       "going to school"                 "Working and feel happy everyday" "Thanks Happy Birthday"           "I am hhappy"                    
-[6] "Today is Monday"                </code></pre>
+<pre><code>happy day
+going to school
+Working and feel happy everyday
+Thanks Happy Birthday
+I am hhappy
+Today is Monday</code></pre>
 </div>
+</div>
+<p><strong>Để trích ra đúng y chang chữ <code>happy</code>.</strong></p>
+<div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lấy đúng chữ happy `\\b`</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">bhappy"</span>,</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> d,</span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T,</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T) <span class="ot">-&gt;</span> out_ok</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(out_ok, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "happy day"                       "Working and feel happy everyday"</code></pre>
+<pre><code>happy day
+Working and feel happy everyday</code></pre>
 </div>
+</div>
+<p><strong>Để trích ra đúng y chang chữ <code>happy</code> và <code>Happy</code>.</strong></p>
+<div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">b(h|H)appy"</span>,</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> d,</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T,</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T) <span class="ot">-&gt;</span> out_ok</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(out_ok, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "happy day"                       "Working and feel happy everyday" "Thanks Happy Birthday"          </code></pre>
+<pre><code>happy day
+Working and feel happy everyday
+Thanks Happy Birthday</code></pre>
 </div>
+</div>
+<p><strong>Chỉ trích ra chữ <code>happy</code> mà có dính những ký tự khác, chứ không phải riêng chữ <code>happy</code></strong></p>
+<div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not-word boundary `\\B` lấy chữ happy có những chữ khác</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">Bhappy"</span>,</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> d,</span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T,</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T) <span class="ot">-&gt;</span> out_ok</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(out_ok, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "I am hhappy"</code></pre>
+<pre><code>I am hhappy</code></pre>
 </div>
+</div>
+<p><strong>Trích ra toàn bộ các chuỗi có chữ <code>happy</code> dù là in hoa hay in thường, có dính các ký tự khác, set tham số <code>ignore.case = T</code>.</strong></p>
+<div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"happy"</span>,</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> d,</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ignore.case =</span> T,</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ignore.case =</span> T, <span class="co"># không quan tâm in hoa hay in thường</span></span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T,</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T) <span class="ot">-&gt;</span> out_ok</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(out_ok, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "happy day"                       "Working and feel happy everyday" "Thanks Happy Birthday"           "I am hhappy"                    </code></pre>
+<pre><code>happy day
+Working and feel happy everyday
+Thanks Happy Birthday
+I am hhappy</code></pre>
 </div>
+</div>
+<p><strong>Trích ra toàn bộ các chuỗi theo đúng ký tự <code>happy</code>, quan tâm đến việc in hoa và in thường, set tham số <code>ignore.case = F</code>.</strong></p>
+<div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"happy"</span>,</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> d,</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ignore.case =</span> F,</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ignore.case =</span> F, <span class="co"># quan tâm in hoa hay in thường</span></span>
 <span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T,</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T) <span class="ot">-&gt;</span> out_ok</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(out_ok, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "happy day"                       "Working and feel happy everyday" "I am hhappy"                    </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"happy"</span>,</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> d,</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">fixed =</span> T,</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ignore.case =</span> F,</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> F,</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "happy day"                       "Working and feel happy everyday" "I am hhappy"                    </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"happy"</span>,</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> d,</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">fixed =</span> F,</span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ignore.case =</span> F,</span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T,</span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "happy day"                       "Working and feel happy everyday" "I am hhappy"                    </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"happy"</span>,</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> d,</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">fixed =</span> F,</span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ignore.case =</span> F,</span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T,</span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "happy day"                       "Working and feel happy everyday" "I am hhappy"                    </code></pre>
+<pre><code>happy day
+Working and feel happy everyday
+I am hhappy</code></pre>
 </div>
 </div>
+<blockquote class="blockquote">
+<p>Ngoài ra trong lệnh <code>grep</code> có tham số <code>fix = TRUE</code> để cố định việc tìm kiếm chuỗi. Bạn cần test các tham số này trên một vector example để xác nhận xem lệnh regrex hoạt động đúng như yêu cầu hay không, trước khi áp dụng vào real dataset.</p>
+</blockquote>
 </section>
-<section id="thay-thế-cụm-từ" class="level2">
-<h2 class="anchored" data-anchor-id="thay-thế-cụm-từ">Thay thế cụm từ</h2>
+<section id="thay-thế-cụm-từ" class="level3">
+<h3 class="anchored" data-anchor-id="thay-thế-cụm-từ">4. Thay thế cụm từ</h3>
+<p><strong>Ta có vector <code>g</code> như sau. Ta cần thay toàn bộ chữ <code>ID</code> (dù viết hoa hay viết thường) theo định dạng <code>CODE_number</code></strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ID30"</span>, <span class="st">"ID12"</span>, <span class="st">"ID9"</span>, <span class="st">"id11"</span>, <span class="st">"id32"</span>, <span class="st">"ID_19"</span>)</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ID30"</span>, <span class="st">"ID12"</span>, <span class="st">"ID9"</span>, <span class="st">"id11"</span>, <span class="st">"id32"</span>, <span class="st">"ID_19"</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(g, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "ID30"  "ID12"  "ID9"   "id11"  "id32"  "ID_19"</code></pre>
+<pre><code>ID30
+ID12
+ID9
+id11
+id32
+ID_19</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Thay toàn bộ chữ ID (dù viết hoa hay viết thường) </span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="co"># theo định dạng CODE_number</span></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">"ID"</span>,</span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">replacement =</span> <span class="st">"CODE_"</span>,</span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> g,</span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Cách này tìm ký tự <code>ID</code> thay bằng <code>CODE</code> nhưng chỗ hai ký hiệu <code>_</code> thì thay thế bị dư ra.</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">"ID"</span>,</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">replacement =</span> <span class="st">"CODE_"</span>,</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ignore.case =</span> T,</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> g,</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T) <span class="ot">-&gt;</span> out_ok</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(out_ok, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "CODE_30"  "CODE_12"  "CODE_9"   "id11"     "id32"     "CODE__19"</code></pre>
+<pre><code>CODE_30
+CODE_12
+CODE_9
+CODE_11
+CODE_32
+CODE__19</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">"(ID|id|ID_)"</span>,</span>
+</div>
+<p><strong>Cách này tìm theo lệnh OR, tuy nhiên đi theo thứ tự ưu tiên, trước khi đến <code>ID_</code> thì đã bị thay ở chữ <code>ID</code> bằng <code>CODE_</code> nên vẫn còn ký hiệu <code>_</code> bị dư ra.</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">"(ID|id|ID_)"</span>,</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">replacement =</span> <span class="st">"CODE_"</span>,</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> g,</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T) <span class="ot">-&gt;</span> out_ok</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(out_ok, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>CODE_30
+CODE_12
+CODE_9
+CODE_11
+CODE_32
+CODE__19</code></pre>
+</div>
+</div>
+<p><strong>Cách này OK, ta dùng lệnh OR với thứ tự ưu tiên.</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># thứ tự ảnh hưởng đến lệnh gsub</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">"(ID_|ID|id)"</span>,</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">replacement =</span> <span class="st">"CODE_"</span>,</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> g,</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T) <span class="ot">-&gt;</span> g_ok</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(g_ok, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>CODE_30
+CODE_12
+CODE_9
+CODE_11
+CODE_32
+CODE_19</code></pre>
+</div>
+</div>
+<p><span style="color:blue;"><strong>Để đỡ rắc rối, ta có thể tách thành 2 bước</strong></span></p>
+<p><strong>Bước 1: Thay thế ID bằng CODE, chấp nhận còn một số lỗi chưa sửa được</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ID30"</span>, <span class="st">"ID12"</span>, <span class="st">"ID9"</span>, <span class="st">"id11"</span>, <span class="st">"id32"</span>, <span class="st">"ID_19"</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(g, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ID30
+ID12
+ID9
+id11
+id32
+ID_19</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">"ID|id"</span>,</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">replacement =</span> <span class="st">"CODE_"</span>,</span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> g,</span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T) <span class="ot">-&gt;</span> g1</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(g1, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "CODE_30"  "CODE_12"  "CODE_9"   "CODE_11"  "CODE_32"  "CODE__19"</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># thứ tự ảnh hưởng đến lệnh gsub</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">"(ID_|ID|id)"</span>,</span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">replacement =</span> <span class="st">"CODE_"</span>,</span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> g,</span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T) <span class="ot">-&gt;</span> g_ok</span>
-<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>g_ok</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "CODE_30" "CODE_12" "CODE_9"  "CODE_11" "CODE_32" "CODE_19"</code></pre>
+<pre><code>CODE_30
+CODE_12
+CODE_9
+CODE_11
+CODE_32
+CODE__19</code></pre>
 </div>
 </div>
-<p>Ta có thể tách thành 2 bước</p>
+<p><strong>Bước 2: Tiếp tục thay thế dấu <code>__</code> dư ra ở bước 1, chuyển về <code>_</code> cho chuẩn.</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ID30"</span>, <span class="st">"ID12"</span>, <span class="st">"ID9"</span>, <span class="st">"id11"</span>, <span class="st">"id32"</span>, <span class="st">"ID_19"</span>)</span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "ID30"  "ID12"  "ID9"   "id11"  "id32"  "ID_19"</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">"ID|id"</span>,</span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">replacement =</span> <span class="st">"CODE_"</span>,</span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> g,</span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T) <span class="ot">-&gt;</span> g1</span>
-<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>g1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "CODE_30"  "CODE_12"  "CODE_9"   "CODE_11"  "CODE_32"  "CODE__19"</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">"__"</span>,</span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">replacement =</span> <span class="st">"_"</span>,</span>
-<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> g1,</span>
-<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T) <span class="ot">-&gt;</span> g2</span>
-<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>g2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">"__"</span>,</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">replacement =</span> <span class="st">"_"</span>,</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> g1,</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">perl =</span> T) <span class="ot">-&gt;</span> g2</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>g2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "CODE_30" "CODE_12" "CODE_9"  "CODE_11" "CODE_32" "CODE_19"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(g_ok, g2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(g2, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>CODE_30
+CODE_12
+CODE_9
+CODE_11
+CODE_32
+CODE_19</code></pre>
+</div>
+</div>
+<p><span style="color:red;"><strong>Ví dụ trên cho thấy việc áp dụng regular expression trong R có thể chia chẻ ra thành nhiều bước đơn giản hơn, thay vì tìm cách làm gộp lại trong 1 lệnh thì phải thiết kế cú pháp phức tạp.</strong></span></p>
+<p><strong>Kiểm tra thấy hai cách làm như nhau.</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(g_ok, g2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
 </section>
+</section>
 <section id="tài-liệu-tham-khảo" class="level1">
-<h1>Tài liệu tham khảo</h1>
+<h1><strong>Tài liệu tham khảo</strong></h1>
+<p><code>https://class.tuhocr.com/khoa-hoc/coding-in-r/bai-hoc/regular-expression-trong-r-phan-1/</code></p>
 <p><code>https://regexr.com/</code></p>
 <p><code>https://www.regular-expressions.info/cookbook.html</code></p>
 <p><code>https://www.regular-expressions.info/grep.html</code></p>
