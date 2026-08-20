@@ -1,0 +1,420 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, echo=FALSE, results='hide'}
+knitr::opts_chunk$set(message = FALSE,  
+                      warning = FALSE)   
+```
+
+# **Template đồ thị Base R** 
+
+Các lệnh vẽ đồ thị Base R mình có trình bày ở đây. [Bài giảng](https://class.tuhocr.com/khoa-hoc/data-visualization-in-r/bai-hoc/bai-7-phan-tich-lenh-plot-phan-1/)
+
+## **1. Đồ thị X-Y** {#do-thi-x-y}
+
+Đồ thị X-Y hay còn gọi là đồ thị scatterplot, đồ thị tán xạ biểu diễn mối quan hệ giữa hai biến liên tục. Nếu giữa các điểm không có đường nối liền ta gọi là scatterplot (đồ thị điểm), nếu các điểm có đường nối liền mạch thì là line chart (đồ thị đường).
+
+### 1.1 Scatterplot (cơ bản)
+
+Bạn có dữ liệu sau. 
+
+```{r}
+trees[1:10 , 2:3] -> df
+df
+```
+
+Bạn hãy vẽ hình biểu diễn quan hệ giữa `Height` (trục X) và `Volume` (trục Y) như sau.
+
+```{r, fig.width=4, fig.height=4, echo=F}
+plot(Volume ~ Height,
+     data = df,
+     pch = 19,
+     col = "darkgreen",
+     las = 1,
+     main = "Volume vs. Height")
+```
+
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+```{r, fig.width=4, fig.height=4}
+plot(Volume ~ Height,
+     data = df,
+     pch = 19,
+     col = "darkgreen",
+     las = 1,
+     main = "Volume vs. Height")
+```
+</div>
+
+:::
+
+### 1.2 Scatterplot (nâng cao)
+
+Tiếp tục dùng dữ liệu `df`, bạn hãy bổ sung thêm mã ID của các cây này. Sau đó vẽ hình như sau.
+
+```{r}
+df$ID <- paste0("ID", 1:10)
+df
+```
+
+Chú ý là ta sẽ tô màu đỏ cho những cây có chiều cao >= 70 và màu xanh lá cây cho những cây có chiều cao < 70.
+
+```{r, fig.width=4, fig.height=4, echo=F}
+df$group <- ifelse(test = df$Height >= 70,
+                   yes = "high",
+                   no = "low")
+
+df$group <- factor(df$group,
+                   levels = c("low", "high"))
+
+plot(Volume ~ Height,
+     data = df,
+     pch = c(15, 19)[df$group],
+     col = c("darkgreen", "red")[df$group],
+     las = 1,
+     xlim = c(60, 85),
+     ylim = c(8, 25),
+     main = "Volume vs. Height")
+
+text(x = df$Height,
+     y = df$Volume,
+     labels = df$ID,
+     pos = 3,
+     cex = 0.8,
+     col = "blue")
+
+abline(v = 70,
+       lty = 2,
+       col = "red")
+```
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+
+Ta cần tạo một cột `group` để định vị cho R biết cách tô màu theo điều kiện.
+
+```{r}
+df$group <- ifelse(test = df$Height >= 70,
+                   yes = "high",
+                   no = "low")
+
+df$group <- factor(df$group,
+                   levels = c("low", "high"))
+
+df
+```
+
+```{r, fig.width=4, fig.height=4, echo=T}
+plot(Volume ~ Height,
+     data = df,
+     pch = c(15, 19)[df$group],
+     col = c("darkgreen", "red")[df$group],
+     las = 1,
+     xlim = c(60, 85),
+     ylim = c(8, 25),
+     main = "Volume vs. Height")
+
+text(x = df$Height,
+     y = df$Volume,
+     labels = df$ID,
+     pos = 3,
+     cex = 0.8,
+     col = "blue")
+
+abline(v = 70,
+       lty = 2,
+       col = "red")
+```
+</div>
+
+:::
+
+### 1.3 Linechart (cơ bản)
+
+Bạn tiếp tục dùng dữ liệu `df`, bạn hãy vẽ hình linechart như sau.
+
+Gợi ý: Bạn cần sắp xếp thứ tự trục X để R biết cách nối giữa các điểm dữ liệu. Đồng thời ta chú ý khi cùng giá trị `Height = 75` thì sẽ có 2 giá trị `Volume` khác nhau, dẫn đến ta có thể ra 2 dạng plot khác nhau một chút.
+
+```{r}
+trees[1:10 , 2:3] -> df
+df
+```
+
+Bạn hãy vẽ hình biểu diễn quan hệ giữa `Height` (trục X) và `Volume` (trục Y) như sau.
+
+```{r, fig.width=8, fig.height=4, echo=F}
+library(dplyr)
+df |> dplyr:::arrange(Height, Volume) -> df1
+
+# df1
+
+par(mfrow = c(1,2))
+
+library(dplyr)
+df |> dplyr:::arrange(Height, desc(Volume)) -> df2
+
+# df2
+
+plot(Volume ~ Height,
+     type = "b",
+     data = df1,
+     pch = 19,
+     col = "darkgreen",
+     las = 1,
+     main = "Hình 1")
+
+points(Volume ~ Height,
+     type = "b",
+     data = df1[5:8, ],
+     pch = 19,
+     col = "red",
+     las = 1,
+     main = "Hình 1")
+
+plot(Volume ~ Height,
+     type = "b",
+     data = df2,
+     pch = 19,
+     col = "darkgreen",
+     las = 1,
+     main = "Hình 2")
+
+points(Volume ~ Height,
+     type = "b",
+     data = df2[5:8, ],
+     pch = 19,
+     col = "red",
+     las = 1,
+     main = "Hình 2")
+```
+
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+```{r, fig.width=8, fig.height=4, echo=T}
+library(dplyr)
+df |> dplyr:::arrange(Height, Volume) -> df1
+
+df1
+
+par(mfrow = c(1,2))
+
+library(dplyr)
+df |> dplyr:::arrange(Height, desc(Volume)) -> df2
+
+df2
+
+plot(Volume ~ Height,
+     type = "b",
+     data = df1,
+     pch = 19,
+     col = "darkgreen",
+     las = 1,
+     main = "Hình 1")
+
+points(Volume ~ Height,
+     type = "b",
+     data = df1[5:8, ],
+     pch = 19,
+     col = "red",
+     las = 1,
+     main = "Hình 1")
+
+plot(Volume ~ Height,
+     type = "b",
+     data = df2,
+     pch = 19,
+     col = "darkgreen",
+     las = 1,
+     main = "Hình 2")
+
+points(Volume ~ Height,
+     type = "b",
+     data = df2[5:8, ],
+     pch = 19,
+     col = "red",
+     las = 1,
+     main = "Hình 2")
+```
+</div>
+
+:::
+
+
+### 1.3 Linechart (nâng cao)
+
+Sử dụng dataset `airquality` để vẽ hai đường linechart so sánh nhiệt độ giữa hai tháng.
+
+```{r}
+df5 <- airquality[ , 4:6] |> subset(Month %in% c(5))
+row.names(df5) <- NULL
+df5
+
+df6 <- airquality[ , 4:6] |> subset(Month %in% c(6))
+row.names(df6) <- NULL
+df6
+```
+
+```{r, fig.width=6, fig.height=4, echo=F}
+plot(Temp ~ Day,
+     type = "l",
+     data = df5,
+     pch = 19,
+     col = "darkgreen",
+     lwd = 2,
+     las = 1,
+     main = "Temp vs. Day",
+     xlim = c(0, 33),
+     ylim = c(5, 100),
+     xaxs = "i",
+     yaxs = "i",
+     axes = F,
+     bty = "l")
+
+
+points(Temp ~ Day,
+     type = "l",
+     data = df6,
+     pch = 19,
+     lwd = 2,
+     col = "blue")
+     
+     
+axis(side = 1,
+     at = seq(from = 1,
+              to = 31,
+              by = 3))
+
+axis(side = 2,
+     las = 2)
+
+box(bty = "l")
+
+grid(col = "gray50")
+
+legend(x = "bottomright",
+       y = NULL,
+       legend = c("Month 5",
+                  "Month 6"),
+       col = c("darkgreen", "blue"),
+       lwd = 2,
+       lty = 1)
+
+abline(h = 60,
+       col = "red",
+       lty = 2,
+       lwd = 2)
+```
+
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+```{r, fig.width=6, fig.height=4, echo=T}
+plot(Temp ~ Day,
+     type = "l",
+     data = df5,
+     pch = 19,
+     col = "darkgreen",
+     lwd = 2,
+     las = 1,
+     main = "Temp vs. Day",
+     xlim = c(0, 33),
+     ylim = c(5, 100),
+     xaxs = "i",
+     yaxs = "i",
+     axes = F,
+     bty = "l")
+
+
+points(Temp ~ Day,
+     type = "l",
+     data = df6,
+     pch = 19,
+     lwd = 2,
+     col = "blue")
+     
+     
+axis(side = 1,
+     at = seq(from = 1,
+              to = 31,
+              by = 3))
+
+axis(side = 2,
+     las = 2)
+
+box(bty = "l")
+
+grid(col = "gray50")
+
+legend(x = "bottomright",
+       y = NULL,
+       legend = c("Month 5",
+                  "Month 6"),
+       col = c("darkgreen", "blue"),
+       lwd = 2,
+       lty = 1)
+
+abline(h = 60,
+       col = "red",
+       lty = 2,
+       lwd = 2)
+```
+</div>
+
+:::
+
+```{r}
+
+```
+
+
+
+
+
+
+
+## **Tài liệu tham khảo**
+
+`https://www.statscodes.com/plots-and-charts/`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

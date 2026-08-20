@@ -83,7 +83,7 @@
     "text": "Câu 1\nTa có vector p, hãy kiểm tra đặc điểm phân bố chuẩn của dữ liệu.\nTừ khóa: normality test\np &lt;- c(5, 12, 33, 9, 11, 12, 12, 15, 16, 22, 20)\np\n\n [1]  5 12 33  9 11 12 12 15 16 22 20",
     "crumbs": [
       "[**Các lệnh thống kê**]{style='color:blue'}",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>**Các lệnh thống kê mô tả**</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>**Các lệnh thống kê mô tả**</span>"
     ]
   },
   {
@@ -160,7 +160,7 @@
     "text": "TipĐáp án\n\n\n\n\n\n\nKiểm định phân bố chuẩn\n\n\n\nshapiro.test(p)\n\n\n    Shapiro-Wilk normality test\n\ndata:  p\nW = 0.90048, p-value = 0.1873\n\n\n\nNếu p-value &gt; 0.05 thì dữ liệu phân bố chuẩn.\n\n\nTính skewness (độ lệch) và kurtosis (độ nhọn) của phân bố\n\nCách 1: Giá trị quy về 0\n\nSkewness\n\nSkewness từ -1 đến 1: mức lý tưởng để kết luận có phân phối chuẩn\n\nSkewness từ -2 đến 2: mức chấp nhận để kết luận có phân phối chuẩn\n\nSkewness vượt quá -2 và 2: dữ liệu không có phân phối chuẩn\n\nKurtosis\n\nKurtosis gần bằng 0: mức lý tưởng để kết luận có phân phối chuẩn\n\nKurtosis từ -2 đến 2: mức chấp nhận để kết luận có phân phối chuẩn\n\nKurtosis vượt quá -2 và 2: dữ liệu không có phân phối chuẩn\n\n\n\nlibrary(psych)\npsych:::skew(p)\n\n[1] 0.9576881\n\npsych:::kurtosi(p)\n\n[1] 0.1692187\n\n\n\n\n\nCách 2: Giá trị quy về 3\n\n\n\nlibrary(moments)\nmoments:::skewness(p)\n\n[1] 1.104875\n\nmoments:::kurtosis(p)\n\n[1] 3.834755\n\n\n\n\n\n\nTham khảo\nhttps://www.phamlocblog.com/2025/03/chi-so-skewness-kurtosis-phan-phoi-chuan-spss.html",
     "crumbs": [
       "[**Các lệnh thống kê**]{style='color:blue'}",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>**Các lệnh thống kê mô tả**</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>**Các lệnh thống kê mô tả**</span>"
     ]
   },
   {
@@ -171,7 +171,7 @@
     "text": "Câu 2\nBạn có dữ liệu sau là kết quả đo khối lượng cây ở 3 nghiệm thức, hãy vẽ đồ thị QQ plot để kiểm tra đặc điểm phân bố chuẩn của dữ liệu.\n\nPlantGrowth\n\n   weight group\n1    4.17  ctrl\n2    5.58  ctrl\n3    5.18  ctrl\n4    6.11  ctrl\n5    4.50  ctrl\n6    4.61  ctrl\n7    5.17  ctrl\n8    4.53  ctrl\n9    5.33  ctrl\n10   5.14  ctrl\n11   4.81  trt1\n12   4.17  trt1\n13   4.41  trt1\n14   3.59  trt1\n15   5.87  trt1\n16   3.83  trt1\n17   6.03  trt1\n18   4.89  trt1\n19   4.32  trt1\n20   4.69  trt1\n21   6.31  trt2\n22   5.12  trt2\n23   5.54  trt2\n24   5.50  trt2\n25   5.37  trt2\n26   5.29  trt2\n27   4.92  trt2\n28   6.15  trt2\n29   5.80  trt2\n30   5.26  trt2\n\n\nKết quả cần đạt là hình này.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipĐáp án\n\n\n\n\n\n\n\nCách 1\n\nlibrary(ggplot2)\nlibrary(qqplotr)\nggplot(data = PlantGrowth,\n       mapping = aes(sample = weight, \n                     color = group, \n                     fill = group)) +\n  \n    stat_qq_band(alpha = 0.5) +\n  \n    stat_qq_line() +\n  \n    stat_qq_point() +\n  \n    facet_wrap(~ group,\n               scale = \"free\",\n               nrow = 1,\n               ncol = 3) \n\n\n\n\n\n\n\n\nCách 2\n\nlibrary(ggplot2)\nlibrary(ggpubr)\n\nggpubr:::ggqqplot(data = PlantGrowth, \n                  x = \"weight\", \n                  facet.by = \"group\")",
     "crumbs": [
       "[**Các lệnh thống kê**]{style='color:blue'}",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>**Các lệnh thống kê mô tả**</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>**Các lệnh thống kê mô tả**</span>"
     ]
   },
   {
@@ -182,7 +182,7 @@
     "text": "Câu 1\nTừ khóa: đồ thị phân tán; plot xy; đồ thị điểm\nBạn có dữ liệu sau về chỉ số đo lường chất lượng không khí.\nairquality -&gt; df\n\nhead(df)\n\n  Ozone Solar.R Wind Temp Month Day\n1    41     190  7.4   67     5   1\n2    36     118  8.0   72     5   2\n3    12     149 12.6   74     5   3\n4    18     313 11.5   62     5   4\n5    NA      NA 14.3   56     5   5\n6    28      NA 14.9   66     5   6\nBạn hãy vẽ đồ thị như hình bên dưới.",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
     ]
   },
   {
@@ -204,7 +204,7 @@
     "text": "Câu 1\nTừ khóa: barchart; bar chart; barplot; đồ thị cột; đồ thị thanh\nSử dụng dataset bar1.rds\nhttps://github.com/tuhocr/homework/blob/main/dataset/bar1.rds\ndf_kq &lt;- readRDS(\"dataset/bar1.rds\")\ndf_kq\n\n   semester gender mean_score sd_score max_score min_score\n1       3rd Female   64.77486 13.66542        92        34\n2       3rd   Male   71.41736 13.68334        95        32\n3       4th Female   65.02993 13.81512        94        30\n4       4th   Male   70.55134 13.23573        95        32\n5       5th Female   64.60223 14.30171        92        30\n6       5th   Male   71.22735 13.73720        97        31\n7       6th Female   64.32432 14.26521        94        31\n8       6th   Male   71.48963 13.25760        95        36\n9      &gt;6th Female   62.83200 13.95831        96        39\n10     &gt;6th   Male   71.25843 13.79063        96        34\nBạn hãy vẽ đồ thị cột để được hình bên dưới, với các điểm point đại diện cho giá trị maximum của từng nhóm.\nBạn có thể cần lấy factor của cột semester để sắp xếp thứ tự cột cho phù hợp.",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>**Đồ thị barchart**</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>**Đồ thị barchart**</span>"
     ]
   },
   {
@@ -325,7 +325,7 @@
     "text": "TipĐáp án\n\n\n\n\n\n\n\n\ndf_kq &lt;- readRDS(\"dataset/bar1.rds\")\n\ndf_kq$semester &lt;- factor(df_kq$semester,\n                         levels = c(\"3rd\",\n                                    \"4th\",\n                                    \"5th\",\n                                    \"6th\",\n                                    \"&gt;6th\"))\n\nlibrary(ggplot2)\nggplot(data = df_kq,\n       mapping = aes(x = semester,\n                     y = mean_score,\n                     fill = gender)) +\n  \n  geom_col(position = \"dodge\",\n           width = 0.8,\n           color = \"black\") +\n  \n  # geom_boxplot() +\n  \n  geom_point(data = df_kq,\n             mapping = aes(x = semester,\n                           y = max_score,\n                           color = gender,\n                           fill = gender,\n                           group = gender),\n             position = position_dodge(width = 0.8)) +\n  \n  # nếu dùng scale_y để set limit thì sẽ không được\n  # scale_y_continuous(limits = c(50,100)) +\n  \n  geom_errorbar(mapping = aes(ymin = mean_score,\n                              ymax = mean_score + sd_score),\n                width = 0.8,\n                colour = \"black\",\n                position = \"dodge\",\n                alpha = 1,\n                linewidth = 0.5) +\n  \n  theme_bw(base_size = 16) +\n  \n  coord_cartesian(ylim = c(40,100))",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>**Đồ thị barchart**</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>**Đồ thị barchart**</span>"
     ]
   },
   {
@@ -380,7 +380,7 @@
     "text": "TipĐáp án\n\n\n\n\n\n\n\n\nlibrary(ggplot2)\n\nggplot(data = df,\n       mapping = aes(x = Temp,\n                     y = Wind)) +\n  \n  geom_point() +\n  \n  theme_bw(base_size = 16)",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
     ]
   },
   {
@@ -391,7 +391,7 @@
     "text": "Câu 2\n\n\n\n\nTiếp theo câu 1, bạn hãy thêm đường trend line/regression vào đồ thị\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipĐáp án\n\n\n\n\n\n\n\n\nlibrary(ggplot2)\n\nggplot(data = df,\n       mapping = aes(x = Temp,\n                     y = Wind)) +\n  \n  geom_point() +\n  \n  geom_smooth(method = \"lm\",\n              color = \"darkgreen\",\n              fill = \"royalblue\",\n              alpha = 0.25) +\n  \n  theme_bw(base_size = 16)",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
     ]
   },
   {
@@ -402,7 +402,7 @@
     "text": "Câu 3\n\n\n\n\nTiếp theo câu 2, bạn hãy thêm giá trị R-squared và p-value vào đồ thị.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipĐáp án\n\n\n\n\n\n\n\nĐầu tiên ta cần thực hiện model hồi quy đơn biến của Wind theo Temp sau đó trích ra giá trị R-squared và p-value tương ứng.\n\nfit &lt;- lm(Wind ~ Temp,\n          data = df)\nsummary(fit)\n\n\nCall:\nlm(formula = Wind ~ Temp, data = df)\n\nResiduals:\n   Min     1Q Median     3Q    Max \n-8.578 -2.449 -0.226  1.985  9.740 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  23.2337     2.1124   11.00  &lt; 2e-16 ***\nTemp         -0.1705     0.0269   -6.33  2.6e-09 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 3.14 on 151 degrees of freedom\nMultiple R-squared:  0.21,  Adjusted R-squared:  0.205 \nF-statistic: 40.1 on 1 and 151 DF,  p-value: 2.64e-09\n\nsummary(fit) -&gt; kq\n\n###\nr_squared &lt;- round(kq$r.squared, digits = 4)\n\nr_squared_text &lt;- bquote(R^2 == .(r_squared))\n###\n\n###\n# tùy chỉnh tham số để thay đổi số lượng số \n# sau dấu thập phân trong p-value\noptions(scipen = 4)\noptions(digits = 3)\np_value &lt;- kq$coefficients[2,4]\n\n# p-value thường rất nhỏ, ggplot2 sẽ hiển thị nhiều số 0,\n# ta cần chủ động chụp lại kết quả p-value trên console\np_value_ok &lt;- capture.output(cat(p_value)) \n# p_value_ok\np_value &lt;- p_value_ok\n\np_value_text &lt;- bquote('p-value' == .(p_value))\n# p_value_text \n###\n\nTạo đối tượng lưu text sử dụng package grid\n\nlibrary(ggplot2)\nlibrary(grid)\n\ngrob_r_squared_text &lt;- grobTree(... = textGrob(label = r_squared_text, \n                          x = 0.95, \n                          y = 0.95, \n                          hjust = 1,\n                          vjust = 1,\n                          gp = gpar(col = \"blue\",\n                                    fontsize = 13,\n                                    fontface = \"italic\")))\n\ngrob_p_value_text &lt;- grobTree(... = textGrob(label = p_value_text, \n                          x = 0.95, \n                          y = 0.85, \n                          hjust = 1,\n                          vjust = 1,\n                          gp = gpar(col = \"blue\",\n                                    fontsize = 13,\n                                    fontface = \"italic\")))\n\nChèn văn bản vào đồ thị sử dụng lệnh annotation_custom()\n\nggplot(data = df,\n       mapping = aes(x = Temp,\n                     y = Wind)) +\n  \n  geom_point() +\n  \n  annotation_custom(grob_r_squared_text) +\n  \n  annotation_custom(grob_p_value_text) +\n  \n  geom_smooth(method = \"lm\",\n              color = \"darkgreen\",\n              fill = \"royalblue\",\n              alpha = 0.25) + \n  \n  theme_bw(base_size = 16) +\n  \n  labs(x = \"Temp\",\n       y = \"Wind\",\n       title = \"Wind ~ Temp\")\n\n\n\n\n\n\n\n\n\n\n\n\nCredit: Cảm ơn Dr. Trương Kim đã gợi ý cho mình về dạng đồ thị này.",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>**Đồ thị scatterplot**</span>"
     ]
   },
   {
@@ -413,7 +413,7 @@
     "text": "Câu 1\nTừ khóa: confidence interval\nBạn có dữ liệu sau về thông số đo lường của 31 cây black cherry.\ntrees -&gt; df\n\ndf\n\n   Girth Height Volume\n1    8.3     70   10.3\n2    8.6     65   10.3\n3    8.8     63   10.2\n4   10.5     72   16.4\n5   10.7     81   18.8\n6   10.8     83   19.7\n7   11.0     66   15.6\n8   11.0     75   18.2\n9   11.1     80   22.6\n10  11.2     75   19.9\n11  11.3     79   24.2\n12  11.4     76   21.0\n13  11.4     76   21.4\n14  11.7     69   21.3\n15  12.0     75   19.1\n16  12.9     74   22.2\n17  12.9     85   33.8\n18  13.3     86   27.4\n19  13.7     71   25.7\n20  13.8     64   24.9\n21  14.0     78   34.5\n22  14.2     80   31.7\n23  14.5     74   36.3\n24  16.0     72   38.3\n25  16.3     77   42.6\n26  17.3     81   55.4\n27  17.5     82   55.7\n28  17.9     80   58.3\n29  18.0     80   51.5\n30  18.0     80   51.0\n31  20.6     87   77.0\nBạn hãy vẽ đồ thị như hình bên dưới.",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>**Cách vẽ đường 95% CI**</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>**Cách vẽ đường 95% CI**</span>"
     ]
   },
   {
@@ -424,7 +424,7 @@
     "text": "TipĐáp án\n\n\n\n\n\n\n\nĐể vẽ khoảng tin cậy sử dụng lệnh polygon() ta cần sắp xếp trục X (Height) theo thứ tự từ nhỏ đến lớn (hoặc ngược lại) để R vẽ đúng như yêu cầu.\n\nlibrary(dplyr)\n\ndf |&gt; dplyr:::arrange(Height) -&gt; df\n\nplot(Volume ~ Height,\n     ylim = c(0, 100),\n     data = df)\n\nfit &lt;- lm(Volume ~ Height,\n              data = df)\n\nabline(fit, col = \"red\")\n\npred_CI &lt;- predict(fit,\n                   interval = \"confidence\")\n\n# add polygon and overlplot the lines\npolygon(x = c(df$Height, rev(df$Height)),\n        y = c(pred_CI[ , 2], rev(pred_CI[ , 3])),\n        col = adjustcolor(\"lightblue\", alpha.f = 0.5),\n        border = NA)\n\nlines(df$Height,\n      pred_CI[ , 2],\n      lty = 2,\n      col = \"purple\",\n      lwd = 2)\n\nlines(df$Height,\n      pred_CI[ , 3],\n      lty = 2,\n      col = \"purple\",\n      lwd = 2)",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>**Cách vẽ đường 95% CI**</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>**Cách vẽ đường 95% CI**</span>"
     ]
   },
   {
@@ -435,7 +435,7 @@
     "text": "Câu 1\nBạn có dữ liệu sau về thông số đo lường của các cây black cherry.\ntrees -&gt; df\n\ndf[1:12, ]\n\n   Girth Height Volume\n1    8.3     70   10.3\n2    8.6     65   10.3\n3    8.8     63   10.2\n4   10.5     72   16.4\n5   10.7     81   18.8\n6   10.8     83   19.7\n7   11.0     66   15.6\n8   11.0     75   18.2\n9   11.1     80   22.6\n10  11.2     75   19.9\n11  11.3     79   24.2\n12  11.4     76   21.0\nBạn hãy xuất ra file Excel và có định dạng format như sau.",
     "crumbs": [
       "[**Các lệnh format văn bản**]{style='color:blue'}",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>**Cách format file Excel**</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>**Cách format file Excel**</span>"
     ]
   },
   {
@@ -446,7 +446,7 @@
     "text": "TipĐáp án\n\n\n\n\n\n\n\nCụm lệnh sau sẽ thực hiện theo logic:\n\nBạn có một dataset df\nSau đó ta tạo đối tượng wb đính kèm dataset này và các đặc điểm cần format\nTa export ra file df_styled.xlsx\n\n\ntrees -&gt; df\n\nlibrary(openxlsx)\n\n# lệnh này save file .xlsx như thông thường (without format)\n# openxlsx:::write.xlsx(df, \"df_trees.xlsx\")\n\nwb &lt;- openxlsx:::createWorkbook()\n\nopenxlsx:::addWorksheet(wb, \"Sheet 1\")\n\nopenxlsx:::writeData(wb, \"Sheet 1\", df)\n\nheader_style &lt;- openxlsx:::createStyle(fontSize = 12, \n                            fontColour = \"black\",\n                            fgFill = \"yellow\", \n                            textDecoration = \"bold\",\n                            halign = \"center\")\n\nopenxlsx:::addStyle(wb,\n         sheet = \"Sheet 1\", \n         header_style, \n         rows = 1, \n         cols = 1:ncol(df), \n         gridExpand = TRUE)\n\nopenxlsx:::saveWorkbook(wb, \"dataset/df_styled.xlsx\", overwrite = TRUE)",
     "crumbs": [
       "[**Các lệnh format văn bản**]{style='color:blue'}",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>**Cách format file Excel**</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>**Cách format file Excel**</span>"
     ]
   },
   {
@@ -622,7 +622,7 @@
     "text": "Cú pháp cơ bản\nĐây là package chuyên để thực hiện thống kê mô tả rất hữu ích để tổng quát nhanh chóng một bộ dữ liệu, giúp tìm ra đặc điểm dữ liệu bị sai sót để người dùng có thể chỉnh sửa kịp thời. [record]\nlibrary(table1)\nlibrary(flextable)\nlibrary(magrittr)\nlibrary(openxlsx)\nlibrary(dplyr)\n\nmtcars$vs &lt;- factor(mtcars$vs)\nmtcars$cyl &lt;- factor(mtcars$cyl)\nmtcars$am &lt;- factor(mtcars$am)\nmtcars[1:3, 1:3] &lt;- NA\n\ntable_freq &lt;- table1:::table1.formula( ~ . | vs,\n                     topclass=\"Rtable1-grid\",\n                     data = mtcars,\n                    # digits = 4,\n                    render.continuous = c(\"Mean (± SD)\" = \"MEAN (± SD)\",\n                                          \"Median [Min, Max]\" = \"MEDIAN [MIN, MAX]\")\n                          )\n\ntable_freq\n\n\n\n\n\n\n\n\n\n\n\n\n0\n(N=18)\n1\n(N=14)\nOverall\n(N=32)\n\n\n\n\nmpg\n\n\n\n\n\nMean (± SD)\n16.1 (± 3.74)\n24.7 (± 5.57)\n19.9 (± 6.31)\n\n\nMedian [Min, Max]\n15.4 [10.4, 26.0]\n22.8 [17.8, 33.9]\n18.7 [10.4, 33.9]\n\n\nMissing\n2 (11.1%)\n1 (7.1%)\n3 (9.4%)\n\n\ncyl\n\n\n\n\n\n4\n1 (5.6%)\n9 (64.3%)\n10 (31.3%)\n\n\n6\n1 (5.6%)\n4 (28.6%)\n5 (15.6%)\n\n\n8\n14 (77.8%)\n0 (0%)\n14 (43.8%)\n\n\nMissing\n2 (11.1%)\n1 (7.1%)\n3 (9.4%)\n\n\ndisp\n\n\n\n\n\nMean (± SD)\n326 (± 98.3)\n134 (± 58.8)\n240 (± 127)\n\n\nMedian [Min, Max]\n334 [120, 472]\n121 [71.1, 258]\n258 [71.1, 472]\n\n\nMissing\n2 (11.1%)\n1 (7.1%)\n3 (9.4%)\n\n\nhp\n\n\n\n\n\nMean (± SD)\n190 (± 60.3)\n91.4 (± 24.4)\n147 (± 68.6)\n\n\nMedian [Min, Max]\n180 [91.0, 335]\n96.0 [52.0, 123]\n123 [52.0, 335]\n\n\ndrat\n\n\n\n\n\nMean (± SD)\n3.39 (± 0.474)\n3.86 (± 0.506)\n3.60 (± 0.535)\n\n\nMedian [Min, Max]\n3.18 [2.76, 4.43]\n3.92 [2.76, 4.93]\n3.70 [2.76, 4.93]\n\n\nwt\n\n\n\n\n\nMean (± SD)\n3.69 (± 0.904)\n2.61 (± 0.715)\n3.22 (± 0.978)\n\n\nMedian [Min, Max]\n3.57 [2.14, 5.42]\n2.62 [1.51, 3.46]\n3.33 [1.51, 5.42]\n\n\nqsec\n\n\n\n\n\nMean (± SD)\n16.7 (± 1.09)\n19.3 (± 1.35)\n17.8 (± 1.79)\n\n\nMedian [Min, Max]\n17.0 [14.5, 18.0]\n19.2 [16.9, 22.9]\n17.7 [14.5, 22.9]\n\n\nam\n\n\n\n\n\n0\n12 (66.7%)\n7 (50.0%)\n19 (59.4%)\n\n\n1\n6 (33.3%)\n7 (50.0%)\n13 (40.6%)\n\n\ngear\n\n\n\n\n\nMean (± SD)\n3.56 (± 0.856)\n3.86 (± 0.535)\n3.69 (± 0.738)\n\n\nMedian [Min, Max]\n3.00 [3.00, 5.00]\n4.00 [3.00, 5.00]\n4.00 [3.00, 5.00]\n\n\ncarb\n\n\n\n\n\nMean (± SD)\n3.61 (± 1.54)\n1.79 (± 1.05)\n2.81 (± 1.62)\n\n\nMedian [Min, Max]\n4.00 [2.00, 8.00]\n1.50 [1.00, 4.00]\n2.00 [1.00, 8.00]",
     "crumbs": [
       "[**Các lệnh thống kê**]{style='color:blue'}",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>**Package `table1`**</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>**Package `table1`**</span>"
     ]
   },
   {
@@ -644,7 +644,7 @@
     "text": "Thay dấu . decimal point thành dấu ,\nDataset minh họa sinhvien.xlsx\n\noptions(\"OutDec\" = \",\") # thay đổi dấu decimal ở đây\n\nlibrary(readxl)\n\nsinhvien &lt;- read_excel(\"dataset/sinhvien.xlsx\")\n\nsinhvien$`Tốt nghiệp` &lt;- factor(sinhvien$`Tốt nghiệp`,\n                                levels = c(0, 1))\n# summary(sinhvien)\n\ntable_freq &lt;- table1:::table1.formula( ~ . | `Giới tính`,\n                     topclass=\"Rtable1-grid\",\n                     data = sinhvien[ , -1],\n                    # digits = 4,\n                    overall = \"Tổng cộng\",\n                    render.continuous = c(\"Mean (± SD)\" = \"MEAN (± SD)\",\n                                          \"Median [IQR]\" = \"MEDIAN [IQR]\",\n                                          \"Min\" = \"MIN\",\n                                          \"Max\" = \"MAX\")\n                          )\n\ntable_freq\n\n\n\n\n\n\n\n\n\n\n\n\nNam\n(N=4129)\nNữ\n(N=4110)\nTổng cộng\n(N=8239)\n\n\n\n\nTuổi\n\n\n\n\n\nMean (± SD)\n22,5 (± 5,85)\n22,6 (± 6,27)\n22,5 (± 6,07)\n\n\nMedian [IQR]\n21,0 [3,00]\n21,0 [3,00]\n21,0 [3,00]\n\n\nMin\n18,0\n18,0\n18,0\n\n\nMax\n63,0\n64,0\n64,0\n\n\nChiều cao\n\n\n\n\n\nMean (± SD)\n179 (± 7,99)\n164 (± 7,92)\n171 (± 11,1)\n\n\nMedian [IQR]\n179 [10,0]\n164 [11,0]\n171 [17,0]\n\n\nMin\n144\n135\n135\n\n\nMax\n206\n193\n206\n\n\nCân nặng\n\n\n\n\n\nMean (± SD)\n78,6 (± 7,67)\n67,4 (± 5,23)\n73,0 (± 8,64)\n\n\nMedian [IQR]\n77,9 [10,0]\n67,0 [6,90]\n71,8 [12,0]\n\n\nMin\n56,9\n51,4\n51,4\n\n\nMax\n116\n93,8\n116\n\n\nĐiểm môn học\n\n\n\n\n\nMean (± SD)\n2,18 (± 0,805)\n2,15 (± 0,818)\n2,17 (± 0,812)\n\n\nMedian [IQR]\n2,08 [1,30]\n2,00 [1,32]\n2,04 [1,32]\n\n\nMin\n1,00\n1,00\n1,00\n\n\nMax\n4,00\n4,00\n4,00\n\n\nNăm học\n\n\n\n\n\nNăm 1\n794 (19,2%)\n915 (22,3%)\n1709 (20,7%)\n\n\nNăm 2\n709 (17,2%)\n929 (22,6%)\n1638 (19,9%)\n\n\nNăm 3\n726 (17,6%)\n915 (22,3%)\n1641 (19,9%)\n\n\nNăm 4\n633 (15,3%)\n735 (17,9%)\n1368 (16,6%)\n\n\nNăm 5\n1267 (30,7%)\n616 (15,0%)\n1883 (22,9%)\n\n\nNgành học\n\n\n\n\n\nBiology\n638 (15,5%)\n959 (23,3%)\n1597 (19,4%)\n\n\nEconomics and Finance\n863 (20,9%)\n461 (11,2%)\n1324 (16,1%)\n\n\nEnvironmental Sciences\n881 (21,3%)\n745 (18,1%)\n1626 (19,7%)\n\n\nMathematics and Statistics\n949 (23,0%)\n276 (6,7%)\n1225 (14,9%)\n\n\nPolitical Science\n477 (11,6%)\n978 (23,8%)\n1455 (17,7%)\n\n\nSocial Sciences\n321 (7,8%)\n691 (16,8%)\n1012 (12,3%)\n\n\nTốt nghiệp\n\n\n\n\n\n0\n3050 (73,9%)\n3436 (83,6%)\n6486 (78,7%)\n\n\n1\n1079 (26,1%)\n674 (16,4%)\n1753 (21,3%)\n\n\nChi phí sinh hoạt\n\n\n\n\n\nMean (± SD)\n46600 (± 9660)\n36000 (± 7730)\n42500 (± 10300)\n\n\nMedian [IQR]\n46000 [13500]\n35700 [10700]\n41700 [14200]\n\n\nMin\n14100\n11400\n11400\n\n\nMax\n75600\n63200\n75600\n\n\nMissing\n3050 (73,9%)\n3436 (83,6%)\n6486 (78,7%)",
     "crumbs": [
       "[**Các lệnh thống kê**]{style='color:blue'}",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>**Package `table1`**</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>**Package `table1`**</span>"
     ]
   },
   {
@@ -655,7 +655,7 @@
     "text": "Tham khảo\nhttps://cran.r-project.org/web/packages/table1/vignettes/table1-examples.html\nhttps://github.com/benjaminrich/table1/issues/34",
     "crumbs": [
       "[**Các lệnh thống kê**]{style='color:blue'}",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>**Package `table1`**</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>**Package `table1`**</span>"
     ]
   },
   {
@@ -666,7 +666,7 @@
     "text": "Xuất kết quả ra file Word và Excel\n\n# export ra word\ntable1:::t1flex(table_freq) %&gt;%\n  flextable:::save_as_docx(path = \"dataset/table_freq.docx\")\n\n# export ra excel\nopenxlsx:::write.xlsx(table_freq, file = \"table_freq.xlsx\")\n\n\nMặc định thì format xuất ra Word sẽ chưa đẹp lắm, ta có thể vào mục Table Layout/Chọn AutoFit Window, sau đó chọn font chữ và size chữ phù hợp. Để các dòng khít lại với nhau, ta vào mục Layout, chọn Spacing (Before và After = 0 pt).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCredit: Cảm ơn Dr. Lê Kiều Chinh đã đề xuất câu hỏi để mình tìm cách format thay dấu chấm bằng dấu phẩy ở số thập phân từ kết quả xuất ra của package table1.",
     "crumbs": [
       "[**Các lệnh thống kê**]{style='color:blue'}",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>**Package `table1`**</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>**Package `table1`**</span>"
     ]
   },
   {
@@ -674,10 +674,10 @@
     "href": "cach-xem-source-va-edit-function.html",
     "title": "Cách xem source và edit function",
     "section": "",
-    "text": "Các lệnh truy vấn function\nTrong R có hai dạng function là S3 và S4 method, ngoài ra còn các dạng function khác. Phổ biến nhất là dạng S3 method (dạng căn bản), vì vậy các lệnh trong bài này được áp dụng cho việc truy vấn các function S3 method, nhằm hỗ trợ việc tùy chỉnh, đọc hiểu cấu trúc câu lệnh được tốt hơn, từ đó giúp ta dễ dàng truy ra phương pháp tính toán cho các tình huống cụ thể.\nĐể nắm chắc kiến thức về function trong R, các bạn xem ở section 25 về cách xây dựng function trong R nhé. Bài giảng\nTa xét trường hợp lệnh subset() được dùng để trích xuất các thành phần trong data frame theo cột.\n# trích xuất giá trị cyl == 6 ở cột cyl\ndf &lt;- mtcars |&gt; subset(cyl == 6)\ndf\n\n                mpg cyl  disp  hp drat    wt  qsec vs am gear carb\nMazda RX4      21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4\nHornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1\nValiant        18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1\nMerc 280       19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4\nMerc 280C      17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4\nFerrari Dino   19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6\nGiờ ta muốn xem ruột/source của function này thì cách làm như sau.\n# gõ trực tiếp tên function\nsubset\n\nfunction (x, ...) \nUseMethod(\"subset\")\n&lt;bytecode: 0x0000012c22c6a728&gt;\n&lt;environment: namespace:base&gt;\nKhi gõ riêng tên function, ta thấy có UseMethod(\"subset\") nghĩa là function này là 1 function chung (generic), nó còn có các function con (method) tương ứng từng loại (class) đối tượng để subset. Ta truy vấn tiếp lệnh này.\nmethods(\"subset\")\n\n[1] subset.data.frame subset.default    subset.matrix     subset.news_db*  \nsee '?methods' for accessing help and source code\nKết quả trả về sẽ là các function con cụ thể, function nào có dấu hoa thị * là dạng function bị ẩn, các function này ta gọi trực tiếp bằng lệnh ten_package:::ten_function() để truy đến package gốc chứa function đó.\nKhi gõ tên function cụ thể ra, ta đọc được source của function này. Đặc điểm function trong R sẽ tạo ra các đối tượng hoạt động trong môi trường riêng biệt (local environment) sẽ không hiển thị ở (global environment), do đó cụm bytecode: 0x0000012babb1b2d8 chính là mã ID của vùng local environment mà tại đó các đối tượng trong ruột function sẽ tồn tại để thực hiện các bước tính toán.\n# ở đây ta có `mtcars` thuộc class(mtcars) là data.frame\n# nên lệnh subset (dấu chấm) data.frame sẽ là lệnh\n# thực hiện chính công việc subset dữ liệu này\nsubset.data.frame\n\nfunction (x, subset, select, drop = FALSE, ...) \n{\n    chkDots(...)\n    r &lt;- if (missing(subset)) \n        rep_len(TRUE, nrow(x))\n    else {\n        e &lt;- substitute(subset)\n        r &lt;- eval(e, x, parent.frame())\n        if (!is.logical(r)) \n            stop(\"'subset' must be logical\")\n        r & !is.na(r)\n    }\n    vars &lt;- if (missing(select)) \n        rep_len(TRUE, ncol(x))\n    else {\n        nl &lt;- as.list(seq_along(x))\n        names(nl) &lt;- names(x)\n        eval(substitute(select), nl, parent.frame())\n    }\n    x[r, vars, drop = drop]\n}\n&lt;bytecode: 0x0000012c2341c550&gt;\n&lt;environment: namespace:base&gt;\nbase:::subset.data.frame\nGiờ ta muốn can thiệp/thay đổi function subset này ngay trong phiên làm việc/session thì ta dùng lệnh trace\n# có thể để tên function trong dấu \"\" hoặc không cần cũng được.\n# tốt nhất để trực tiếp tên function without quoted\ntrace(what = subset.data.frame,\n      tracer = FALSE,\n      edit = TRUE)\nThay đổi nội dung function ngay trong phiên làm việc (nếu ta restart RStudio thì function sẽ trở lại trạng thái ban đầu, không bị ghi đè các thay đổi này), phương pháp này rất hữu ích để ta debug/dò ra các biến trung gian và cơ chế hoạt động của function để modify lại theo ý của mình.\nGọi lại function, lúc này trên global environment xuất hiện đối tượng x_ok từ trong local environment của lệnh subset.data.frame.\ndf &lt;- mtcars |&gt; subset(cyl == 6)\ndf\n\n                mpg cyl  disp  hp drat    wt  qsec vs am gear carb\nMazda RX4      21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4\nHornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1\nValiant        18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1\nMerc 280       19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4\nMerc 280C      17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4\nFerrari Dino   19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6",
+    "text": "Các lệnh truy vấn function\nTrong R có hai dạng function là S3 và S4 method, ngoài ra còn các dạng function khác. Phổ biến nhất là dạng S3 method (dạng căn bản), vì vậy các lệnh trong bài này được áp dụng cho việc truy vấn các function S3 method, nhằm hỗ trợ việc tùy chỉnh, đọc hiểu cấu trúc câu lệnh được tốt hơn, từ đó giúp ta dễ dàng truy ra phương pháp tính toán cho các tình huống cụ thể.\nĐể nắm chắc kiến thức về function trong R, các bạn xem ở section 25 về cách xây dựng function trong R nhé. Bài giảng\nTa xét trường hợp lệnh subset() được dùng để trích xuất các thành phần trong data frame theo cột.\n# trích xuất giá trị cyl == 6 ở cột cyl\ndf &lt;- mtcars |&gt; subset(cyl == 6)\ndf\n\n                mpg cyl  disp  hp drat    wt  qsec vs am gear carb\nMazda RX4      21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4\nHornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1\nValiant        18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1\nMerc 280       19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4\nMerc 280C      17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4\nFerrari Dino   19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6\nGiờ ta muốn xem ruột/source của function này thì cách làm như sau.\n# gõ trực tiếp tên function\nsubset\n\nfunction (x, ...) \nUseMethod(\"subset\")\n&lt;bytecode: 0x000001830186a728&gt;\n&lt;environment: namespace:base&gt;\nKhi gõ riêng tên function, ta thấy có UseMethod(\"subset\") nghĩa là function này là 1 function chung (generic), nó còn có các function con (method) tương ứng từng loại (class) đối tượng để subset. Ta truy vấn tiếp lệnh này.\nmethods(\"subset\")\n\n[1] subset.data.frame subset.default    subset.matrix     subset.news_db*  \nsee '?methods' for accessing help and source code\nKết quả trả về sẽ là các function con cụ thể, function nào có dấu hoa thị * là dạng function bị ẩn, các function này ta gọi trực tiếp bằng lệnh ten_package:::ten_function() để truy đến package gốc chứa function đó.\nKhi gõ tên function cụ thể ra, ta đọc được source của function này. Đặc điểm function trong R sẽ tạo ra các đối tượng hoạt động trong môi trường riêng biệt (local environment) sẽ không hiển thị ở (global environment), do đó cụm bytecode: 0x0000012babb1b2d8 chính là mã ID của vùng local environment mà tại đó các đối tượng trong ruột function sẽ tồn tại để thực hiện các bước tính toán.\n# ở đây ta có `mtcars` thuộc class(mtcars) là data.frame\n# nên lệnh subset (dấu chấm) data.frame sẽ là lệnh\n# thực hiện chính công việc subset dữ liệu này\nsubset.data.frame\n\nfunction (x, subset, select, drop = FALSE, ...) \n{\n    chkDots(...)\n    r &lt;- if (missing(subset)) \n        rep_len(TRUE, nrow(x))\n    else {\n        e &lt;- substitute(subset)\n        r &lt;- eval(e, x, parent.frame())\n        if (!is.logical(r)) \n            stop(\"'subset' must be logical\")\n        r & !is.na(r)\n    }\n    vars &lt;- if (missing(select)) \n        rep_len(TRUE, ncol(x))\n    else {\n        nl &lt;- as.list(seq_along(x))\n        names(nl) &lt;- names(x)\n        eval(substitute(select), nl, parent.frame())\n    }\n    x[r, vars, drop = drop]\n}\n&lt;bytecode: 0x000001830201b9a8&gt;\n&lt;environment: namespace:base&gt;\nbase:::subset.data.frame\nGiờ ta muốn can thiệp/thay đổi function subset này ngay trong phiên làm việc/session thì ta dùng lệnh trace\n# có thể để tên function trong dấu \"\" hoặc không cần cũng được.\n# tốt nhất để trực tiếp tên function without quoted\ntrace(what = subset.data.frame,\n      tracer = FALSE,\n      edit = TRUE)\nThay đổi nội dung function ngay trong phiên làm việc (nếu ta restart RStudio thì function sẽ trở lại trạng thái ban đầu, không bị ghi đè các thay đổi này), phương pháp này rất hữu ích để ta debug/dò ra các biến trung gian và cơ chế hoạt động của function để modify lại theo ý của mình.\nGọi lại function, lúc này trên global environment xuất hiện đối tượng x_ok từ trong local environment của lệnh subset.data.frame.\ndf &lt;- mtcars |&gt; subset(cyl == 6)\ndf\n\n                mpg cyl  disp  hp drat    wt  qsec vs am gear carb\nMazda RX4      21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4\nHornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1\nValiant        18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1\nMerc 280       19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4\nMerc 280C      17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4\nFerrari Dino   19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6",
     "crumbs": [
       "[**Các lệnh về function**]{style='color:blue'}",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>**Cách xem source và edit function**</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>**Cách xem source và edit function**</span>"
     ]
   },
   {
@@ -688,7 +688,7 @@
     "text": "Câu 1\nDựa trên kiến thức về function, bạn hãy tùy chỉnh lại function car:::qqPlot.default để khi vẽ ra các điểm outlier thì sẽ tô màu đỏ ở phần label. Kết quả giống như hình này.\nGợi ý cách làm:\n\nTa sẽ gọi riêng lệnh car:::qqPlot.default này ra ngoài console để copy source của function, lưu trong 1 file script đặt tên là qqPlot_enhanced.R\nTa chỉnh sửa ruột function trong file script này và test xem hoạt động được như yêu cầu đề bài hay không. Cách tiếp cận là dò lần lượt từng cụm code và check, function nào trong ruột của function này mà có liên quan đến package khác thì ta sửa câu lệnh theo kiểu ::: để gọi trực tiếp function đó ra. minh họa\nSau khi xong hết bạn kiểm tra hoạt động 2 function car:::qqPlot.default(trees$Height) và qqPlot_enhanced(trees$Height) nếu ra cùng kết quả thì ta đã biết cách chỉnh sửa function theo ý của mình.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipĐáp án\n\n\n\n\n\n\n\n\npar(mfrow = c(1,2))\ncar:::qqPlot.default(trees$Height,\n                     main = \"Lệnh gốc\")\n\n# các bạn xem file source ở đây và chạy lại trên máy tính nhé\nsource(\"dataset/qqPlot_enhanced.R\")\nqqPlot_enhanced(trees$Height,\n                main = \"Lệnh được cải tiến\")\n\nĐể thuận tiện đối chiếu giữa hai file code, các bạn copy source file qqPlot_ori.R và qqPlot_enhanced.R, dùng chương trình compare code để đối chiếu xem đã có những thay đổi nào trong function cải tiến nhé. Mình thường dùng trang web này để đối chiếu file code diffchecker.",
     "crumbs": [
       "[**Các lệnh về function**]{style='color:blue'}",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>**Cách xem source và edit function**</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>**Cách xem source và edit function**</span>"
     ]
   },
   {
@@ -718,10 +718,10 @@
     "href": "cach-xem-source-va-edit-function.html#truy-vấn-function-từ-package",
     "title": "Cách xem source và edit function",
     "section": "Truy vấn function từ package",
-    "text": "Truy vấn function từ package\nCách làm cũng tương tự như trên, ta lưu ý khi dùng function từ package nào thì cần gọi trực tiếp đến tên function gốc theo cú pháp :::.\n\nlibrary(car)\n# vẽ lần 1 bằng lệnh qqPlot\ncar:::qqPlot(trees$Height)\n\n\n\n\n\n\n\n\n\nqqPlot\n\nfunction (x, ...) \n{\n    UseMethod(\"qqPlot\")\n}\n&lt;bytecode: 0x0000012c21b5c7d0&gt;\n&lt;environment: namespace:car&gt;\n\nmethods(\"qqPlot\")\n\n[1] qqPlot.default* qqPlot.formula* qqPlot.glm*     qqPlot.lm*     \nsee '?methods' for accessing help and source code\n\n\n\n# khi dò được function gốc rồi ta dễ dàng xem được\n# source của function này để chỉnh sửa\ncar:::qqPlot.default(trees$Height)\n\n\n# chỉnh sửa trực tiếp trong phiên làm việc\ntrace(what = car:::qqPlot.default,\n      tracer = F,\n      edit = TRUE)\n\nNếu muốn tìm xem function nào thuộc package nào, các bạn có thể dùng các lệnh sau.\n\nlibrary(car)\n\n# tìm xem function này thuộc package nào\ngetAnywhere(qqPlot)\n\n# tìm xem function này thuộc package nào (chỉ áp dụng cho các function đã được load/library trong phiên làm việc)\nfind(\"qqPlot\")\n\n# tìm xem function nayù thuộc package nào\nenvironment(qqPlot)\nenvironmentName(environment(qqPlot))\n\n# tìm các đối tượng có cùng tên này \napropos(\"qqPlot\")\n\n# xác định xem function này có tồn tại\nexists(\"qqPlot\", mode = \"function\")",
+    "text": "Truy vấn function từ package\nCách làm cũng tương tự như trên, ta lưu ý khi dùng function từ package nào thì cần gọi trực tiếp đến tên function gốc theo cú pháp :::.\n\nlibrary(car)\n# vẽ lần 1 bằng lệnh qqPlot\ncar:::qqPlot(trees$Height)\n\n\n\n\n\n\n\n\n\nqqPlot\n\nfunction (x, ...) \n{\n    UseMethod(\"qqPlot\")\n}\n&lt;bytecode: 0x000001830074d9d0&gt;\n&lt;environment: namespace:car&gt;\n\nmethods(\"qqPlot\")\n\n[1] qqPlot.default* qqPlot.formula* qqPlot.glm*     qqPlot.lm*     \nsee '?methods' for accessing help and source code\n\n\n\n# khi dò được function gốc rồi ta dễ dàng xem được\n# source của function này để chỉnh sửa\ncar:::qqPlot.default(trees$Height)\n\n\n# chỉnh sửa trực tiếp trong phiên làm việc\ntrace(what = car:::qqPlot.default,\n      tracer = F,\n      edit = TRUE)\n\nNếu muốn tìm xem function nào thuộc package nào, các bạn có thể dùng các lệnh sau.\n\nlibrary(car)\n\n# tìm xem function này thuộc package nào\ngetAnywhere(qqPlot)\n\n# tìm xem function này thuộc package nào (chỉ áp dụng cho các function đã được load/library trong phiên làm việc)\nfind(\"qqPlot\")\n\n# tìm xem function nayù thuộc package nào\nenvironment(qqPlot)\nenvironmentName(environment(qqPlot))\n\n# tìm các đối tượng có cùng tên này \napropos(\"qqPlot\")\n\n# xác định xem function này có tồn tại\nexists(\"qqPlot\", mode = \"function\")",
     "crumbs": [
       "[**Các lệnh về function**]{style='color:blue'}",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>**Cách xem source và edit function**</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>**Cách xem source và edit function**</span>"
     ]
   },
   {
@@ -765,7 +765,7 @@
     "text": "Câu 1\nBạn có dữ liệu như sau.\ndf &lt;- airquality[1:30, ]\ndf\n\n   Ozone Solar.R Wind Temp Month Day\n1     41     190  7.4   67     5   1\n2     36     118  8.0   72     5   2\n3     12     149 12.6   74     5   3\n4     18     313 11.5   62     5   4\n5     NA      NA 14.3   56     5   5\n6     28      NA 14.9   66     5   6\n7     23     299  8.6   65     5   7\n8     19      99 13.8   59     5   8\n9      8      19 20.1   61     5   9\n10    NA     194  8.6   69     5  10\n11     7      NA  6.9   74     5  11\n12    16     256  9.7   69     5  12\n13    11     290  9.2   66     5  13\n14    14     274 10.9   68     5  14\n15    18      65 13.2   58     5  15\n16    14     334 11.5   64     5  16\n17    34     307 12.0   66     5  17\n18     6      78 18.4   57     5  18\n19    30     322 11.5   68     5  19\n20    11      44  9.7   62     5  20\n21     1       8  9.7   59     5  21\n22    11     320 16.6   73     5  22\n23     4      25  9.7   61     5  23\n24    32      92 12.0   61     5  24\n25    NA      66 16.6   57     5  25\n26    NA     266 14.9   58     5  26\n27    NA      NA  8.0   57     5  27\n28    23      13 12.0   67     5  28\n29    45     252 14.9   81     5  29\n30   115     223  5.7   79     5  30\nBạn vẽ đồ thị hai trục tung (Y1: Temp, Y2: Wind, X: Day).",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>**Cách vẽ đồ thị hai trục tung**</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>**Cách vẽ đồ thị hai trục tung**</span>"
     ]
   },
   {
@@ -776,7 +776,7 @@
     "text": "TipĐáp án\n\n\n\n\n\n\n\n\npar(mar = c(4,6,4,6))\n\nplot(Temp ~ Day,\n     type = \"b\",\n     col = \"red\",\n     ylim = c(0, 100),\n     las = 1,\n     data = df)\n\npar(new = T)\n\nplot(Wind ~ Day,\n     type = \"b\",\n     axes = FALSE,\n     col = \"blue\",\n     data = df,\n     ylim = c(0,50),\n     xlab = \"\",\n     ylab = \"\")\n\naxis(side = 4,\n     las = 2)\n\nmtext(text = \"Wind\",\n      side = 4,\n      line = 2.5)",
     "crumbs": [
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>**Cách vẽ đồ thị hai trục tung**</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>**Cách vẽ đồ thị hai trục tung**</span>"
     ]
   },
   {
@@ -810,6 +810,50 @@
     "crumbs": [
       "[**Các lệnh R căn bản**]{style='color:blue'}",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>**Các lệnh về biểu thức chính quy**</span>"
+    ]
+  },
+  {
+    "objectID": "template-do-thi-base-r.html",
+    "href": "template-do-thi-base-r.html",
+    "title": "Template đồ thị Base R",
+    "section": "",
+    "text": "1. Đồ thị X-Y\nCác lệnh vẽ đồ thị Base R mình có trình bày ở đây. Bài giảng\nĐồ thị X-Y hay còn gọi là đồ thị scatterplot, đồ thị tán xạ biểu diễn mối quan hệ giữa hai biến liên tục. Nếu giữa các điểm không có đường nối liền ta gọi là scatterplot (đồ thị điểm), nếu các điểm có đường nối liền mạch thì là line chart (đồ thị đường).",
+    "crumbs": [
+      "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>**Template đồ thị Base R**</span>"
+    ]
+  },
+  {
+    "objectID": "template-do-thi-base-r.html#cau-1",
+    "href": "template-do-thi-base-r.html#cau-1",
+    "title": "Template đồ thị Base R",
+    "section": "",
+    "text": "5 10 15 20 25 30 35 40 45 50\n\n\n\n\n\n\n\n\n\nTipĐáp án\n\n\n\n\n\n\n\n\na &lt;- seq(from = 5,\n         to = 50,\n         by = 5)\na\n\n [1]  5 10 15 20 25 30 35 40 45 50",
+    "crumbs": [
+      "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>**Template đồ thị Base R**</span>"
+    ]
+  },
+  {
+    "objectID": "template-do-thi-base-r.html#do-thi-x-y",
+    "href": "template-do-thi-base-r.html#do-thi-x-y",
+    "title": "Template đồ thị Base R",
+    "section": "",
+    "text": "1.1 Scatterplot (cơ bản)\nBạn có dữ liệu sau.\n\ntrees[1:10 , 2:3] -&gt; df\ndf\n\n   Height Volume\n1      70   10.3\n2      65   10.3\n3      63   10.2\n4      72   16.4\n5      81   18.8\n6      83   19.7\n7      66   15.6\n8      75   18.2\n9      80   22.6\n10     75   19.9\n\n\nBạn hãy vẽ hình biểu diễn quan hệ giữa Height (trục X) và Volume (trục Y) như sau.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipĐáp án\n\n\n\n\n\n\n\n\nplot(Volume ~ Height,\n     data = df,\n     pch = 19,\n     col = \"darkgreen\",\n     las = 1,\n     main = \"Volume vs. Height\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n1.2 Scatterplot (nâng cao)\nTiếp tục dùng dữ liệu df, bạn hãy bổ sung thêm mã ID của các cây này. Sau đó vẽ hình như sau.\n\ndf$ID &lt;- paste0(\"ID\", 1:10)\ndf\n\n   Height Volume   ID\n1      70   10.3  ID1\n2      65   10.3  ID2\n3      63   10.2  ID3\n4      72   16.4  ID4\n5      81   18.8  ID5\n6      83   19.7  ID6\n7      66   15.6  ID7\n8      75   18.2  ID8\n9      80   22.6  ID9\n10     75   19.9 ID10\n\n\nChú ý là ta sẽ tô màu đỏ cho những cây có chiều cao &gt;= 70 và màu xanh lá cây cho những cây có chiều cao &lt; 70.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipĐáp án\n\n\n\n\n\n\n\nTa cần tạo một cột group để định vị cho R biết cách tô màu theo điều kiện.\n\ndf$group &lt;- ifelse(test = df$Height &gt;= 70,\n                   yes = \"high\",\n                   no = \"low\")\n\ndf$group &lt;- factor(df$group,\n                   levels = c(\"low\", \"high\"))\n\ndf\n\n   Height Volume   ID group\n1      70   10.3  ID1  high\n2      65   10.3  ID2   low\n3      63   10.2  ID3   low\n4      72   16.4  ID4  high\n5      81   18.8  ID5  high\n6      83   19.7  ID6  high\n7      66   15.6  ID7   low\n8      75   18.2  ID8  high\n9      80   22.6  ID9  high\n10     75   19.9 ID10  high\n\n\n\nplot(Volume ~ Height,\n     data = df,\n     pch = c(15, 19)[df$group],\n     col = c(\"darkgreen\", \"red\")[df$group],\n     las = 1,\n     xlim = c(60, 85),\n     ylim = c(8, 25),\n     main = \"Volume vs. Height\")\n\ntext(x = df$Height,\n     y = df$Volume,\n     labels = df$ID,\n     pos = 3,\n     cex = 0.8,\n     col = \"blue\")\n\nabline(v = 70,\n       lty = 2,\n       col = \"red\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n1.3 Linechart (cơ bản)\nBạn tiếp tục dùng dữ liệu df, bạn hãy vẽ hình linechart như sau.\nGợi ý: Bạn cần sắp xếp thứ tự trục X để R biết cách nối giữa các điểm dữ liệu. Đồng thời ta chú ý khi cùng giá trị Height = 75 thì sẽ có 2 giá trị Volume khác nhau, dẫn đến ta có thể ra 2 dạng plot khác nhau một chút.\n\ntrees[1:10 , 2:3] -&gt; df\ndf\n\n   Height Volume\n1      70   10.3\n2      65   10.3\n3      63   10.2\n4      72   16.4\n5      81   18.8\n6      83   19.7\n7      66   15.6\n8      75   18.2\n9      80   22.6\n10     75   19.9\n\n\nBạn hãy vẽ hình biểu diễn quan hệ giữa Height (trục X) và Volume (trục Y) như sau.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipĐáp án\n\n\n\n\n\n\n\n\nlibrary(dplyr)\ndf |&gt; dplyr:::arrange(Height, Volume) -&gt; df1\n\ndf1\n\n   Height Volume\n1      63   10.2\n2      65   10.3\n3      66   15.6\n4      70   10.3\n5      72   16.4\n6      75   18.2\n7      75   19.9\n8      80   22.6\n9      81   18.8\n10     83   19.7\n\npar(mfrow = c(1,2))\n\nlibrary(dplyr)\ndf |&gt; dplyr:::arrange(Height, desc(Volume)) -&gt; df2\n\ndf2\n\n   Height Volume\n1      63   10.2\n2      65   10.3\n3      66   15.6\n4      70   10.3\n5      72   16.4\n6      75   19.9\n7      75   18.2\n8      80   22.6\n9      81   18.8\n10     83   19.7\n\nplot(Volume ~ Height,\n     type = \"b\",\n     data = df1,\n     pch = 19,\n     col = \"darkgreen\",\n     las = 1,\n     main = \"Hình 1\")\n\npoints(Volume ~ Height,\n     type = \"b\",\n     data = df1[5:8, ],\n     pch = 19,\n     col = \"red\",\n     las = 1,\n     main = \"Hình 1\")\n\nplot(Volume ~ Height,\n     type = \"b\",\n     data = df2,\n     pch = 19,\n     col = \"darkgreen\",\n     las = 1,\n     main = \"Hình 2\")\n\npoints(Volume ~ Height,\n     type = \"b\",\n     data = df2[5:8, ],\n     pch = 19,\n     col = \"red\",\n     las = 1,\n     main = \"Hình 2\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n1.3 Linechart (nâng cao)\nSử dụng dataset airquality để vẽ hai đường linechart so sánh nhiệt độ giữa hai tháng.\n\ndf5 &lt;- airquality[ , 4:6] |&gt; subset(Month %in% c(5))\nrow.names(df5) &lt;- NULL\ndf5\n\n   Temp Month Day\n1    67     5   1\n2    72     5   2\n3    74     5   3\n4    62     5   4\n5    56     5   5\n6    66     5   6\n7    65     5   7\n8    59     5   8\n9    61     5   9\n10   69     5  10\n11   74     5  11\n12   69     5  12\n13   66     5  13\n14   68     5  14\n15   58     5  15\n16   64     5  16\n17   66     5  17\n18   57     5  18\n19   68     5  19\n20   62     5  20\n21   59     5  21\n22   73     5  22\n23   61     5  23\n24   61     5  24\n25   57     5  25\n26   58     5  26\n27   57     5  27\n28   67     5  28\n29   81     5  29\n30   79     5  30\n31   76     5  31\n\ndf6 &lt;- airquality[ , 4:6] |&gt; subset(Month %in% c(6))\nrow.names(df6) &lt;- NULL\ndf6\n\n   Temp Month Day\n1    78     6   1\n2    74     6   2\n3    67     6   3\n4    84     6   4\n5    85     6   5\n6    79     6   6\n7    82     6   7\n8    87     6   8\n9    90     6   9\n10   87     6  10\n11   93     6  11\n12   92     6  12\n13   82     6  13\n14   80     6  14\n15   79     6  15\n16   77     6  16\n17   72     6  17\n18   65     6  18\n19   73     6  19\n20   76     6  20\n21   77     6  21\n22   76     6  22\n23   76     6  23\n24   76     6  24\n25   75     6  25\n26   78     6  26\n27   73     6  27\n28   80     6  28\n29   77     6  29\n30   83     6  30\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipĐáp án\n\n\n\n\n\n\n\n\nplot(Temp ~ Day,\n     type = \"l\",\n     data = df5,\n     pch = 19,\n     col = \"darkgreen\",\n     lwd = 2,\n     las = 1,\n     main = \"Temp vs. Day\",\n     xlim = c(0, 33),\n     ylim = c(5, 100),\n     xaxs = \"i\",\n     yaxs = \"i\",\n     axes = F,\n     bty = \"l\")\n\n\npoints(Temp ~ Day,\n     type = \"l\",\n     data = df6,\n     pch = 19,\n     lwd = 2,\n     col = \"blue\")\n     \n     \naxis(side = 1,\n     at = seq(from = 1,\n              to = 31,\n              by = 3))\n\naxis(side = 2,\n     las = 2)\n\nbox(bty = \"l\")\n\ngrid(col = \"gray50\")\n\nlegend(x = \"bottomright\",\n       y = NULL,\n       legend = c(\"Month 5\",\n                  \"Month 6\"),\n       col = c(\"darkgreen\", \"blue\"),\n       lwd = 2,\n       lty = 1)\n\nabline(h = 60,\n       col = \"red\",\n       lty = 2,\n       lwd = 2)",
+    "crumbs": [
+      "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>**Template đồ thị Base R**</span>"
+    ]
+  },
+  {
+    "objectID": "template-do-thi-base-r.html#tài-liệu-tham-khảo",
+    "href": "template-do-thi-base-r.html#tài-liệu-tham-khảo",
+    "title": "Template đồ thị Base R",
+    "section": "Tài liệu tham khảo",
+    "text": "Tài liệu tham khảo\nhttps://www.statscodes.com/plots-and-charts/",
+    "crumbs": [
+      "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>**Template đồ thị Base R**</span>"
     ]
   }
 ]
