@@ -492,7 +492,7 @@ div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
 div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 </style>
 <div class = "yes123">
-Ta sử dụng tham số `space` để tùy chỉnh độ rộng cột, tham số `width` cũng có thể dùng để tùy chỉnh độ rộng cột, tuy nhiên không thuận tiện bằng `space`. Ta kiểm tra sự thay đổi vị trí của cột so với tọa độ đồ thị. (tham số `par("usr")` và kết quả tọa độ trong đối tượng `a`.)
+Ta sử dụng tham số `space` để tùy chỉnh độ rộng cột, tham số `width` cũng có thể dùng để tùy chỉnh độ rộng cột, tuy nhiên không thuận tiện bằng `space`. Ta kiểm tra sự thay đổi vị trí của cột so với tọa độ đồ thị (tham số `par("usr")` và kết quả tọa độ trong đối tượng `a`).
 
 ```{r, fig.width=4, fig.height=4, echo=T}
 a <- barplot(mean_weight ~ group,
@@ -660,7 +660,9 @@ arrows(x0 = a,
 
 ## **Tài liệu tham khảo**
 
-`https://www.statscodes.com/plots-and-charts/`
+<https://class.tuhocr.com/khoa-hoc/data-visualization-in-r/bai-hoc/bai-7-phan-tich-lenh-plot-phan-1/>
+
+<https://www.statscodes.com/plots-and-charts/>
 
 
 ```{r}

@@ -374,14 +374,14 @@ identical(g_ok, g2)
 
 # **Tài liệu tham khảo**
 
-`https://class.tuhocr.com/khoa-hoc/coding-in-r/bai-hoc/regular-expression-trong-r-phan-1/`
+<https://class.tuhocr.com/khoa-hoc/coding-in-r/bai-hoc/regular-expression-trong-r-phan-1/>
 
-`https://regexr.com/`
+<https://regexr.com/>
 
-`https://www.regular-expressions.info/cookbook.html`
+<https://www.regular-expressions.info/cookbook.html>
 
-`https://www.regular-expressions.info/grep.html`
+<https://www.regular-expressions.info/grep.html>
 
-`https://vietnix.vn/regex-la-gi/`
+<https://vietnix.vn/regex-la-gi/>
 
 
