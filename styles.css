@@ -1,0 +1,7 @@
+#TOC .collapse {
+  display: block !important;
+}
+
+#TOC .toc-actions {
+  display: none;
+}

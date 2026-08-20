@@ -47,7 +47,7 @@ book:
     title: "Bài tập R"
           
 # bibliography: F:/VAULT12/GRAND/grand.bib
-number-sections: true
+# number-sections: true
 format:
   html:
     theme:
@@ -57,7 +57,10 @@ format:
     toc: true
     toc-title: "Mục lục"
     toc-location: right
-    toc_depth: 5
+    toc_depth: 6
+    # toc-expanded: true
+    toc-expanded: 6
+    css: styles.css
     toc_float:
       collapsed: false
       smooth_scroll: false
