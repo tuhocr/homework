@@ -260,7 +260,7 @@ points(Volume ~ Height,
 :::
 
 
-### 1.3 Linechart (nâng cao)
+### 1.4 Linechart (nâng cao)
 
 Sử dụng dataset `airquality` để vẽ hai đường linechart so sánh nhiệt độ giữa hai tháng.
 
@@ -519,7 +519,7 @@ box()
 
 :::
 
-### 2.2 Barchart (nâng cao level 2)
+### 2.3 Barchart (nâng cao level 2)
 
 ```{r}
 library(dplyr)
@@ -583,7 +583,7 @@ text(x = a,
 
 :::
 
-### 2.3 Barchart (Mean ± SD)
+### 2.4 Barchart (Mean ± SD)
 
 ```{r}
 library(dplyr)
