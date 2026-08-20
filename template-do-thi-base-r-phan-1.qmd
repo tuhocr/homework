@@ -9,7 +9,7 @@ knitr::opts_chunk$set(message = FALSE,
                       warning = FALSE)   
 ```
 
-# **Template đồ thị Base R** 
+# **Template đồ thị Base R (phần 1)** 
 
 Các lệnh vẽ đồ thị Base R mình có trình bày ở đây. [Bài giảng](https://class.tuhocr.com/khoa-hoc/data-visualization-in-r/bai-hoc/bai-7-phan-tich-lenh-plot-phan-1/)
 
@@ -387,21 +387,285 @@ abline(h = 60,
 
 :::
 
-```{r}
+## **2. Đồ thị barchart** {#do-thi-barchart}
 
+Đồ thị cột thường để biểu diễn về mặt khối lượng (quantity) khi so sánh giữa các nhóm với nhau, ta có trục X là biến phân loại, trục Y là biến liên tục.
+
+
+### 2.1 Barchart (cơ bản)
+
+Sử dụng dữ liệu `PlantGrowth`, ta có kết quả trung bình chiều cao cây của 3 nghiệm thức như sau:
+
+```{r}
+library(dplyr)
+PlantGrowth |> dplyr:::group_by(group) |> 
+  dplyr:::summarise(mean_weight = mean(weight)) |> as.data.frame() -> df
+
+df
+```
+
+Bạn hãy vẽ hình so sánh trung bình chiều cao cây giữa 3 nghiệm thức.
+
+```{r, fig.width=4, fig.height=4, echo=F}
+a <- barplot(mean_weight ~ group,
+        data = df,
+        col = c("lightblue", "lightgreen", "coral"),
+        xlab = "Group",
+        ylab = "Weight (kg)",
+        ylim = c(0, 6),
+        las = 1,
+        main = "Trung bình chiều cao giữa\ncác nghiệm thức")
+
+# a
+
+box()
 ```
 
 
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+```{r, fig.width=4, fig.height=4, echo=T}
+a <- barplot(mean_weight ~ group,
+        data = df,
+        col = c("lightblue", "lightgreen", "coral"),
+        xlab = "Group",
+        ylab = "Weight (kg)",
+        ylim = c(0, 6),
+        # xlim = c(0.064 , 3.736),
+        las = 1,
+        main = "Trung bình chiều cao giữa\ncác nghiệm thức")
+
+# tọa độ x0-x1, y0-y1 của đồ thị
+par("usr")
+
+# định vị tọa độ theo trục X của các cột
+a
+
+box()
+```
+</div>
+
+:::
+
+
+### 2.2 Barchart (nâng cao level 1)
+
+Trên cơ sở hình 2.1, bạn hãy thay đổi chiều rộng của cột để nhìn cân đối hơn, như hình bên dưới
+
+```{r}
+library(dplyr)
+PlantGrowth |> dplyr:::group_by(group) |> 
+  dplyr:::summarise(mean_weight = mean(weight)) |> as.data.frame() -> df
+
+df
+```
+
+
+```{r, fig.width=4, fig.height=4, echo=F}
+a <- barplot(mean_weight ~ group,
+        data = df,
+        col = c("lightblue", "lightgreen", "coral"),
+        xlab = "Group",
+        ylab = "Weight (kg)",
+        ylim = c(0, 6),
+        las = 1,
+        width = 1,
+        space = 1,
+        xlim = c(0,7),
+        main = "Trung bình chiều cao giữa\ncác nghiệm thức")
+
+# par("usr")
+# a
+
+box()
+```
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+Ta sử dụng tham số `space` để tùy chỉnh độ rộng cột, tham số `width` cũng có thể dùng để tùy chỉnh độ rộng cột, tuy nhiên không thuận tiện bằng `space`. Ta kiểm tra sự thay đổi vị trí của cột so với tọa độ đồ thị. (tham số `par("usr")` và kết quả tọa độ trong đối tượng `a`.)
+
+```{r, fig.width=4, fig.height=4, echo=T}
+a <- barplot(mean_weight ~ group,
+        data = df,
+        col = c("lightblue", "lightgreen", "coral"),
+        xlab = "Group",
+        ylab = "Weight (kg)",
+        ylim = c(0, 6),
+        las = 1,
+        width = 1,
+        space = 1,
+        # set tham số xlim để chủ động sắp xếp cột nằm ở giữa plot
+        # để biết xlim nên set như thế nào, ta cần đối chiếu kết quả
+        # tọa độ từ lệnh par("usr") 
+        xlim = c(0,7),
+        main = "Trung bình chiều cao giữa\ncác nghiệm thức")
+
+par("usr")
+a
+
+box()
+```
+</div>
+
+:::
+
+### 2.2 Barchart (nâng cao level 2)
+
+```{r}
+library(dplyr)
+PlantGrowth |> dplyr:::group_by(group) |> 
+  dplyr:::summarise(mean_weight = mean(weight)) |> as.data.frame() -> df
+
+df
+```
+
+Ta thấy các nghiệm thức dao động trong khoảng 4 đến 6. Hãy vẽ đồ thị cột có phần limit của trục Y bắt đầu từ 4, để làm rõ được độ chênh lệch giữa các cột này. Bạn thêm kết quả mean xuất hiện trên đầu mỗi cột luôn nha.
+
+```{r, fig.width=4, fig.height=4, echo=F}
+a <- barplot(mean_weight ~ group,
+        data = df,
+        col = c("lightblue", "lightgreen", "coral"),
+        xlab = "Group",
+        ylab = "Weight (kg)",
+        ylim = c(4, 6),
+        las = 1,
+        main = "Trung bình chiều cao giữa\ncác nghiệm thức",
+        xpd = F)
+
+box()
+
+text(x = a,
+     y = df$mean_weight,
+     labels = round(df$mean_weight, 2),
+     pos = 3)
+```
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+Trong Base R, ta có lệnh `par(xpd = FALSE)` để không vẽ lấn qua vùng đồ thị, tuy nhiên tham số `xpd` này ta sẽ set trực tiếp trong lệnh `barplot` sẽ hiệu quả. Ngoài ra có thể dùng lệnh `clip()` để định vị vùng đồ thị cần vẽ (theo ý nghĩa như cropping hình).
 
 
 
+```{r, fig.width=4, fig.height=4, echo=T}
+a <- barplot(mean_weight ~ group,
+        data = df,
+        col = c("lightblue", "lightgreen", "coral"),
+        xlab = "Group",
+        ylab = "Weight (kg)",
+        ylim = c(4, 6),
+        las = 1,
+        main = "Trung bình chiều cao giữa\ncác nghiệm thức",
+        xpd = F) # tham số xpd giúp cho R không vẽ lấn qua plot region
 
+box()
+
+text(x = a,
+     y = df$mean_weight,
+     labels = round(df$mean_weight, 2),
+     pos = 3)
+```
+</div>
+
+:::
+
+### 2.3 Barchart (Mean ± SD)
+
+```{r}
+library(dplyr)
+PlantGrowth |> dplyr:::group_by(group) |> 
+  dplyr:::summarise(mean_weight = mean(weight),
+                    sd_weight = sd(weight)) |> as.data.frame() -> df
+
+df
+```
+
+Bạn hãy vẽ hình đồ thị cột có thêm khoảng dao động SD như sau.
+
+```{r, fig.width=4, fig.height=4, echo=F}
+a <- barplot(mean_weight ~ group,
+        data = df,
+        col = c("lightblue", "lightgreen", "coral"),
+        xlab = "Group",
+        ylab = "Weight (kg)",
+        ylim = c(3, 7),
+        las = 1,
+        main = "Trung bình chiều cao giữa\ncác nghiệm thức",
+        xpd = F)
+
+box()
+
+arrows(x0 = a,
+       x1 = a,
+       y0 = df$mean_weight - df$sd_weight,
+       y1 = df$mean_weight + df$sd_weight,
+       code = 3,
+       angle = 90,
+       length = 0.1,
+       lwd = 1)
+
+```
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+Trong Base R, ta có lệnh `par(xpd = FALSE)` để không vẽ lấn qua vùng đồ thị, tuy nhiên tham số `xpd` này ta sẽ set trực tiếp trong lệnh `barplot` sẽ hiệu quả. Ngoài ra có thể dùng lệnh `clip()` để định vị vùng đồ thị cần vẽ (theo ý nghĩa như cropping hình).
+
+```{r, fig.width=4, fig.height=4, echo=T}
+a <- barplot(mean_weight ~ group,
+        data = df,
+        col = c("lightblue", "lightgreen", "coral"),
+        xlab = "Group",
+        ylab = "Weight (kg)",
+        ylim = c(3, 7),
+        las = 1,
+        main = "Trung bình chiều cao giữa\ncác nghiệm thức",
+        xpd = F)
+
+box()
+
+a # ta định vị tọa độ các cột
+
+arrows(x0 = a,
+       x1 = a,
+       y0 = df$mean_weight - df$sd_weight,
+       y1 = df$mean_weight + df$sd_weight,
+       code = 3,
+       angle = 90,
+       length = 0.1,
+       lwd = 1)
+
+```
+</div>
+
+:::
 
 ## **Tài liệu tham khảo**
 
 `https://www.statscodes.com/plots-and-charts/`
 
 
+```{r}
+
+```
 
 
 

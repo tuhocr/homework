@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Template đồ thị Base R (P1) – Bài tập R</title>
+<title>Template đồ thị Base R (phần 1) – Bài tập R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -288,7 +288,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./template-do-thi-base-r.html"><span style="color:blue"><strong>Các lệnh vẽ đồ thị</strong></span></a></li><li class="breadcrumb-item"><a href="./template-do-thi-base-r.html"><span class="chapter-title"><strong>Template đồ thị Base R (P1)</strong></span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./template-do-thi-base-r-phan-1.html"><span style="color:blue"><strong>Các lệnh vẽ đồ thị</strong></span></a></li><li class="breadcrumb-item"><a href="./template-do-thi-base-r-phan-1.html"><span class="chapter-title"><strong>Template đồ thị Base R (phần 1)</strong></span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -380,7 +380,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./template-do-thi-base-r.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title"><strong>Template đồ thị Base R (P1)</strong></span></a>
+  <a href="./template-do-thi-base-r-phan-1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title"><strong>Template đồ thị Base R (phần 1)</strong></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -480,6 +480,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#barchart-cơ-bản" id="toc-barchart-cơ-bản" class="nav-link" data-scroll-target="#barchart-cơ-bản">2.1 Barchart (cơ bản)</a></li>
   <li><a href="#barchart-nâng-cao-level-1" id="toc-barchart-nâng-cao-level-1" class="nav-link" data-scroll-target="#barchart-nâng-cao-level-1">2.2 Barchart (nâng cao level 1)</a></li>
   <li><a href="#barchart-nâng-cao-level-2" id="toc-barchart-nâng-cao-level-2" class="nav-link" data-scroll-target="#barchart-nâng-cao-level-2">2.2 Barchart (nâng cao level 2)</a></li>
+  <li><a href="#barchart-mean-sd" id="toc-barchart-mean-sd" class="nav-link" data-scroll-target="#barchart-mean-sd">2.3 Barchart (Mean ± SD)</a></li>
   </ul></li>
   <li><a href="#tài-liệu-tham-khảo" id="toc-tài-liệu-tham-khảo" class="nav-link" data-scroll-target="#tài-liệu-tham-khảo"><strong>Tài liệu tham khảo</strong></a></li>
   </ul>
@@ -489,9 +490,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content column-body" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./template-do-thi-base-r.html"><span style="color:blue"><strong>Các lệnh vẽ đồ thị</strong></span></a></li><li class="breadcrumb-item"><a href="./template-do-thi-base-r.html"><span class="chapter-title"><strong>Template đồ thị Base R (P1)</strong></span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./template-do-thi-base-r-phan-1.html"><span style="color:blue"><strong>Các lệnh vẽ đồ thị</strong></span></a></li><li class="breadcrumb-item"><a href="./template-do-thi-base-r-phan-1.html"><span class="chapter-title"><strong>Template đồ thị Base R (phần 1)</strong></span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title"><strong>Template đồ thị Base R (P1)</strong></span></h1>
+<h1 class="title"><span class="chapter-title"><strong>Template đồ thị Base R (phần 1)</strong></span></h1>
 </div>
 
 
@@ -537,7 +538,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="template-do-thi-base-r_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="384"></p>
+<p><img src="template-do-thi-base-r-phan-1_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="384"></p>
 </figure>
 </div>
 </div>
@@ -569,7 +570,7 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="template-do-thi-base-r_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="384"></p>
+<p><img src="template-do-thi-base-r-phan-1_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="384"></p>
 </figure>
 </div>
 </div>
@@ -604,7 +605,7 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="template-do-thi-base-r_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="384"></p>
+<p><img src="template-do-thi-base-r-phan-1_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="384"></p>
 </figure>
 </div>
 </div>
@@ -673,7 +674,7 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="template-do-thi-base-r_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="384"></p>
+<p><img src="template-do-thi-base-r-phan-1_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="384"></p>
 </figure>
 </div>
 </div>
@@ -709,7 +710,7 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="template-do-thi-base-r_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="template-do-thi-base-r-phan-1_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -802,7 +803,7 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="template-do-thi-base-r_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="template-do-thi-base-r-phan-1_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -894,7 +895,7 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="template-do-thi-base-r_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="template-do-thi-base-r-phan-1_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -968,7 +969,7 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="template-do-thi-base-r_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="template-do-thi-base-r-phan-1_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -1003,7 +1004,7 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="template-do-thi-base-r_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="384"></p>
+<p><img src="template-do-thi-base-r-phan-1_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="384"></p>
 </figure>
 </div>
 </div>
@@ -1053,7 +1054,7 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="template-do-thi-base-r_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="384"></p>
+<p><img src="template-do-thi-base-r-phan-1_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="384"></p>
 </figure>
 </div>
 </div>
@@ -1083,7 +1084,7 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="template-do-thi-base-r_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="384"></p>
+<p><img src="template-do-thi-base-r-phan-1_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="384"></p>
 </figure>
 </div>
 </div>
@@ -1137,7 +1138,7 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="template-do-thi-base-r_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="384"></p>
+<p><img src="template-do-thi-base-r-phan-1_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="384"></p>
 </figure>
 </div>
 </div>
@@ -1162,12 +1163,12 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 3  trt2       5.526</code></pre>
 </div>
 </div>
-<p>Ta thấy các nghiệm thức dao động trong khoảng 4 đến 6. Hãy vẽ đồ thị cột có phần limit của trục Y bắt đầu từ 4, để làm rõ được độ chênh lệch giữa các cột này.</p>
+<p>Ta thấy các nghiệm thức dao động trong khoảng 4 đến 6. Hãy vẽ đồ thị cột có phần limit của trục Y bắt đầu từ 4, để làm rõ được độ chênh lệch giữa các cột này. Bạn thêm kết quả mean xuất hiện trên đầu mỗi cột luôn nha.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="template-do-thi-base-r_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="384"></p>
+<p><img src="template-do-thi-base-r-phan-1_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="384"></p>
 </figure>
 </div>
 </div>
@@ -1191,7 +1192,7 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 <div class="yes123">
 <p>Trong Base R, ta có lệnh <code>par(xpd = FALSE)</code> để không vẽ lấn qua vùng đồ thị, tuy nhiên tham số <code>xpd</code> này ta sẽ set trực tiếp trong lệnh <code>barplot</code> sẽ hiệu quả. Ngoài ra có thể dùng lệnh <code>clip()</code> để định vị vùng đồ thị cần vẽ (theo ý nghĩa như cropping hình).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(mean_weight <span class="sc">~</span> group,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">barplot</span>(mean_weight <span class="sc">~</span> group,</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> df,</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"lightgreen"</span>, <span class="st">"coral"</span>),</span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Group"</span>,</span>
@@ -1199,13 +1200,103 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 <span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">6</span>),</span>
 <span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">las =</span> <span class="dv">1</span>,</span>
 <span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Trung bình chiều cao giữa</span><span class="sc">\n</span><span class="st">các nghiệm thức"</span>,</span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">xpd =</span> <span class="cn">FALSE</span>) <span class="co"># tham số xpd giúp cho R không vẽ lấn qua plot region</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">xpd =</span> F) <span class="co"># tham số xpd giúp cho R không vẽ lấn qua plot region</span></span>
 <span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>()</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> a,</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> df<span class="sc">$</span>mean_weight,</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">round</span>(df<span class="sc">$</span>mean_weight, <span class="dv">2</span>),</span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="template-do-thi-base-r_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="384"></p>
+<p><img src="template-do-thi-base-r-phan-1_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="barchart-mean-sd" class="level3">
+<h3 class="anchored" data-anchor-id="barchart-mean-sd">2.3 Barchart (Mean ± SD)</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>PlantGrowth <span class="sc">|&gt;</span> dplyr<span class="sc">:::</span><span class="fu">group_by</span>(group) <span class="sc">|&gt;</span> </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">:::</span><span class="fu">summarise</span>(<span class="at">mean_weight =</span> <span class="fu">mean</span>(weight),</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">sd_weight =</span> <span class="fu">sd</span>(weight)) <span class="sc">|&gt;</span> <span class="fu">as.data.frame</span>() <span class="ot">-&gt;</span> df</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  group mean_weight sd_weight
+1  ctrl       5.032 0.5830914
+2  trt1       4.661 0.7936757
+3  trt2       5.526 0.4425733</code></pre>
+</div>
+</div>
+<p>Bạn hãy vẽ hình đồ thị cột có thêm khoảng dao động SD như sau.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="template-do-thi-base-r-phan-1_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Đáp án">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Đáp án
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class="yes123">
+<p>Trong Base R, ta có lệnh <code>par(xpd = FALSE)</code> để không vẽ lấn qua vùng đồ thị, tuy nhiên tham số <code>xpd</code> này ta sẽ set trực tiếp trong lệnh <code>barplot</code> sẽ hiệu quả. Ngoài ra có thể dùng lệnh <code>clip()</code> để định vị vùng đồ thị cần vẽ (theo ý nghĩa như cropping hình).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">barplot</span>(mean_weight <span class="sc">~</span> group,</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> df,</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"lightgreen"</span>, <span class="st">"coral"</span>),</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Group"</span>,</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Weight (kg)"</span>,</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>),</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">las =</span> <span class="dv">1</span>,</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Trung bình chiều cao giữa</span><span class="sc">\n</span><span class="st">các nghiệm thức"</span>,</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">xpd =</span> F)</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>()</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>a <span class="co"># ta định vị tọa độ các cột</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]
+[1,]  0.7
+[2,]  1.9
+[3,]  3.1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> a,</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">x1 =</span> a,</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">y0 =</span> df<span class="sc">$</span>mean_weight <span class="sc">-</span> df<span class="sc">$</span>sd_weight,</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">y1 =</span> df<span class="sc">$</span>mean_weight <span class="sc">+</span> df<span class="sc">$</span>sd_weight,</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">code =</span> <span class="dv">3</span>,</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>,</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">length =</span> <span class="fl">0.1</span>,</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="template-do-thi-base-r-phan-1_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="384"></p>
 </figure>
 </div>
 </div>

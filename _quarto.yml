@@ -26,7 +26,7 @@ book:
         - cac-lenh-if-else-for-loop.qmd      
     - part: "[**Các lệnh vẽ đồ thị**]{style='color:blue'}" 
       chapters:
-        - template-do-thi-base-r.qmd
+        - template-do-thi-base-r-phan-1.qmd
         - cac-lenh-ve-do-thi-scatterplot.qmd 
         - cac-lenh-ve-do-thi-barchart.qmd 
         - cach-ve-duong-confidence-interval.qmd
