@@ -1,0 +1,55 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, echo=FALSE, results='hide'}
+knitr::opts_chunk$set(message = FALSE,  
+                      warning = FALSE)   
+```
+
+# **Các lệnh merge data frame** 
+
+**Lệnh `merge()` để gộp lại các dataset căn cứ theo mã ID, mình có trình bày ở phút 1:35:31 trong [session 6 [K1-RPC]](https://filedn.com/lesyJpQOCafj7katNqunAxu/TUHOCR/RPC/20260619_trees_K1/record/session_6_20260704_zoom/GMT20260704-130008_Recording_2560x1080.mp4) về các lệnh reshape, merge dữ liệu nhé.** 
+
+Trong việc "gộp" dữ liệu thì ngoài lệnh `merge()` ta sẽ cần có các cơ chế về lệnh `rbind()` dùng để dán các hàng lại với nhau (khi dataset có cùng cấu trúc cột), hoặc `cbind()` dùng để dán các cột lại với nhau (khi dataset có cùng số lượng hàng).
+
+## **Câu 1** {#cau-1}
+
+
+```{r}
+dg1 <- read.csv("dataset/dg1.csv")
+
+dg2 <- read.csv("dataset/dg2.csv")
+```
+
+
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+
+
+```{r}
+
+
+```
+
+</div>
+
+:::
+
+
+
+
+
+
+
+
+
+

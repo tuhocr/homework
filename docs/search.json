@@ -910,5 +910,27 @@
       "[**Các lệnh vẽ đồ thị**]{style='color:blue'}",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>**Template đồ thị Base R (phần 1)**</span>"
     ]
+  },
+  {
+    "objectID": "cac-lenh-merge-data-frame.html",
+    "href": "cac-lenh-merge-data-frame.html",
+    "title": "Các lệnh merge data frame",
+    "section": "",
+    "text": "Câu 1\nLệnh merge() để gộp lại các dataset căn cứ theo mã ID, mình có trình bày ở phút 1:35:31 trong session 6 [K1-RPC] về các lệnh reshape, merge dữ liệu nhé.\nTrong việc “gộp” dữ liệu thì ngoài lệnh merge() ta sẽ cần có các cơ chế về lệnh rbind() dùng để dán các hàng lại với nhau (khi dataset có cùng cấu trúc cột), hoặc cbind() dùng để dán các cột lại với nhau (khi dataset có cùng số lượng hàng).",
+    "crumbs": [
+      "[**Các lệnh R căn bản**]{style='color:blue'}",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>**Các lệnh merge data frame**</span>"
+    ]
+  },
+  {
+    "objectID": "cac-lenh-merge-data-frame.html#cau-1",
+    "href": "cac-lenh-merge-data-frame.html#cau-1",
+    "title": "Các lệnh merge data frame",
+    "section": "",
+    "text": "TipĐáp án",
+    "crumbs": [
+      "[**Các lệnh R căn bản**]{style='color:blue'}",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>**Các lệnh merge data frame**</span>"
+    ]
   }
 ]

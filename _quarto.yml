@@ -19,6 +19,7 @@ book:
       chapters:
         - cac-lenh-ve-vector.qmd
         - cac-lenh-ve-data-frame.qmd
+        - cac-lenh-merge-data-frame.qmd
         - cac-lenh-sap-xep-du-lieu.qmd
         - cac-lenh-regular-expression.qmd
     - part: "[**Các lệnh if-else, for-loop**]{style='color:blue'}" 
