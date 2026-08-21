@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -469,6 +504,49 @@ ul.task-list li input[type="checkbox"] {
 <p>Trong việc “gộp” dữ liệu thì ngoài lệnh <code>merge()</code> ta sẽ cần có các cơ chế về lệnh <code>rbind()</code> dùng để dán các hàng lại với nhau (khi dataset có cùng cấu trúc cột), hoặc <code>cbind()</code> dùng để dán các cột lại với nhau (khi dataset có cùng số lượng hàng).</p>
 <section id="cau-1" class="level2">
 <h2 class="anchored" data-anchor-id="cau-1"><strong>Câu 1</strong></h2>
+<p>Bạn có 2 dataset như sau: <a href="https://github.com/tuhocr/homework/blob/main/dataset/dg1.csv">[dg1]</a> và <a href="https://github.com/tuhocr/homework/blob/main/dataset/dg2.csv">[dg2]</a></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dg1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"dataset/dg1.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>dg1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   mpg cyl disp  hp drat
+1 21.0   6  160 110 3.90
+2 21.0   6  160 110 3.90
+3 22.8   4  108  93 3.85
+4 21.4   6  258 110 3.08
+5 18.7   8  360 175 3.15</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dg2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"dataset/dg2.csv"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dg2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   mpg cyl  disp  hp drat
+1 18.1   6 225.0 105 2.76
+2 14.3   8 360.0 245 3.21
+3 24.4   4 146.7  62 3.69
+4 22.8   4 140.8  95 3.92
+5 19.2   6 167.6 123 3.92
+6 17.8   6 167.6 123 3.92
+7 16.4   8 275.8 180 3.07</code></pre>
+</div>
+</div>
+<p>Bạn hãy ghép lại hai dataset này theo hàng, ta có kết quả sau.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>    mpg cyl  disp  hp drat
+1  21.0   6 160.0 110 3.90
+2  21.0   6 160.0 110 3.90
+3  22.8   4 108.0  93 3.85
+4  21.4   6 258.0 110 3.08
+5  18.7   8 360.0 175 3.15
+6  18.1   6 225.0 105 2.76
+7  14.3   8 360.0 245 3.21
+8  24.4   4 146.7  62 3.69
+9  22.8   4 140.8  95 3.92
+10 19.2   6 167.6 123 3.92
+11 17.8   6 167.6 123 3.92
+12 16.4   8 275.8 180 3.07</code></pre>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Đáp án">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -486,7 +564,26 @@ div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
 div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 </style>
 <div class="yes123">
-
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dg_all <span class="ot">&lt;-</span> <span class="fu">rbind</span>(dg1, dg2)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>dg_all</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    mpg cyl  disp  hp drat
+1  21.0   6 160.0 110 3.90
+2  21.0   6 160.0 110 3.90
+3  22.8   4 108.0  93 3.85
+4  21.4   6 258.0 110 3.08
+5  18.7   8 360.0 175 3.15
+6  18.1   6 225.0 105 2.76
+7  14.3   8 360.0 245 3.21
+8  24.4   4 146.7  62 3.69
+9  22.8   4 140.8  95 3.92
+10 19.2   6 167.6 123 3.92
+11 17.8   6 167.6 123 3.92
+12 16.4   8 275.8 180 3.07</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>

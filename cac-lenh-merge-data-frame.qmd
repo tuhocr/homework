@@ -17,11 +17,21 @@ Trong việc "gộp" dữ liệu thì ngoài lệnh `merge()` ta sẽ cần có 
 
 ## **Câu 1** {#cau-1}
 
+Bạn có 2 dataset như sau: [[dg1]](https://github.com/tuhocr/homework/blob/main/dataset/dg1.csv) và [[dg2]](https://github.com/tuhocr/homework/blob/main/dataset/dg2.csv)
 
 ```{r}
 dg1 <- read.csv("dataset/dg1.csv")
-
+dg1
 dg2 <- read.csv("dataset/dg2.csv")
+dg2
+```
+
+Bạn hãy ghép lại hai dataset này theo hàng, ta có kết quả sau.
+
+```{r, echo=F}
+dg_all <- rbind(dg1, dg2)
+
+dg_all
 ```
 
 
@@ -34,10 +44,10 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 </style>
 <div class = "yes123">
 
-
 ```{r}
+dg_all <- rbind(dg1, dg2)
 
-
+dg_all
 ```
 
 </div>

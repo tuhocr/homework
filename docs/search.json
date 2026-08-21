@@ -916,7 +916,7 @@
     "href": "cac-lenh-merge-data-frame.html",
     "title": "Các lệnh merge data frame",
     "section": "",
-    "text": "Câu 1\nLệnh merge() để gộp lại các dataset căn cứ theo mã ID, mình có trình bày ở phút 1:35:31 trong session 6 [K1-RPC] về các lệnh reshape, merge dữ liệu nhé.\nTrong việc “gộp” dữ liệu thì ngoài lệnh merge() ta sẽ cần có các cơ chế về lệnh rbind() dùng để dán các hàng lại với nhau (khi dataset có cùng cấu trúc cột), hoặc cbind() dùng để dán các cột lại với nhau (khi dataset có cùng số lượng hàng).",
+    "text": "Câu 1\nLệnh merge() để gộp lại các dataset căn cứ theo mã ID, mình có trình bày ở phút 1:35:31 trong session 6 [K1-RPC] về các lệnh reshape, merge dữ liệu nhé.\nTrong việc “gộp” dữ liệu thì ngoài lệnh merge() ta sẽ cần có các cơ chế về lệnh rbind() dùng để dán các hàng lại với nhau (khi dataset có cùng cấu trúc cột), hoặc cbind() dùng để dán các cột lại với nhau (khi dataset có cùng số lượng hàng).\nBạn có 2 dataset như sau: [dg1] và [dg2]\ndg1 &lt;- read.csv(\"dataset/dg1.csv\")\ndg1\n\n   mpg cyl disp  hp drat\n1 21.0   6  160 110 3.90\n2 21.0   6  160 110 3.90\n3 22.8   4  108  93 3.85\n4 21.4   6  258 110 3.08\n5 18.7   8  360 175 3.15\n\ndg2 &lt;- read.csv(\"dataset/dg2.csv\")\ndg2\n\n   mpg cyl  disp  hp drat\n1 18.1   6 225.0 105 2.76\n2 14.3   8 360.0 245 3.21\n3 24.4   4 146.7  62 3.69\n4 22.8   4 140.8  95 3.92\n5 19.2   6 167.6 123 3.92\n6 17.8   6 167.6 123 3.92\n7 16.4   8 275.8 180 3.07\nBạn hãy ghép lại hai dataset này theo hàng, ta có kết quả sau.\nmpg cyl  disp  hp drat\n1  21.0   6 160.0 110 3.90\n2  21.0   6 160.0 110 3.90\n3  22.8   4 108.0  93 3.85\n4  21.4   6 258.0 110 3.08\n5  18.7   8 360.0 175 3.15\n6  18.1   6 225.0 105 2.76\n7  14.3   8 360.0 245 3.21\n8  24.4   4 146.7  62 3.69\n9  22.8   4 140.8  95 3.92\n10 19.2   6 167.6 123 3.92\n11 17.8   6 167.6 123 3.92\n12 16.4   8 275.8 180 3.07",
     "crumbs": [
       "[**Các lệnh R căn bản**]{style='color:blue'}",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>**Các lệnh merge data frame**</span>"
@@ -927,7 +927,7 @@
     "href": "cac-lenh-merge-data-frame.html#cau-1",
     "title": "Các lệnh merge data frame",
     "section": "",
-    "text": "TipĐáp án",
+    "text": "TipĐáp án\n\n\n\n\n\n\n\n\ndg_all &lt;- rbind(dg1, dg2)\n\ndg_all\n\n    mpg cyl  disp  hp drat\n1  21.0   6 160.0 110 3.90\n2  21.0   6 160.0 110 3.90\n3  22.8   4 108.0  93 3.85\n4  21.4   6 258.0 110 3.08\n5  18.7   8 360.0 175 3.15\n6  18.1   6 225.0 105 2.76\n7  14.3   8 360.0 245 3.21\n8  24.4   4 146.7  62 3.69\n9  22.8   4 140.8  95 3.92\n10 19.2   6 167.6 123 3.92\n11 17.8   6 167.6 123 3.92\n12 16.4   8 275.8 180 3.07",
     "crumbs": [
       "[**Các lệnh R căn bản**]{style='color:blue'}",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>**Các lệnh merge data frame**</span>"
