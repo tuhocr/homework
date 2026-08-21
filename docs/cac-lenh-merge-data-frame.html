@@ -474,6 +474,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#cau-1" id="toc-cau-1" class="nav-link active" data-scroll-target="#cau-1"><strong>Câu 1</strong></a></li>
+  <li><a href="#cau-2" id="toc-cau-2" class="nav-link" data-scroll-target="#cau-2"><strong>Câu 2</strong></a></li>
   </ul>
 </nav>
     </div>
@@ -584,6 +585,130 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 12 16.4   8 275.8 180 3.07</code></pre>
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-2" class="level2">
+<h2 class="anchored" data-anchor-id="cau-2"><strong>Câu 2</strong></h2>
+<p>Bạn có 2 dataset như sau: <a href="https://github.com/tuhocr/homework/blob/main/dataset/dg1.csv">[dg1]</a> và <a href="https://github.com/tuhocr/homework/blob/main/dataset/dg3.csv">[dg3]</a></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dg1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"dataset/dg1.csv"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>dg1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   mpg cyl disp  hp drat
+1 21.0   6  160 110 3.90
+2 21.0   6  160 110 3.90
+3 22.8   4  108  93 3.85
+4 21.4   6  258 110 3.08
+5 18.7   8  360 175 3.15</code></pre>
+</div>
+</div>
+<p><span style="color:red;">Ta để ý thì thấy thứ tự các cột trong <code>dg3</code> khác trật tự so với <code>dg1</code>, ta cần sắp xếp thứ tự cho cùng trật tự với nhau thì mới dán hàng lại được.</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dg3 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"dataset/dg3.csv"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>dg3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   disp cyl  mpg  hp drat
+1 225.0   6 18.1 105 2.76
+2 360.0   8 14.3 245 3.21
+3 146.7   4 24.4  62 3.69
+4 140.8   4 22.8  95 3.92
+5 167.6   6 19.2 123 3.92
+6 167.6   6 17.8 123 3.92
+7 275.8   8 16.4 180 3.07</code></pre>
+</div>
+</div>
+<p>Bạn hãy ghép lại hai dataset này theo hàng, ta có kết quả sau.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>    mpg cyl  disp  hp drat
+1  21.0   6 160.0 110 3.90
+2  21.0   6 160.0 110 3.90
+3  22.8   4 108.0  93 3.85
+4  21.4   6 258.0 110 3.08
+5  18.7   8 360.0 175 3.15
+6  18.1   6 225.0 105 2.76
+7  14.3   8 360.0 245 3.21
+8  24.4   4 146.7  62 3.69
+9  22.8   4 140.8  95 3.92
+10 19.2   6 167.6 123 3.92
+11 17.8   6 167.6 123 3.92
+12 16.4   8 275.8 180 3.07</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Đáp án">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Đáp án
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class="yes123">
+<p>Ta kiểm tra thứ tự tên cột của hai dataset này ban đầu là khác nhau.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(<span class="fu">names</span>(dg1), <span class="fu">names</span>(dg3))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>Ta cần sắp xếp thứ tự tên cột của <code>dg3</code> theo thứ tự tên cột của <code>dg1</code> để cùng 1 trật tự.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"http://thongkevavedothi.com/code/kiem_tra_thu_tu_vector.R"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kiem_tra_thu_tu_vector</span>(<span class="at">input_1 =</span> <span class="fu">names</span>(dg1), </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">input_2 =</span> <span class="fu">names</span>(dg3))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Hai vector giống nhau về thành phần, nhưng khác thứ tự"</code></pre>
+</div>
+</div>
+<p>Ta dùng lệnh <code>match()</code> để xếp thứ tự cột trong <code>dg3</code> theo <code>dg1</code>, đưa vào subset trong data frame để đảo lại đúng vị trí cột của <code>dg3</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dg3 <span class="ot">&lt;-</span> dg3[ ,   <span class="fu">match</span>(<span class="fu">names</span>(dg3), <span class="fu">names</span>(dg1) )     ]</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(<span class="fu">names</span>(dg1), <span class="fu">names</span>(dg3))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kiem_tra_thu_tu_vector</span>(<span class="at">input_1 =</span> <span class="fu">names</span>(dg1), </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">input_2 =</span> <span class="fu">names</span>(dg3))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Hai vector giống y chang nhau về thành phần và thứ tự"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dg_all <span class="ot">&lt;-</span> <span class="fu">rbind</span>(dg1, dg3)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>dg_all</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    mpg cyl  disp  hp drat
+1  21.0   6 160.0 110 3.90
+2  21.0   6 160.0 110 3.90
+3  22.8   4 108.0  93 3.85
+4  21.4   6 258.0 110 3.08
+5  18.7   8 360.0 175 3.15
+6  18.1   6 225.0 105 2.76
+7  14.3   8 360.0 245 3.21
+8  24.4   4 146.7  62 3.69
+9  22.8   4 140.8  95 3.92
+10 19.2   6 167.6 123 3.92
+11 17.8   6 167.6 123 3.92
+12 16.4   8 275.8 180 3.07</code></pre>
+</div>
+</div>
+<p><strong>Lưu ý là lệnh <code>rbind()</code> trước phiên bản R 4.0 thì rất khắt khe trong việc dán các dataset lại với nhau, cần phải thực hiện các bước kiểm tra kỹ lưỡng vị trí cột như ở trên.</strong></p>
+<p><strong>Sau phiên bản R 4.0 thì nếu 2 dataset có cùng thông tin các cột nhưng khác vị trí thì lệnh <code>rbind()</code> này cũng <u>tự động chuyển giùm mình</u> các cột về cùng thứ tự với data frame khai báo ở tham số đầu tiên. Điều này làm chúng ta tưởng là các data frame đã đồng nhất về thứ tự cột, do đó ta cần kiểm tra thủ công cho chắc ăn như cách làm ở trên.</strong></p>
 </div>
 </div>
 </div>

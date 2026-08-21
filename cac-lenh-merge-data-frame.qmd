@@ -34,8 +34,6 @@ dg_all <- rbind(dg1, dg2)
 dg_all
 ```
 
-
-
 ::: {.callout-tip collapse="true" title="Đáp án"}
 
 <style>
@@ -54,7 +52,78 @@ dg_all
 
 :::
 
+## **Câu 2** {#cau-2}
 
+Bạn có 2 dataset như sau: [[dg1]](https://github.com/tuhocr/homework/blob/main/dataset/dg1.csv) và [[dg3]](https://github.com/tuhocr/homework/blob/main/dataset/dg3.csv)
+
+```{r}
+dg1 <- read.csv("dataset/dg1.csv")
+dg1
+```
+
+<span style="color:red;">Ta để ý thì thấy thứ tự các cột trong `dg3` khác trật tự so với `dg1`, ta cần sắp xếp thứ tự cho cùng trật tự với nhau thì mới dán hàng lại được.</span>
+
+```{r}
+dg3 <- read.csv("dataset/dg3.csv")
+dg3
+```
+
+Bạn hãy ghép lại hai dataset này theo hàng, ta có kết quả sau.
+
+```{r, echo=F}
+dg_all <- rbind(dg1, dg3)
+
+dg_all
+```
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+
+Ta kiểm tra thứ tự tên cột của hai dataset này ban đầu là khác nhau.
+
+```{r}
+identical(names(dg1), names(dg3))
+```
+
+Ta cần sắp xếp thứ tự tên cột của `dg3` theo thứ tự tên cột của `dg1` để cùng 1 trật tự.
+
+```{r}
+source("http://thongkevavedothi.com/code/kiem_tra_thu_tu_vector.R")
+kiem_tra_thu_tu_vector(input_1 = names(dg1), 
+                       input_2 = names(dg3))
+```
+
+Ta dùng lệnh `match()` để xếp thứ tự cột trong `dg3` theo `dg1`, đưa vào subset trong data frame để đảo lại đúng vị trí cột của `dg3`.
+
+```{r}
+dg3 <- dg3[ ,   match(names(dg3), names(dg1) )     ]
+
+identical(names(dg1), names(dg3))
+```
+
+```{r}
+kiem_tra_thu_tu_vector(input_1 = names(dg1), 
+                       input_2 = names(dg3))
+```
+
+```{r}
+dg_all <- rbind(dg1, dg3)
+
+dg_all
+```
+
+**Lưu ý là lệnh `rbind()` trước phiên bản R 4.0 thì rất khắt khe trong việc dán các dataset lại với nhau, cần phải thực hiện các bước kiểm tra kỹ lưỡng vị trí cột như ở trên.** 
+
+**Sau phiên bản R 4.0 thì nếu 2 dataset có cùng thông tin các cột nhưng khác vị trí thì lệnh `rbind()` này cũng <u>tự động chuyển giùm mình</u> các cột về cùng thứ tự với data frame khai báo ở tham số đầu tiên. Điều này làm chúng ta tưởng là các data frame đã đồng nhất về thứ tự cột, do đó ta cần kiểm tra thủ công cho chắc ăn như cách làm ở trên.**
+
+</div>
+
+:::
 
 
 
