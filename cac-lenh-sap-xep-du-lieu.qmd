@@ -192,7 +192,7 @@ df_semi
 
 Bạn có dataset dạng long như sau, ta có mỗi mã ID được lặp lại 2 lần.
 
-```{r, echo=F}
+```{r, echo=T}
 id <- c("id301", "id301",
         "id302", "id302",
         "id303", "id303",
