@@ -6,7 +6,7 @@ editor_options:
 
 # **Cách vẽ đồ thị hai trục tung** 
 
-## **Câu 1** {#cau-1}
+## **Câu 1 (Base R)** {#cau-1}
 
 Bạn có dữ liệu như sau.
 
@@ -15,13 +15,13 @@ df <- airquality[1:30, ]
 df
 ```
 
-Bạn vẽ đồ thị hai trục tung (Y1: `Temp`, Y2: `Wind`, X: `Day`).
+Bạn vẽ đồ thị hai trục tung (Y1: `Temp`, Y2: `Wind`, X: `Day`) bằng các lệnh Base R Graphics (lệnh `plot()` như thông thường).
 
 ```{r, echo=F}
 par(mar = c(4,6,4,6))
 
 plot(Temp ~ Day,
-     type = "b",
+     type = "l",
      col = "red",
      ylim = c(0, 100),
      las = 1,
@@ -30,7 +30,7 @@ plot(Temp ~ Day,
 par(new = T)
 
 plot(Wind ~ Day,
-     type = "b",
+     type = "l",
       axes = FALSE,
      col = "blue",
      data = df,
@@ -44,6 +44,13 @@ axis(side = 4,
 mtext(text = "Wind",
       side = 4,
       line = 2.5)
+
+legend(x = "top",
+       y = NULL,
+       legend = c("Temp", "Wind"),
+       col = c("red", "blue"),
+       horiz = T,
+       lty = 1)
 ```
 
 
@@ -58,7 +65,7 @@ div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
 par(mar = c(4,6,4,6))
 
 plot(Temp ~ Day,
-     type = "b",
+     type = "l",
      col = "red",
      ylim = c(0, 100),
      las = 1,
@@ -67,8 +74,8 @@ plot(Temp ~ Day,
 par(new = T)
 
 plot(Wind ~ Day,
-     type = "b",
-     axes = FALSE,
+     type = "l",
+      axes = FALSE,
      col = "blue",
      data = df,
      ylim = c(0,50),
@@ -81,14 +88,115 @@ axis(side = 4,
 mtext(text = "Wind",
       side = 4,
       line = 2.5)
+
+legend(x = "top",
+       y = NULL,
+       legend = c("Temp", "Wind"),
+       col = c("red", "blue"),
+       horiz = T,
+       lty = 1)
 ```
 </div>
 
 :::
 
+## **Câu 2 (`ggplot2`)** {#cau-1}
 
+Từ bộ dữ liệu `df` ở trong câu 1, bạn hãy vẽ bằng package `ggplot2` để được hình sau.
 
+```{r, echo=F}
+library(ggplot2)
+# package ggplot2 khi vẽ linechart sẽ tự động xếp đúng thứ tự từ nhỏ đến lớn ở trục X, không cần phải order như cách vẽ ở Base R, việc này có thể tiện lợi, nhưng cũng làm ta "chủ quan" không rõ cách vẽ của linechart.
 
+scale_factor <- 2
+
+ggplot() +
+  
+  geom_line(data = df,
+       
+       mapping = aes(x = Day,
+                     y = Temp,
+                     color = "Temp"),
+       
+       ) +
+  
+  geom_line(data = df,
+            mapping = aes(x = Day,
+                          y = Wind * 2,
+                           color = "Wind"),
+           ) +
+  
+  scale_y_continuous(name = "Temp",
+                     limits = c(0, 100),
+                     sec.axis = sec_axis(
+                       ~ . / 2,
+                       name = "Wind"
+                       )
+                     ) +
+  theme_bw(base_size = 16) +
+  
+  scale_color_manual(values = c("Temp" = "red",
+                               "Wind" = "blue"),
+                     name = "") +
+  
+  theme(legend.position = "top")
+```
+
+::: {.callout-tip collapse="true" title="Đáp án"}
+
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class = "yes123">
+Vì `ggplot2` không thuận tiện để vẽ hai trục tung (theo tìm hiểu thì tác giả package không recomment hướng này mà muốn tách ra thành từng đồ thị đơn để không bị nhầm việc đọc kết quả), tuy vậy ta vẫn có tham số để hỗ trợ vẽ hai trục tung (dual-Y axis) bằng lệnh `sec_axis()`, bản chất là vẽ một trục Y bên phải, ta sẽ cần tách riêng hai linechart và tính `scale_factor` cho phù hợp. Tóm lại, muốn vẽ hai trục tung chuẩn nhất là ta vẽ bằng Base R như câu 1.
+
+Ngoài ra vị trí legend trong `ggplot2` ở "top", thì nằm ngoài đồ thị, còn Base R thì nằm trong đồ thị, ta có thể tinh chỉnh thủ công cũng được.
+
+```{r}
+library(ggplot2)
+# package ggplot2 khi vẽ linechart sẽ tự động xếp đúng thứ tự từ nhỏ đến lớn ở trục X, không cần phải order như cách vẽ ở Base R, việc này có thể tiện lợi, nhưng cũng làm ta "chủ quan" không rõ cách vẽ của linechart.
+
+scale_factor <- 2
+
+ggplot() +
+  
+  geom_line(data = df,
+       
+       mapping = aes(x = Day,
+                     y = Temp,
+                     color = "Temp"),
+       
+       ) +
+  
+  geom_line(data = df,
+            mapping = aes(x = Day,
+                          y = Wind * 2,
+                           color = "Wind"),
+           ) +
+  
+  scale_y_continuous(name = "Temp",
+                     limits = c(0, 100),
+                     sec.axis = sec_axis(
+                       ~ . / 2,
+                       name = "Wind"
+                       )
+                     ) +
+  theme_bw(base_size = 16) +
+  
+  scale_color_manual(values = c("Temp" = "red",
+                               "Wind" = "blue"),
+                     name = "") +
+  
+  theme(legend.position = "top")
+```
+</div>
+
+:::
+
+Ngoài ra, ta có thể vẽ hai trục tung sử dụng package `lattice`.
+
+<https://latticeextra.r-forge.r-project.org/man/doubleYScale.html>
 
 
 
