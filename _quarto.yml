@@ -42,6 +42,9 @@ book:
     - part: "[**Các lệnh format văn bản**]{style='color:blue'}" 
       chapters:
         - cach-format-file-excel.qmd
+    - part: "[**Project Total Fertility Rate**]{style='color:blue'}" 
+      chapters:
+        - bai-tap-clean-du-lieu-tfr.qmd    
         
   sidebar:
     style: "docked"
@@ -69,7 +72,7 @@ format:
     number-sections: false
     page-layout: full
     grid:
-      sidebar-width: 270px
+      sidebar-width: 290px
   # pdf:
   #   documentclass: scrreprt
 engine: knitr

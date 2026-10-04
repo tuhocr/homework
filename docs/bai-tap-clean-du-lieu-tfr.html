@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Duc Nguyen">
 
-<title>Bài tập R</title>
+<title>Bài tập làm sạch dữ liệu – Bài tập R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -34,7 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./cac-lenh-ve-vector.html" rel="next">
+<link href="./cach-format-file-excel.html" rel="prev">
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -253,7 +252,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><strong>Giới thiệu</strong></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bai-tap-clean-du-lieu-tfr.html"><span style="color:blue"><strong>Project Total Fertility Rate</strong></span></a></li><li class="breadcrumb-item"><a href="./bai-tap-clean-du-lieu-tfr.html"><span class="chapter-title"><strong>Bài tập làm sạch dữ liệu</strong></span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -283,7 +282,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><strong>Giới thiệu</strong></span></a>
   </div>
 </li>
@@ -439,7 +438,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bai-tap-clean-du-lieu-tfr.html" class="sidebar-item-text sidebar-link"><span class="chapter-title"><strong>Bài tập làm sạch dữ liệu</strong></span></a>
+  <a href="./bai-tap-clean-du-lieu-tfr.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title"><strong>Bài tập làm sạch dữ liệu</strong></span></a>
   </div>
 </li>
       </ul>
@@ -454,7 +453,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Mục lục</h2>
    
   <ul>
-  <li><a href="#giới-thiệu" id="toc-giới-thiệu" class="nav-link active" data-scroll-target="#giới-thiệu"><strong>Giới thiệu</strong></a></li>
+  <li><a href="#cau-1" id="toc-cau-1" class="nav-link active" data-scroll-target="#cau-1"><strong>Câu 1</strong></a></li>
   </ul>
 </nav>
     </div>
@@ -462,28 +461,16 @@ ul.task-list li input[type="checkbox"] {
 <main class="content column-body" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bai-tap-clean-du-lieu-tfr.html"><span style="color:blue"><strong>Project Total Fertility Rate</strong></span></a></li><li class="breadcrumb-item"><a href="./bai-tap-clean-du-lieu-tfr.html"><span class="chapter-title"><strong>Bài tập làm sạch dữ liệu</strong></span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Bài tập R</h1>
+<h1 class="title"><span class="chapter-title"><strong>Bài tập làm sạch dữ liệu</strong></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta column-body">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Duc Nguyen </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">Cập nhật: 2026 October 04</p>
-    </div>
-  </div>
   
     
   </div>
@@ -493,27 +480,45 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="giới-thiệu" class="level1 unnumbered">
-<h1 class="unnumbered"><strong>Giới thiệu</strong></h1>
-<p>Mến chào bạn, trang blog này là danh sách bài tập thực hành R được mình tổng hợp dựa trên các tình huống trong thực tế khi support xử lý dữ liệu cho các bạn làm nghiên cứu thời gian qua, phục vụ chủ yếu cho các buổi đào tạo R định kỳ trong khóa học <a href="https://www.tuhocr.com/training">R Programming Course for Data Science</a>.</p>
-<p>Mình nhận thấy cách học nhanh nhất, chắc nhất là thông qua việc làm bài tập. Learning by doing.</p>
-<p>Vì vậy, mình biên soạn các bài tập này từ dễ đến khó, kèm theo lời giải giúp các bạn luyện tập các tình huống thường gặp, nếu có gì thắc mắc bạn lên Page <a href="https://www.facebook.com/groups/tuhocr">Cộng Đồng Tự Học R</a> để tạo post thảo luận cùng mọi người nha.</p>
-<p>Đặc biệt, nhằm phổ biến rộng rãi kỹ năng R đến các bạn sinh viên và học viên cao học, mình đã upload full các chuyên đề HDSD R hiện đã có hơn 120 video bài giảng được mình biên soạn kỹ lưỡng về các lệnh R căn bản bao gồm source code và dataset thực hành.</p>
-<p>Class: <a href="https://class.tuhocr.com/" class="uri">https://class.tuhocr.com/</a></p>
-<p>Youtube: <a href="https://www.youtube.com/@tuhocr/courses" class="uri">https://www.youtube.com/@tuhocr/courses</a></p>
-<p>Github: <a href="https://github.com/tuhocr/homework" class="uri">https://github.com/tuhocr/homework</a></p>
-<p><span style="color:blue">Mình định kỳ update thêm bài tập vào trang này, nếu bạn thấy trang này hữu ích, bạn có thể ủng hộ mình cốc cafe theo thông tin chuyển khoản sau nhé. Cảm ơn các bạn rất nhiều. Together we learn and grow!</span></p>
-<p><span style="color:darkgreen"><strong>Ngân hàng Thương mại Cổ phần Á Châu ACB</strong></span></p>
-<p><span style="color:darkgreen"><strong>193208059</strong></span></p>
-<p><span style="color:darkgreen"><strong>NGUYEN TAN DUC</strong></span></p>
-<p><img src="logo.png" class="img-fluid" style="width:30.0%"></p>
-<table>
-<tbody><tr>
-<td>
-<script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=ffffff&amp;w=600&amp;t=m&amp;d=_bAFWtM8w6r1iqz1rFnSp0G0YR9BhAghEugmc4AP_kE&amp;co=2d78ad&amp;cmo=3acc3a&amp;cmn=ff5353&amp;ct=ffffff"></script>
-</td>
-</tr>
-</tbody></table>
+<section id="cau-1" class="level2">
+<h2 class="anchored" data-anchor-id="cau-1"><strong>Câu 1</strong></h2>
+<p>Trang web này có thông tin về tỷ lệ sinh toàn cầu theo từng quốc gia và theo năm <a href="https://geofactbook.com/fact/total-fertility-rate/2026" class="uri">https://geofactbook.com/fact/total-fertility-rate/2026</a> tuy nhiên bản đồ heatmap vẽ không chuẩn (thiếu chú thích scale màu) và không có file CSV dataset raw để ta có thể tự vẽ lại được bản đồ này.</p>
+<p>Để tìm data raw theo hướng dẫn của trang này thì phải truy về dữ liệu của United Nations Population Division rất mất thời gian, trong khi đó ta chỉ cần dữ liệu Total Fertility Rate theo như bảng kết quả họ trình bày trên web.</p>
+<p>Mình đã copy lần lượt các bảng HTML này vào file Excel như sau. <a href="https://filedn.com/lesyJpQOCafj7katNqunAxu/TUHOCR/STAT/202610_grow_K1/dataset/data_tfr.rar">download</a></p>
+<p><img src="image/p10.png" class="img-fluid"></p>
+<p>Tuy nhiên copy table HTML về file Excel thì định dạng sẽ theo format này, ta chưa thể sử dụng được ngay mà cần có bước làm sạch gộp lại lại dữ liệu cho chuẩn mới có thể tiến hành phân tích.</p>
+<p><img src="image/p11.png" class="img-fluid"></p>
+<p>Vì vậy bài tập này sẽ là tình huống thực tế để chúng ta thực hiện các công việc:</p>
+<p><strong>1/ Gộp dữ liệu từ các file Excel riêng lẽ thành 1 file dataset hoàn chỉnh.</strong></p>
+<p>File cần thực hiện: <a href="https://filedn.com/lesyJpQOCafj7katNqunAxu/TUHOCR/STAT/202610_grow_K1/dataset/total_fertility_rate_2015_2026.xlsx">Final dataset</a></p>
+<p>Dataset ở dạng long, kết quả thể hiện rõ ràng theo từng năm, quốc gia và tỷ lệ sinh (số em bé mà trung bình 1 phụ nữ sinh ra trong năm đó).</p>
+<p><img src="image/p12.png" class="img-fluid"></p>
+<p><strong>2/ Trên cơ sở file dataset final này, ta thống kê nhanh trung bình tỷ lệ sinh trong giai đoạn 2015-2026 theo từng quốc gia.</strong></p>
+<p>Sử dụng package <code>table1</code>, kết quả cần thu được như sau.</p>
+<p><img src="image/p13.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Đáp án">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Đáp án
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<style>
+div.yes123 pre { background-color:#fff2cc; font-size: 16px; }
+div.yes123 pre.r { background-color:#F1F3F5; font-size: 16px; }
+</style>
+<div class="yes123">
+<p>Các bạn download folder project về và giải nén, xem đoạn code xử lý làm sạch dữ liệu nhé.</p>
+<p><a href="https://filedn.com/lesyJpQOCafj7katNqunAxu/TUHOCR/STAT/202610_grow_K1/dataset/PROJECT_FERTILITY.rar">Solution</a></p>
+</div>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -934,11 +939,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
+      <a href="./cach-format-file-excel.html" class="pagination-link" aria-label="**Cách format file Excel**">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title"><strong>Cách format file Excel</strong></span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./cac-lenh-ve-vector.html" class="pagination-link" aria-label="**Các lệnh về vector**">
-        <span class="nav-page-text"><span class="chapter-title"><strong>Các lệnh về vector</strong></span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
