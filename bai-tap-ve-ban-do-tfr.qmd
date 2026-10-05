@@ -201,7 +201,7 @@ worldplot <- ggplot() +
   coord_equal() +
   scale_fill_viridis_c(option = "B",
                        direction = -1,
-                       name = "Total fertility rate 2026 (numeber children per woman)",
+                       name = "Total fertility rate 2026 (number children per woman)",
                        limits = c(0,8),
                        breaks = c(0:8),
                        guide = guide_colorbar(barwidth = 30,
