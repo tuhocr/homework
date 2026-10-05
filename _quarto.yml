@@ -45,6 +45,7 @@ book:
     - part: "[**Project Total Fertility Rate**]{style='color:blue'}" 
       chapters:
         - bai-tap-clean-du-lieu-tfr.qmd    
+        - bai-tap-ve-ban-do-tfr.qmd
         
   sidebar:
     style: "docked"
