@@ -196,7 +196,9 @@ worldplot <- ggplot() +
                aes(x = long,
                    y = lat, 
                    group = group,
-                   fill = Total_fertility_rate)) + 
+                   fill = Total_fertility_rate),
+               color = "black",
+               lwd = 0.1) + 
   
   coord_equal() +
   scale_fill_viridis_c(option = "B",
