@@ -30,6 +30,7 @@ book:
         - template-do-thi-base-r-phan-1.qmd
         - cac-lenh-ve-do-thi-scatterplot.qmd 
         - cac-lenh-ve-do-thi-barchart.qmd 
+        - do-thi-boxplot-va-barplot.qmd
         - cach-ve-duong-confidence-interval.qmd
         - cach-ve-do-thi-hai-truc-tung.qmd
     - part: "[**Các lệnh thống kê**]{style='color:blue'}" 
