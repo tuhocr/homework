@@ -9,7 +9,7 @@ knitr::opts_chunk$set(message = FALSE,
                       warning = FALSE)   
 ```
 
-# **Đồ thị boxlot và barplot** 
+# **Đồ thị boxplot và barplot** 
 
 [**Tài liệu biên soạn trong chuyên đề R Statistics**](https://www.tuhocr.com/r-statistics)
 
